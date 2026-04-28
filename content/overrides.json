@@ -148,91 +148,164 @@
     },
     "https://drive.google.com/file/d/1UkF8q1jvmAUXp1syoFVmVuxoIrk_u5By/view": {
       "thumbnail": "/portfolio/uploaded/38813d17cf26.png",
-      "caption": "Trend-driven must-dos at Walt Disney World, cut for the twenty-something crowd chasing the next viral moment. Producer chair: pitched the beats, scouted the parks, and shaped each piece into something that travels on social. Made under the WDW Happy Place banner during my 2015–2021 run."
+      "tags": [
+        "social"
+      ]
     },
     "https://drive.google.com/file/d/1CGE2rMbrnTDj6b_xB759SWT8wabQX_t3/view": {
       "thumbnail": "/portfolio/uploaded/456618659633.png",
       "title": "Andy Night at Toy Story Land",
-      "caption": "Fifty guys named Andy — including a few famous ones — got the keys to Toy Story Land for one surreal overnight takeover. Producing this one meant solving the logistics of locking down a Disney park after hours, casting an entire guest list by first name, and building a night that played like Andy's bedroom come to life. The result is the kind of brand stunt that only works if every detail lands."
+      "tags": [
+        "social",
+        "commercial"
+      ]
     },
     "https://drive.google.com/file/d/1OfS_lg2ZJlhg220NhjAygCoXSviJMNEq/view": {
-      "caption": "Brought Cache Bunny — one of Instagram's sharpest visual storytellers — into Walt Disney World to chase a single iconic frame. We scouted, timed the light, and walked away with a wall-spin shot that traveled. Press play to see how it landed."
+      "tags": [
+        "social"
+      ]
     },
     "https://drive.google.com/file/d/1zh3MWLz638PbhdtTbJ-wB9TjqA0T6ETq/view": {
       "title": "Adventurer Ed Stafford at Animal Kingdom",
-      "caption": "Brought Ed Stafford — the first man to walk the Amazon — to Disney's Animal Kingdom to test the park against the real wild he's known for. Followed him through the attractions, animal encounters, and behind-the-scenes corners most guests never see. Part travelogue, part stunt-cast experiment, all built around watching a hardened explorer react in real time. Hit play to see how the jungle reads to someone who's actually lived in one."
+      "tags": [
+        "social"
+      ]
     },
     "https://drive.google.com/file/d/1VrzQAup0seTzzhHwyLC9cEp0L_FH4yKM/view": {
       "thumbnail": "/portfolio/uploaded/a1323ecf3ffa.png",
       "title": "WDW Birthday Greeting",
-      "caption": "A personalized video greeting that lit up the in-room TV when a guest checked into Walt Disney World on their birthday. Produced the piece across a six-year run — scripting the beats, directing voice talent, and coordinating with park ops to make sure the moment landed the second the door opened. Small touch, big reaction."
+      "tags": [
+        "social"
+      ]
     },
     "https://drive.google.com/file/d/10h6W7EqqOCgxeHGMKofUWux9bFf2A_sg/view": {
       "thumbnail": "/portfolio/uploaded/cd066d12693a.png",
-      "caption": "Sarge and the Green Army Men whip Orlando City SC into shape on the Toy Story Land turf — boot camp meets Major League Soccer, pure Pixar mischief. Produced for Disney as part of the Toy Story Land launch push, blending IP, athletes, and a wink at every kid who's ever staged a plastic-soldier ambush. Hit play."
+      "tags": [
+        "social"
+      ]
     },
     "https://drive.google.com/file/d/1vDKPf3ZfFoIzDszbF7trvVp0Wie3hilN/view": {
       "thumbnail": "/portfolio/uploaded/f68bb06dc185.png",
-      "caption": "Olivia Rodrigo and Sean Gambrione spin through the Mad Tea Party at Disneyland to tee up the Disney Channel Holiday Celebration. Produced as a promo spot during my run on the Disney park-side production team — short, sweet, and built to land in 60 seconds. Hit play."
+      "tags": [
+        "social"
+      ]
     },
     "https://drive.google.com/file/d/1igFp99EAKIeZ-mpsTM8ZlR8yHiLlXucc/view": {
       "thumbnail": "/portfolio/uploaded/dec2832c4403.png",
-      "title": "Building Wild - Hunting Cabin"
+      "title": "Building Wild - Hunting Cabin",
+      "tags": [
+        "broadcast",
+        "reality"
+      ]
     },
     "https://drive.google.com/file/d/17bf9a3numPuZDr00cukkUvBZvAQv-tb6/view": {
-      "thumbnail": "/portfolio/uploaded/e10a3f3ae87c.png"
+      "thumbnail": "/portfolio/uploaded/e10a3f3ae87c.png",
+      "tags": [
+        "broadcast",
+        "reality"
+      ]
     },
     "https://drive.google.com/file/d/1wAEXhYluSbR8qrlzjFKILVvicRwRDpLa/view": {
       "thumbnail": "/portfolio/uploaded/58cdd5f15bbb.png",
       "title": "Disney Family's Backyard Theater",
-      "sortOrder": 1
+      "sortOrder": 1,
+      "tags": [
+        "branded",
+        "social",
+        "commercial"
+      ]
     },
     "https://drive.google.com/file/d/14g-nZrcn_H0YI_MYZ6YkDoOEVk4iJhxn/view": {
-      "thumbnail": "/portfolio/uploaded/702526109502.png"
+      "thumbnail": "/portfolio/uploaded/702526109502.png",
+      "tags": [
+        "social"
+      ]
     },
     "https://drive.google.com/file/d/1LdSigiL3Hl70xnbqfLBxD4IID4plH0qj/view": {
-      "thumbnail": "/portfolio/uploaded/8aad367ca458.png"
+      "thumbnail": "/portfolio/uploaded/8aad367ca458.png",
+      "tags": [
+        "social"
+      ]
     },
     "https://drive.google.com/file/d/1l39OCdnmDslHJGz9AZWf2PR0_pbuLdkF/view": {
-      "thumbnail": "/portfolio/uploaded/ba640cc6168d.png"
+      "thumbnail": "/portfolio/uploaded/ba640cc6168d.png",
+      "tags": [
+        "social",
+        "documentary"
+      ]
     },
     "https://drive.google.com/file/d/1wfesqgooD8ozHkHh_9vp16CFGAQROMYi/view": {
       "thumbnail": "/portfolio/uploaded/12b38df7f748.png",
-      "caption": "Brandon Baker reprises Johnny Tsunami — surfboard and all — for an Oh My Disney Vine, except this time he's clocking in at a cubicle. Directed and produced for Disney's social team, with the joke landing in six seconds flat."
+      "tags": [
+        "social"
+      ]
     },
     "https://drive.google.com/file/d/1wTfxHKIdqm3JnuHda6z6ncL_zwybCbDg/view": {
       "thumbnail": "/portfolio/uploaded/84f41654d9b0.png",
-      "caption": "Hundreds of Tsum Tsum plushies, frame by frame, marching down a miniature Main Street U.S.A. — a stop-motion parade staged for Disney's social channels. I directed and produced the spot end to end, from rig design to the final composite. It's tiny, it's chaotic, and every step took hours."
+      "tags": [
+        "branded",
+        "social"
+      ]
     },
     "https://www.amazon.com/Our-Wild-Hearts-Ricky-Schroder/dp/B00DCRE7CA": {
       "thumbnail": "/portfolio/uploaded/e72090c28995.png",
-      "title": "Our Wild Hearts - Hallmark Movie"
+      "title": "Our Wild Hearts - Hallmark Movie",
+      "tags": [
+        "narrative",
+        "broadcast",
+        "feature"
+      ]
     },
     "https://drive.google.com/file/d/1PjlDkYcOU8bIAjtcqH6HnNlx3PSFVMfc/view": {
       "thumbnail": "/portfolio/uploaded/1560e98e8541.png",
-      "title": "Starting Strong - US Army"
+      "title": "Starting Strong - US Army",
+      "tags": [
+        "broadcast",
+        "reality"
+      ]
     },
     "https://drive.google.com/file/d/1Y64ZpibjrvCMQwzrnve0KRZadV3a8KZg/view": {
       "thumbnail": "/portfolio/uploaded/109218085d95.png",
-      "title": "Disney Acapella Sing-off (Sponsored by Alamo)"
+      "title": "Disney Acapella Sing-off (Sponsored by Alamo)",
+      "tags": [
+        "branded",
+        "social"
+      ]
     },
     "https://drive.google.com/file/d/1b9C_-DDH8wRl48mEbUfO_g3SN4ayagCc/view": {
       "thumbnail": "/portfolio/uploaded/5cf7fd49549a.png",
-      "caption": "Random acts of holiday magic at the Disney Store — surprise giveaways dropped on unsuspecting shoppers, cut for maximum gasp-and-grin reactions. Edited the piece to ride the energy of each reveal, letting the guests' faces carry the moment. A short, warm watch that captures what Share the Magic was actually about."
+      "tags": [
+        "branded",
+        "social"
+      ]
     },
     "https://drive.google.com/file/d/1iTlo9sGJQ0SUJFkY3Ph77U5SpDGhKsAA/view": {
-      "caption": "Behind-the-scenes look at how an Olaf Disney Infinity figure goes from concept to shelf — sculpt, paint, packaging, the whole pipeline. Cut for the Unboxing Frozen series during my time editing for Disney. Hit play to watch the figure come together piece by piece."
+      "tags": [
+        "branded",
+        "social",
+        "documentary"
+      ]
     },
     "https://drive.google.com/file/d/1iQRpASRcbB7puxbpkoR3u5TEaCe1DjMb/view": {
       "thumbnail": "/portfolio/uploaded/d83226a16349.png",
-      "caption": "A nature-doc parody following Tsum Tsums in the wild — narrated stalk-and-pounce footage of a Goofy plush trying to outrun a very real cat. Cut as a recurring short series during my Disney run, leaning into David Attenborough cadence and tight comedic timing. Episode 1 of Tsum Tsum Kingdom."
+      "tags": [
+        "branded",
+        "social"
+      ]
     },
     "https://drive.google.com/file/d/1P9gUj1AViOP3uFlu1Sn3qVmmtrQdOr8U/view": {
-      "title": "Walt Disney World - Guestimonials"
+      "title": "Walt Disney World - Guestimonials",
+      "tags": [
+        "branded",
+        "social"
+      ]
     },
     "https://drive.google.com/file/d/1z7V5hY6T8H5_Syaaq9z7j2v8SAmmXeqg/view": {
       "title": "Making a Sled Dolly for a Marvel Film",
-      "caption": "Behind-the-scenes cut documenting the build of a custom sled dolly used on a Marvel-branded production. Edited from my own footage for my YouTube channel — process, problem-solving, and the rig in motion. Hit play to see how it came together."
+      "tags": [
+        "social",
+        "documentary"
+      ]
     },
     "https://drive.google.com/file/d/1lnIYJY5WdaJxBv_riOhUonQoNs3HorUR/view": {
       "hidden": true
@@ -262,7 +335,10 @@
       "hidden": true
     },
     "https://www.instagram.com/artios_sugarhill/reel/CsbmaFkAIXP": {
-      "caption": "Tech-week BTS cut for a private high school's Little Mermaid production — fish-out-of-water energy, costume fittings, and a cast that's clearly having too much fun. Edited from on-the-ground footage to give parents and prospective families a peek behind the curtain before opening night. Produced and cut as part of the school's content and social marketing reel."
+      "tags": [
+        "social",
+        "documentary"
+      ]
     },
     "https://www.instagram.com/artios_sugarhill/reel/CsWOA4NgQfW": {
       "hidden": true
@@ -310,6 +386,24 @@
       "tags": [
         "feature",
         "documentary"
+      ]
+    },
+    "https://www.instagram.com/artios_sugarhill/reel/DJr7N7SADx4": {
+      "tags": [
+        "social",
+        "documentary"
+      ]
+    },
+    "https://www.instagram.com/artios_sugarhill/reel/C6_3H5AOooH": {
+      "tags": [
+        "social",
+        "documentary"
+      ]
+    },
+    "https://vimeo.com/1077808429": {
+      "tags": [
+        "social",
+        "short"
       ]
     }
   }
