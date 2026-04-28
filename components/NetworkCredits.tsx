@@ -43,18 +43,17 @@ const CREDITS: Credit[] = [
     ],
   },
   {
-    slug: "disney-editor",
+    slug: "building-wild",
     cardTitle: "Broadcast & feature editing",
     hat: "Editor",
-    client: "National Geographic · Hallmark · U.S. Army (Ricky Schroder) · Disney Consumer Products",
-    years: "2010–2021",
+    client: "National Geographic · Hallmark · U.S. Army (Ricky Schroder)",
+    years: "2010–2014",
     storyKicker:
-      "Multi-cam reality, broadcast finishing, feature-length narrative. The cut is where the story actually happens — both on the network side and inside Disney for short-form social.",
+      "Multi-cam reality, broadcast finishing, feature-length narrative. The cut is where the story actually happens — story-shaping, pacing, and the difference between a moment that lands and one that gets skipped.",
     highlights: [
       "Building Wild — National Geographic (multi-episode)",
       "Starting Strong — U.S. Army reality series (produced by Ricky Schroder)",
       "Our Wild Hearts — Hallmark feature",
-      "Disney short-form: Acapella Sing Off, Tsum Tsum Kingdom, Disney Store",
       "Avid · Premiere Pro · After Effects",
     ],
   },

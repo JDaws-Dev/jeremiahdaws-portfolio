@@ -308,7 +308,10 @@ export function getAllAssets(opts: { includeHidden?: boolean } = {}): Asset[] {
       if (ovr.title) a.title = ovr.title;
       if (ovr.caption !== undefined) a.caption = ovr.caption;
       if (ovr.thumbnail) a.thumbnail = ovr.thumbnail;
-      if (ovr.tags && ovr.tags.length) a.tags = [...(a.tags ?? []), ...ovr.tags];
+      // Override tags REPLACE inherited tags (not append). Lets the
+      // admin set exact per-asset format/topic tags without dragging
+      // every parent entry's tag along.
+      if (ovr.tags) a.tags = ovr.tags;
       (a as Asset & { _sortOrder?: number })._sortOrder = ovr.sortOrder ?? 0;
     }
     assets.push(a);

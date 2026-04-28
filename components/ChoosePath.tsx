@@ -41,13 +41,13 @@ const PATHS: Path[] = [
       {
         title: "Target × Disney — Backyard Theater",
         meta: "$1.5M campaign · Disney Channel/XD · 2016",
-        thumb: "/portfolio/disney-yellow-shoes.jpg",
+        thumb: "/portfolio/uploaded/58cdd5f15bbb.png",
         href: "/work",
       },
       {
         title: "Building Wild — National Geographic",
         meta: "Editor · multi-cam reality · 2014",
-        thumb: "/portfolio/building-wild.jpg",
+        thumb: "/portfolio/uploaded/dec2832c4403.png",
         href: "/work",
       },
       {
