@@ -26,11 +26,13 @@ function clientsFor(asset: Asset): string[] {
 
 function formatFor(asset: Asset): string[] {
   // Derive a "format" facet from tags, source, and parent context.
-  // Lets a hiring manager filter to "Feature" or "Broadcast" without scrolling.
+  // Lets a hiring manager filter to "Feature" or "Documentary" without scrolling.
   const out: string[] = [];
   const tags = (asset.tags ?? []).map((t) => t.toLowerCase());
   if (tags.includes("feature")) out.push("Feature");
   if (tags.includes("short")) out.push("Short");
+  if (tags.includes("documentary")) out.push("Documentary");
+  if (tags.includes("narrative")) out.push("Narrative");
   if (tags.includes("broadcast")) out.push("Broadcast");
   if (tags.includes("reality")) out.push("Reality");
   if (tags.includes("commercial")) out.push("Commercial");
@@ -38,12 +40,13 @@ function formatFor(asset: Asset): string[] {
   if (tags.includes("social")) out.push("Social");
   if (tags.includes("theatrical")) out.push("Theatrical");
   if (tags.includes("indie") && !out.includes("Feature") && !out.includes("Short")) out.push("Indie");
+  if (tags.includes("bts")) out.push("BTS");
   if (tags.includes("recognition")) out.push("Recognition");
   if (tags.includes("product")) out.push("Product");
   if (tags.includes("prop")) out.push("Prop");
   if (tags.includes("fabrication")) out.push("Fabrication");
   if (tags.includes("maker")) out.push("Maker");
-  if (asset.source === "instagram") out.push("Social");
+  if (asset.source === "instagram" && !out.length) out.push("Social");
   // Dedupe
   return Array.from(new Set(out));
 }
