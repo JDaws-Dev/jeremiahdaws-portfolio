@@ -171,6 +171,22 @@ export function getAllEntries(opts: { includeHidden?: boolean } = {}): Portfolio
       const raw = fs.readFileSync(path.join(CONTENT_DIR, file), "utf8");
       const { data, content } = matter(raw);
       const o = overrides.entries[slug] ?? {};
+
+      // Entry thumbnail resolution order:
+      //   1. Entry-level override (set in admin's Entries tab)
+      //   2. MDX frontmatter `thumbnail`
+      //   3. Asset-level override on the entry's primary URL (embedUrl,
+      //      then externalUrl) — lets the Assets-tab upload propagate
+      //      to the high-level cards (NetworkCredits, ProductBuilds).
+      const primaryUrl = data.embedUrl
+        ? String(data.embedUrl)
+        : data.externalUrl
+        ? String(data.externalUrl)
+        : null;
+      const primaryAssetThumb = primaryUrl
+        ? overrides.assets[normalizeAssetUrl(primaryUrl)]?.thumbnail
+        : undefined;
+
       return {
         slug,
         title: String(data.title ?? slug),
@@ -178,7 +194,10 @@ export function getAllEntries(opts: { includeHidden?: boolean } = {}): Portfolio
         year: String(data.year ?? ""),
         lane: (data.lane ?? "video") as Lane,
         org: data.org ? String(data.org) : undefined,
-        thumbnail: o.thumbnail ?? (data.thumbnail ? String(data.thumbnail) : undefined),
+        thumbnail:
+          o.thumbnail ??
+          (data.thumbnail ? String(data.thumbnail) : undefined) ??
+          primaryAssetThumb,
         embedUrl: data.embedUrl ? String(data.embedUrl) : undefined,
         externalUrl: data.externalUrl ? String(data.externalUrl) : undefined,
         links: Array.isArray(data.links)
