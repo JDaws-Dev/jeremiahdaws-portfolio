@@ -392,7 +392,8 @@
       "tags": [
         "social",
         "documentary"
-      ]
+      ],
+      "hidden": true
     },
     "https://www.instagram.com/artios_sugarhill/reel/C6_3H5AOooH": {
       "tags": [
@@ -404,6 +405,14 @@
       "tags": [
         "social",
         "short"
+      ]
+    },
+    "https://www.instagram.com/jacksterner/reel/DJ2EIpJyDIx": {
+      "title": "Big Fish Promo",
+      "caption": "Cut a high school theater promo for Big Fish — produced and edited the spot to drive ticket sales and build buzz around the show. Pulled rehearsal footage and cast moments into something that actually felt like the musical, not a slideshow. Made for the school's social channels, where it ran ahead of opening night.",
+      "tags": [
+        "social",
+        "documentary"
       ]
     }
   }
