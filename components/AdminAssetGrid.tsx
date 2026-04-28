@@ -23,8 +23,28 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
   const [tagsInput, setTagsInput] = useState((asset.override?.tags ?? []).join(", "));
   const [sortOrder, setSortOrder] = useState(asset.override?.sortOrder ?? 0);
   const [polishInput, setPolishInput] = useState("");
-  const [busy, setBusy] = useState<"save" | "polish" | null>(null);
+  const [busy, setBusy] = useState<"save" | "polish" | "upload" | null>(null);
   const [status, setStatus] = useState<{ kind: "ok" | "err"; msg: string } | null>(null);
+
+  async function uploadFile(file: File) {
+    setBusy("upload");
+    setStatus(null);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("url", asset.url);
+      fd.append("target", "asset");
+      const r = await fetch("/api/admin/upload", { method: "POST", body: fd });
+      const data = await r.json();
+      if (!data.ok) throw new Error(data.error ?? "Upload failed");
+      setThumbnail(data.url);
+      setStatus({ kind: "ok", msg: `Uploaded → ${data.url}` });
+    } catch (e) {
+      setStatus({ kind: "err", msg: e instanceof Error ? e.message : "Upload failed" });
+    } finally {
+      setBusy(null);
+    }
+  }
 
   async function save() {
     setBusy("save");
@@ -212,15 +232,57 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
 
         <div className="md:col-span-2">
           <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
-            Custom thumbnail (URL — overrides default)
+            Custom thumbnail
           </span>
-          <div className="mt-1 flex flex-col gap-2 md:flex-row md:items-start">
+
+          {/* Upload control — drag-drop or click to upload from screenshot */}
+          <label
+            className={[
+              "mt-1 flex cursor-pointer items-center gap-2 rounded-md border border-dashed px-3 py-2 text-xs transition",
+              busy === "upload"
+                ? "border-accent bg-accent/5 text-accent"
+                : "border-ink/20 text-ink-muted hover:border-accent hover:text-accent dark:border-paper/20 dark:text-paper-muted",
+            ].join(" ")}
+            onDragOver={(e) => {
+              e.preventDefault();
+              e.dataTransfer.dropEffect = "copy";
+            }}
+            onDrop={(e) => {
+              e.preventDefault();
+              const f = e.dataTransfer.files?.[0];
+              if (f) uploadFile(f);
+            }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M17 8l-5-5-5 5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M12 3v12" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span className="flex-1">
+              {busy === "upload"
+                ? "Uploading…"
+                : "Drop a screenshot here, or click to upload (JPG/PNG/WebP)"}
+            </span>
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/gif"
+              className="hidden"
+              onChange={(e) => {
+                const f = e.target.files?.[0];
+                if (f) uploadFile(f);
+                e.target.value = "";
+              }}
+              disabled={busy === "upload"}
+            />
+          </label>
+
+          <div className="mt-2 flex flex-col gap-2 md:flex-row md:items-start">
             <div className="flex-1">
               <input
                 type="url"
                 value={thumbnail}
                 onChange={(e) => setThumbnail(e.target.value)}
-                placeholder="https://… or /portfolio/xyz.jpg"
+                placeholder="…or paste a URL: https://… or /portfolio/xyz.jpg"
                 className="w-full rounded border border-ink/15 bg-transparent px-2 py-1 text-xs focus:border-accent focus:outline-none dark:border-paper/20"
               />
               {suggestions.length ? (
