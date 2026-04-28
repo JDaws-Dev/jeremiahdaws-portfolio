@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   IconArrowRight,
   IconBook,
@@ -165,6 +165,16 @@ const PATHS: Path[] = [
 export function ChoosePath() {
   const [active, setActive] = useState<Path["id"] | null>(null);
   const path = active ? PATHS.find((p) => p.id === active) ?? null : null;
+  const detailRef = useRef<HTMLDivElement>(null);
+
+  // Scroll the expanded detail into view when a lane is picked.
+  useEffect(() => {
+    if (!active || !detailRef.current) return;
+    const el = detailRef.current;
+    // Account for sticky TopNav (h-14 = 56px) + a little breathing room.
+    const top = el.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top, behavior: "smooth" });
+  }, [active]);
 
   return (
     <section id="choose" className="border-y border-paper-muted bg-paper-muted/40 py-16 dark:border-paper/10 dark:bg-ink/30">
@@ -208,7 +218,10 @@ export function ChoosePath() {
         </div>
 
         {path ? (
-          <div className="mt-10 rounded-3xl border border-ink/10 bg-paper p-6 shadow-sm dark:border-paper/15 dark:bg-ink/40 md:p-8">
+          <div
+            ref={detailRef}
+            className="mt-10 scroll-mt-20 rounded-3xl border border-ink/10 bg-paper p-6 shadow-sm dark:border-paper/15 dark:bg-ink/40 md:p-8"
+          >
             <div className="grid gap-8 md:grid-cols-[1.1fr_1fr] md:items-start">
               <div>
                 <p className="text-xs uppercase tracking-[0.22em] text-accent">{path.label}</p>

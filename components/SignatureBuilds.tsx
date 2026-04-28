@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { PortfolioEntry } from "@/lib/portfolio";
 
 type Build = {
@@ -7,7 +6,6 @@ type Build = {
   format: string;
   storyKicker: string;
   thumb: string;
-  href?: string;
 };
 
 const BUILDS: Build[] = [
@@ -17,7 +15,6 @@ const BUILDS: Build[] = [
     storyKicker:
       "A working Lumière candelabra for a school production of Beauty and the Beast — 3D-scanned from Disney source, sliced, printed, painted, wired, lit. Stage-ready. The kind of prop most schools rent; we built ours.",
     thumb: "/portfolio/ig-thumbs/C8meuRVOK-U.jpg",
-    href: "https://www.instagram.com/jeremiahdaws/reel/C8meuRVOK-U/",
   },
   {
     slug: "film-industry-fabrication",
@@ -25,7 +22,6 @@ const BUILDS: Build[] = [
     storyKicker:
       "Paid CNC fab work for Atlanta-area film productions — steadicam sled, dolly components, on-set fixtures. Bullfrog Machining clients who need a part on the truck Tuesday morning.",
     thumb: "/portfolio/ig-thumbs/Ch7jk4frlEm.jpg",
-    href: "https://www.instagram.com/jeremiahdaws/p/Ch7jk4frlEm/",
   },
   {
     slug: "fidgetcraft",
@@ -33,7 +29,6 @@ const BUILDS: Build[] = [
     storyKicker:
       "Designed, manufactured, and sold a magnetic fidget toy on Etsy. End-to-end: CAD, machining, assembly, photography, listings, fulfillment. Small business, real revenue, real shipping.",
     thumb: "/portfolio/ig-thumbs/CnHbyDoJiv8.jpg",
-    href: "https://www.instagram.com/jeremiahdaws/reel/CnHbyDoJiv8/",
   },
 ];
 
@@ -65,31 +60,20 @@ export function SignatureBuilds({ entries }: { entries: PortfolioEntry[] }) {
         </div>
 
         <ul className="mt-10 grid gap-5 md:grid-cols-3">
-          {items.map(({ entry, format, storyKicker, thumb, href }) => (
+          {items.map(({ entry, format, storyKicker, thumb }) => (
             <li
               key={entry.slug}
               className="flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-paper dark:border-paper/15 dark:bg-ink/40"
             >
-              <Link
-                href={href ?? "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative block aspect-[4/5] w-full overflow-hidden border-b border-ink/10 bg-ink/5 dark:border-paper/15"
-                aria-label={`Open ${entry.title}`}
-              >
+              <div className="relative aspect-[4/5] w-full overflow-hidden border-b border-ink/10 bg-ink/5 dark:border-paper/15">
                 <Image
                   src={thumb}
                   alt={entry.title}
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition duration-500 group-hover:scale-[1.02]"
+                  className="object-cover"
                 />
-                <span className="pointer-events-none absolute inset-0 flex items-end bg-gradient-to-t from-ink/70 via-ink/10 to-transparent p-4 text-paper opacity-0 transition group-hover:opacity-100">
-                  <span className="text-xs font-semibold uppercase tracking-[0.18em]">
-                    Watch the build →
-                  </span>
-                </span>
-              </Link>
+              </div>
               <div className="flex flex-1 flex-col gap-3 p-6">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent">
                   {format}
