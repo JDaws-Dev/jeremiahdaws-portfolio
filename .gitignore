@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+.env
+.env.local
+.DS_Store
+*.log
+.vercel
+next-env.d.ts
+tsconfig.tsbuildinfo
+.vscode/
+.idea/
+
+# IG crawler login session (cookies — DO NOT commit)
+scripts/.ig-session/
+scripts/.ig-session/**

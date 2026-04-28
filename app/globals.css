@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-ink antialiased;
+}
+
+.dark body {
+  @apply bg-ink text-paper;
+}
+
+/* Headings use a slightly tighter line-height by default */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Selection color */
+::selection {
+  background: theme("colors.accent.muted");
+  color: theme("colors.paper.DEFAULT");
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid theme("colors.accent.DEFAULT");
+  outline-offset: 3px;
+  border-radius: 2px;
+}
