@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { TopNav } from "@/components/TopNav";
 import { WorkHero } from "@/components/WorkHero";
 import { NetworkCredits } from "@/components/NetworkCredits";
-import { IndieFeatures } from "@/components/IndieFeatures";
 import { LaneArchive } from "@/components/LaneArchive";
 import { PageCta } from "@/components/PageCta";
 import { getAllAssets, getAllEntries } from "@/lib/portfolio";
@@ -21,7 +20,6 @@ export default function WorkPage() {
       <TopNav />
       <WorkHero />
       <NetworkCredits entries={entries} />
-      <IndieFeatures entries={entries} />
       <LaneArchive
         assets={assets}
         lane="video"
