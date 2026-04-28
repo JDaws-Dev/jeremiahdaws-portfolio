@@ -218,22 +218,15 @@ export function LaneArchive({
   }
 
   return (
-    <div className="pt-24">
+    <div className="pt-12">
       <header className="mx-auto max-w-6xl px-6 pb-8">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.18em] text-ink-muted transition hover:text-accent dark:text-paper-muted"
-        >
-          <span aria-hidden="true">←</span>
-          {" "}Home
-        </Link>
-        <p className="mt-4 text-xs uppercase tracking-[0.22em] text-accent">{eyebrow}</p>
-        <h1
+        <p className="text-xs uppercase tracking-[0.22em] text-accent">{eyebrow}</p>
+        <h2
           className="mt-2 font-serif leading-[1.04] tracking-[-0.02em]"
-          style={{ fontSize: "clamp(2.5rem, 7vw, 4rem)" }}
+          style={{ fontSize: "clamp(2rem, 5.5vw, 3rem)" }}
         >
           {title ?? LANE_TITLE[lane]}
-        </h1>
+        </h2>
         <p className="mt-3 max-w-2xl text-base text-ink-muted dark:text-paper-muted md:text-lg">
           {intro}
         </p>
