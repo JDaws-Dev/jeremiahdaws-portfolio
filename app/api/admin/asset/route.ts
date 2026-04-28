@@ -25,6 +25,7 @@ export async function POST(req: Request) {
           caption?: string;
           thumbnail?: string;
           tags?: string[];
+          org?: string;
           sortOrder?: number;
         };
       }
@@ -45,6 +46,7 @@ export async function POST(req: Request) {
   if (next.caption === "") delete next.caption;
   if (next.thumbnail === "") delete next.thumbnail;
   if (next.tags && next.tags.length === 0) delete next.tags;
+  if (next.org === "") delete next.org;
   if (next.sortOrder === 0 || next.sortOrder === undefined) delete next.sortOrder;
 
   if (Object.keys(next).length === 0) {

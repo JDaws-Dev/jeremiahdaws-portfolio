@@ -101,6 +101,7 @@ export type AssetOverride = {
   caption?: string;
   thumbnail?: string;
   tags?: string[];
+  org?: string;
   sortOrder?: number;
 };
 
@@ -308,6 +309,7 @@ export function getAllAssets(opts: { includeHidden?: boolean } = {}): Asset[] {
       if (ovr.title) a.title = ovr.title;
       if (ovr.caption !== undefined) a.caption = ovr.caption;
       if (ovr.thumbnail) a.thumbnail = ovr.thumbnail;
+      if (ovr.org) a.org = ovr.org;
       // Override tags REPLACE inherited tags (not append). Lets the
       // admin set exact per-asset format/topic tags without dragging
       // every parent entry's tag along.

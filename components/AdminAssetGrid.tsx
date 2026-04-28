@@ -15,6 +15,26 @@ type AssetWithMeta = Asset & {
   override?: AssetOverride;
 };
 
+// Canonical Client list — these surface as the Client facet on the
+// public lane archives. Click a chip to set; type a new one to extend.
+const CLIENT_PRESETS = [
+  "Disney Yellow Shoes",
+  "Disney Consumer Products",
+  "National Geographic",
+  "Hallmark",
+  "U.S. Army",
+  "Ricky Schroder",
+  "Daws Brothers",
+  "Private school",
+  "Bullfrog Machining",
+  "FidgetCraft",
+  "Lanier Technical College",
+  "Theatrical production",
+  "Self-published (YouTube)",
+  "AnswerAxis",
+  "SafeFamily",
+];
+
 // Canonical Format / Topic tag set — these are what surface as the
 // Format facet on the public lane archives.
 const FORMAT_TAGS = [
@@ -54,6 +74,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
   const [thumbnail, setThumbnail] = useState(asset.override?.thumbnail ?? "");
   const [tags, setTags] = useState<Set<string>>(() => new Set(initialTags(asset)));
   const [extraTagsInput, setExtraTagsInput] = useState("");
+  const [client, setClient] = useState(asset.override?.org ?? asset.org ?? "");
   const [sortOrder, setSortOrder] = useState(asset.override?.sortOrder ?? 0);
   const [polishInput, setPolishInput] = useState("");
   const [busy, setBusy] = useState<"save" | "polish" | "upload" | null>(null);
@@ -109,6 +130,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
             caption: caption.trim() === (asset.caption ?? "").trim() ? "" : caption.trim(),
             thumbnail: thumbnail.trim(),
             tags: finalTags,
+            org: client.trim() === (asset.org ?? "").trim() ? "" : client.trim(),
             sortOrder: Number(sortOrder) || 0,
           },
         }),
@@ -420,6 +442,46 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
                 No tags yet
               </span>
             ) : null}
+          </div>
+        </div>
+
+        <div className="md:col-span-2">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+              Client / org (one per asset — drives the Client filter chip)
+            </span>
+            <span className="text-[9px] uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+              {client && client !== (asset.org ?? "") ? "override" : "inherited"}
+            </span>
+          </div>
+          <input
+            type="text"
+            value={client}
+            onChange={(e) => setClient(e.target.value)}
+            placeholder="Disney Consumer Products, Daws Brothers…"
+            className="mt-1 w-full rounded border border-ink/15 bg-transparent px-2 py-1 text-xs focus:border-accent focus:outline-none dark:border-paper/20"
+          />
+          <div className="mt-1.5 flex flex-wrap gap-1">
+            {CLIENT_PRESETS.map((c) => {
+              const sel = client === c;
+              return (
+                <button
+                  key={c}
+                  type="button"
+                  onClick={() => setClient(sel ? "" : c)}
+                  aria-pressed={sel}
+                  className={[
+                    "rounded-full border px-2 py-0.5 text-[10px] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+                    sel
+                      ? "border-accent bg-accent text-paper shadow-sm"
+                      : "border-ink/15 text-ink-muted hover:border-accent hover:text-accent dark:border-paper/15 dark:text-paper-muted",
+                  ].join(" ")}
+                >
+                  {sel ? <span aria-hidden="true">✓ </span> : null}
+                  {c}
+                </button>
+              );
+            })}
           </div>
         </div>
 
