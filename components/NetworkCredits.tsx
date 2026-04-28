@@ -16,7 +16,7 @@ const CREDITS: Credit[] = [
     slug: "disney-director",
     cardTitle: "Branded campaigns",
     hat: "Director / Producer",
-    client: "Disney Yellow Shoes · Disney Consumer Products",
+    client: "Disney Consumer Products",
     years: "2015–2021",
     storyKicker:
       "Brand spots and integrated campaigns under tight clocks. Marvel, Lucasfilm, ABC, Freeform, and Target × Disney work — get the talent, get the shot, get the cut, get the air date.",
@@ -46,7 +46,7 @@ const CREDITS: Credit[] = [
     slug: "disney-editor",
     cardTitle: "Broadcast & feature editing",
     hat: "Editor",
-    client: "National Geographic · Hallmark · U.S. Army (Ricky Schroder) · Disney short-form",
+    client: "National Geographic · Hallmark · U.S. Army (Ricky Schroder) · Disney Consumer Products",
     years: "2010–2021",
     storyKicker:
       "Multi-cam reality, broadcast finishing, feature-length narrative. The cut is where the story actually happens — both on the network side and inside Disney for short-form social.",

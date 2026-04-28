@@ -183,7 +183,22 @@ export function LaneArchive({
       const ay = sortYearKey(a.year);
       const by = sortYearKey(b.year);
       if (sortKey === "featured") {
-        // Pinned-parent assets first, then year-desc.
+        // Heavyweight studio orgs lead the video archive. For other
+        // lanes, fall through to pinned + year-desc.
+        if (lane === "video") {
+          const studioPriority = (org: string | undefined): number => {
+            const o = (org ?? "").toLowerCase();
+            if (o.includes("disney")) return 4;
+            if (o.includes("national geographic")) return 3;
+            if (o.includes("hallmark")) return 2;
+            if (o.includes("ricky schroder") || o.includes("u.s. army")) return 1;
+            return 0;
+          };
+          const ap = studioPriority(a.org);
+          const bp = studioPriority(b.org);
+          if (ap !== bp) return bp - ap;
+        }
+        // Pinned-parent assets next, then year-desc.
         const ap = a.pinned ? 1 : 0;
         const bp = b.pinned ? 1 : 0;
         if (ap !== bp) return bp - ap;

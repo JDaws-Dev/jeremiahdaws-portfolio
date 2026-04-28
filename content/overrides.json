@@ -278,6 +278,12 @@
     },
     "https://artioscafe.com": {
       "hidden": true
+    },
+    "https://vimeo.com/892911174": {
+      "tags": [
+        "feature",
+        "documentary"
+      ]
     }
   }
 }
