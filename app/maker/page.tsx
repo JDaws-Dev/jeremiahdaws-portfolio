@@ -29,7 +29,8 @@ export default function MakerPage() {
         lane="making"
         eyebrow="Full archive"
         title="Every build, every clip."
-        intro="The full maker archive — channel videos, shop reels, IG cuts, recognition, theatrical props, and commercial fab work. Filter by role to see only what you're hiring for."
+        intro="Channel videos, shop reels, IG cuts, recognition, theatrical props, and commercial fab work — all of it."
+        showFilters={false}
       />
       <PageCta
         eyebrow="Need a part?"

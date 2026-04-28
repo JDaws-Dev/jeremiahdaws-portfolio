@@ -61,12 +61,14 @@ export function LaneArchive({
   eyebrow,
   title,
   intro,
+  showFilters = true,
 }: {
   assets: Asset[];
   lane: Lane;
   eyebrow: string;
   title?: string;
   intro: string;
+  showFilters?: boolean;
 }) {
   const [roles, setRoles] = useState<Set<string>>(new Set());
   const [clients, setClients] = useState<Set<string>>(new Set());
@@ -250,78 +252,80 @@ export function LaneArchive({
         </p>
       </header>
 
-      <div className="sticky top-14 z-30 border-y border-ink/10 bg-paper/85 backdrop-blur-md dark:border-paper/10 dark:bg-ink/85">
-        <div className="mx-auto max-w-6xl space-y-2 px-6 py-3">
-          <div className="flex flex-wrap items-center gap-2">
-            <label className="inline-flex items-center gap-1.5 text-xs text-ink-muted dark:text-paper-muted">
-              <span className="font-semibold uppercase tracking-[0.18em] text-accent">Sort</span>
-              <select
-                value={sortKey}
-                onChange={(e) => setSortKey(e.target.value as SortKey)}
-                className="rounded-full border border-ink/15 bg-transparent px-2.5 py-1 text-xs text-ink focus:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 dark:border-paper/15 dark:text-paper"
-              >
-                <option value="featured">Featured first</option>
-                <option value="newest">Newest first</option>
-                <option value="oldest">Oldest first</option>
-                <option value="title">Title (A–Z)</option>
-              </select>
-            </label>
+      {showFilters ? (
+        <div className="sticky top-14 z-30 border-y border-ink/10 bg-paper/85 backdrop-blur-md dark:border-paper/10 dark:bg-ink/85">
+          <div className="mx-auto max-w-6xl space-y-2 px-6 py-3">
+            <div className="flex flex-wrap items-center gap-2">
+              <label className="inline-flex items-center gap-1.5 text-xs text-ink-muted dark:text-paper-muted">
+                <span className="font-semibold uppercase tracking-[0.18em] text-accent">Sort</span>
+                <select
+                  value={sortKey}
+                  onChange={(e) => setSortKey(e.target.value as SortKey)}
+                  className="rounded-full border border-ink/15 bg-transparent px-2.5 py-1 text-xs text-ink focus:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 dark:border-paper/15 dark:text-paper"
+                >
+                  <option value="featured">Featured first</option>
+                  <option value="newest">Newest first</option>
+                  <option value="oldest">Oldest first</option>
+                  <option value="title">Title (A–Z)</option>
+                </select>
+              </label>
 
-            {totalSelected > 0 || query ? (
-              <button
-                onClick={clearAll}
-                className="rounded-full border border-ink/15 px-2.5 py-1 text-xs text-ink-muted hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 dark:border-paper/15 dark:text-paper-muted"
-              >
-                Clear all{totalSelected ? ` (${totalSelected})` : ""}
-              </button>
-            ) : null}
+              {totalSelected > 0 || query ? (
+                <button
+                  onClick={clearAll}
+                  className="rounded-full border border-ink/15 px-2.5 py-1 text-xs text-ink-muted hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 dark:border-paper/15 dark:text-paper-muted"
+                >
+                  Clear all{totalSelected ? ` (${totalSelected})` : ""}
+                </button>
+              ) : null}
 
-            <div className="ml-auto flex items-center gap-1.5 rounded-full border border-ink/15 bg-transparent pl-2.5 pr-1 focus-within:border-accent dark:border-paper/15">
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                aria-hidden="true"
-                className="text-ink-muted dark:text-paper-muted"
-              >
-                <circle cx="11" cy="11" r="7" />
-                <path d="M20 20l-3.5-3.5" strokeLinecap="round" />
-              </svg>
-              <input
-                type="search"
-                placeholder="Search title, client, role…"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                aria-label="Search the archive"
-                className="w-52 bg-transparent py-1.5 text-sm placeholder:text-ink-muted focus:outline-none dark:placeholder:text-paper-muted"
-              />
+              <div className="ml-auto flex items-center gap-1.5 rounded-full border border-ink/15 bg-transparent pl-2.5 pr-1 focus-within:border-accent dark:border-paper/15">
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  aria-hidden="true"
+                  className="text-ink-muted dark:text-paper-muted"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="M20 20l-3.5-3.5" strokeLinecap="round" />
+                </svg>
+                <input
+                  type="search"
+                  placeholder="Search title, client, role…"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  aria-label="Search the archive"
+                  className="w-52 bg-transparent py-1.5 text-sm placeholder:text-ink-muted focus:outline-none dark:placeholder:text-paper-muted"
+                />
+              </div>
             </div>
-          </div>
 
-          <FilterRow
-            label="Role"
-            items={availableRoles}
-            selected={roles}
-            onToggle={toggleRole}
-            capitalize
-          />
-          <FilterRow
-            label="Format"
-            items={availableFormats}
-            selected={formats}
-            onToggle={toggleFormat}
-          />
-          <FilterRow
-            label="Client"
-            items={availableClients}
-            selected={clients}
-            onToggle={toggleClient}
-          />
+            <FilterRow
+              label="Role"
+              items={availableRoles}
+              selected={roles}
+              onToggle={toggleRole}
+              capitalize
+            />
+            <FilterRow
+              label="Format"
+              items={availableFormats}
+              selected={formats}
+              onToggle={toggleFormat}
+            />
+            <FilterRow
+              label="Client"
+              items={availableClients}
+              selected={clients}
+              onToggle={toggleClient}
+            />
+          </div>
         </div>
-      </div>
+      ) : null}
 
       <section className="mx-auto max-w-6xl px-6 py-10">
         {filtered.length === 0 ? (
