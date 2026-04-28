@@ -256,8 +256,8 @@ export function LaneArchive({
       </header>
 
       {showFilters ? (
-        <div className="sticky top-14 z-30 border-y border-ink/10 bg-paper/85 backdrop-blur-md dark:border-paper/10 dark:bg-ink/85">
-          <div className="mx-auto max-w-6xl space-y-2 px-6 py-3">
+        <div className="border-y border-ink/10 bg-paper/85 backdrop-blur-md dark:border-paper/10 dark:bg-ink/85 md:sticky md:top-14 md:z-30">
+          <div className="mx-auto max-w-6xl space-y-2 px-4 py-3 sm:px-6">
             <div className="flex flex-wrap items-center gap-2">
               <label className="inline-flex items-center gap-1.5 text-xs text-ink-muted dark:text-paper-muted">
                 <span className="font-semibold uppercase tracking-[0.18em] text-accent">Sort</span>
@@ -267,8 +267,6 @@ export function LaneArchive({
                   className="rounded-full border border-ink/15 bg-transparent px-2.5 py-1 text-xs text-ink focus:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 dark:border-paper/15 dark:text-paper"
                 >
                   <option value="featured">Featured first</option>
-                  <option value="newest">Newest first</option>
-                  <option value="oldest">Oldest first</option>
                   <option value="title">Title (A–Z)</option>
                 </select>
               </label>
@@ -282,7 +280,7 @@ export function LaneArchive({
                 </button>
               ) : null}
 
-              <div className="ml-auto flex items-center gap-1.5 rounded-full border border-ink/15 bg-transparent pl-2.5 pr-1 focus-within:border-accent dark:border-paper/15">
+              <div className="flex w-full items-center gap-1.5 rounded-full border border-ink/15 bg-transparent pl-2.5 pr-1 focus-within:border-accent dark:border-paper/15 sm:ml-auto sm:w-auto">
                 <svg
                   width="13"
                   height="13"
@@ -302,7 +300,7 @@ export function LaneArchive({
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   aria-label="Search the archive"
-                  className="w-52 bg-transparent py-1.5 text-sm placeholder:text-ink-muted focus:outline-none dark:placeholder:text-paper-muted"
+                  className="w-full bg-transparent py-1.5 text-sm placeholder:text-ink-muted focus:outline-none dark:placeholder:text-paper-muted sm:w-52"
                 />
               </div>
             </div>
