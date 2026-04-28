@@ -15,16 +15,58 @@ type AssetWithMeta = Asset & {
   override?: AssetOverride;
 };
 
+// Canonical Format / Topic tag set — these are what surface as the
+// Format facet on the public lane archives.
+const FORMAT_TAGS = [
+  "feature",
+  "short",
+  "broadcast",
+  "reality",
+  "commercial",
+  "branded",
+  "social",
+  "theatrical",
+  "indie",
+  "documentary",
+  "narrative",
+  "prop",
+  "fabrication",
+  "product",
+  "maker",
+  "recognition",
+  "bts",
+];
+
+function initialTags(asset: AssetWithMeta): string[] {
+  // Pre-populate toggles with inherited tags merged with any saved override.
+  // After save, override.tags REPLACES inherited tags on the public site,
+  // so the toggle state should fully describe what the asset gets.
+  const inherited = (asset.tags ?? []).map((t) => t.toLowerCase());
+  const override = asset.override?.tags;
+  if (override) return override.map((t) => t.toLowerCase());
+  return Array.from(new Set(inherited));
+}
+
 function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
   const [hidden, setHidden] = useState(Boolean(asset.override?.hidden));
   const [title, setTitle] = useState(asset.override?.title ?? "");
   const [caption, setCaption] = useState(asset.override?.caption ?? asset.caption ?? "");
   const [thumbnail, setThumbnail] = useState(asset.override?.thumbnail ?? "");
-  const [tagsInput, setTagsInput] = useState((asset.override?.tags ?? []).join(", "));
+  const [tags, setTags] = useState<Set<string>>(() => new Set(initialTags(asset)));
+  const [extraTagsInput, setExtraTagsInput] = useState("");
   const [sortOrder, setSortOrder] = useState(asset.override?.sortOrder ?? 0);
   const [polishInput, setPolishInput] = useState("");
   const [busy, setBusy] = useState<"save" | "polish" | "upload" | null>(null);
   const [status, setStatus] = useState<{ kind: "ok" | "err"; msg: string } | null>(null);
+
+  function toggleTag(t: string) {
+    setTags((prev) => {
+      const next = new Set(prev);
+      if (next.has(t)) next.delete(t);
+      else next.add(t);
+      return next;
+    });
+  }
 
   async function uploadFile(file: File) {
     setBusy("upload");
@@ -50,10 +92,12 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
     setBusy("save");
     setStatus(null);
     try {
-      const tags = tagsInput
+      // Merge toggled tags with any extra free-text tags.
+      const extras = extraTagsInput
         .split(",")
         .map((t) => t.trim().toLowerCase())
         .filter(Boolean);
+      const finalTags = Array.from(new Set([...tags, ...extras]));
       const r = await fetch("/api/admin/asset", {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -64,7 +108,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
             title: title.trim(),
             caption: caption.trim() === (asset.caption ?? "").trim() ? "" : caption.trim(),
             thumbnail: thumbnail.trim(),
-            tags,
+            tags: finalTags,
             sortOrder: Number(sortOrder) || 0,
           },
         }),
@@ -379,18 +423,50 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
           </div>
         </div>
 
-        <label className="md:col-span-2">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
-            Override tags (comma-separated — these stack on top of inherited)
-          </span>
-          <input
-            type="text"
-            value={tagsInput}
-            onChange={(e) => setTagsInput(e.target.value)}
-            placeholder="narrative, branded, broadcast"
-            className="mt-1 w-full rounded border border-ink/15 bg-transparent px-2 py-1 text-xs focus:border-accent focus:outline-none dark:border-paper/20"
-          />
-        </label>
+        <div className="md:col-span-2">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+              Tags (toggle on/off — these REPLACE inherited tags on save)
+            </span>
+            <span className="text-[9px] uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+              {tags.size} selected
+            </span>
+          </div>
+          <div className="mt-1.5 flex flex-wrap gap-1">
+            {FORMAT_TAGS.map((t) => {
+              const sel = tags.has(t);
+              return (
+                <button
+                  key={t}
+                  type="button"
+                  onClick={() => toggleTag(t)}
+                  aria-pressed={sel}
+                  className={[
+                    "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] capitalize transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+                    sel
+                      ? "border-accent bg-accent text-paper shadow-sm"
+                      : "border-ink/15 text-ink-muted hover:border-accent hover:text-accent dark:border-paper/15 dark:text-paper-muted",
+                  ].join(" ")}
+                >
+                  {sel ? <span aria-hidden="true">✓</span> : null}
+                  {t}
+                </button>
+              );
+            })}
+          </div>
+          <label className="mt-1.5 block">
+            <span className="text-[9px] uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+              Plus extra tags (optional, comma-separated)
+            </span>
+            <input
+              type="text"
+              value={extraTagsInput}
+              onChange={(e) => setExtraTagsInput(e.target.value)}
+              placeholder="custom, free-form tags"
+              className="mt-0.5 w-full rounded border border-ink/15 bg-transparent px-2 py-1 text-xs focus:border-accent focus:outline-none dark:border-paper/20"
+            />
+          </label>
+        </div>
       </div>
 
       <details className="mt-2 rounded-md border border-ink/10 bg-paper-muted/30 p-2 dark:border-paper/10 dark:bg-ink/20">
