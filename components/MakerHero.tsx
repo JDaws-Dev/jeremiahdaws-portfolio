@@ -57,8 +57,9 @@ export function MakerHero() {
             Disney source. Same hands.
           </p>
           <p className="mt-3 text-sm text-ink/75 dark:text-paper/75">
-            <strong>I&rsquo;m the right hire if you&rsquo;re</strong> an Atlanta
-            film/TV production needing a part on the truck Tuesday morning, a
+            <strong>I&rsquo;m the right hire if you&rsquo;re</strong>
+            {" "}an Atlanta film/TV production needing a part on the truck
+            Tuesday morning, a
             theatrical company who&rsquo;d rather build than rent, a machine
             shop hiring CNC operators with content-creator chops, or a
             manufacturer wanting branded shop content that doesn&rsquo;t look

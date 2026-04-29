@@ -44,8 +44,8 @@ export function TeachHero() {
             land.
           </p>
           <p className="mt-3 text-sm text-ink/75 dark:text-paper/75">
-            <strong>I&rsquo;m the right hire if you&rsquo;re</strong> a
-            Christian classical school starting a film or creative-tech
+            <strong>I&rsquo;m the right hire if you&rsquo;re</strong>
+            {" "}a Christian classical school starting a film or creative-tech
             department, a community college needing a working professional to
             anchor a media program, a school filling gaps in its existing
             arts/tech curriculum, or any institution that wants the kids

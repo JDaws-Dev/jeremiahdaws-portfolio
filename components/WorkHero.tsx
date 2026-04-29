@@ -33,12 +33,12 @@ export function WorkHero() {
           <p className="text-base text-ink/80 dark:text-paper/80 md:text-lg">
             Six years <strong>producing branded content</strong> for Disney
             Parks and Disney Consumer Products — Marvel, Lucasfilm, ABC,
-            Freeform, Target. <strong>Social-media producer</strong> for
-            ongoing brand clients. <strong>Broadcast editor</strong> on
-            National Geographic&rsquo;s <em>Building Wild</em>,
+            Freeform, Target. <strong>Social-media producer</strong>
+            {" "}for ongoing brand clients. <strong>Broadcast editor</strong>
+            {" "}on National Geographic&rsquo;s <em>Building Wild</em>,
             Hallmark&rsquo;s <em>Our Wild Hearts</em>, the U.S. Army reality series
-            <em> Starting Strong</em>. <strong>Director</strong> on independent narrative
-            features I write and direct with my brother under our
+            <em> Starting Strong</em>. <strong>Director</strong>
+            {" "}on independent narrative features I write and direct with my brother under our
             <em> Daws Brothers</em> banner.
             Producer, director, and editor every season on the productions
             at the private classical school where I built the film and
