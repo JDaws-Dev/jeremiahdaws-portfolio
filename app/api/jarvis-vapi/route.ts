@@ -34,11 +34,19 @@ export async function POST() {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 
-  const vapiKey = process.env.VAPI_PRIVATE_KEY;
+  // /call/web takes the org PUBLIC key for auth — not the private key. The
+  // private key is for admin operations like creating assistants. Vapi's
+  // own error message ("you may be using the private key instead of the
+  // public key, or vice versa") is the giveaway. Public key is browser-safe,
+  // exposed via NEXT_PUBLIC_*; we use it server-side here to avoid CORS and
+  // to keep the assistantId off the wire.
+  const vapiPublicKey = process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY;
   const assistantId = process.env.VAPI_JARVIS_ASSISTANT_ID;
 
-  if (!vapiKey || !assistantId) {
-    console.error("[jarvis-vapi] missing VAPI_PRIVATE_KEY or VAPI_JARVIS_ASSISTANT_ID");
+  if (!vapiPublicKey || !assistantId) {
+    console.error(
+      "[jarvis-vapi] missing NEXT_PUBLIC_VAPI_PUBLIC_KEY or VAPI_JARVIS_ASSISTANT_ID",
+    );
     return NextResponse.json(
       { error: "voice not configured" },
       { status: 503 },
@@ -50,7 +58,7 @@ export async function POST() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${vapiKey}`,
+        Authorization: `Bearer ${vapiPublicKey}`,
       },
       body: JSON.stringify({ assistantId }),
     });
