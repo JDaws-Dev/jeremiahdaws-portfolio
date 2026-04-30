@@ -125,14 +125,30 @@ export default function JarvisVoiceButton() {
 
       // Server-side: validate cookie, create web call, return webCallUrl.
       const res = await fetch("/api/jarvis-vapi", { method: "POST" });
-      if (res.status === 401) {
-        setState("unauthorized");
-        setMessage("Session expired. Refresh and re-enter the password.");
-        return;
-      }
       if (!res.ok) {
-        const text = await res.text().catch(() => "");
-        throw new Error(`HTTP ${res.status}: ${text}`);
+        // Distinguish gate-level 401 (cookie missing/expired) from
+        // upstream errors (Vapi key wrong, env missing, etc.). The server
+        // gate returns {error:"unauthorized"} for cookie failures.
+        const body = await res.json().catch(() => ({}) as Record<string, unknown>);
+        const detail =
+          typeof body.detail === "string" ? body.detail : undefined;
+        const errMsg =
+          typeof body.error === "string" ? body.error : `HTTP ${res.status}`;
+        if (res.status === 401 && errMsg === "unauthorized") {
+          // Real cookie/gate failure — only this path means "refresh."
+          setState("unauthorized");
+          setMessage("Session expired. Refresh and re-enter the password.");
+          return;
+        }
+        if (res.status === 503) {
+          setState("error");
+          setMessage(
+            "Voice not configured on the server. Vercel env vars missing.",
+          );
+          return;
+        }
+        // Anything else: surface the actual error so debugging is possible.
+        throw new Error(detail ? `${errMsg} — ${detail}` : errMsg);
       }
       const data: { webCallUrl?: string; id?: string } = await res.json();
       if (!data.webCallUrl) {
