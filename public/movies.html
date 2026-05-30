@@ -972,7 +972,9 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+    flex-shrink: 0;
   }
+  .vhs-case-front-badge { flex-shrink: 0; }
   .vhs-case-front-title {
     margin: 0;
     color: #f5f0e0;
@@ -997,6 +999,7 @@
     grid-auto-columns: minmax(0, 1fr);
     gap: 8px;
     margin-top: auto;
+    flex-shrink: 0;
   }
   .vhs-case-back .vhs-case-actions { padding-top: 10px; }
   .vhs-turn-btn, .vhs-putback-btn {
@@ -1113,13 +1116,28 @@
     .staff-picks.mobile-collapsed { padding-bottom: 0.6rem; }
 
     .vhs-modal { padding: 10px; }
-    .vhs-case-shell { width: calc(100vw - 20px); height: calc(100vh - 80px); max-height: 92vh; }
-    .vhs-case-face { padding: 14px; gap: 8px; }
+    .vhs-case-shell {
+      width: calc(100vw - 20px);
+      height: calc(100dvh - 40px);
+      max-height: calc(100dvh - 40px);
+    }
+    .vhs-case-face { padding: 12px; gap: 8px; }
     .vhs-back-paper { padding: 14px 14px 10px; font-size: 0.92rem; }
     .vhs-back-paper .film-title { font-size: 1.3rem; }
-    .vhs-case-front-title { font-size: 1.4rem; }
-    .vhs-case-actions { grid-auto-flow: row; grid-auto-columns: auto; gap: 6px; }
-    .vhs-turn-btn, .vhs-putback-btn { padding: 14px; font-size: 0.82rem; min-height: 44px; }
+    .vhs-case-front-title { font-size: 1.35rem; line-height: 1; }
+    .vhs-case-front-meta { font-size: 0.62rem; }
+    .vhs-case-actions {
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(0, 1fr);
+      gap: 5px;
+    }
+    .vhs-turn-btn, .vhs-putback-btn {
+      padding: 10px 6px;
+      font-size: 0.66rem;
+      min-height: 44px;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
     .vhs-filmstrip { grid-template-columns: 1fr; gap: 4px; }
     .vhs-filmstrip-frame { min-height: 130px; }
     .vhs-synopsis { font-size: 0.82rem; line-height: 1.5; }
@@ -1267,10 +1285,8 @@
 </div>
 
 <div class="filter-row">
-  <input class="filter-input" id="searchInput" placeholder="Search titles…" oninput="setSearch(this.value)" />
-  <input class="filter-input" id="directorInput" list="directorList" placeholder="Any director" oninput="setDirector(this.value)" />
+  <input class="filter-input" id="searchInput" list="directorList" placeholder="Search title, director, or actor…" oninput="setSearch(this.value)" />
   <datalist id="directorList"></datalist>
-  <input class="filter-input" id="actorInput" placeholder="Any actor (Tom Hanks…)" oninput="setActor(this.value)" />
   <select class="filter-select" id="genreSelect" onchange="setGenre(this.value)">
     <option value="all">Any genre</option>
   </select>
@@ -1382,11 +1398,9 @@ function canonicalGenres(m) {
   return cached && cached.genres ? cached.genres : [];
 }
 
-let currentDirector = 'all';
 let currentGenre = 'all';
 let currentSearch = '';
-let currentActor = '';
-let currentActorMovieIds = null; // Set of TMDB ids the active actor appeared in (null = no actor filter)
+let currentActorMovieIds = null; // Set of TMDB ids matching the active actor (null = no actor match resolved)
 let currentSort = 'az';
 
 function getPool() {
@@ -1397,21 +1411,21 @@ function getPool() {
       return y && Math.floor(parseInt(y)/10)*10 === parseInt(currentDecade);
     });
   }
-  if (currentDirector !== 'all') {
-    const q = currentDirector.toLowerCase();
-    pool = pool.filter(m => (m.director || '').toLowerCase().includes(q));
-  }
   if (currentGenre !== 'all') {
     pool = pool.filter(m => canonicalGenres(m).includes(currentGenre));
   }
   if (currentSearch) {
     const s = currentSearch.toLowerCase();
-    pool = pool.filter(m => (m.title || '').toLowerCase().includes(s));
-  }
-  if (currentActorMovieIds && currentActorMovieIds.size > 0) {
     pool = pool.filter(m => {
-      const c = tmdbCache[cacheKey(m)];
-      return c && c.tmdbId && currentActorMovieIds.has(c.tmdbId);
+      // Match title OR director (instant, local)
+      if ((m.title || '').toLowerCase().includes(s)) return true;
+      if ((m.director || '').toLowerCase().includes(s)) return true;
+      // Match actor (TMDB-resolved, async)
+      if (currentActorMovieIds) {
+        const c = tmdbCache[cacheKey(m)];
+        if (c && c.tmdbId && currentActorMovieIds.has(c.tmdbId)) return true;
+      }
+      return false;
     });
   }
   return pool;
@@ -1420,6 +1434,8 @@ function getPool() {
 function setSearch(v) {
   currentSearch = (v || '').trim();
   updatePool();
+  // Kick off debounced actor lookup so unresolved actor names get TMDB-matched
+  scheduleActorLookup(currentSearch);
 }
 
 function setSort(v) {
@@ -1456,29 +1472,41 @@ function sortPool(pool) {
   }
 }
 
-// Debounced actor lookup — fetches /search/person, takes top hit, gets their movie_credits
+// Debounced actor lookup — fetches /search/person, takes top hit, gets their movie_credits.
+// Runs alongside the unified search: if the query happens to be an actor's name, films they
+// appeared in light up in the pool. Skipped when the query already matches titles/directors
+// locally (avoids a TMDB call for "pulp fiction").
 let actorDebounce = null;
-function setActor(v) {
-  currentActor = (v || '').trim();
+let lastActorQuery = '';
+function scheduleActorLookup(query) {
   if (actorDebounce) clearTimeout(actorDebounce);
+  const status = document.getElementById('actorStatus');
 
-  if (!currentActor) {
+  if (!query) {
     currentActorMovieIds = null;
-    document.getElementById('actorStatus').textContent = '';
+    lastActorQuery = '';
+    if (status) status.textContent = '';
     updatePool();
     return;
   }
+  // Don't re-fetch if the query hasn't actually changed
+  if (query === lastActorQuery) return;
 
-  document.getElementById('actorStatus').textContent = 'Looking up ' + currentActor + '…';
+  // Stale results from a previous query shouldn't bleed into a new one
+  currentActorMovieIds = null;
+  if (status) status.textContent = '';
+
   actorDebounce = setTimeout(async () => {
+    lastActorQuery = query;
+    if (status) status.textContent = '';
     try {
-      const searchUrl = tmdbUrl('/search/person', { query: currentActor, language: 'en-US' });
+      const searchUrl = tmdbUrl('/search/person', { query, language: 'en-US' });
       const sRes = await fetch(searchUrl);
       const sData = await sRes.json();
       const person = (sData.results || [])[0];
-      if (!person) {
-        currentActorMovieIds = new Set();
-        document.getElementById('actorStatus').textContent = 'No actor matching "' + currentActor + '"';
+      // Require a reasonably confident match — TMDB returns junk for nonsense queries
+      if (!person || (person.popularity || 0) < 1) {
+        currentActorMovieIds = null;
         updatePool();
         return;
       }
@@ -1488,10 +1516,14 @@ function setActor(v) {
       const ids = new Set();
       for (const credit of (cData.cast || [])) ids.add(credit.id);
       currentActorMovieIds = ids;
-      document.getElementById('actorStatus').textContent = `${person.name} · ${ids.size} films in their career`;
+      // Only show actor status if it actually expanded the pool
+      const pool = getPool();
+      if (status && pool.length > 0 && ids.size > 0) {
+        status.textContent = `including films featuring ${person.name}`;
+      }
       updatePool();
     } catch (e) {
-      document.getElementById('actorStatus').textContent = 'Lookup failed';
+      // Silent — local title/director match still works
     }
   }, 400);
 }
@@ -1504,27 +1536,19 @@ function setDecade(d) {
   updatePool();
 }
 
-function setDirector(v) {
-  currentDirector = v && v.trim() ? v.trim() : 'all';
-  updatePool();
-}
-
 function setGenre(g) {
   currentGenre = g;
   updatePool();
 }
 
 function clearFilters() {
-  currentDirector = 'all';
   currentGenre = 'all';
   currentSearch = '';
-  currentActor = '';
   currentActorMovieIds = null;
+  lastActorQuery = '';
   currentSort = 'az';
-  document.getElementById('directorInput').value = '';
   document.getElementById('genreSelect').value = 'all';
   document.getElementById('searchInput').value = '';
-  document.getElementById('actorInput').value = '';
   document.getElementById('sortSelect').value = 'az';
   document.getElementById('actorStatus').textContent = '';
   setDecade('all');
