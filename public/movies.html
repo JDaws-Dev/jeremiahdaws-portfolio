@@ -1026,7 +1026,8 @@
 
     /* Filters stacked, search at top */
     .filter-row { flex-direction: column; align-items: stretch; gap: 0.5rem; margin-bottom: 0.8rem; }
-    .filter-input, .filter-select { min-width: 0; width: 100%; font-size: 0.95rem; padding: 0.7rem 0.85rem; }
+    /* 16px minimum prevents iOS Safari auto-zoom when an input gets focus */
+    .filter-input, .filter-select { min-width: 0; width: 100%; font-size: 16px; padding: 0.7rem 0.85rem; }
     .filter-clear { width: 100%; padding: 0.7rem; }
 
     /* Decade row — single horizontal scroll instead of cramped wrap */
@@ -1057,8 +1058,13 @@
 
     /* TWO columns instead of three — bigger posters, readable labels */
     .shelf { grid-template-columns: repeat(2, 1fr); gap: 0.9rem; padding: 0.9rem; }
-    .shelf-item .label { font-size: 0.66rem; height: 24px; padding: 4px 6px; }
-    .shelf-item::before { font-size: 6.5px; width: 10px; }
+    /* Slightly taller label so two-line titles ("*batteries not included") don't clip */
+    .shelf-item .label { font-size: 0.66rem; height: 32px; padding: 4px 6px; -webkit-line-clamp: 2; }
+    /* Hide the vertical spine label on mobile — it overlapped poster art and the
+       horizontal label below the cover already identifies the film */
+    .shelf-item::before { display: none; }
+    /* Reclaim the left padding the spine used */
+    .shelf-item { padding-left: 4px; }
 
     .staff-picks { padding: 0.8rem; }
     .staff-picks-header { flex-wrap: wrap; gap: 0.4rem; }
