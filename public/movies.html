@@ -971,42 +971,102 @@
   }
   .vhs-putback-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
 
+  /* Floating back-to-top button — visible only after scrolling on mobile */
+  .back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 18px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+    background: #ffd700;
+    color: #00308f;
+    border: 2px solid #00308f;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    font-weight: 900;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    z-index: 150;
+    transition: transform 0.15s, opacity 0.2s;
+  }
+  .back-to-top.visible { display: flex; align-items: center; justify-content: center; }
+  .back-to-top:active { transform: scale(0.92); }
+
   /* ===== MOBILE ===== */
   @media (max-width: 700px) {
     body { padding: 1rem 0.6rem; }
-    h1 { font-size: 2rem; }
-    .masthead-kicker { font-size: 0.62rem; letter-spacing: 0.14em; }
-    .masthead-rule { width: 86%; }
-    .masthead-tagline { font-size: 0.55rem; letter-spacing: 0.3em; }
-    .filter-row { flex-direction: column; align-items: stretch; gap: 0.5rem; }
-    .filter-input, .filter-select { min-width: 0; width: 100%; font-size: 0.9rem; padding: 0.6rem 0.8rem; }
-    .filter-clear { width: 100%; padding: 0.55rem; }
-    .decade-row { gap: 0.25rem; }
-    .decade-btn { font-size: 0.68rem; padding: 0.35rem 0.7rem; }
+    h1 { font-size: 1.85rem; }
+    .masthead { margin-bottom: 1.4rem; padding-top: 0.2rem; }
+    .masthead-kicker { font-size: 0.62rem; letter-spacing: 0.14em; opacity: 0.95; }
+    .masthead-rule { width: 86%; background: linear-gradient(90deg, transparent, rgba(245,197,24,0.7), transparent); }
+    .masthead-tagline { font-size: 0.6rem; letter-spacing: 0.28em; color: rgba(245,197,24,0.8); }
+
+    /* Filters stacked, search at top */
+    .filter-row { flex-direction: column; align-items: stretch; gap: 0.5rem; margin-bottom: 0.8rem; }
+    .filter-input, .filter-select { min-width: 0; width: 100%; font-size: 0.95rem; padding: 0.7rem 0.85rem; }
+    .filter-clear { width: 100%; padding: 0.7rem; }
+
+    /* Decade row — single horizontal scroll instead of cramped wrap */
+    .decade-row {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      justify-content: flex-start;
+      gap: 0.4rem;
+      padding-bottom: 0.5rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,215,0,0.3) transparent;
+    }
+    .decade-row::-webkit-scrollbar { height: 4px; }
+    .decade-row::-webkit-scrollbar-thumb { background: rgba(255,215,0,0.3); border-radius: 2px; }
+    .decade-btn {
+      flex-shrink: 0;
+      font-size: 0.78rem;
+      padding: 0.55rem 1rem;
+      min-height: 44px; /* WCAG-friendly touch target */
+      scroll-snap-align: start;
+    }
+
     .action-row { width: 100%; gap: 0.5rem; }
     .pick-btn { flex: 1; padding: 0.95rem 1.2rem; font-size: 0.9rem; letter-spacing: 0.1em; }
     .shelf-btn { padding: 0.95rem 1rem; font-size: 0.72rem; }
-    .shelf { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.7rem; padding: 0.8rem; }
-    .shelf-item .label { font-size: 0.55rem; height: 19px; }
-    .shelf-item::before { font-size: 5px; }
+
+    /* TWO columns instead of three — bigger posters, readable labels */
+    .shelf { grid-template-columns: repeat(2, 1fr); gap: 0.9rem; padding: 0.9rem; }
+    .shelf-item .label { font-size: 0.66rem; height: 24px; padding: 4px 6px; }
+    .shelf-item::before { font-size: 6.5px; width: 10px; }
+
     .staff-picks { padding: 0.8rem; }
     .staff-picks-header { flex-wrap: wrap; gap: 0.4rem; }
     .staff-picks-title { font-size: 0.85rem; }
     .staff-picks-subtitle { display: none; }
-    .staff-picks-scroll .shelf-item { flex: 0 0 110px; }
-    .vhs-modal { padding: 12px; }
-    .vhs-case-shell { width: calc(100vw - 24px); height: calc(100vh - 80px); max-height: 92vh; }
+    .staff-picks-scroll .shelf-item { flex: 0 0 130px; }
+
+    /* Default Jeremiah's Picks to collapsed on mobile so the main grid is above the fold */
+    .staff-picks.mobile-collapsed .staff-picks-scroll { display: none; }
+    .staff-picks.mobile-collapsed { padding-bottom: 0.6rem; }
+
+    .vhs-modal { padding: 10px; }
+    .vhs-case-shell { width: calc(100vw - 20px); height: calc(100vh - 80px); max-height: 92vh; }
     .vhs-case-face { padding: 14px; gap: 8px; }
-    .vhs-back-paper { padding: 14px 14px 10px; font-size: 0.9rem; }
+    .vhs-back-paper { padding: 14px 14px 10px; font-size: 0.92rem; }
     .vhs-back-paper .film-title { font-size: 1.3rem; }
     .vhs-case-front-title { font-size: 1.4rem; }
     .vhs-case-actions { grid-auto-flow: row; grid-auto-columns: auto; gap: 6px; }
-    .vhs-turn-btn, .vhs-putback-btn { padding: 12px; font-size: 0.78rem; }
+    .vhs-turn-btn, .vhs-putback-btn { padding: 14px; font-size: 0.82rem; min-height: 44px; }
     .vhs-filmstrip { grid-template-columns: 1fr; gap: 4px; }
-    .vhs-filmstrip-frame { min-height: 110px; }
-    .vhs-synopsis { font-size: 0.78rem; line-height: 1.45; }
-    .vhs-director-rail-item { flex: 0 0 60px; }
-    /* Disable mouse-tilt + gloss on touch — they're noise without a pointer */
+    .vhs-filmstrip-frame { min-height: 130px; }
+    .vhs-synopsis { font-size: 0.82rem; line-height: 1.5; }
+    .vhs-director-rail-item { flex: 0 0 68px; }
+
+    /* Contrast bumps — the spine + small labels were too faint against the blue */
+    .shelf-item::before { color: #ffd700; opacity: 0.95; }
+    .pool-count { color: #ffd700; opacity: 1; }
+
+    /* Disable mouse-tilt + gloss on touch */
     .shelf-item:hover { transform: none !important; }
     .shelf-item .gloss { display: none; }
   }
@@ -1186,6 +1246,8 @@
 </div>
 
 <div class="shelf open" id="shelf"></div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <!-- The case lifts off the shelf when you click a movie -->
 <div class="vhs-modal" id="caseModal" role="dialog" aria-modal="true">
@@ -2159,6 +2221,20 @@ renderShelf();
 // Personalize the tagline with the actual film count
 document.getElementById('masthead-count').textContent = `${ALL_MOVIES.length.toLocaleString()} Titles · Est. 1980`;
 enrichFromTMDB();
+
+// Mobile: collapse Jeremiah's Picks by default so the grid is above the fold (user can re-expand)
+if (window.matchMedia('(max-width: 700px)').matches) {
+  const picks = document.getElementById('staffPicks');
+  if (picks) picks.classList.add('mobile-collapsed');
+}
+
+// Back-to-top button visibility — show after scrolling 400px
+const backToTopBtn = document.getElementById('backToTop');
+if (backToTopBtn) {
+  window.addEventListener('scroll', () => {
+    backToTopBtn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+}
 </script>
 
 </body>
