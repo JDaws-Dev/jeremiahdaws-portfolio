@@ -17,7 +17,8 @@ export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ path: string[] }> },
 ) {
-  const apiKey = process.env.TMDB_API_KEY;
+  // Trim — echo-piped env values can carry a trailing \n that TMDB rejects as "Invalid API key"
+  const apiKey = (process.env.TMDB_API_KEY || "").trim();
   if (!apiKey) {
     return NextResponse.json(
       { error: "TMDB_API_KEY not configured" },
