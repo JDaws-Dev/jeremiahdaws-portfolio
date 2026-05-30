@@ -159,21 +159,23 @@ export function HireSection() {
       </section>
 
       {/* Genuine footer — visually distinct from the hire-me section */}
-      <footer className="bg-black/40 py-6 text-paper">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-6 text-xs text-paper/40">
-          <span>
-            © {new Date().getFullYear()} Jeremiah Daws
-            {/* Easter egg: the period at the end of my name links to my personal movie collection */}
+      <footer className="bg-black/40 py-8 text-paper">
+        <div className="mx-auto max-w-6xl px-6">
+          {/* Off-the-clock line — discoverable but understated */}
+          <p className="mb-3 text-center font-serif text-sm italic text-paper/70">
+            Off the clock, I&apos;m{" "}
             <a
               href="/movies.html"
-              aria-label="A personal movie collection"
-              title="A personal movie collection"
-              className="ml-px text-paper/40 transition-colors hover:text-accent"
+              className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper/60"
             >
-              .
+              a movie-obsessed nerd with a collection
             </a>
-          </span>
-          <span>Built by hand. Hosted on Vercel.</span>
+            .
+          </p>
+          <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-paper/40">
+            <span>© {new Date().getFullYear()} Jeremiah Daws.</span>
+            <span>Built by hand. Hosted on Vercel.</span>
+          </div>
         </div>
       </footer>
     </>
