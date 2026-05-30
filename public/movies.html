@@ -20,19 +20,19 @@
     width: 100%;
   }
   body {
-    background: #00308f;
+    /* Deeper midnight blue — less storefront, more archive. Gold reserved for accents only. */
+    background: #0a1530;
     background-image:
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
-      repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0 2px, transparent 2px 6px),
-      radial-gradient(ellipse at top, #0040ad 0%, #00308f 50%, #001f5e 100%);
-    color: #f5c518;
-    font-family: 'Helvetica Neue', 'Arial Black', Arial, sans-serif;
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"),
+      radial-gradient(ellipse 80% 60% at 50% 0%, #1a2b5c 0%, #0a1530 40%, #050a1d 100%);
+    color: #e8e3d5;
+    font-family: 'Inter', 'Helvetica Neue', system-ui, sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 2rem 1rem;
+    padding: 2.5rem 1.25rem;
     animation: vhsTracking 0.8s ease-out;
   }
   @keyframes vhsTracking {
@@ -86,14 +86,15 @@
     background: linear-gradient(90deg, transparent, rgba(245,197,24,0.55), transparent);
   }
   h1 {
-    font-size: 3rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    font-size: 3.2rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
     color: #ffd700;
-    margin: 0.9rem 0;
-    font-weight: 700;
+    margin: 1rem 0;
+    font-weight: 400;
     font-style: italic;
     font-family: 'Didot', 'Bodoni 72', 'Playfair Display', Georgia, serif;
+    text-shadow: 0 2px 20px rgba(255,215,0,0.15);
   }
   .masthead-tagline {
     color: rgba(245,197,24,0.55);
@@ -103,6 +104,43 @@
     text-transform: uppercase;
     margin-top: 0.9rem;
   }
+  /* Stats strip — three numbers below the masthead, like a magazine masthead */
+  .stats-strip {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-bottom: 2.2rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(245,197,24,0.12);
+    border-bottom: 1px solid rgba(245,197,24,0.12);
+    width: min(560px, 88%);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    color: #ffd700;
+    font-family: 'Didot', 'Bodoni 72', Georgia, serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .stat-label {
+    color: rgba(232,227,213,0.5);
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-top: 0.35rem;
+    font-weight: 600;
+  }
+  @media (max-width: 700px) {
+    .stats-strip { gap: 1.5rem; padding: 0.8rem 0; margin-bottom: 1.6rem; }
+    .stat-num { font-size: 1.25rem; }
+    .stat-label { font-size: 0.5rem; letter-spacing: 0.18em; }
+  }
   .decade-row {
     display: flex;
     gap: 0.3rem;
@@ -111,21 +149,25 @@
     justify-content: center;
   }
   .decade-btn {
-    background: #001f5e;
-    border: 2px solid #f5c518;
-    color: #f5c518;
-    padding: 0.4rem 0.9rem;
-    border-radius: 3px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(232,227,213,0.15);
+    color: rgba(232,227,213,0.7);
+    padding: 0.45rem 0.95rem;
+    border-radius: 4px;
     cursor: pointer;
     font-family: inherit;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     transition: all 0.15s;
   }
-  .decade-btn:hover { background: #f5c518; color: #00308f; }
-  .decade-btn.active { background: #f5c518; color: #00308f; box-shadow: 0 0 12px rgba(245,197,24,0.4); }
+  .decade-btn:hover { border-color: rgba(245,197,24,0.4); color: #f5c518; }
+  .decade-btn.active {
+    background: rgba(245,197,24,0.12);
+    border-color: rgba(245,197,24,0.55);
+    color: #ffd700;
+  }
   .filter-row {
     display: flex;
     gap: 0.6rem;
@@ -135,45 +177,46 @@
     align-items: center;
   }
   .filter-input, .filter-select {
-    background: #001f5e;
-    border: 2px solid #f5c518;
-    color: #fff;
-    padding: 0.5rem 0.9rem;
-    border-radius: 3px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(245,197,24,0.2);
+    color: #e8e3d5;
+    padding: 0.6rem 0.9rem;
+    border-radius: 4px;
     font-family: inherit;
     font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.03em;
+    font-weight: 500;
+    letter-spacing: 0.01em;
     min-width: 220px;
     appearance: none;
     -webkit-appearance: none;
     cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
   }
-  .filter-input::placeholder { color: rgba(255,255,255,0.45); }
+  .filter-input::placeholder { color: rgba(232,227,213,0.4); }
   .filter-input:focus, .filter-select:focus {
     outline: none;
-    background: #002b7a;
-    box-shadow: 0 0 10px rgba(245,197,24,0.3);
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(245,197,24,0.6);
   }
   .filter-select option {
-    background: #001f5e;
-    color: #fff;
+    background: #0a1530;
+    color: #e8e3d5;
   }
   .filter-clear {
-    background: #b80000;
-    border: 2px solid #ffd700;
-    color: #ffd700;
-    padding: 0.5rem 0.9rem;
-    border-radius: 3px;
+    background: transparent;
+    border: 1px solid rgba(232,227,213,0.2);
+    color: rgba(232,227,213,0.6);
+    padding: 0.6rem 0.9rem;
+    border-radius: 4px;
     font-family: inherit;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.15s;
   }
-  .filter-clear:hover { background: #ff1a1a; }
+  .filter-clear:hover { border-color: rgba(245,197,24,0.4); color: #f5c518; }
   .genre-loading {
     font-size: 0.72rem;
     color: #f5c518;
@@ -190,61 +233,57 @@
     align-items: center;
   }
   .pick-btn {
-    background: #ffd700;
-    border: 3px solid #001f5e;
-    color: #00308f;
-    padding: 1.1rem 3rem;
+    background: linear-gradient(180deg, #ffd700 0%, #e6b800 100%);
+    border: none;
+    color: #0a1530;
+    padding: 1rem 2.6rem;
     font-family: inherit;
-    font-size: 1.05rem;
-    font-weight: 900;
-    font-style: italic;
-    letter-spacing: 0.15em;
+    font-size: 0.92rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     cursor: pointer;
-    transition: all 0.15s;
+    transition: all 0.2s;
     border-radius: 4px;
-    box-shadow: 0 4px 0 #001f5e, 0 6px 14px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 16px rgba(255,215,0,0.25);
   }
   .pick-btn:hover {
-    background: #fff;
+    background: linear-gradient(180deg, #ffe04d 0%, #f5c518 100%);
     transform: translateY(-1px);
-    box-shadow: 0 5px 0 #001f5e, 0 8px 18px rgba(0,0,0,0.5);
+    box-shadow: 0 6px 20px rgba(255,215,0,0.35);
   }
-  .pick-btn:active {
-    transform: translateY(3px);
-    box-shadow: 0 1px 0 #001f5e, 0 2px 6px rgba(0,0,0,0.4);
-  }
+  .pick-btn:active { transform: translateY(1px); box-shadow: 0 2px 8px rgba(255,215,0,0.2); }
   .shelf-btn {
     background: transparent;
-    border: 2px solid #f5c518;
-    color: #f5c518;
-    padding: 1.1rem 1.5rem;
+    border: 1px solid rgba(245,197,24,0.3);
+    color: rgba(245,197,24,0.85);
+    padding: 1rem 1.4rem;
     font-family: inherit;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.15s;
     border-radius: 4px;
   }
-  .shelf-btn:hover { background: rgba(245,197,24,0.15); }
-  .shelf-btn.active { background: rgba(245,197,24,0.2); }
+  .shelf-btn:hover { background: rgba(245,197,24,0.06); border-color: rgba(245,197,24,0.5); color: #ffd700; }
+  .shelf-btn.active { background: rgba(245,197,24,0.1); border-color: rgba(245,197,24,0.55); color: #ffd700; }
   .shelf {
     display: none;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 1.2rem;
+    gap: 1.4rem;
     max-width: 1300px;
     width: 100%;
     margin: 0 auto 2.5rem;
-    padding: 1.5rem;
+    padding: 2rem 1.6rem;
     background:
-      repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0 2px, transparent 2px 14px),
-      linear-gradient(180deg, #2a1810 0%, #1a0e08 100%);
-    border-top: 4px solid #ffd700;
-    border-bottom: 4px solid #ffd700;
-    border-radius: 6px;
-    box-shadow: inset 0 0 30px rgba(0,0,0,0.6);
+      linear-gradient(180deg, rgba(20,28,52,0.6) 0%, rgba(10,15,30,0.4) 100%);
+    border-top: 1px solid rgba(245,197,24,0.15);
+    border-bottom: 1px solid rgba(245,197,24,0.15);
+    border-radius: 8px;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.4);
   }
   .shelf.open { display: grid; }
   /* VHS case styling — each shelf item is a clamshell with plastic bezel + label */
@@ -346,47 +385,45 @@
     font-weight: 900;
     font-style: italic;
   }
-  /* "STAFF PICK" sticker — appears on highly-rated films (TMDB >= 7.5) */
+  /* "STAFF PICK" — archival stamp style, not a toy sticker */
   .shelf-item .staff-pick {
     position: absolute;
-    top: 10px;
-    right: 8px;
-    background: #ffd700;
-    color: #b80000;
-    font-size: 0.52rem;
-    font-weight: 900;
-    padding: 3px 6px;
-    border-radius: 2px;
-    transform: rotate(-6deg);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    letter-spacing: 0.08em;
-    line-height: 1;
-    font-style: italic;
-    z-index: 2;
-    pointer-events: none;
-    text-transform: uppercase;
-    border: 1px solid #b80000;
-    font-family: 'Helvetica Neue', sans-serif;
-  }
-  /* "CULT CLASSIC" sticker — appears on older highly-rated films */
-  .shelf-item .cult-classic {
-    position: absolute;
-    bottom: 32px;
-    left: 12px;
-    background: #b80000;
+    top: 9px;
+    right: 9px;
+    background: transparent;
     color: #ffd700;
     font-size: 0.5rem;
-    font-weight: 900;
-    padding: 2px 5px;
-    border-radius: 1px;
-    transform: rotate(4deg);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-    letter-spacing: 0.06em;
+    font-weight: 800;
+    padding: 3px 6px;
+    border-radius: 2px;
+    transform: rotate(-2deg);
+    letter-spacing: 0.18em;
     line-height: 1;
     z-index: 2;
     pointer-events: none;
     text-transform: uppercase;
-    font-family: 'Helvetica Neue', sans-serif;
+    border: 1px solid rgba(255,215,0,0.7);
+    font-family: 'Inter', sans-serif;
+  }
+  /* "CULT CLASSIC" — same restraint */
+  .shelf-item .cult-classic {
+    position: absolute;
+    bottom: 38px;
+    left: 12px;
+    background: transparent;
+    color: #ff9e3d;
+    font-size: 0.5rem;
+    font-weight: 800;
+    padding: 2px 5px;
+    border-radius: 1px;
+    transform: rotate(2deg);
+    letter-spacing: 0.16em;
+    line-height: 1;
+    z-index: 2;
+    pointer-events: none;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,158,61,0.6);
+    font-family: 'Inter', sans-serif;
   }
   /* Glossy highlight that follows the cursor — gives a 3D plastic feel on hover */
   .shelf-item .gloss {
@@ -725,14 +762,13 @@
     width: 100%;
     max-width: 1300px;
     margin: 0 auto 2rem;
-    padding: 1.2rem 1.5rem 1.4rem;
+    padding: 1.4rem 1.6rem 1.6rem;
     background:
-      repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0 2px, transparent 2px 14px),
-      linear-gradient(180deg, #2a1810 0%, #1a0e08 100%);
-    border-top: 4px solid #ffd700;
-    border-bottom: 4px solid #ffd700;
-    border-radius: 6px;
-    box-shadow: inset 0 0 30px rgba(0,0,0,0.6);
+      linear-gradient(180deg, rgba(20,28,52,0.6) 0%, rgba(10,15,30,0.4) 100%);
+    border-top: 1px solid rgba(245,197,24,0.15);
+    border-bottom: 1px solid rgba(245,197,24,0.15);
+    border-radius: 8px;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.4);
   }
   .staff-picks-header {
     display: flex;
@@ -1218,6 +1254,12 @@
   <h1>Jeremiah Daws</h1>
   <div class="masthead-rule"></div>
   <div class="masthead-tagline" id="masthead-count">A Lifetime in Film</div>
+</div>
+
+<div class="stats-strip">
+  <div class="stat"><div class="stat-num" id="stat-films">—</div><div class="stat-label">Films Owned</div></div>
+  <div class="stat"><div class="stat-num" id="stat-directors">—</div><div class="stat-label">Directors</div></div>
+  <div class="stat"><div class="stat-num" id="stat-recent">—</div><div class="stat-label">Recent Watches</div></div>
 </div>
 
 <div class="decade-row" id="decadeRow">
@@ -2254,8 +2296,11 @@ updatePool();
 renderStaffPicks();
 renderWatchlist();
 renderShelf();
-// Personalize the tagline with the actual film count
-document.getElementById('masthead-count').textContent = `${ALL_MOVIES.length.toLocaleString()} Titles · Est. 1980`;
+// Personalize the tagline + stats strip
+document.getElementById('masthead-count').textContent = `Est. 1980 · A Lifetime in Film`;
+document.getElementById('stat-films').textContent = ALL_MOVIES.length.toLocaleString();
+document.getElementById('stat-directors').textContent = new Set(ALL_MOVIES.map(m => m.director).filter(Boolean)).size.toLocaleString();
+document.getElementById('stat-recent').textContent = (LETTERBOXD_DIARY || []).length.toLocaleString();
 enrichFromTMDB();
 
 // Mobile: collapse Jeremiah's Picks by default so the grid is above the fold (user can re-expand)
