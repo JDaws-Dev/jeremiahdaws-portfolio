@@ -161,7 +161,18 @@ export function HireSection() {
       {/* Genuine footer — visually distinct from the hire-me section */}
       <footer className="bg-black/40 py-6 text-paper">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-6 text-xs text-paper/40">
-          <span>© {new Date().getFullYear()} Jeremiah Daws.</span>
+          <span>
+            © {new Date().getFullYear()} Jeremiah Daws
+            {/* Easter egg: the period at the end of my name links to my personal movie collection */}
+            <a
+              href="/movies.html"
+              aria-label="A personal movie collection"
+              title="A personal movie collection"
+              className="ml-px text-paper/40 transition-colors hover:text-accent"
+            >
+              .
+            </a>
+          </span>
           <span>Built by hand. Hosted on Vercel.</span>
         </div>
       </footer>

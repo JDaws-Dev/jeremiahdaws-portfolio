@@ -9,6 +9,16 @@
 <meta name="theme-color" content="#00308f">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+  /* When modal is open we lock the document scroll */
+  body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
   body {
     background: #00308f;
     background-image:
@@ -827,18 +837,22 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
+    overflow: hidden; /* never let the modal itself spill */
   }
   .vhs-modal.open { display: flex; }
   .vhs-modal-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,0,0,0.88);
     backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
   .vhs-case-shell {
     position: relative;
     width: min(430px, calc(100vw - 40px));
-    height: min(86vh, 720px);
+    /* dvh = "dynamic viewport height" — handles iOS Safari's collapsing URL bar */
+    height: min(86dvh, 720px);
+    max-height: 86dvh;
     perspective: 1800px;
     z-index: 1;
     animation: caseRise 0.35s ease-out;
@@ -996,8 +1010,15 @@
 
   /* ===== MOBILE ===== */
   @media (max-width: 700px) {
-    body { padding: 1rem 0.6rem; }
-    h1 { font-size: 1.85rem; }
+    body { padding: 1rem 0.6rem; overflow-x: hidden; }
+    /* Stop any descendant from spilling past the viewport edge */
+    body > * { max-width: 100%; }
+    h1 {
+      font-size: 1.85rem;
+      /* Skewing + huge text-shadow extended past viewport on phones */
+      transform: none;
+      text-shadow: 2px 2px 0 #001f5e, 0 0 14px rgba(255,215,0,0.4);
+    }
     .masthead { margin-bottom: 1.4rem; padding-top: 0.2rem; }
     .masthead-kicker { font-size: 0.62rem; letter-spacing: 0.14em; opacity: 0.95; }
     .masthead-rule { width: 86%; background: linear-gradient(90deg, transparent, rgba(245,197,24,0.7), transparent); }
@@ -1847,6 +1868,10 @@ async function openCaseModal(m) {
   paintCaseFront(m);
   paintCaseBack(m);
   document.getElementById('caseModal').classList.add('open');
+  // Lock body scroll so the page beneath doesn't move while the modal is open
+  document.body.dataset.scrollY = String(window.scrollY);
+  document.body.classList.add('modal-open');
+  document.body.style.top = `-${window.scrollY}px`;
 
   // Lazy-fill missing TMDB data (synopsis, rating, etc.) then repaint
   const cached = await ensureDetails(m);
@@ -1866,6 +1891,11 @@ function flipCase() {
 function closeCaseModal() {
   document.getElementById('caseModal').classList.remove('open');
   document.getElementById('caseInner').classList.remove('flipped');
+  // Unlock body scroll and restore prior position
+  const y = parseInt(document.body.dataset.scrollY || '0', 10);
+  document.body.classList.remove('modal-open');
+  document.body.style.top = '';
+  window.scrollTo(0, y);
 }
 
 // Close on Escape key
