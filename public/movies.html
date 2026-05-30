@@ -1561,10 +1561,53 @@ function renderShelf() {
         <div class="small">Try adjusting your filters</div>
       </div>
     `;
+    shelfSorted = [];
+    shelfRenderIndex = 0;
     return;
   }
-  for (const m of sorted) shelf.appendChild(buildShelfItem(m));
+  // Progressive render — iOS Safari was hitting memory pressure with 967 items rendered at once
+  shelfSorted = sorted;
+  shelfRenderIndex = 0;
+  appendShelfBatch();
 }
+
+// Module-level state for the progressive shelf
+let shelfSorted = [];
+let shelfRenderIndex = 0;
+const SHELF_BATCH_SIZE = 60;
+
+function appendShelfBatch() {
+  const shelf = document.getElementById('shelf');
+  if (!shelf || shelfRenderIndex >= shelfSorted.length) return;
+
+  // Remove any old sentinel before adding the new batch
+  const oldSentinel = shelf.querySelector('.shelf-sentinel');
+  if (oldSentinel) oldSentinel.remove();
+
+  const frag = document.createDocumentFragment();
+  const end = Math.min(shelfRenderIndex + SHELF_BATCH_SIZE, shelfSorted.length);
+  for (let i = shelfRenderIndex; i < end; i++) frag.appendChild(buildShelfItem(shelfSorted[i]));
+  shelf.appendChild(frag);
+  shelfRenderIndex = end;
+
+  // Sentinel to trigger the next batch
+  if (shelfRenderIndex < shelfSorted.length) {
+    const sentinel = document.createElement('div');
+    sentinel.className = 'shelf-sentinel';
+    sentinel.style.cssText = 'grid-column: 1 / -1; height: 1px;';
+    shelf.appendChild(sentinel);
+    shelfBatchObserver.observe(sentinel);
+  }
+}
+
+const shelfBatchObserver = new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    if (entry.isIntersecting) {
+      shelfBatchObserver.unobserve(entry.target);
+      appendShelfBatch();
+    }
+  }
+}, { rootMargin: '600px' });
 
 // ===== WATCHLIST / CHECKOUT =====
 // Persistent list of films Jeremiah "checked out" — stored in localStorage as title+year keys
@@ -1739,11 +1782,17 @@ function buildShelfItem(m, opts = {}) {
   `;
 
   if (!posterUrl) lazyPosterObserver.observe(item);
-  item.addEventListener('mousemove', onShelfItemMove);
-  item.addEventListener('mouseleave', onShelfItemLeave);
+  // Mouse-tilt only on devices with a hover-capable pointer (skip on touch — saves overhead)
+  if (HAS_HOVER) {
+    item.addEventListener('mousemove', onShelfItemMove);
+    item.addEventListener('mouseleave', onShelfItemLeave);
+  }
   item.onclick = () => pickOne(m);
   return item;
 }
+
+// Single capability check used to skip pointer-only behavior on touch devices
+const HAS_HOVER = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 // Deterministic dark color from a title — every movie gets a unique spine tone
 function spineColorFor(seed) {
