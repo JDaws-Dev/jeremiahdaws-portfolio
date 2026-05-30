@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JARVIS — Movie Randomizer</title>
+<title>Movie Night — Jeremiah Daws's Film Collection</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="description" content="Jeremiah Daws's personal movie collection — 967 films, indexed and randomized." />
+<meta name="theme-color" content="#00308f">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -967,6 +970,46 @@
     color: rgba(228,227,220,0.7);
   }
   .vhs-putback-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 700px) {
+    body { padding: 1rem 0.6rem; }
+    h1 { font-size: 2rem; }
+    .masthead-kicker { font-size: 0.62rem; letter-spacing: 0.14em; }
+    .masthead-rule { width: 86%; }
+    .masthead-tagline { font-size: 0.55rem; letter-spacing: 0.3em; }
+    .filter-row { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+    .filter-input, .filter-select { min-width: 0; width: 100%; font-size: 0.9rem; padding: 0.6rem 0.8rem; }
+    .filter-clear { width: 100%; padding: 0.55rem; }
+    .decade-row { gap: 0.25rem; }
+    .decade-btn { font-size: 0.68rem; padding: 0.35rem 0.7rem; }
+    .action-row { width: 100%; gap: 0.5rem; }
+    .pick-btn { flex: 1; padding: 0.95rem 1.2rem; font-size: 0.9rem; letter-spacing: 0.1em; }
+    .shelf-btn { padding: 0.95rem 1rem; font-size: 0.72rem; }
+    .shelf { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.7rem; padding: 0.8rem; }
+    .shelf-item .label { font-size: 0.55rem; height: 19px; }
+    .shelf-item::before { font-size: 5px; }
+    .staff-picks { padding: 0.8rem; }
+    .staff-picks-header { flex-wrap: wrap; gap: 0.4rem; }
+    .staff-picks-title { font-size: 0.85rem; }
+    .staff-picks-subtitle { display: none; }
+    .staff-picks-scroll .shelf-item { flex: 0 0 110px; }
+    .vhs-modal { padding: 12px; }
+    .vhs-case-shell { width: calc(100vw - 24px); height: calc(100vh - 80px); max-height: 92vh; }
+    .vhs-case-face { padding: 14px; gap: 8px; }
+    .vhs-back-paper { padding: 14px 14px 10px; font-size: 0.9rem; }
+    .vhs-back-paper .film-title { font-size: 1.3rem; }
+    .vhs-case-front-title { font-size: 1.4rem; }
+    .vhs-case-actions { grid-auto-flow: row; grid-auto-columns: auto; gap: 6px; }
+    .vhs-turn-btn, .vhs-putback-btn { padding: 12px; font-size: 0.78rem; }
+    .vhs-filmstrip { grid-template-columns: 1fr; gap: 4px; }
+    .vhs-filmstrip-frame { min-height: 110px; }
+    .vhs-synopsis { font-size: 0.78rem; line-height: 1.45; }
+    .vhs-director-rail-item { flex: 0 0 60px; }
+    /* Disable mouse-tilt + gloss on touch — they're noise without a pointer */
+    .shelf-item:hover { transform: none !important; }
+    .shelf-item .gloss { display: none; }
+  }
   .pool-count {
     margin-top: 0.5rem;
     margin-bottom: 1.5rem;
@@ -1298,7 +1341,7 @@ function setActor(v) {
   document.getElementById('actorStatus').textContent = 'Looking up ' + currentActor + '…';
   actorDebounce = setTimeout(async () => {
     try {
-      const searchUrl = `https://api.themoviedb.org/3/search/person?api_key=${encodeURIComponent(TMDB_KEY)}&query=${encodeURIComponent(currentActor)}&language=en-US`;
+      const searchUrl = tmdbUrl('/search/person', { query: currentActor, language: 'en-US' });
       const sRes = await fetch(searchUrl);
       const sData = await sRes.json();
       const person = (sData.results || [])[0];
@@ -1308,7 +1351,7 @@ function setActor(v) {
         updatePool();
         return;
       }
-      const creditsUrl = `https://api.themoviedb.org/3/person/${person.id}/movie_credits?api_key=${encodeURIComponent(TMDB_KEY)}&language=en-US`;
+      const creditsUrl = tmdbUrl(`/person/${person.id}/movie_credits`, { language: 'en-US' });
       const cRes = await fetch(creditsUrl);
       const cData = await cRes.json();
       const ids = new Set();
@@ -1650,7 +1693,7 @@ async function ensureDetails(m) {
   // Need to (re)fetch — search by clean title + canonical year
   try {
     const cleanTitle = cleanTitleForSearch(m.title);
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${encodeURIComponent(TMDB_KEY)}&query=${encodeURIComponent(cleanTitle)}&year=${canonicalYear(m)}&language=en-US`;
+    const url = tmdbUrl('/search/movie', { query: cleanTitle, year: canonicalYear(m), language: 'en-US' });
     const res = await fetch(url);
     if (res.ok) {
       const data = await res.json();
@@ -1681,7 +1724,7 @@ async function ensureBackdrops(m) {
   if (Array.isArray(cached.backdrops)) return cached.backdrops;
 
   try {
-    const url = `https://image.tmdb.org/3/movie/${cached.tmdbId}/images?api_key=${encodeURIComponent(TMDB_KEY)}&include_image_language=en,null`.replace('image.tmdb.org', 'api.themoviedb.org');
+    const url = tmdbUrl(`/movie/${cached.tmdbId}/images`, { include_image_language: 'en,null' });
     const res = await fetch(url);
     if (res.ok) {
       const data = await res.json();
@@ -1708,7 +1751,7 @@ async function ensureFullDetails(m) {
   if (cached.tagline !== undefined && cached.cast !== undefined) return cached; // already fetched
 
   try {
-    const url = `https://api.themoviedb.org/3/movie/${cached.tmdbId}?api_key=${encodeURIComponent(TMDB_KEY)}&append_to_response=credits,release_dates&language=en-US`;
+    const url = tmdbUrl(`/movie/${cached.tmdbId}`, { append_to_response: 'credits,release_dates', language: 'en-US' });
     const res = await fetch(url);
     if (res.ok) {
       const data = await res.json();
@@ -1960,8 +2003,15 @@ async function pickOne(m) {
   await openCaseModal(m);
 }
 
-// TMDB poster support
-const TMDB_KEY = '48553139d58694ad53fb3ea3dd30b1ee';
+// TMDB calls always route through /api/tmdb/* on jeremiahdaws.com.
+// The proxy injects the API key from a Vercel env var so it never reaches the browser.
+function tmdbUrl(path, params = {}) {
+  const u = new URL(location.origin + '/api/tmdb/3' + path);
+  for (const [k, v] of Object.entries(params)) {
+    if (v !== undefined && v !== null && v !== '') u.searchParams.set(k, String(v));
+  }
+  return u.toString();
+}
 // Strip any trailing parenthetical suffixes from a title for TMDB search:
 //   "(1974)", "(Special Edition)", "(25th Anniversary Edition)", "(Director's Cut)", etc.
 // Loops so multiple suffixes get peeled off — "Foo (1977) (4K)" → "Foo".
@@ -1971,13 +2021,9 @@ function cleanTitleForSearch(title) {
   return t;
 }
 async function fetchPoster(title, year) {
-  const key = localStorage.getItem('tmdb_key') || TMDB_KEY;
-  if (!key) return null;
   const cleanTitle = cleanTitleForSearch(title);
   try {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${encodeURIComponent(key)}&query=${encodeURIComponent(cleanTitle)}&year=${year}&language=en-US`
-    );
+    const res = await fetch(tmdbUrl('/search/movie', { query: cleanTitle, year, language: 'en-US' }));
     if (!res.ok) return null;
     const data = await res.json();
     if (data.results && data.results.length > 0 && data.results[0].poster_path) {
@@ -2076,7 +2122,7 @@ async function enrichFromTMDB() {
 
   for (const m of todo) {
     try {
-      const url = `https://api.themoviedb.org/3/search/movie?api_key=${encodeURIComponent(TMDB_KEY)}&query=${encodeURIComponent(cleanTitleForSearch(m.title))}&year=${canonicalYear(m)}&language=en-US`;
+      const url = tmdbUrl('/search/movie', { query: cleanTitleForSearch(m.title), year: canonicalYear(m), language: 'en-US' });
       const res = await fetch(url);
       if (res.ok) {
         const data = await res.json();
