@@ -3997,10 +3997,77 @@ const ICONS = {
 };
 
 // ═══════════════════════════════════════════════════════════════════════════
-// USER (just a name for the greeting — progress is saved per-device)
+// USER + CONVEX SYNC
+// localStorage is the working cache; Convex is the source of truth so progress
+// follows the same name across devices. The app renders instantly from local
+// state, then reconciles in the background as Convex responds.
 // ═══════════════════════════════════════════════════════════════════════════
+const CONVEX_URL = "https://compassionate-greyhound-861.convex.cloud";
+let convex = null;
+let convexReady = false;
+
 const getUserName = () => localStorage.getItem('strum_user_name') || '';
 const setUserName = (n) => localStorage.setItem('strum_user_name', n);
+
+async function initConvex() {
+  try {
+    const mod = await import("https://esm.sh/convex@1.17.0/browser");
+    convex = new mod.ConvexClient(CONVEX_URL);
+    convexReady = true;
+  } catch (e) {
+    console.warn("Convex offline — using localStorage only.", e);
+  }
+}
+
+// Pull this user's saved progress from Convex and overlay onto localStorage.
+async function syncFromConvex() {
+  if (!convexReady || !convex) return false;
+  const name = getUserName();
+  if (!name) return false;
+  try {
+    const user = await convex.query("users:getByName", { name });
+    if (!user) return false;
+    setJSON('strum_mastered_v1', user.mastered || []);
+    setJSON('strum_streak_v1', {
+      streak: user.streak || 0,
+      lastDate: user.lastDate || null
+    });
+    setJSON('strum_history_v1', user.history || []);
+    setJSON('strum_achieve_v1', user.achievements || []);
+    localStorage.setItem('strum_ear_best_v1', String(user.earBest || 0));
+    if (user.session) setJSON('strum_session_v1', user.session);
+    return true;
+  } catch (e) {
+    console.warn("Convex sync read failed:", e);
+    return false;
+  }
+}
+
+// Debounced push of all progress to Convex. Called after every state change.
+let _syncTimer = null;
+function syncToConvex() {
+  if (!convexReady || !convex) return;
+  const name = getUserName();
+  if (!name) return;
+  clearTimeout(_syncTimer);
+  _syncTimer = setTimeout(async () => {
+    const streak = getJSON('strum_streak_v1', { streak: 0, lastDate: null });
+    try {
+      await convex.mutation("users:updateProgress", {
+        name,
+        mastered: [...getMastered()],
+        streak: streak.streak || 0,
+        lastDate: streak.lastDate || undefined,
+        history: [...getHistory()],
+        achievements: [...getAchieved()],
+        earBest: parseInt(localStorage.getItem('strum_ear_best_v1') || '0', 10),
+        session: getJSON('strum_session_v1', null) || undefined
+      });
+    } catch (e) {
+      console.warn("Convex sync push failed:", e);
+    }
+  }, 600);
+}
 
 // ═══════════════════════════════════════════════════════════════════════════
 // DATA
@@ -4244,11 +4311,11 @@ window.addEventListener('hashchange', renderRoute);
 const getJSON = (k, fb) => { try { return JSON.parse(localStorage.getItem(k)) ?? fb; } catch { return fb; } };
 const setJSON = (k, v)  => localStorage.setItem(k, JSON.stringify(v));
 const getMastered = () => new Set(getJSON('strum_mastered_v1', []));
-const setMastered = (s) => setJSON('strum_mastered_v1', [...s]);
+const setMastered = (s) => { setJSON('strum_mastered_v1', [...s]); syncToConvex(); };
 const getHistory  = () => new Set(getJSON('strum_history_v1', []));
-const addHistory  = (d) => { const s = getHistory(); s.add(d); setJSON('strum_history_v1', [...s]); };
+const addHistory  = (d) => { const s = getHistory(); s.add(d); setJSON('strum_history_v1', [...s]); syncToConvex(); };
 const getAchieved = () => new Set(getJSON('strum_achieve_v1', []));
-const setAchieved = (s) => setJSON('strum_achieve_v1', [...s]);
+const setAchieved = (s) => { setJSON('strum_achieve_v1', [...s]); syncToConvex(); };
 
 const todayStr = () => new Date().toISOString().split('T')[0];
 const ymd = (d) => d.toISOString().split('T')[0];
@@ -4273,6 +4340,7 @@ function markPracticed() {
   const y = new Date(); y.setDate(y.getDate() - 1);
   const newStreak = data.lastDate === ymd(y) ? (data.streak || 0) + 1 : 1;
   setJSON('strum_streak_v1', { streak: newStreak, lastDate: today });
+  syncToConvex();
   addHistory(today);
   renderHeader();
   renderHome();
@@ -5631,7 +5699,7 @@ function getSessionState() {
   }
   return data;
 }
-function saveSessionState(s) { setJSON('strum_session_v1', s); }
+function saveSessionState(s) { setJSON('strum_session_v1', s); syncToConvex(); }
 
 function buildSessionPlan(seed) {
   const mastered = getMastered();
@@ -6156,7 +6224,7 @@ function earGuess(answer) {
     earCorrect++;
     earStreak++;
     const best = parseInt(localStorage.getItem('strum_ear_best_v1') || '0', 10);
-    if (earStreak > best) localStorage.setItem('strum_ear_best_v1', earStreak);
+    if (earStreak > best) { localStorage.setItem('strum_ear_best_v1', earStreak); syncToConvex(); }
   } else {
     earStreak = 0;
   }
@@ -6469,16 +6537,34 @@ function showOnboarding() {
 function closeOnboarding() {
   document.getElementById('onboarding').classList.remove('show');
 }
-function submitOnboarding(e) {
+async function submitOnboarding(e) {
   if (e) e.preventDefault();
   const input = document.getElementById('ob-name-input');
   const name = (input?.value || '').trim();
   if (!name) return;
   setUserName(name);
+
+  // Upsert the user in Convex and pull back their saved progress (if any).
+  // This is how returning users on a new device see their streak/chords again.
+  let returning = false;
+  if (convexReady && convex) {
+    try {
+      await convex.mutation("users:upsert", { name });
+      returning = await syncFromConvex();
+    } catch (err) {
+      console.warn("Convex onboarding sync failed:", err);
+    }
+  }
+
   closeOnboarding();
-  renderHome();        // refresh greeting with the new name
-  renderSession();     // session can now show personalized step copy
-  showToast(`Welcome, ${name}!`);
+  // Re-render every surface that reads from progress so the new state shows up
+  render();
+  renderHeader();
+  renderCalendar();
+  renderSession();
+  renderEarStats();
+  checkAchievements();
+  showToast(returning ? `Welcome back, ${name}!` : `Welcome, ${name}!`);
 }
 
 function stopAllAudio() {
@@ -6535,9 +6621,23 @@ renderEarStats();
 renderRoute();
 checkAchievements();
 
-// First-run: show profile picker if no profile has been chosen yet
 // First-run: show onboarding if no name saved yet
 if (!getUserName()) showOnboarding();
+
+// Background: bring up Convex, hydrate progress for a returning user, re-render.
+// The app already rendered from localStorage above — this just reconciles
+// with the latest server state without blocking the UI.
+initConvex().then(async () => {
+  if (!convexReady || !getUserName()) return;
+  const updated = await syncFromConvex();
+  if (!updated) return;
+  render();
+  renderHeader();
+  renderCalendar();
+  renderSession();
+  renderEarStats();
+  checkAchievements();
+});
 </script>
 </body>
 </html>
