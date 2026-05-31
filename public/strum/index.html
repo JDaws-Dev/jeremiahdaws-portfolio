@@ -1824,13 +1824,20 @@
     }
     .ob-form {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr;
       gap: 10px;
       max-width: 420px;
       margin: 0 auto;
     }
-    @media (max-width: 480px) {
-      .ob-form { grid-template-columns: 1fr; }
+    .ob-error {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--danger);
+      background: rgba(225, 29, 72, 0.08);
+      border: 1px solid rgba(225, 29, 72, 0.2);
+      padding: 10px 14px;
+      border-radius: var(--r-sm);
+      text-align: center;
     }
     .ob-input {
       padding: 14px 18px;
@@ -3222,15 +3229,19 @@
     </div>
     <div class="ob-eyebrow">Hi there!</div>
     <h1 class="ob-headline">What should we <em>call you?</em></h1>
-    <p class="ob-sub">Just a first name. We'll save your progress as you learn — chords, streak, songs, all of it.</p>
+    <p class="ob-sub">Pick a name and a password so your progress is saved — and so it follows you when you switch to another device.</p>
     <form class="ob-form" onsubmit="submitOnboarding(event)">
       <input type="text" class="ob-input" id="ob-name-input"
              placeholder="Your name" autocomplete="given-name"
              maxlength="20" required spellcheck="false">
-      <button type="submit" class="btn btn-primary ob-go">
+      <input type="password" class="ob-input" id="ob-password-input"
+             placeholder="Password (4+ characters)" autocomplete="current-password"
+             minlength="4" maxlength="40" required>
+      <button type="submit" class="btn btn-primary ob-go" id="ob-go-btn">
         Let's go
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </button>
+      <div class="ob-error" id="ob-error" hidden></div>
     </form>
   </div>
 </div>
@@ -4008,6 +4019,12 @@ let convexReady = false;
 
 const getUserName = () => localStorage.getItem('strum_user_name') || '';
 const setUserName = (n) => localStorage.setItem('strum_user_name', n);
+const getUserPassword = () => localStorage.getItem('strum_user_pw') || '';
+const setUserPassword = (p) => localStorage.setItem('strum_user_pw', p);
+function clearCredentials() {
+  localStorage.removeItem('strum_user_name');
+  localStorage.removeItem('strum_user_pw');
+}
 
 async function initConvex() {
   try {
@@ -4019,28 +4036,19 @@ async function initConvex() {
   }
 }
 
-// Pull this user's saved progress from Convex and overlay onto localStorage.
-async function syncFromConvex() {
-  if (!convexReady || !convex) return false;
-  const name = getUserName();
-  if (!name) return false;
-  try {
-    const user = await convex.query("users:getByName", { name });
-    if (!user) return false;
-    setJSON('strum_mastered_v1', user.mastered || []);
-    setJSON('strum_streak_v1', {
-      streak: user.streak || 0,
-      lastDate: user.lastDate || null
-    });
-    setJSON('strum_history_v1', user.history || []);
-    setJSON('strum_achieve_v1', user.achievements || []);
-    localStorage.setItem('strum_ear_best_v1', String(user.earBest || 0));
-    if (user.session) setJSON('strum_session_v1', user.session);
-    return true;
-  } catch (e) {
-    console.warn("Convex sync read failed:", e);
-    return false;
-  }
+// Hydrate localStorage from a user record returned by Convex.
+function hydrateFromUserRecord(user) {
+  if (!user) return false;
+  setJSON('strum_mastered_v1', user.mastered || []);
+  setJSON('strum_streak_v1', {
+    streak: user.streak || 0,
+    lastDate: user.lastDate || null
+  });
+  setJSON('strum_history_v1', user.history || []);
+  setJSON('strum_achieve_v1', user.achievements || []);
+  localStorage.setItem('strum_ear_best_v1', String(user.earBest || 0));
+  if (user.session) setJSON('strum_session_v1', user.session);
+  return true;
 }
 
 // Debounced push of all progress to Convex. Called after every state change.
@@ -4048,13 +4056,15 @@ let _syncTimer = null;
 function syncToConvex() {
   if (!convexReady || !convex) return;
   const name = getUserName();
-  if (!name) return;
+  const password = getUserPassword();
+  if (!name || !password) return;
   clearTimeout(_syncTimer);
   _syncTimer = setTimeout(async () => {
     const streak = getJSON('strum_streak_v1', { streak: 0, lastDate: null });
     try {
       await convex.mutation("users:updateProgress", {
         name,
+        password,
         mastered: [...getMastered()],
         streak: streak.streak || 0,
         lastDate: streak.lastDate || undefined,
@@ -6537,26 +6547,55 @@ function showOnboarding() {
 function closeOnboarding() {
   document.getElementById('onboarding').classList.remove('show');
 }
+function setObError(msg) {
+  const err = document.getElementById('ob-error');
+  if (!err) return;
+  if (msg) { err.textContent = msg; err.hidden = false; }
+  else     { err.textContent = ''; err.hidden = true; }
+}
+
 async function submitOnboarding(e) {
   if (e) e.preventDefault();
-  const input = document.getElementById('ob-name-input');
-  const name = (input?.value || '').trim();
-  if (!name) return;
-  setUserName(name);
+  const nameInput = document.getElementById('ob-name-input');
+  const pwInput = document.getElementById('ob-password-input');
+  const btn = document.getElementById('ob-go-btn');
+  const name = (nameInput?.value || '').trim();
+  const password = pwInput?.value || '';
+  if (!name || password.length < 4) return;
+  setObError(null);
 
-  // Upsert the user in Convex and pull back their saved progress (if any).
-  // This is how returning users on a new device see their streak/chords again.
-  let returning = false;
-  if (convexReady && convex) {
-    try {
-      await convex.mutation("users:upsert", { name });
-      returning = await syncFromConvex();
-    } catch (err) {
-      console.warn("Convex onboarding sync failed:", err);
-    }
+  // Convex must be available — we won't onboard without a server save.
+  if (!convexReady || !convex) {
+    try { await initConvex(); } catch {}
+  }
+  if (!convexReady || !convex) {
+    setObError("Can't reach the server. Check your connection and try again.");
+    return;
   }
 
+  if (btn) btn.disabled = true;
+  let result;
+  try {
+    result = await convex.mutation("users:authenticate", { name, password });
+  } catch (err) {
+    const msg = String(err?.message || err);
+    if (msg.includes('WRONG_PASSWORD')) {
+      setObError("That name already has a different password. Try again.");
+    } else if (msg.includes('at least')) {
+      setObError("Password must be at least 4 characters.");
+    } else {
+      setObError("Something went wrong. Try again.");
+    }
+    if (btn) btn.disabled = false;
+    return;
+  }
+
+  setUserName(name);
+  setUserPassword(password);
+  if (result?.user) hydrateFromUserRecord(result.user);
+
   closeOnboarding();
+  if (btn) btn.disabled = false;
   // Re-render every surface that reads from progress so the new state shows up
   render();
   renderHeader();
@@ -6564,7 +6603,7 @@ async function submitOnboarding(e) {
   renderSession();
   renderEarStats();
   checkAchievements();
-  showToast(returning ? `Welcome back, ${name}!` : `Welcome, ${name}!`);
+  showToast(result?.returning ? `Welcome back, ${name}!` : `Welcome, ${name}!`);
 }
 
 function stopAllAudio() {
@@ -6621,22 +6660,37 @@ renderEarStats();
 renderRoute();
 checkAchievements();
 
-// First-run: show onboarding if no name saved yet
-if (!getUserName()) showOnboarding();
+// First-run: show onboarding if we don't have credentials yet
+if (!getUserName() || !getUserPassword()) showOnboarding();
 
-// Background: bring up Convex, hydrate progress for a returning user, re-render.
-// The app already rendered from localStorage above — this just reconciles
-// with the latest server state without blocking the UI.
+// Background: bring up Convex, re-authenticate the returning user, hydrate.
+// The app already rendered from localStorage above — this reconciles with the
+// latest server state without blocking the UI.
 initConvex().then(async () => {
-  if (!convexReady || !getUserName()) return;
-  const updated = await syncFromConvex();
-  if (!updated) return;
-  render();
-  renderHeader();
-  renderCalendar();
-  renderSession();
-  renderEarStats();
-  checkAchievements();
+  if (!convexReady) return;
+  const name = getUserName();
+  const password = getUserPassword();
+  if (!name || !password) return;
+  try {
+    const result = await convex.mutation("users:authenticate", { name, password });
+    if (result?.user && hydrateFromUserRecord(result.user)) {
+      render();
+      renderHeader();
+      renderCalendar();
+      renderSession();
+      renderEarStats();
+      checkAchievements();
+    }
+  } catch (err) {
+    // Stored password no longer matches (e.g. someone reset it via dashboard).
+    // Wipe creds and force re-onboarding.
+    if (String(err?.message || err).includes('WRONG_PASSWORD')) {
+      clearCredentials();
+      showOnboarding();
+    } else {
+      console.warn("Convex re-auth failed:", err);
+    }
+  }
 });
 </script>
 </body>
