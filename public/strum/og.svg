@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF8EA"/>
+      <stop offset="1" stop-color="#FCEFCC"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FCC93C" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#FCC93C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="980" cy="160" r="280" fill="url(#halo)"/>
+  <circle cx="180" cy="520" r="260" fill="url(#halo)" opacity="0.6"/>
+
+  <!-- Brand mark + word -->
+  <g transform="translate(80,80)">
+    <rect width="64" height="64" rx="16" fill="#1A1929"/>
+    <path d="M22 14h20c0 3-2 5-5 5h-3v6l8 10c2 3 2 7 0 10l-3 4c-4 5-11 5-15 0l-3-4c-2-3-2-7 0-10l8-10v-6h-3c-3 0-5-2-5-5z"
+          transform="translate(0,0) scale(1)" fill="#FCC93C"/>
+    <text x="84" y="44" font-family="Fraunces, Georgia, serif" font-size="42" font-weight="700" fill="#1A1929" letter-spacing="-1">Strum</text>
+  </g>
+
+  <!-- Eyebrow pill -->
+  <g transform="translate(80,210)">
+    <rect width="450" height="44" rx="22" fill="#FEF4C7" stroke="#FCC93C" stroke-width="1"/>
+    <circle cx="22" cy="22" r="5" fill="#FCC93C"/>
+    <text x="38" y="29" font-family="Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="2" fill="#B8862B">FROM THE FIRST CHORD TO YOUR FIRST SONG</text>
+  </g>
+
+  <!-- Headline -->
+  <g transform="translate(80,290)">
+    <text font-family="Fraunces, Georgia, serif" font-size="116" font-weight="600" fill="#1A1929" letter-spacing="-5">
+      <tspan x="0" dy="0">Learn guitar</tspan>
+    </text>
+    <text font-family="Fraunces, Georgia, serif" font-size="116" font-weight="500" font-style="italic" letter-spacing="-5">
+      <tspan x="0" dy="124" fill="#2E2D40">
+        <tspan>from scratch.</tspan>
+      </tspan>
+    </text>
+    <!-- Highlight underline behind "from scratch." -->
+    <rect x="-4" y="346" width="660" height="42" fill="#FCC93C" opacity="0.85" rx="2"/>
+    <text font-family="Fraunces, Georgia, serif" font-size="116" font-weight="500" font-style="italic" letter-spacing="-5">
+      <tspan x="0" y="378" fill="#2E2D40">from scratch.</tspan>
+    </text>
+  </g>
+
+  <!-- Subhead -->
+  <text x="80" y="555" font-family="Inter, sans-serif" font-size="22" font-weight="500" fill="#7C7282">
+    Mic tuner · 7 chords · 15 lessons · real songs · free, in your browser
+  </text>
+
+  <!-- Bottom: URL -->
+  <text x="1120" y="592" text-anchor="end" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#B8AFA2">jeremiahdaws.com/strum</text>
+</svg>
