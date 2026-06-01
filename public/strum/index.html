@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#FFF8EA">
-  <meta name="description" content="Strum is a free guitar learning app for beginners. Mic tuner, seven chords on a guided path, fifteen lessons from how to hold a guitar to your first song, and real chord charts for 28 songs. No signup, no ads.">
+  <meta name="description" content="A beginner guitar app for kids and grown-ups starting at zero. Mic tuner, real chord audio, fifteen short lessons, songs you actually want to play. Free in your browser.">
 
   <title>Strum — Learn guitar from scratch</title>
 
@@ -12,11 +12,11 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jeremiahdaws.com/strum">
   <meta property="og:title" content="Strum — Learn guitar from scratch">
-  <meta property="og:description" content="A tiny, distraction-free guitar app: mic tuner, seven chords, fifteen lessons, real songs. Free in your browser.">
+  <meta property="og:description" content="A beginner guitar app for kids and grown-ups. Real chord audio, fifteen short lessons, real songs. Free in your browser.">
   <meta property="og:image" content="https://jeremiahdaws.com/strum/og.svg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Strum — Learn guitar from scratch">
-  <meta name="twitter:description" content="A tiny, distraction-free guitar app: mic tuner, seven chords, fifteen lessons, real songs. Free in your browser.">
+  <meta name="twitter:description" content="A beginner guitar app for kids and grown-ups. Real chord audio, fifteen short lessons, real songs. Free in your browser.">
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231A1929'/%3E%3Cpath d='M22 14h20c0 3-2 5-5 5h-3v6l8 10c2 3 2 7 0 10l-3 4c-4 5-11 5-15 0l-3-4c-2-3-2-7 0-10l8-10v-6h-3c-3 0-5-2-5-5z' fill='%23FCC93C'/%3E%3C/svg%3E">
 
@@ -48,6 +48,7 @@
       --shadow-sm: 0 1px 2px rgba(10,10,15,.04), 0 2px 6px rgba(10,10,15,.04);
       --shadow-md: 0 2px 4px rgba(10,10,15,.04), 0 8px 24px rgba(10,10,15,.06);
       --shadow-lg: 0 4px 12px rgba(10,10,15,.06), 0 24px 48px rgba(10,10,15,.10);
+      --shadow-xl: 0 8px 24px rgba(10,10,15,.08), 0 36px 64px rgba(10,10,15,.12);
       --r-sm: 10px; --r-md: 14px; --r-lg: 20px;
     }
 
@@ -66,7 +67,6 @@
     button { font-family: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
     .serif { font-family: 'Fraunces', Georgia, serif; letter-spacing: -0.02em; }
 
-    /* ── BG TEXTURE: very subtle sun-rays in the hero ── */
     body::before {
       content: '';
       position: fixed;
@@ -79,27 +79,21 @@
       z-index: -1;
     }
 
-    /* Scroll-reveal */
     .reveal {
       opacity: 0;
       transform: translateY(18px);
       transition: opacity .7s cubic-bezier(0.22, 1, 0.36, 1), transform .7s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .reveal.in {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
     .reveal[data-delay="1"] { transition-delay: .08s; }
     .reveal[data-delay="2"] { transition-delay: .16s; }
     .reveal[data-delay="3"] { transition-delay: .24s; }
     .reveal[data-delay="4"] { transition-delay: .32s; }
     .reveal[data-delay="5"] { transition-delay: .40s; }
 
-    /* ────────────────────────── NAV ────────────────────────── */
+    /* ────────── NAV ────────── */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
+      position: sticky; top: 0; z-index: 50;
       background: rgba(255, 248, 234, 0.85);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -107,91 +101,59 @@
       padding-top: env(safe-area-inset-top);
     }
     .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
+      max-width: 1100px; margin: 0 auto;
       padding: 14px 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       gap: 16px;
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .brand { display: flex; align-items: center; gap: 10px; }
     .brand-mark {
-      width: 32px; height: 32px;
-      border-radius: 9px;
+      width: 32px; height: 32px; border-radius: 9px;
       background: var(--ink);
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
+      display: grid; place-items: center; flex-shrink: 0;
     }
     .brand-mark svg { width: 16px; height: 16px; }
     .brand-word {
-      font-family: 'Fraunces', serif;
-      font-weight: 700;
-      font-size: 21px;
+      font-family: 'Fraunces', serif; font-weight: 700; font-size: 21px;
       letter-spacing: -0.02em;
     }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
     .nav-link {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--muted);
+      font-size: 14px; font-weight: 600; color: var(--muted);
       transition: color .15s;
     }
     .nav-link:hover { color: var(--ink); }
     .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--ink);
-      color: white;
-      padding: 9px 18px;
-      border-radius: 99px;
-      font-size: 13px;
-      font-weight: 600;
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--ink); color: white;
+      padding: 9px 18px; border-radius: 99px;
+      font-size: 13px; font-weight: 600;
       transition: all .18s;
     }
     .nav-cta:hover { background: var(--ink-2); transform: translateY(-1px); }
     .nav-cta svg { width: 12px; height: 12px; }
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
       .nav-links .nav-link { display: none; }
     }
 
-    /* ────────────────────────── HERO ────────────────────────── */
+    /* ────────── HERO ────────── */
     .hero {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 96px 28px 48px;
+      max-width: 1100px; margin: 0 auto;
+      padding: 88px 28px 40px;
       text-align: center;
     }
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent-deep);
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent-deep);
       background: var(--accent-soft);
-      padding: 7px 16px;
-      border-radius: 99px;
+      padding: 7px 16px; border-radius: 99px;
       margin-bottom: 32px;
       border: 1px solid rgba(252, 201, 60, 0.5);
     }
     .eyebrow-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
+      width: 6px; height: 6px; border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 0 4px rgba(252, 201, 60, 0.3);
       animation: pulse-dot 2.4s ease-out infinite;
     }
     @keyframes pulse-dot {
@@ -199,19 +161,14 @@
       50% { box-shadow: 0 0 0 8px rgba(252, 201, 60, 0); }
     }
     .hero h1 {
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
+      font-family: 'Fraunces', serif; font-weight: 600;
       font-size: clamp(48px, 8.5vw, 104px);
-      line-height: 0.96;
-      letter-spacing: -0.045em;
-      color: var(--ink);
-      max-width: 14ch;
+      line-height: 0.96; letter-spacing: -0.045em;
+      color: var(--ink); max-width: 14ch;
       margin: 0 auto 28px;
     }
     .hero h1 .highlight {
-      font-style: italic;
-      font-weight: 500;
-      color: var(--ink-2);
+      font-style: italic; font-weight: 500; color: var(--ink-2);
       background: linear-gradient(180deg, transparent 60%, var(--accent) 60%);
       padding: 0 4px;
       box-decoration-break: clone;
@@ -219,31 +176,21 @@
     }
     .hero-sub {
       font-size: clamp(17px, 2vw, 21px);
-      line-height: 1.5;
-      color: var(--muted);
-      max-width: 58ch;
-      margin: 0 auto 40px;
+      line-height: 1.5; color: var(--muted);
+      max-width: 60ch; margin: 0 auto 40px;
     }
+    .hero-sub strong { color: var(--ink-2); font-weight: 700; }
     .hero-ctas {
-      display: inline-flex;
-      gap: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: inline-flex; gap: 12px; align-items: center;
+      flex-wrap: wrap; justify-content: center;
     }
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--ink);
-      color: white;
-      padding: 17px 30px;
-      border-radius: 99px;
-      font-size: 15px;
-      font-weight: 700;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--ink); color: white;
+      padding: 17px 30px; border-radius: 99px;
+      font-size: 15px; font-weight: 700;
       box-shadow: 0 6px 24px rgba(26, 25, 41, 0.2);
-      transition: all .2s;
-      border: none;
+      transition: all .2s; border: none;
     }
     .btn-primary:hover {
       transform: translateY(-2px);
@@ -251,187 +198,343 @@
     }
     .btn-primary svg { width: 14px; height: 14px; }
     .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--ink);
-      padding: 17px 24px;
-      border-radius: 99px;
-      font-size: 15px;
-      font-weight: 600;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--ink);
+      padding: 17px 24px; border-radius: 99px;
+      font-size: 15px; font-weight: 600;
       border: 1.5px solid var(--ink);
       transition: all .2s;
     }
-    .btn-secondary:hover {
-      background: var(--ink);
-      color: white;
-    }
+    .btn-secondary:hover { background: var(--ink); color: white; }
     .btn-secondary svg { width: 14px; height: 14px; }
     .hero-cta-sub {
-      display: block;
-      margin-top: 18px;
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 500;
+      display: block; margin-top: 18px;
+      font-size: 13px; color: var(--muted); font-weight: 500;
     }
     .hero-cta-sub b { font-weight: 700; color: var(--ink-2); }
 
-    /* ─────────────────── PLAYABLE HERO ART ─────────────────── */
-    .hero-art {
-      max-width: 920px;
-      margin: 72px auto 0;
-      padding: 0 28px;
+    /* ────────── DASHBOARD MOCKUP (the screenshot) ────────── */
+    .device-wrap {
+      max-width: 920px; margin: 64px auto 0;
+      padding: 0 28px; position: relative;
     }
-    .art-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      box-shadow: var(--shadow-lg);
-      padding: 32px;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
-      position: relative;
-      transform: rotate(-0.6deg);
-    }
-    .art-card::before {
+    .device-wrap::before {
       content: '';
       position: absolute;
-      inset: -16px;
-      background: linear-gradient(135deg, var(--accent-soft) 0%, var(--coral) 200%);
+      inset: 18px 12px -28px 12px;
+      background: linear-gradient(135deg, var(--accent-soft) 0%, var(--coral-soft) 100%);
       border-radius: 32px;
       z-index: -1;
-      opacity: 0.4;
-      filter: blur(28px);
+      filter: blur(40px);
+      opacity: 0.7;
     }
-    .art-badge {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--ink);
-      color: white;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 99px;
-      box-shadow: 0 4px 12px rgba(26, 25, 41, 0.2);
+    .device {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: var(--shadow-xl);
+      transform: rotate(-0.4deg);
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 18px;
+      align-items: stretch;
     }
-    .mini-chord {
-      background: linear-gradient(135deg, #FFFFFF 0%, var(--surface-2) 100%);
+    @media (max-width: 720px) {
+      .device { grid-template-columns: 1fr; padding: 20px; transform: none; }
+    }
+    .ds-left, .ds-right {
+      display: flex; flex-direction: column; gap: 14px;
+    }
+
+    /* Greeting + stats card */
+    .ds-greet {
+      padding: 16px 4px 18px;
+    }
+    .ds-greet-eyebrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .ds-greet-eyebrow::before {
+      content: ''; width: 14px; height: 1px; background: var(--ink-2);
+    }
+    .ds-greet-name {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(34px, 4.2vw, 48px);
+      font-weight: 600; letter-spacing: -0.035em;
+      line-height: 1; color: var(--ink);
+    }
+    .ds-stats {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+      margin-top: 18px;
+    }
+    .ds-stat {
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--r-md);
-      padding: 18px 14px 14px;
+      padding: 12px 8px; text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .ds-stat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 22px; font-weight: 600;
+      letter-spacing: -0.025em; color: var(--ink);
+      line-height: 1;
+      display: flex; align-items: baseline; justify-content: center; gap: 2px;
+    }
+    .ds-stat-denom { font-size: 12px; color: var(--subtle); font-weight: 500; }
+    .ds-stat-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* Up next card */
+    .ds-upnext {
+      background: linear-gradient(135deg, #FFFFFF 0%, var(--accent-soft) 100%);
+      border: 1px solid var(--accent);
+      border-radius: var(--r-lg);
+      padding: 18px 20px 18px 24px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      flex: 1;
+    }
+    .ds-upnext::before {
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0; width: 5px;
+      background: var(--accent);
+      border-radius: 5px 0 0 5px;
+    }
+    .ds-upnext-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent-deep);
+      margin-bottom: 12px;
+    }
+    .ds-upnext-body {
+      display: grid; grid-template-columns: auto 1fr; gap: 18px;
+      align-items: center;
+    }
+    .ds-upnext-diagram {
+      background: var(--bg-2); border-radius: var(--r-md);
+      padding: 12px 14px;
+    }
+    .ds-upnext-name {
+      font-family: 'Fraunces', serif;
+      font-size: 32px; font-weight: 600;
+      letter-spacing: -0.035em; color: var(--ink);
+      line-height: 1; margin-bottom: 6px;
+    }
+    .ds-upnext-desc {
+      font-size: 12px; color: var(--muted);
+      line-height: 1.4; margin-bottom: 12px;
+    }
+    .ds-upnext-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+    .ds-pill {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: var(--ink); color: white;
+      padding: 6px 10px; border-radius: 99px;
+      font-size: 10.5px; font-weight: 600;
+    }
+    .ds-pill.ghost {
+      background: var(--surface);
+      color: var(--ink); border: 1px solid var(--border);
+    }
+    .ds-pill svg { width: 9px; height: 9px; }
+
+    /* Calendar mini */
+    .ds-cal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 14px 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .ds-cal-header {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 10px;
+    }
+    .ds-cal-title {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .ds-cal-summary {
+      font-family: 'Fraunces', serif; font-size: 11px;
+      color: var(--ink); font-weight: 600;
+    }
+    .ds-cal-summary b { font-size: 14px; }
+    .ds-cal-grid {
+      display: grid; grid-template-columns: repeat(30, 1fr); gap: 2px;
+    }
+    .ds-cal-cell {
+      aspect-ratio: 1; border-radius: 2px;
+      background: var(--bg-2);
+    }
+    .ds-cal-cell.done { background: var(--ink); }
+    .ds-cal-cell.today { box-shadow: 0 0 0 1.5px var(--ink); background: var(--surface); }
+    .ds-cal-cell.today.done { background: var(--ink); }
+
+    /* Practice plan list */
+    .ds-plan {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .ds-plan-title {
+      font-family: 'Fraunces', serif; font-size: 15px; font-weight: 600;
+      letter-spacing: -0.02em; color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .ds-plan-eyebrow {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .ds-step {
+      display: grid; grid-template-columns: 22px auto 1fr auto;
+      align-items: center; gap: 10px;
+      padding: 8px 0;
+      border-top: 1px solid var(--divider);
+      font-size: 12px;
+    }
+    .ds-step:first-of-type { border-top: none; }
+    .ds-step.done .ds-step-title { color: var(--muted); text-decoration: line-through; }
+    .ds-step-num {
+      font-family: 'Fraunces', serif; font-size: 11px;
+      font-weight: 600; color: var(--subtle);
+      text-align: center;
+    }
+    .ds-step.done .ds-step-num { color: var(--success); }
+    .ds-step-icon {
+      width: 22px; height: 22px; border-radius: 5px;
+      background: var(--bg-2);
+      display: grid; place-items: center;
+    }
+    .ds-step.done .ds-step-icon { background: var(--success-soft); color: var(--success); }
+    .ds-step-icon svg { width: 11px; height: 11px; }
+    .ds-step-title {
+      font-weight: 700; color: var(--ink);
+      font-size: 12px;
+    }
+    .ds-step-min {
+      font-family: 'Fraunces', serif; font-size: 11px;
+      font-weight: 600; color: var(--muted);
+    }
+
+    /* Playable chord cards under the device */
+    .audio-strip {
+      max-width: 920px; margin: 32px auto 0;
+      padding: 0 28px;
+    }
+    .audio-strip-label {
+      text-align: center;
+      font-size: 13px; font-weight: 600; color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .audio-strip-label b { color: var(--ink); font-weight: 700; }
+    .audio-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 560px; margin: 0 auto;
+    }
+    .audio-chord {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 14px 12px;
       text-align: center;
       cursor: pointer;
       transition: all .2s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .mini-chord:hover {
+    .audio-chord:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow-md);
       border-color: var(--accent);
     }
-    .mini-chord:active { transform: translateY(-1px); }
-    .mini-chord.playing {
+    .audio-chord:active { transform: translateY(-1px); }
+    .audio-chord.playing {
       box-shadow: 0 0 0 3px rgba(252, 201, 60, 0.4), var(--shadow-md);
       border-color: var(--accent);
     }
-    .mini-chord.mastered {
-      background: linear-gradient(135deg, var(--success-soft) 0%, #FFFFFF 70%);
-      border-color: var(--success);
-    }
-    .mini-chord-name {
+    .audio-chord-name {
       font-family: 'Fraunces', serif;
-      font-size: 36px;
-      font-weight: 600;
-      letter-spacing: -0.04em;
-      color: var(--ink);
-      line-height: 0.9;
-      margin-bottom: 12px;
+      font-size: 24px; font-weight: 600;
+      letter-spacing: -0.04em; color: var(--ink);
+      line-height: 1;
     }
-    .mini-chord.mastered .mini-chord-name { color: var(--success); }
-    .mini-chord-svg { display: block; margin: 0 auto 12px; }
-    .mini-chord-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 10.5px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      padding: 4px 10px;
-      border-radius: 99px;
-      background: var(--bg-2);
-      color: var(--muted);
+    .audio-chord-sub {
+      font-size: 10.5px; font-weight: 600;
+      color: var(--muted); margin-top: 6px;
     }
-    .mini-chord.mastered .mini-chord-status {
-      background: var(--success);
-      color: white;
-    }
-    .mini-chord-status svg { width: 10px; height: 10px; }
-    .art-hint {
-      text-align: center;
-      margin-top: 22px;
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 500;
-    }
-    .art-hint b { color: var(--ink); font-weight: 700; }
 
-    /* ─────────────────── SECTION SCAFFOLD ─────────────────── */
+    /* ────────── OUTCOMES STRIP ────────── */
+    .outcomes {
+      max-width: 1100px; margin: 0 auto;
+      padding: 88px 28px 24px;
+    }
+    .outcomes-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    @media (max-width: 720px) {
+      .outcomes-row { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .outcome {
+      padding: 24px 16px;
+    }
+    .outcome-when {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 600; letter-spacing: -0.03em;
+      color: var(--accent-deep); line-height: 1;
+      margin-bottom: 14px;
+    }
+    .outcome-what {
+      font-size: 16px; color: var(--ink-2);
+      font-weight: 500; line-height: 1.5;
+      max-width: 24ch; margin: 0 auto;
+    }
+    .outcome-what b { color: var(--ink); font-weight: 700; }
+
+    /* ────────── SECTION ────────── */
     section {
-      max-width: 1100px;
-      margin: 0 auto;
+      max-width: 1100px; margin: 0 auto;
       padding: 104px 28px;
     }
     .section-eyebrow {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent-deep);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent-deep);
       margin-bottom: 18px;
     }
     .section-title {
       font-family: 'Fraunces', serif;
       font-size: clamp(34px, 4.8vw, 56px);
-      font-weight: 600;
-      line-height: 1.03;
-      letter-spacing: -0.035em;
-      color: var(--ink);
-      max-width: 22ch;
-      margin-bottom: 18px;
+      font-weight: 600; line-height: 1.03;
+      letter-spacing: -0.035em; color: var(--ink);
+      max-width: 22ch; margin-bottom: 18px;
     }
     .section-title em { font-style: italic; font-weight: 500; color: var(--ink-2); }
     .section-sub {
-      font-size: 17px;
-      line-height: 1.55;
-      color: var(--muted);
-      max-width: 60ch;
-      margin-bottom: 56px;
+      font-size: 17px; line-height: 1.55; color: var(--muted);
+      max-width: 60ch; margin-bottom: 56px;
     }
 
-    /* ─────────────────── HOW IT WORKS ─────────────────── */
+    /* ────────── HOW IT WORKS ────────── */
     .how-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      position: relative;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; position: relative;
     }
     .how-grid::before {
       content: '';
       position: absolute;
-      top: 28px;
-      left: 12%;
-      right: 12%;
+      top: 28px; left: 12%; right: 12%;
       height: 2px;
-      background: repeating-linear-gradient(
-        to right,
-        var(--border) 0 8px,
-        transparent 8px 16px
-      );
+      background: repeating-linear-gradient(to right, var(--border) 0 8px, transparent 8px 16px);
       z-index: 0;
     }
     @media (max-width: 720px) {
@@ -444,20 +547,14 @@
       border-radius: var(--r-lg);
       padding: 28px 24px;
       box-shadow: var(--shadow-sm);
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
     }
     .how-num {
-      width: 56px; height: 56px;
-      border-radius: 99px;
-      background: var(--ink);
-      color: white;
-      display: grid;
-      place-items: center;
+      width: 56px; height: 56px; border-radius: 99px;
+      background: var(--ink); color: white;
+      display: grid; place-items: center;
       font-family: 'Fraunces', serif;
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
+      font-size: 22px; font-weight: 600; letter-spacing: -0.02em;
       margin: 0 auto 20px;
       border: 4px solid var(--bg);
       box-shadow: 0 0 0 1px var(--border);
@@ -467,24 +564,17 @@
     .how-step:nth-child(3) .how-num { background: linear-gradient(135deg, var(--success) 0%, #15803D 100%); }
     .how-title {
       font-family: 'Fraunces', serif;
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      text-align: center;
-      margin-bottom: 8px;
+      font-size: 22px; font-weight: 600; letter-spacing: -0.02em;
+      color: var(--ink); text-align: center; margin-bottom: 8px;
     }
     .how-desc {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.55;
-      text-align: center;
+      font-size: 14px; color: var(--muted);
+      line-height: 1.55; text-align: center;
     }
 
-    /* ─────────────────── FEATURES ─────────────────── */
+    /* ────────── FEATURES ────────── */
     .feat-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
     @media (max-width: 880px) { .feat-grid { grid-template-columns: 1fr 1fr; } }
@@ -494,8 +584,7 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--r-lg);
-      padding: 28px;
-      box-shadow: var(--shadow-sm);
+      padding: 28px; box-shadow: var(--shadow-sm);
       transition: all .25s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .feat-card:hover {
@@ -504,12 +593,9 @@
       border-color: var(--accent);
     }
     .feat-icon {
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 18px;
-      color: var(--ink);
+      width: 44px; height: 44px; border-radius: 12px;
+      display: grid; place-items: center;
+      margin-bottom: 18px; color: var(--ink);
       transition: transform .25s;
     }
     .feat-card:hover .feat-icon { transform: scale(1.08) rotate(-3deg); }
@@ -522,62 +608,75 @@
     .feat-card:nth-child(6) .feat-icon { background: var(--success-soft); color: var(--success); }
     .feat-title {
       font-family: 'Fraunces', serif;
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      margin-bottom: 8px;
-      line-height: 1.15;
+      font-size: 22px; font-weight: 600;
+      letter-spacing: -0.02em; color: var(--ink);
+      margin-bottom: 8px; line-height: 1.15;
     }
     .feat-desc {
-      font-size: 14.5px;
-      color: var(--muted);
-      line-height: 1.55;
+      font-size: 14.5px; color: var(--muted); line-height: 1.55;
     }
 
-    /* ─────────────────── CURRICULUM PATH ─────────────────── */
-    .path-track {
+    /* ────────── CURRICULUM PHASES ────────── */
+    .phase-row {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
-    @media (max-width: 880px) { .path-track { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 560px) { .path-track { grid-template-columns: 1fr 1fr; } }
-    .path-cell {
+    @media (max-width: 880px) {
+      .phase-row { grid-template-columns: 1fr; }
+    }
+    .phase {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--r-md);
-      padding: 16px 14px;
+      border-radius: var(--r-lg);
+      padding: 32px;
       box-shadow: var(--shadow-sm);
-      transition: all .2s;
+      transition: all .25s;
     }
-    .path-cell:hover {
-      transform: translateY(-2px);
+    .phase:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
       border-color: var(--accent);
     }
-    .path-num {
+    .phase-num {
       font-family: 'Fraunces', serif;
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 14px; font-weight: 600;
       color: var(--accent-deep);
-      letter-spacing: -0.01em;
-      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+      display: inline-block;
+      background: var(--accent-soft);
+      padding: 4px 12px;
+      border-radius: 99px;
     }
-    .path-name {
+    .phase-title {
       font-family: 'Fraunces', serif;
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      line-height: 1.2;
+      font-size: 26px; font-weight: 600;
+      letter-spacing: -0.025em; color: var(--ink);
+      line-height: 1.1; margin-bottom: 16px;
     }
-    .path-cell.highlight {
-      background: linear-gradient(135deg, var(--accent-soft) 0%, #FFFFFF 100%);
-      border-color: var(--accent);
+    .phase-list {
+      display: flex; flex-direction: column; gap: 8px;
     }
-    .path-cell.highlight .path-num { color: var(--accent-deep); }
+    .phase-list li {
+      display: flex; gap: 10px; align-items: baseline;
+      font-size: 13.5px; color: var(--ink-2);
+      list-style: none;
+    }
+    .phase-list .lesson-num {
+      font-family: 'Fraunces', serif; font-size: 12px;
+      font-weight: 600; color: var(--subtle);
+      flex-shrink: 0; width: 22px;
+    }
+    .phase-end {
+      margin-top: 18px; padding-top: 14px;
+      border-top: 1px solid var(--divider);
+      font-size: 12.5px; color: var(--muted);
+      line-height: 1.5;
+    }
+    .phase-end b { color: var(--ink); font-weight: 700; }
 
-    /* ─────────────────── IN THE BOX ─────────────────── */
+    /* ────────── IN THE BOX ────────── */
     .box-wrap {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -592,124 +691,140 @@
       .box-wrap { grid-template-columns: 1fr; padding: 28px; gap: 36px; }
     }
     .box-col-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent-deep);
-      margin-bottom: 18px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent-deep); margin-bottom: 18px;
     }
-    .box-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .box-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .box-tag {
       font-family: 'Fraunces', serif;
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 18px; font-weight: 600;
       letter-spacing: -0.02em;
-      padding: 8px 14px;
-      border-radius: 99px;
-      background: var(--ink);
-      color: white;
+      padding: 8px 14px; border-radius: 99px;
+      background: var(--ink); color: white;
       transition: transform .15s;
     }
     .box-tag:hover { transform: translateY(-2px); }
-    .box-tag.alt {
-      background: var(--bg-2);
-      color: var(--ink);
-    }
-    .box-list {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
+    .box-tag.alt { background: var(--bg-2); color: var(--ink); }
+    .box-list { display: flex; flex-direction: column; gap: 4px; }
     .box-list-item {
-      font-size: 14px;
-      color: var(--ink-2);
-      padding: 10px 0;
-      border-bottom: 1px solid var(--divider);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-size: 14px; color: var(--ink-2);
+      padding: 10px 0; border-bottom: 1px solid var(--divider);
+      display: flex; align-items: center; gap: 10px;
     }
     .box-list-item:last-child { border-bottom: none; }
     .box-list-item .check {
-      width: 16px; height: 16px;
-      color: var(--success);
-      flex-shrink: 0;
+      width: 16px; height: 16px; color: var(--success); flex-shrink: 0;
     }
     .box-list-item strong { color: var(--ink); font-weight: 600; }
-    .box-list-item .meta { color: var(--muted); font-size: 12px; margin-left: auto; font-weight: 500; }
+    .box-list-item .meta {
+      color: var(--muted); font-size: 12px; margin-left: auto; font-weight: 500;
+    }
 
-    /* ─────────────────── QUOTE / DIFFERENTIATION ─────────────────── */
-    .quote {
-      background: linear-gradient(135deg, var(--accent-soft) 0%, var(--coral-soft) 100%);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 64px 48px;
+    /* ────────── WHY I BUILT THIS ────────── */
+    .builder {
+      max-width: 760px; margin: 0 auto;
+      padding: 80px 28px;
       text-align: center;
-      position: relative;
-      overflow: hidden;
     }
-    .quote::before {
-      content: '"';
-      position: absolute;
-      top: 16px; left: 32px;
-      font-family: 'Fraunces', serif;
-      font-size: 200px;
-      line-height: 1;
-      color: var(--accent);
-      opacity: 0.3;
-    }
-    .quote-text {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(24px, 3vw, 36px);
-      font-weight: 500;
-      font-style: italic;
-      line-height: 1.3;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      max-width: 24ch;
+    .builder-avatar {
+      width: 76px; height: 76px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--coral) 100%);
+      display: grid; place-items: center;
       margin: 0 auto 24px;
-      position: relative;
+      font-family: 'Fraunces', serif;
+      font-size: 32px; font-weight: 700;
+      color: var(--ink);
+      box-shadow: var(--shadow-md);
     }
-    .quote-text em { font-weight: 600; }
-    .quote-meta {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent-deep);
-      position: relative;
+    .builder-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 14px;
     }
-    @media (max-width: 560px) {
-      .quote { padding: 44px 24px; border-radius: 22px; }
-      .quote::before { font-size: 120px; top: 8px; left: 18px; }
+    .builder-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(26px, 3.4vw, 36px);
+      font-weight: 600; line-height: 1.15;
+      letter-spacing: -0.025em; color: var(--ink);
+      max-width: 22ch; margin: 0 auto 20px;
     }
+    .builder-title em { font-style: italic; font-weight: 500; color: var(--ink-2); }
+    .builder-body {
+      font-size: 16.5px; line-height: 1.65;
+      color: var(--muted); max-width: 56ch; margin: 0 auto;
+    }
+    .builder-body p + p { margin-top: 16px; }
+    .builder-body strong { color: var(--ink-2); font-weight: 600; }
+    .builder-sig {
+      margin-top: 22px;
+      font-family: 'Fraunces', serif;
+      font-style: italic; font-size: 18px;
+      color: var(--ink); font-weight: 500;
+    }
+    .builder-sig a { color: var(--accent-deep); font-weight: 600; }
+    .builder-sig a:hover { color: var(--ink); }
 
-    /* ─────────────────── FINAL CTA ─────────────────── */
+    /* ────────── FAQ ────────── */
+    .faq-list {
+      display: flex; flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 22px 26px;
+      box-shadow: var(--shadow-sm);
+      transition: all .2s;
+    }
+    .faq-item[open] { border-color: var(--accent); }
+    .faq-q {
+      font-family: 'Fraunces', serif;
+      font-size: 19px; font-weight: 600;
+      letter-spacing: -0.02em; color: var(--ink);
+      cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px;
+      list-style: none;
+    }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-q::after {
+      content: '+';
+      font-family: 'Fraunces', serif;
+      font-size: 28px; font-weight: 500;
+      color: var(--accent-deep);
+      transition: transform .2s;
+      line-height: 1;
+    }
+    .faq-item[open] .faq-q::after {
+      content: '−';
+      transform: rotate(0deg);
+    }
+    .faq-a {
+      font-size: 15px; line-height: 1.6; color: var(--muted);
+      margin-top: 14px;
+    }
+    .faq-a strong { color: var(--ink); font-weight: 700; }
+
+    /* ────────── FINAL CTA ────────── */
     .final-card {
       background: linear-gradient(135deg, var(--ink) 0%, var(--ink-2) 100%);
-      color: white;
-      border-radius: 32px;
+      color: white; border-radius: 32px;
       padding: 88px 44px;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
       text-align: center;
     }
     .final-card::before {
-      content: '';
-      position: absolute;
+      content: ''; position: absolute;
       top: -80px; right: -80px;
       width: 320px; height: 320px;
       background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
       opacity: 0.3;
     }
     .final-card::after {
-      content: '';
-      position: absolute;
+      content: ''; position: absolute;
       bottom: -80px; left: -80px;
       width: 320px; height: 320px;
       background: radial-gradient(circle, var(--coral) 0%, transparent 70%);
@@ -718,40 +833,28 @@
     .final-card h2 {
       font-family: 'Fraunces', serif;
       font-size: clamp(40px, 5.5vw, 64px);
-      font-weight: 600;
-      line-height: 1.02;
+      font-weight: 600; line-height: 1.02;
       letter-spacing: -0.04em;
-      max-width: 18ch;
-      margin: 0 auto 20px;
+      max-width: 18ch; margin: 0 auto 20px;
       position: relative;
     }
     .final-card h2 em {
-      font-style: italic;
-      font-weight: 500;
+      font-style: italic; font-weight: 500;
       color: var(--accent);
     }
     .final-card p {
-      font-size: 17px;
-      color: rgba(255,255,255,0.72);
-      max-width: 50ch;
-      margin: 0 auto 40px;
-      position: relative;
-      line-height: 1.55;
+      font-size: 17px; color: rgba(255,255,255,0.72);
+      max-width: 50ch; margin: 0 auto 40px;
+      position: relative; line-height: 1.55;
     }
     .final-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent);
-      color: var(--ink);
-      padding: 19px 36px;
-      border-radius: 99px;
-      font-size: 16px;
-      font-weight: 700;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent); color: var(--ink);
+      padding: 19px 36px; border-radius: 99px;
+      font-size: 16px; font-weight: 700;
       box-shadow: 0 8px 28px rgba(252, 201, 60, 0.4);
       position: relative;
-      transition: all .25s;
-      border: none;
+      transition: all .25s; border: none;
     }
     .final-cta:hover {
       transform: translateY(-2px);
@@ -759,47 +862,32 @@
     }
     .final-cta svg { width: 16px; height: 16px; }
     .final-sub {
-      display: block;
-      margin-top: 18px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.55);
+      display: block; margin-top: 18px;
+      font-size: 13px; color: rgba(255,255,255,0.55);
       position: relative;
     }
 
-    /* ─────────────────── FOOTER ─────────────────── */
+    /* ────────── FOOTER ────────── */
     footer {
       padding: 40px 28px 56px;
       text-align: center;
       border-top: 1px solid var(--divider);
     }
     footer .foot-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      font-size: 13px;
-      color: var(--muted);
+      max-width: 1100px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+      gap: 16px; font-size: 13px; color: var(--muted);
     }
-    footer a {
-      font-weight: 600;
-      color: var(--ink-2);
-      transition: color .15s;
-    }
+    footer a { font-weight: 600; color: var(--ink-2); transition: color .15s; }
     footer a:hover { color: var(--accent-deep); }
 
-    /* ─────────────────── MOBILE TWEAKS ─────────────────── */
     @media (max-width: 720px) {
       .hero { padding: 56px 24px 32px; }
-      .hero-art { margin-top: 48px; padding: 0 24px; }
-      .art-card { padding: 22px; gap: 10px; }
-      .mini-chord { padding: 14px 8px; }
-      .mini-chord-name { font-size: 26px; margin-bottom: 8px; }
-      .mini-chord-svg { width: 60px; }
-      .mini-chord-status { font-size: 9.5px; padding: 3px 8px; }
+      .device-wrap { margin-top: 48px; padding: 0 24px; }
+      .audio-strip { padding: 0 24px; }
       section { padding: 72px 24px; }
+      .outcomes { padding: 56px 24px 16px; }
+      .builder { padding: 56px 24px; }
       .nav-inner { padding: 12px 20px; }
       .final-card { padding: 56px 28px; border-radius: 26px; }
       .btn-primary, .btn-secondary { padding: 15px 22px; font-size: 14px; }
@@ -826,7 +914,7 @@
     <div class="nav-links">
       <a class="nav-link" href="#how">How it works</a>
       <a class="nav-link" href="#inside">What's inside</a>
-      <a class="nav-link" href="#path">Lessons</a>
+      <a class="nav-link" href="#faq">FAQ</a>
       <a class="nav-cta" href="/strum/app">
         Open app
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -835,112 +923,195 @@
   </div>
 </nav>
 
-<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<!-- ─────────── HERO ─────────── -->
 <header class="hero">
   <div class="eyebrow reveal">
     <span class="eyebrow-dot"></span>
-    From the first chord to your first song
+    For kids and grown-ups starting at zero
   </div>
   <h1 class="reveal" data-delay="1">Learn guitar <span class="highlight">from scratch.</span></h1>
   <p class="hero-sub reveal" data-delay="2">
-    Strum is a tiny, distraction-free app that teaches you how to play — from "what's a fret?" to a real song.
-    Built-in tuner. Realistic chord audio. Fifteen lessons. No videos to wade through, no ads, no subscription.
+    A beginner guitar app for <strong>anyone starting at zero</strong> — built originally for my two kids. Real chord audio, fifteen short lessons, real songs you'll actually want to play. No videos to scrub through, no subscription.
   </p>
   <div class="hero-ctas reveal" data-delay="3">
     <a class="btn-primary" href="/strum/app">
       Start learning
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
-    <button class="btn-secondary" type="button" onclick="document.getElementById('hero-art').scrollIntoView({behavior:'smooth', block:'center'}); setTimeout(()=>playMiniChord('em'), 600);">
+    <button class="btn-secondary" type="button" onclick="document.getElementById('audio-strip').scrollIntoView({behavior:'smooth', block:'center'}); setTimeout(()=>playMiniChord('em'), 600);">
       <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
       Hear a chord
     </button>
   </div>
   <div class="hero-cta-sub reveal" data-delay="4">
-    <b>Free.</b> No signup wall. Works in your browser. Progress saves across devices.
+    <b>Free.</b> No email, no credit card. Works in your browser. Progress saves across devices.
   </div>
 </header>
 
-<!-- ═══════════════════════ PLAYABLE HERO ART ═══════════════════════ -->
-<div class="hero-art reveal" data-delay="5" id="hero-art">
-  <div class="art-card">
-    <div class="art-badge">Tap a chord</div>
-    <button class="mini-chord mastered" id="mini-em" type="button" onclick="playMiniChord('em')" aria-label="Play Em chord">
-      <div class="mini-chord-name">Em</div>
-      <svg class="mini-chord-svg" width="80" viewBox="0 0 80 100" aria-hidden="true">
-        <line x1="10" y1="26" x2="70" y2="26" stroke="#1A1929" stroke-width="2.5"/>
-        <line x1="10" y1="46" x2="70" y2="46" stroke="#D9D4C8"/>
-        <line x1="10" y1="66" x2="70" y2="66" stroke="#D9D4C8"/>
-        <line x1="10" y1="86" x2="70" y2="86" stroke="#D9D4C8"/>
-        <line x1="10" y1="26" x2="10" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <line x1="22" y1="26" x2="22" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <line x1="34" y1="26" x2="34" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <line x1="46" y1="26" x2="46" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <line x1="58" y1="26" x2="58" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <line x1="70" y1="26" x2="70" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <circle cx="22" cy="36" r="7" fill="#1A1929"/>
-        <circle cx="34" cy="36" r="7" fill="#1A1929"/>
-        <text x="22" y="40" text-anchor="middle" font-size="8" font-weight="700" font-family="Inter" fill="white">2</text>
-        <text x="34" y="40" text-anchor="middle" font-size="8" font-weight="700" font-family="Inter" fill="white">3</text>
-      </svg>
-      <div class="mini-chord-status">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Mastered
+<!-- ─────────── DASHBOARD MOCKUP ─────────── -->
+<div class="device-wrap reveal" data-delay="5">
+  <div class="device" aria-hidden="true">
+    <div class="ds-left">
+      <div class="ds-greet">
+        <div class="ds-greet-eyebrow">5 days in a row</div>
+        <div class="ds-greet-name">Hi, Bella!</div>
+        <div class="ds-stats">
+          <div class="ds-stat">
+            <div class="ds-stat-num">3<span class="ds-stat-denom">/7</span></div>
+            <div class="ds-stat-label">chords</div>
+          </div>
+          <div class="ds-stat">
+            <div class="ds-stat-num">5</div>
+            <div class="ds-stat-label">day streak</div>
+          </div>
+          <div class="ds-stat">
+            <div class="ds-stat-num">6</div>
+            <div class="ds-stat-label">songs</div>
+          </div>
+          <div class="ds-stat">
+            <div class="ds-stat-num">4</div>
+            <div class="ds-stat-label">badges</div>
+          </div>
+        </div>
       </div>
-    </button>
-    <button class="mini-chord mastered" id="mini-am" type="button" onclick="playMiniChord('am')" aria-label="Play Am chord">
-      <div class="mini-chord-name">Am</div>
-      <svg class="mini-chord-svg" width="80" viewBox="0 0 80 100" aria-hidden="true">
-        <line x1="10" y1="26" x2="70" y2="26" stroke="#1A1929" stroke-width="2.5"/>
-        <line x1="10" y1="46" x2="70" y2="46" stroke="#D9D4C8"/>
-        <line x1="10" y1="66" x2="70" y2="66" stroke="#D9D4C8"/>
-        <line x1="10" y1="86" x2="70" y2="86" stroke="#D9D4C8"/>
-        <line x1="10" y1="26" x2="10" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <line x1="22" y1="26" x2="22" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <line x1="34" y1="26" x2="34" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <line x1="46" y1="26" x2="46" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <line x1="58" y1="26" x2="58" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <line x1="70" y1="26" x2="70" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <text x="10" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#E11D48">×</text>
-        <circle cx="58" cy="36" r="7" fill="#1A1929"/>
-        <circle cx="46" cy="46" r="7" fill="#1A1929"/>
-        <text x="58" y="40" text-anchor="middle" font-size="8" font-weight="700" font-family="Inter" fill="white">1</text>
-        <text x="46" y="50" text-anchor="middle" font-size="8" font-weight="700" font-family="Inter" fill="white">2</text>
-      </svg>
-      <div class="mini-chord-status">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Mastered
+
+      <div class="ds-cal">
+        <div class="ds-cal-header">
+          <span class="ds-cal-title">Last 30 days</span>
+          <span class="ds-cal-summary"><b>12</b> sessions</span>
+        </div>
+        <div class="ds-cal-grid">
+          <div class="ds-cal-cell"></div><div class="ds-cal-cell done"></div><div class="ds-cal-cell"></div>
+          <div class="ds-cal-cell done"></div><div class="ds-cal-cell"></div><div class="ds-cal-cell done"></div>
+          <div class="ds-cal-cell done"></div><div class="ds-cal-cell"></div><div class="ds-cal-cell"></div>
+          <div class="ds-cal-cell done"></div><div class="ds-cal-cell"></div><div class="ds-cal-cell done"></div>
+          <div class="ds-cal-cell done"></div><div class="ds-cal-cell"></div><div class="ds-cal-cell done"></div>
+          <div class="ds-cal-cell"></div><div class="ds-cal-cell done"></div><div class="ds-cal-cell done"></div>
+          <div class="ds-cal-cell"></div><div class="ds-cal-cell"></div><div class="ds-cal-cell done"></div>
+          <div class="ds-cal-cell"></div><div class="ds-cal-cell done"></div><div class="ds-cal-cell done"></div>
+          <div class="ds-cal-cell"></div><div class="ds-cal-cell done"></div><div class="ds-cal-cell"></div>
+          <div class="ds-cal-cell done"></div><div class="ds-cal-cell done"></div><div class="ds-cal-cell today done"></div>
+        </div>
       </div>
-    </button>
-    <button class="mini-chord" id="mini-d" type="button" onclick="playMiniChord('d')" aria-label="Play D chord">
-      <div class="mini-chord-name">D</div>
-      <svg class="mini-chord-svg" width="80" viewBox="0 0 80 100" aria-hidden="true">
-        <line x1="10" y1="26" x2="70" y2="26" stroke="#1A1929" stroke-width="2.5"/>
-        <line x1="10" y1="46" x2="70" y2="46" stroke="#D9D4C8"/>
-        <line x1="10" y1="66" x2="70" y2="66" stroke="#D9D4C8"/>
-        <line x1="10" y1="86" x2="70" y2="86" stroke="#D9D4C8"/>
-        <line x1="10" y1="26" x2="10" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <line x1="22" y1="26" x2="22" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <line x1="34" y1="26" x2="34" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <line x1="46" y1="26" x2="46" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <line x1="58" y1="26" x2="58" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <line x1="70" y1="26" x2="70" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
-        <text x="10" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#E11D48">×</text>
-        <text x="22" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#E11D48">×</text>
-        <circle cx="46" cy="36" r="7" fill="#1A1929"/>
-        <circle cx="58" cy="46" r="7" fill="#1A1929"/>
-        <text x="46" y="40" text-anchor="middle" font-size="8" font-weight="700" font-family="Inter" fill="white">1</text>
-        <text x="58" y="50" text-anchor="middle" font-size="8" font-weight="700" font-family="Inter" fill="white">3</text>
-      </svg>
-      <div class="mini-chord-status">Tap to hear</div>
-    </button>
-  </div>
-  <div class="art-hint">
-    <b>↑</b> Real Karplus-Strong audio. The same sound the app uses to teach you.
+    </div>
+
+    <div class="ds-right">
+      <div class="ds-upnext">
+        <div class="ds-upnext-eyebrow">↑ Up next · learn this chord</div>
+        <div class="ds-upnext-body">
+          <div class="ds-upnext-diagram">
+            <svg width="64" viewBox="0 0 80 100" aria-hidden="true">
+              <line x1="10" y1="26" x2="70" y2="26" stroke="#1A1929" stroke-width="2.5"/>
+              <line x1="10" y1="46" x2="70" y2="46" stroke="#D9D4C8"/>
+              <line x1="10" y1="66" x2="70" y2="66" stroke="#D9D4C8"/>
+              <line x1="10" y1="86" x2="70" y2="86" stroke="#D9D4C8"/>
+              <line x1="10" y1="26" x2="10" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
+              <line x1="22" y1="26" x2="22" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
+              <line x1="34" y1="26" x2="34" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
+              <line x1="46" y1="26" x2="46" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
+              <line x1="58" y1="26" x2="58" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
+              <line x1="70" y1="26" x2="70" y2="86" stroke="#D9D4C8" stroke-width="0.8"/>
+              <circle cx="10" cy="36" r="7" fill="#1A1929"/>
+              <circle cx="70" cy="36" r="7" fill="#1A1929"/>
+              <text x="10" y="40" text-anchor="middle" font-size="8" font-weight="700" font-family="Inter" fill="white">2</text>
+              <text x="70" y="40" text-anchor="middle" font-size="8" font-weight="700" font-family="Inter" fill="white">3</text>
+            </svg>
+          </div>
+          <div>
+            <div class="ds-upnext-name">G</div>
+            <div class="ds-upnext-desc">Two fingers, far apart — one on the lowest string, one on the highest.</div>
+            <div class="ds-upnext-actions">
+              <span class="ds-pill">
+                Let's learn it
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
+              <span class="ds-pill ghost">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Hear it
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-plan">
+        <div class="ds-plan-eyebrow">Today's session</div>
+        <div class="ds-plan-title">Your 15-minute practice plan</div>
+        <div class="ds-step done">
+          <div class="ds-step-num">✓</div>
+          <div class="ds-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg></div>
+          <div class="ds-step-title">Tune up</div>
+          <div class="ds-step-min">1 min</div>
+        </div>
+        <div class="ds-step done">
+          <div class="ds-step-num">✓</div>
+          <div class="ds-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.4-.5-2.2-1-3"/></svg></div>
+          <div class="ds-step-title">Finger warm-up</div>
+          <div class="ds-step-min">2 min</div>
+        </div>
+        <div class="ds-step">
+          <div class="ds-step-num">3</div>
+          <div class="ds-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c-3-4-5-7-5-12a5 5 0 0110 0c0 5-2 8-5 12z"/></svg></div>
+          <div class="ds-step-title">Learn G</div>
+          <div class="ds-step-min">4 min</div>
+        </div>
+        <div class="ds-step">
+          <div class="ds-step-num">4</div>
+          <div class="ds-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/></svg></div>
+          <div class="ds-step-title">Em → G drill</div>
+          <div class="ds-step-min">3 min</div>
+        </div>
+        <div class="ds-step">
+          <div class="ds-step-num">5</div>
+          <div class="ds-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/></svg></div>
+          <div class="ds-step-title">Play "Ho Hey"</div>
+          <div class="ds-step-min">5 min</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- ═══════════════════════ HOW IT WORKS ═══════════════════════ -->
+<!-- ─────────── PLAYABLE AUDIO STRIP ─────────── -->
+<div class="audio-strip reveal" id="audio-strip">
+  <div class="audio-strip-label">
+    <b>↑</b> Tap any chord to hear it. <b>Real Karplus-Strong audio</b> — same sound the app uses to teach.
+  </div>
+  <div class="audio-cards">
+    <button class="audio-chord" id="mini-em" type="button" onclick="playMiniChord('em')" aria-label="Play Em chord">
+      <div class="audio-chord-name">Em</div>
+      <div class="audio-chord-sub">2 fingers · open</div>
+    </button>
+    <button class="audio-chord" id="mini-am" type="button" onclick="playMiniChord('am')" aria-label="Play Am chord">
+      <div class="audio-chord-name">Am</div>
+      <div class="audio-chord-sub">2 fingers · minor</div>
+    </button>
+    <button class="audio-chord" id="mini-d" type="button" onclick="playMiniChord('d')" aria-label="Play D chord">
+      <div class="audio-chord-name">D</div>
+      <div class="audio-chord-sub">2 fingers · top strings</div>
+    </button>
+  </div>
+</div>
+
+<!-- ─────────── OUTCOMES ─────────── -->
+<div class="outcomes">
+  <div class="outcomes-row">
+    <div class="outcome reveal">
+      <div class="outcome-when">30 min</div>
+      <div class="outcome-what">From "what's a fret?" to playing your <b>first chord</b>, in your very first session.</div>
+    </div>
+    <div class="outcome reveal" data-delay="1">
+      <div class="outcome-when">By chord 4</div>
+      <div class="outcome-what">You can play <b>Ho Hey</b>, <b>Horse With No Name</b>, and a handful of other real songs.</div>
+    </div>
+    <div class="outcome reveal" data-delay="2">
+      <div class="outcome-when">30 days</div>
+      <div class="outcome-what">All seven chords mastered. <b>Three full songs.</b> Your first solo riff.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── HOW IT WORKS ─────────── -->
 <section id="how">
   <div class="section-eyebrow reveal">How it works</div>
   <h2 class="section-title reveal" data-delay="1">Three steps. <em>That's the whole flow.</em></h2>
@@ -950,22 +1121,22 @@
     <div class="how-step reveal" data-delay="1">
       <div class="how-num">1</div>
       <div class="how-title">Pick a name</div>
-      <div class="how-desc">A first name and a password. That's your account. Type the same name on any other device and your progress follows you.</div>
+      <div class="how-desc">A first name and a password. That's your account — no email, no signup. Type the same name on another device and your progress follows you.</div>
     </div>
     <div class="how-step reveal" data-delay="2">
       <div class="how-num">2</div>
       <div class="how-title">Tune and tap</div>
-      <div class="how-desc">Open the mic-based tuner, get your strings in tune, then tap your first chord — Em. Two fingers, two seconds, you're playing.</div>
+      <div class="how-desc">Open the mic tuner, get your strings in tune, then tap your first chord — Em. Two fingers, two seconds, you're playing.</div>
     </div>
     <div class="how-step reveal" data-delay="3">
       <div class="how-num">3</div>
       <div class="how-title">Master, then play</div>
-      <div class="how-desc">Mark chords as you learn them. Songs unlock as soon as you know the chords they need. By chord four, you can play "Ho Hey."</div>
+      <div class="how-desc">Mark chords as you learn them. Songs unlock as soon as you know the chords they need. By chord four, you're playing real songs.</div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════ WHAT'S INSIDE ═══════════════════════ -->
+<!-- ─────────── WHAT'S INSIDE ─────────── -->
 <section id="inside">
   <div class="section-eyebrow reveal">What's inside</div>
   <h2 class="section-title reveal" data-delay="1">A whole guitar lesson <em>in a single page.</em></h2>
@@ -1009,7 +1180,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
       </div>
       <div class="feat-title">Real songs &amp; riffs</div>
-      <div class="feat-desc">28 chord charts (Ho Hey, Wagon Wheel, Riptide…) and six iconic riffs in TAB — from Mary Had a Little Lamb to Iron Man.</div>
+      <div class="feat-desc">28 chord charts (Ho Hey, Wagon Wheel, Riptide…) and six iconic riffs in TAB — Mary Had a Little Lamb to Iron Man.</div>
     </div>
 
     <div class="feat-card reveal" data-delay="3">
@@ -1022,43 +1193,58 @@
   </div>
 </section>
 
-<!-- ═══════════════════════ THE PATH ═══════════════════════ -->
-<section id="path">
-  <div class="section-eyebrow reveal">The path</div>
-  <h2 class="section-title reveal" data-delay="1">Fifteen short lessons. <em>That's it.</em></h2>
-  <p class="section-sub reveal" data-delay="2">Concrete to abstract, in order — each one builds on the last with audio and interactive demos.</p>
-
-  <div class="path-track">
-    <div class="path-cell reveal" data-delay="1"><div class="path-num">01</div><div class="path-name">Meet your guitar</div></div>
-    <div class="path-cell reveal" data-delay="1"><div class="path-num">02</div><div class="path-name">The six strings</div></div>
-    <div class="path-cell reveal" data-delay="2"><div class="path-num">03</div><div class="path-name">Music notes</div></div>
-    <div class="path-cell reveal" data-delay="2"><div class="path-num">04</div><div class="path-name">Higher and lower</div></div>
-    <div class="path-cell reveal" data-delay="3"><div class="path-num">05</div><div class="path-name">What's a fret</div></div>
-    <div class="path-cell reveal" data-delay="1"><div class="path-num">06</div><div class="path-name">Open and pressed</div></div>
-    <div class="path-cell reveal" data-delay="2"><div class="path-num">07</div><div class="path-name">The beat</div></div>
-    <div class="path-cell reveal" data-delay="3"><div class="path-num">08</div><div class="path-name">What's a chord</div></div>
-    <div class="path-cell reveal" data-delay="3"><div class="path-num">09</div><div class="path-name">Strumming</div></div>
-    <div class="path-cell highlight reveal" data-delay="4"><div class="path-num">10</div><div class="path-name">Reading TAB</div></div>
-    <div class="path-cell reveal" data-delay="1"><div class="path-num">11</div><div class="path-name">Notes on the fretboard</div></div>
-    <div class="path-cell reveal" data-delay="2"><div class="path-num">12</div><div class="path-name">Every chord is a triad</div></div>
-    <div class="path-cell reveal" data-delay="3"><div class="path-num">13</div><div class="path-name">The magic four chords</div></div>
-    <div class="path-cell reveal" data-delay="4"><div class="path-num">14</div><div class="path-name">The capo trick</div></div>
-    <div class="path-cell highlight reveal" data-delay="5"><div class="path-num">15</div><div class="path-name">Happy or sad?</div></div>
-  </div>
-</section>
-
-<!-- ═══════════════════════ QUOTE / WHY ═══════════════════════ -->
+<!-- ─────────── THE PATH (3 phases) ─────────── -->
 <section>
-  <div class="quote reveal">
-    <div class="quote-text">No videos to wade through. No subscription. <em>Just a guitar, your name, and a path.</em></div>
-    <div class="quote-meta">Why Strum is different</div>
+  <div class="section-eyebrow reveal">The path</div>
+  <h2 class="section-title reveal" data-delay="1">Fifteen short lessons, <em>in three phases.</em></h2>
+  <p class="section-sub reveal" data-delay="2">Concrete to abstract, in order. Each one builds on the last with audio and interactive demos.</p>
+
+  <div class="phase-row">
+    <div class="phase reveal" data-delay="1">
+      <span class="phase-num">Phase 1 · 01–06</span>
+      <div class="phase-title">The basics</div>
+      <ul class="phase-list">
+        <li><span class="lesson-num">01</span>Meet your guitar</li>
+        <li><span class="lesson-num">02</span>The six strings</li>
+        <li><span class="lesson-num">03</span>Music notes</li>
+        <li><span class="lesson-num">04</span>Higher and lower</li>
+        <li><span class="lesson-num">05</span>What's a fret</li>
+        <li><span class="lesson-num">06</span>Open and pressed</li>
+      </ul>
+      <div class="phase-end">By the end: you know <b>every part of the guitar</b> and how plucking a string makes a sound.</div>
+    </div>
+
+    <div class="phase reveal" data-delay="2">
+      <span class="phase-num">Phase 2 · 07–10</span>
+      <div class="phase-title">Playing</div>
+      <ul class="phase-list">
+        <li><span class="lesson-num">07</span>The beat</li>
+        <li><span class="lesson-num">08</span>What's a chord</li>
+        <li><span class="lesson-num">09</span>Strumming</li>
+        <li><span class="lesson-num">10</span>Reading TAB</li>
+      </ul>
+      <div class="phase-end">By the end: you can <b>play a chord</b>, strum it in time, and read a TAB diagram.</div>
+    </div>
+
+    <div class="phase reveal" data-delay="3">
+      <span class="phase-num">Phase 3 · 11–15</span>
+      <div class="phase-title">Music theory</div>
+      <ul class="phase-list">
+        <li><span class="lesson-num">11</span>Notes on the fretboard</li>
+        <li><span class="lesson-num">12</span>Every chord is a triad</li>
+        <li><span class="lesson-num">13</span>The magic four chords</li>
+        <li><span class="lesson-num">14</span>The capo trick</li>
+        <li><span class="lesson-num">15</span>Happy or sad?</li>
+      </ul>
+      <div class="phase-end">By the end: you understand <b>why the same four chords are in every song.</b></div>
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════════════ IN THE BOX ═══════════════════════ -->
+<!-- ─────────── IN THE BOX ─────────── -->
 <section>
   <div class="section-eyebrow reveal">In the box</div>
-  <h2 class="section-title reveal" data-delay="1">The chords you'll learn. <em>The songs you'll play.</em></h2>
+  <h2 class="section-title reveal" data-delay="1">The chords. <em>The songs.</em></h2>
   <p class="section-sub reveal" data-delay="2">Every chord uses a beginner-friendly voicing — easy on small hands, sounds right in any song.</p>
 
   <div class="box-wrap reveal" data-delay="3">
@@ -1073,7 +1259,7 @@
         <span class="box-tag alt">E</span>
         <span class="box-tag alt">A</span>
       </div>
-      <div class="box-col-title" style="margin-top:32px;">Iconic riffs</div>
+      <div class="box-col-title" style="margin-top:32px;">Iconic riffs in TAB</div>
       <div class="box-list">
         <div class="box-list-item">
           <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1120,16 +1306,62 @@
   </div>
 </section>
 
-<!-- ═══════════════════════ FINAL CTA ═══════════════════════ -->
+<!-- ─────────── WHY I BUILT THIS ─────────── -->
+<div class="builder">
+  <div class="builder-avatar reveal">JD</div>
+  <div class="builder-eyebrow reveal" data-delay="1">Why I built this</div>
+  <h3 class="builder-title reveal serif" data-delay="2">For my two daughters — <em>then for everyone.</em></h3>
+  <div class="builder-body reveal" data-delay="3">
+    <p>Strum started as a little weekend project: my two daughters (8 and 12) wanted to learn guitar, and every app I tried was either built for adults with credit cards or buried real teaching under hours of video. So I built the simplest thing I could imagine — a single page that teaches you how to play, with audio you can hear and tap.</p>
+    <p>It turned into this. <strong>It's free, it's open in your browser, and I'll never charge for it.</strong> If it helps one more person pick up a guitar, that's a win.</p>
+    <div class="builder-sig">— <a href="https://jeremiahdaws.com">Jeremiah Daws</a></div>
+  </div>
+</div>
+
+<!-- ─────────── FAQ ─────────── -->
+<section id="faq">
+  <div class="section-eyebrow reveal">Common questions</div>
+  <h2 class="section-title reveal" data-delay="1">Yes, but actually — <em>is it free?</em></h2>
+  <p class="section-sub reveal" data-delay="2">A few things worth answering up front.</p>
+
+  <div class="faq-list">
+    <details class="faq-item reveal" data-delay="1">
+      <summary class="faq-q">Is it really free?</summary>
+      <div class="faq-a">Yes. Forever. <strong>No ads, no upgrade tier, no premium features.</strong> Strum is a personal project — I built it for my kids and put it online for free. Your only cost is a guitar.</div>
+    </details>
+    <details class="faq-item reveal" data-delay="1">
+      <summary class="faq-q">Do I need a fancy guitar?</summary>
+      <div class="faq-a">Any acoustic or electric guitar will work. Even a borrowed one from a friend. The tuner uses your device's microphone, so all you need to play along is the guitar in front of you.</div>
+    </details>
+    <details class="faq-item reveal" data-delay="2">
+      <summary class="faq-q">What if my fingers hurt?</summary>
+      <div class="faq-a"><strong>They will, for the first two weeks.</strong> That's calluses forming on your fingertips — totally normal. Practice in short sessions (5–10 minutes), give your fingers a break, and within two weeks the soreness goes away for good.</div>
+    </details>
+    <details class="faq-item reveal" data-delay="2">
+      <summary class="faq-q">How young can a kid start?</summary>
+      <div class="faq-a">Strum's small-hand chord voicings work for kids 7 and up on their own. Younger kids can absolutely do it with a parent. The lessons assume zero music background — no piano experience, no reading music, no theory.</div>
+    </details>
+    <details class="faq-item reveal" data-delay="3">
+      <summary class="faq-q">How long until I can play a song?</summary>
+      <div class="faq-a">Most learners can play their first 2-chord song <strong>within a single session</strong> (Em + D = "Horse With No Name"). Real strumming with clean chord changes takes a couple of weeks of daily practice.</div>
+    </details>
+    <details class="faq-item reveal" data-delay="3">
+      <summary class="faq-q">What about cross-device sync?</summary>
+      <div class="faq-a">Type the same name and password on another device and your progress comes with you — chords learned, streak, achievements, songs unlocked. Built on Convex; everything's encrypted at rest. No personal data beyond your name.</div>
+    </details>
+  </div>
+</section>
+
+<!-- ─────────── FINAL CTA ─────────── -->
 <section>
   <div class="final-card reveal">
     <h2>Pick up the guitar. <em>Today.</em></h2>
-    <p>It's free. There's no signup wall. Your progress saves automatically and follows you to every device.</p>
+    <p>Free, in your browser. No email, no card, no download. Your progress saves automatically and follows you everywhere.</p>
     <a class="final-cta" href="/strum/app">
       Start learning
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
-    <div class="final-sub">No card. No download. Just open it in your browser.</div>
+    <div class="final-sub">Five minutes is all you need for your first session.</div>
   </div>
 </section>
 
@@ -1140,9 +1372,7 @@
   </div>
 </footer>
 
-<!-- ═══════════════════════ AUDIO + REVEAL JS ═══════════════════════ -->
 <script>
-// ── Karplus-Strong plucked-string synthesis (same as the app) ──
 const OPEN_FREQS = [82.41, 110.00, 146.83, 196.00, 246.94, 329.63];
 let _ctx = null;
 function ctx() {
@@ -1172,14 +1402,11 @@ function pluck(freq, when, gain, duration, brightness) {
   src.connect(hp).connect(g).connect(c.destination);
   src.start(when);
 }
-
-// Chord shapes (s=string 0-5 low to high, f=fret, "muted" strings skipped)
 const CHORD_SHAPES = {
-  em: { played: [[0,0],[1,2],[2,2],[3,0],[4,0],[5,0]] },
-  am: { played: [[1,0],[2,2],[3,2],[4,1],[5,0]] },
-  d:  { played: [[2,0],[3,2],[4,3],[5,2]] },
+  em: [[0,0],[1,2],[2,2],[3,0],[4,0],[5,0]],
+  am: [[1,0],[2,2],[3,2],[4,1],[5,0]],
+  d:  [[2,0],[3,2],[4,3],[5,2]],
 };
-
 function playMiniChord(id) {
   const shape = CHORD_SHAPES[id];
   if (!shape) return;
@@ -1189,15 +1416,12 @@ function playMiniChord(id) {
     card.classList.add('playing');
     setTimeout(() => card.classList.remove('playing'), 950);
   }
-  // Strum: low to high, staggered
-  shape.played.forEach((sf, i) => {
+  shape.forEach((sf, i) => {
     const [s, f] = sf;
     const freq = OPEN_FREQS[s] * Math.pow(2, f / 12);
     pluck(freq, c.currentTime + i * 0.022, 0.22, 1.9, 0.4);
   });
 }
-
-// ── Scroll-reveal: add `in` class when elements enter viewport ──
 const io = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
