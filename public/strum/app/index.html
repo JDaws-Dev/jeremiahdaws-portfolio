@@ -66,6 +66,41 @@
       --tabbar-h: 64px;
     }
 
+    /* ── one step at a time ── */
+    .lesson-progress{height:4px;border-radius:99px;background:var(--surface-2);overflow:hidden;margin:0 0 6px}
+    .lesson-progress span{display:block;height:100%;background:var(--glow);border-radius:99px;transition:width .3s ease}
+    .lesson-count{margin:0 0 12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .lesson-steps{list-style:none;padding-left:0}
+    .lstep{display:flex;gap:10px;align-items:flex-start;opacity:.5;transition:opacity .2s}
+    .lstep.is-active{opacity:1}
+    .lstep.is-done{opacity:.42}
+    .lstep.is-done .lstep-text{text-decoration:line-through;color:var(--muted)}
+    .lstep-tick{flex:none;width:22px;height:22px;margin-top:1px;border-radius:6px;cursor:pointer;
+      border:1.5px solid var(--border-2);background:var(--bg);color:var(--bg);
+      font-size:12px;font-weight:800;line-height:1;display:grid;place-items:center}
+    .lstep.is-active .lstep-tick{border-color:var(--primary)}
+    .lstep.is-done .lstep-tick{background:var(--success);border-color:var(--success);color:#0F1F14}
+    .lstep-text{flex:1}
+    .lesson-finish:disabled{opacity:.45;cursor:not-allowed}
+
+    /* ── the finish moment ── */
+    .celebrate{position:relative;width:min(30rem,94vw);background:var(--surface);
+      border:1px solid var(--border-2);border-radius:var(--r-lg);padding:28px 26px 24px;
+      text-align:center;box-shadow:var(--shadow-lg)}
+    .celebrate-mark{width:54px;height:54px;margin:0 auto 14px;border-radius:50%;display:grid;
+      place-items:center;font-size:26px;color:#0F1F14;background:var(--success)}
+    .celebrate-eyebrow{margin:0 0 6px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+    .celebrate-title{margin:0 0 8px;font-size:26px;line-height:1.15}
+    .celebrate-sub{margin:0 0 16px;color:var(--ink-2);font-size:14px;line-height:1.55}
+    .celebrate-unlocks{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+    .unlock-pill{font-size:12px;font-weight:700;padding:6px 12px;border-radius:99px;
+      background:var(--surface-2);border:1px solid var(--border-2);color:var(--ink-2)}
+    .unlock-pill.new{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+    .celebrate-next{margin:0 0 16px;font-size:13px;color:var(--muted)}
+    .celebrate-actions{display:flex;flex-direction:column;gap:8px}
+    .celebrate-done{font-size:13px}
+
+
     .upnext-mins{margin:10px 0 0;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 
 
@@ -4306,21 +4341,68 @@ const LESSONS = [
 ];
 
 const lessonKey = (id) => `L:${id}`;
+// Which steps inside a lesson are ticked. Kept locally so an interrupted
+// lesson resumes exactly where she left it.
+const getStepState = () => getJSON('strum_lesson_steps_v1', {});
+const stepsDone = (id) => new Set(getStepState()[id] || []);
+function toggleStep(id, i) {
+  const all = getStepState();
+  const set = new Set(all[id] || []);
+  set.has(i) ? set.delete(i) : set.add(i);
+  all[id] = [...set];
+  setJSON('strum_lesson_steps_v1', all);
+  renderLessonPath();
+}
 const getLessonsDone = () => new Set([...getAchieved()].filter(a => a.startsWith('L:')));
 const isLessonDone = (id) => getLessonsDone().has(lessonKey(id));
 const currentLesson = () => LESSONS.find(l => !isLessonDone(l.id)) || LESSONS[LESSONS.length - 1];
 const isLessonOpen = (id) => id === 1 || isLessonDone(id - 1) || isLessonDone(id);
 
 function completeLesson(id) {
+  const l = LESSONS.find(x => x.id === id);
+  const songsBefore = SONGS.filter(sg => sg.chords.every(c => getMastered().has(c))).length;
+
   const earned = getAchieved();
   earned.add(lessonKey(id));
   setAchieved(earned);
-  const l = LESSONS.find(x => x.id === id);
   if (l && l.chord) { const m = getMastered(); m.add(l.chord); setMastered(m); }
   syncToConvex();
-  showToast(`Lesson ${id} done. ${LESSONS.find(x => x.id === id + 1) ? 'Next one is open.' : 'That is the whole course — well played.'}`);
-  renderLessonPath(); renderHome(); renderHeader(); renderChords();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const songsAfter = SONGS.filter(sg => sg.chords.every(c => getMastered().has(c))).length;
+  const newSongs = songsAfter - songsBefore;
+  const next = LESSONS.find(x => x.id === id + 1);
+
+  renderLessonPath(); renderHome(); renderHeader(); renderPath(); renderSongs(); renderAchievements();
+  celebrateLesson(l, newSongs, next);
+}
+
+// The moment that was missing: finishing a lesson should feel like something.
+// Names the new skill, shows what it opened, and points at the next thing.
+function celebrateLesson(l, newSongs, next) {
+  if (typeof confetti === 'function') confetti();
+  const wrap = document.createElement('div');
+  wrap.className = 'vidsheet-wrap';
+  wrap.innerHTML = `<div class="vidsheet-scrim"></div>
+    <div class="celebrate" role="dialog" aria-modal="true">
+      <div class="celebrate-mark">&#10003;</div>
+      <p class="celebrate-eyebrow">Lesson ${l.id} complete</p>
+      <h2 class="celebrate-title">${l.chord ? `You can play ${l.chord}.` : l.title + ' &mdash; done.'}</h2>
+      <p class="celebrate-sub">${l.goal}</p>
+      <div class="celebrate-unlocks">
+        ${l.chord ? `<div class="unlock-pill">${getMastered().size} of ${CHORDS.length} chords</div>` : ''}
+        ${newSongs > 0 ? `<div class="unlock-pill new">+${newSongs} song${newSongs === 1 ? '' : 's'} unlocked</div>` : ''}
+      </div>
+      ${next
+        ? `<p class="celebrate-next">Next up &middot; <b>${next.title}</b> &middot; about ${next.mins} minutes</p>
+           <div class="celebrate-actions">
+             <button class="btn-primary" onclick="this.closest('.vidsheet-wrap').remove(); document.getElementById('lesson-body-${next.id}')?.scrollIntoView({behavior:'smooth',block:'center'});">Keep going</button>
+             <button class="btn-ghost celebrate-done" onclick="this.closest('.vidsheet-wrap').remove()">That's enough for today</button>
+           </div>`
+        : `<p class="celebrate-next">That is the whole course. Fourteen lessons, eight chords, and you can play songs. Well done.</p>
+           <div class="celebrate-actions"><button class="btn-primary" onclick="this.closest('.vidsheet-wrap').remove()">Close</button></div>`}
+    </div>`;
+  wrap.querySelector('.vidsheet-scrim').addEventListener('click', () => wrap.remove());
+  document.body.appendChild(wrap);
 }
 
 function renderLessonPath() {
@@ -4344,16 +4426,32 @@ function renderLessonPath() {
       </div>
       <div class="lesson-body" id="lesson-body-${l.id}" ${isCur ? '' : 'hidden'}>
         <p class="lesson-goal">${l.goal}</p>
+        ${(() => {
+          const ticked = stepsDone(l.id);
+          const activeIdx = l.steps.findIndex((_, i) => !ticked.has(i));
+          return `
+        <div class="lesson-progress"><span style="width:${(ticked.size / l.steps.length) * 100}%"></span></div>
+        <p class="lesson-count">${done ? 'All done' : `Step ${Math.min(ticked.size + 1, l.steps.length)} of ${l.steps.length}`}</p>
         <ol class="lesson-steps">
-          ${l.steps.map(st => `<li class="lstep lstep-${st.t}">
-            <span class="lstep-text">${st.text}</span>
-            ${st.video ? `<button class="lstep-go" onclick="openVideoSheet('${st.video}')">Watch</button>` : ''}
-            ${st.go ? `<button class="lstep-go" onclick="go('${st.go}')">Open</button>` : ''}
-          </li>`).join('')}
+          ${l.steps.map((st, i) => {
+            const isDone = ticked.has(i);
+            const isActive = !done && i === activeIdx;
+            return `<li class="lstep ${isDone ? 'is-done' : ''} ${isActive ? 'is-active' : ''}">
+              <button class="lstep-tick" onclick="toggleStep(${l.id}, ${i})" aria-pressed="${isDone}" aria-label="Mark step ${i + 1}">${isDone ? '&#10003;' : ''}</button>
+              <span class="lstep-text">${st.text}</span>
+              ${st.video ? `<button class="lstep-go" onclick="openVideoSheet('${st.video}')">Watch</button>` : ''}
+              ${st.go ? `<button class="lstep-go" onclick="go('${st.go}')">Open</button>` : ''}
+            </li>`;
+          }).join('')}
         </ol>
         ${done
           ? `<p class="lesson-done-note">Finished. Come back any time.</p>`
-          : `<button class="btn-primary lesson-finish" onclick="completeLesson(${l.id})">I did this &#8594;</button>`}
+          : `<button class="btn-primary lesson-finish" ${ticked.size < l.steps.length ? 'disabled' : ''} onclick="completeLesson(${l.id})">${
+              ticked.size < l.steps.length
+                ? `${l.steps.length - ticked.size} step${l.steps.length - ticked.size === 1 ? '' : 's'} to go`
+                : 'Finish this lesson &#8594;'
+            }</button>`}`;
+        })()}
       </div>
     </div>`;
   }).join('');
