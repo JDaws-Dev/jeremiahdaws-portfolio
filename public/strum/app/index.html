@@ -66,6 +66,43 @@
       --tabbar-h: 64px;
     }
 
+    .upnext-mins{margin:10px 0 0;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+
+    /* ── the lesson path ── */
+    #path-list{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+    .lesson{border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);
+      overflow:hidden;transition:border-color .2s}
+    .lesson.current{border-color:var(--primary);box-shadow:0 0 0 1px var(--primary)}
+    .lesson.done{opacity:.72}
+    .lesson.locked{opacity:.45}
+    .lesson-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer}
+    .lesson.locked .lesson-head{cursor:default}
+    .lesson-num{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;flex:none;
+      font-size:12px;font-weight:800;background:var(--surface-2);color:var(--muted);
+      border:1px solid var(--border-2)}
+    .lesson.current .lesson-num{background:var(--glow);color:#fff;border:0}
+    .lesson.done .lesson-num{background:var(--success);color:#0F1F14;border:0;font-size:15px}
+    .lesson-title{flex:1;font-weight:700;font-size:15px;color:var(--ink)}
+    .lesson-mins{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);flex:none}
+    .lesson-body{padding:0 16px 16px}
+    .lesson-goal{margin:0 0 12px;color:var(--ink-2);font-size:14px;line-height:1.55}
+    .lesson-steps{margin:0 0 14px;padding-left:22px;display:flex;flex-direction:column;gap:12px;
+      list-style:decimal}
+    .lesson-steps li{color:var(--ink-2);font-size:14px;line-height:1.55}
+    .lesson-steps li::marker{color:var(--primary);font-weight:700}
+    /* the row is the LI itself; the text must be free to fill the width */
+    .lstep{display:block}
+    .lstep-text{display:inline}
+    .lstep-go{margin-left:8px;vertical-align:middle}
+    .lstep-go{font:inherit;font-size:11px;font-weight:700;letter-spacing:.08em;
+      text-transform:uppercase;padding:5px 11px;border-radius:99px;cursor:pointer;
+      background:var(--surface-2);border:1px solid var(--border-2);color:var(--ink-2)}
+    .lstep-go:hover{border-color:var(--primary);color:var(--primary)}
+    .lesson-finish{width:100%}
+    .lesson-done-note{margin:0;font-size:13px;color:var(--success)}
+
+
     .vid-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     @media (max-width:700px){.vid-pair{grid-template-columns:1fr}}
 
@@ -3307,6 +3344,11 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12L12 3l9 9"/><path d="M5 10v11h5v-7h4v7h5V10"/></svg>
         Home
       </button>
+      <button class="nav-item" data-nav="path" onclick="go('path')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h6a4 4 0 004-4V9a4 4 0 014-4h2"/><circle cx="4" cy="19" r="2"/><circle cx="20" cy="5" r="2"/></svg>
+        Lessons
+        <span class="nav-badge" id="nav-path-badge">1</span>
+      </button>
       <button class="nav-item" data-nav="tuner" onclick="go('tuner')">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
         Tuner
@@ -3443,6 +3485,15 @@
       </section>
 
       <!-- ═══════════════════════ TUNER ═══════════════════════ -->
+      <section data-view="path">
+        <div class="view-head">
+          <div class="view-eyebrow">The path</div>
+          <h1 class="view-title">Start here, <em>go in order.</em></h1>
+          <p class="view-sub">Fourteen lessons, about fifteen minutes each. Finish one and the next opens. Everything else in the app is a tool these lessons send you to.</p>
+        </div>
+        <div id="path-list"></div>
+      </section>
+
       <section data-view="tuner">
         <div class="view-head">
           <div class="view-eyebrow">Tuner</div>
@@ -4006,6 +4057,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12L12 3l9 9"/><path d="M5 10v11h5v-7h4v7h5V10"/></svg>
           Home
         </button>
+        <button class="tab" data-nav="path" onclick="go('path')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h6a4 4 0 004-4V9a4 4 0 014-4h2"/><circle cx="4" cy="19" r="2"/><circle cx="20" cy="5" r="2"/></svg>
+          Lessons
+        </button>
         <button class="tab" data-nav="tuner" onclick="go('tuner')">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
           Tuner
@@ -4126,6 +4181,188 @@ window.addEventListener('DOMContentLoaded', () => {
   put('practice-strum-video', 'strum');
   put('practice-changes-video', 'changes');
 });
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// THE PATH — an ordered course, not a toolbox.
+// Each lesson is one sitting (10–15 min per the research). Steps run in order;
+// finishing a lesson opens the next. Nothing here is a quiz — the steps are
+// things to DO, and she ticks them off herself.
+// ═══════════════════════════════════════════════════════════════════════════
+const LESSONS = [
+  { id: 1, title: 'Meet the guitar', mins: 10,
+    goal: 'Learn the parts, get it in tune, and make your first sound.',
+    steps: [
+      { t: 'watch', text: 'Watch: every part of the guitar', video: 'parts' },
+      { t: 'do',    text: 'Find the six strings. Thickest is low E, thinnest is high E.', go: 'theory' },
+      { t: 'tool',  text: 'Tune your guitar with the tuner', go: 'tuner' },
+      { t: 'do',    text: 'Strum all six strings slowly, four times. That is the sound of E minor waiting to happen.' },
+    ] },
+  { id: 2, title: 'Your first chord: Em', mins: 12, chord: 'Em',
+    goal: 'Play a real chord and make every string ring clean.',
+    steps: [
+      { t: 'watch', text: 'Watch someone play Em', video: 'Em' },
+      { t: 'do',    text: 'Put finger 2 and finger 3 on the second fret, A and D strings.', chord: 'Em' },
+      { t: 'do',    text: 'Strum once. Any string buzzing? Press a little closer to the fret and try again.' },
+      { t: 'do',    text: 'Strum Em four times, slowly, without looking at your hand.' },
+      { t: 'mark',  text: 'Mark Em as learned', chord: 'Em' },
+    ] },
+  { id: 3, title: 'Keeping time', mins: 12,
+    goal: 'Strum in rhythm — the piano half of your brain already knows this.',
+    steps: [
+      { t: 'watch', text: 'Watch: the basic strumming pattern', video: 'strum' },
+      { t: 'tool',  text: 'Set the metronome to 60 and strum Em on every click', go: 'practice' },
+      { t: 'do',    text: 'Now four down-strums per click-group: 1, 2, 3, 4. Count out loud.' },
+      { t: 'do',    text: 'Speed up to 70 once it feels boring. Boring is the goal.' },
+    ] },
+  { id: 4, title: 'Chord two: Am', mins: 14, chord: 'Am',
+    goal: 'Learn Am — and notice it is the Em shape with one finger added.',
+    steps: [
+      { t: 'watch', text: 'Watch someone play Am', video: 'Am' },
+      { t: 'do',    text: 'Build Am: index on the B string first fret, middle and ring on the second.', chord: 'Am' },
+      { t: 'do',    text: 'Play each string one at a time. Any that thud instead of ring, adjust that finger.' },
+      { t: 'mark',  text: 'Mark Am as learned', chord: 'Am' },
+    ] },
+  { id: 5, title: 'The first change', mins: 15,
+    goal: 'Move between Em and Am in time. This is the real work of guitar.',
+    steps: [
+      { t: 'watch', text: 'Watch: how to change chords faster', video: 'changes' },
+      { t: 'do',    text: 'Air changes: form Em, lift, form Am — above the strings, no pressing. Ten times.' },
+      { t: 'tool',  text: 'One-minute changes: count how many clean Em↔Am switches you get in 60 seconds', go: 'practice' },
+      { t: 'do',    text: 'Write your number down. Tomorrow you beat it — that is the whole game.' },
+    ] },
+  { id: 6, title: 'Your first song', mins: 15,
+    goal: 'Play actual music with two chords.',
+    steps: [
+      { t: 'do',    text: 'Tune up first. Always tune first.', go: 'tuner' },
+      { t: 'tool',  text: 'Open Songs and pick one that only needs the chords you know', go: 'songs' },
+      { t: 'do',    text: 'Play it slowly — four strums per chord — all the way through without stopping.' },
+      { t: 'do',    text: 'Play it again for someone in the house. That is a performance.' },
+    ] },
+  { id: 7, title: 'Chord three: E', mins: 12, chord: 'E',
+    goal: 'A big six-string chord — and it is Am moved over one string set.',
+    steps: [
+      { t: 'watch', text: 'Watch someone play E', video: 'E' },
+      { t: 'do',    text: 'Take your Am shape and slide the whole thing one string toward the thick strings. That is E.', chord: 'E' },
+      { t: 'do',    text: 'Strum all six. This one is supposed to sound huge.' },
+      { t: 'mark',  text: 'Mark E as learned', chord: 'E' },
+    ] },
+  { id: 8, title: 'Chord four: A', mins: 14, chord: 'A',
+    goal: 'Three fingers crowded into one fret — and the A–E pair unlocks a lot of songs.',
+    steps: [
+      { t: 'watch', text: 'Watch someone play A', video: 'A' },
+      { t: 'do',    text: 'Three fingers side by side on the second fret. If they will not fit, use Asus2 today.', chord: 'A' },
+      { t: 'tool',  text: 'One-minute changes: A↔E', go: 'practice' },
+      { t: 'mark',  text: 'Mark A as learned', chord: 'A' },
+    ] },
+  { id: 9, title: 'Chord five: D', mins: 14, chord: 'D',
+    goal: 'The little triangle. D, A and E together are the backbone of a thousand songs.',
+    steps: [
+      { t: 'watch', text: 'Watch someone play D', video: 'D' },
+      { t: 'do',    text: 'Three fingers make a triangle on the thin strings. The two thickest stay silent.', chord: 'D' },
+      { t: 'do',    text: 'Strum only the bottom four strings. Hitting the low E is the classic D mistake.' },
+      { t: 'tool',  text: 'One-minute changes: D↔A', go: 'practice' },
+      { t: 'mark',  text: 'Mark D as learned', chord: 'D' },
+    ] },
+  { id: 10, title: 'Chord six: G', mins: 15, chord: 'G',
+    goal: 'A wide reach across all six strings. Take the easy version if you need it.',
+    steps: [
+      { t: 'watch', text: 'Watch someone play G', video: 'G' },
+      { t: 'do',    text: 'Index on the A string, middle on the lowest, ring on the highest. Big stretch — go slow.', chord: 'G' },
+      { t: 'do',    text: 'Too much of a stretch today? Use Easy G (two outside fingers) and come back to the full shape.' },
+      { t: 'mark',  text: 'Mark G as learned', chord: 'G' },
+    ] },
+  { id: 11, title: 'Chord seven: C', mins: 15, chord: 'C',
+    goal: 'The last of the big five — and the G↔C change that half of pop music runs on.',
+    steps: [
+      { t: 'watch', text: 'Watch someone play C', video: 'C' },
+      { t: 'do',    text: 'A diagonal line: index on B string first fret, middle on D second, ring reaching to A third.', chord: 'C' },
+      { t: 'do',    text: 'Try Cmaj7 (lift the index) if the reach hurts. It sounds lovely and it is a real chord.' },
+      { t: 'tool',  text: 'One-minute changes: G↔C. This one takes weeks — that is normal.', go: 'practice' },
+      { t: 'mark',  text: 'Mark C as learned', chord: 'C' },
+    ] },
+  { id: 12, title: 'Four chords, many songs', mins: 15,
+    goal: 'G, C, D and Em together play more songs than any other four shapes.',
+    steps: [
+      { t: 'do',    text: 'Play G · C · D · Em, four strums each, around and around.' },
+      { t: 'tool',  text: 'Find a song in Songs that uses all four and play it start to finish', go: 'songs' },
+      { t: 'do',    text: 'Record it on your phone. Listen back once. Notice one thing you would fix.' },
+    ] },
+  { id: 13, title: 'Chord eight: Dm', mins: 12, chord: 'Dm',
+    goal: 'The eighth essential chord — it opens minor keys and most hymns.',
+    steps: [
+      { t: 'do',    text: 'Dm is D with the high finger moved back one fret. Small change, very different mood.', chord: 'Dm' },
+      { t: 'do',    text: 'Play Am · Dm · Em slowly. Hear how sad that is? That is a minor key.' },
+      { t: 'mark',  text: 'Mark Dm as learned', chord: 'Dm' },
+    ] },
+  { id: 14, title: 'Play for someone', mins: 20,
+    goal: 'Pick one song, get it clean, and perform it. This is what all of it was for.',
+    steps: [
+      { t: 'do',    text: 'Choose the song you like best out of everything you can play.' },
+      { t: 'do',    text: 'Play it three times in a row without stopping — mistakes included, no restarting.' },
+      { t: 'do',    text: 'Record a take and keep it. In six months this recording will be hilarious.' },
+      { t: 'do',    text: 'Play it for Dad, or Daisy, or whoever is nearby.' },
+    ] },
+];
+
+const lessonKey = (id) => `L:${id}`;
+const getLessonsDone = () => new Set([...getAchieved()].filter(a => a.startsWith('L:')));
+const isLessonDone = (id) => getLessonsDone().has(lessonKey(id));
+const currentLesson = () => LESSONS.find(l => !isLessonDone(l.id)) || LESSONS[LESSONS.length - 1];
+const isLessonOpen = (id) => id === 1 || isLessonDone(id - 1) || isLessonDone(id);
+
+function completeLesson(id) {
+  const earned = getAchieved();
+  earned.add(lessonKey(id));
+  setAchieved(earned);
+  const l = LESSONS.find(x => x.id === id);
+  if (l && l.chord) { const m = getMastered(); m.add(l.chord); setMastered(m); }
+  syncToConvex();
+  showToast(`Lesson ${id} done. ${LESSONS.find(x => x.id === id + 1) ? 'Next one is open.' : 'That is the whole course — well played.'}`);
+  renderLessonPath(); renderHome(); renderHeader(); renderChords();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderLessonPath() {
+  const badge = document.getElementById('nav-path-badge');
+  if (badge) {
+    const doneCount = getLessonsDone().size;
+    badge.textContent = doneCount >= LESSONS.length ? '\u2713' : String(currentLesson().id);
+  }
+  const wrap = document.getElementById('path-list');
+  if (!wrap) return;
+  const cur = currentLesson();
+  wrap.innerHTML = LESSONS.map(l => {
+    const done = isLessonDone(l.id);
+    const open = isLessonOpen(l.id);
+    const isCur = !done && l.id === cur.id;
+    return `<div class="lesson ${done ? 'done' : ''} ${open ? '' : 'locked'} ${isCur ? 'current' : ''}">
+      <div class="lesson-head" ${open ? `onclick="toggleLesson(${l.id})"` : ''}>
+        <span class="lesson-num">${done ? '&#10003;' : String(l.id).padStart(2, '0')}</span>
+        <span class="lesson-title">${l.title}</span>
+        <span class="lesson-mins">${open ? `${l.mins} min` : 'locked'}</span>
+      </div>
+      <div class="lesson-body" id="lesson-body-${l.id}" ${isCur ? '' : 'hidden'}>
+        <p class="lesson-goal">${l.goal}</p>
+        <ol class="lesson-steps">
+          ${l.steps.map(st => `<li class="lstep lstep-${st.t}">
+            <span class="lstep-text">${st.text}</span>
+            ${st.video ? `<button class="lstep-go" onclick="openVideoSheet('${st.video}')">Watch</button>` : ''}
+            ${st.go ? `<button class="lstep-go" onclick="go('${st.go}')">Open</button>` : ''}
+          </li>`).join('')}
+        </ol>
+        ${done
+          ? `<p class="lesson-done-note">Finished. Come back any time.</p>`
+          : `<button class="btn-primary lesson-finish" onclick="completeLesson(${l.id})">I did this &#8594;</button>`}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleLesson(id) {
+  const b = document.getElementById(`lesson-body-${id}`);
+  if (b) b.hidden = !b.hidden;
+}
 
 // USER + CONVEX SYNC
 // localStorage is the working cache; Convex is the source of truth so progress
@@ -4419,7 +4656,7 @@ const TIPS = [
 // ═══════════════════════════════════════════════════════════════════════════
 // ROUTER
 // ═══════════════════════════════════════════════════════════════════════════
-const ROUTES = ['home', 'tuner', 'chords', 'theory', 'practice', 'songs'];
+const ROUTES = ['home', 'path', 'tuner', 'chords', 'theory', 'practice', 'songs'];
 
 function getRoute() {
   const h = (location.hash || '').replace(/^#\/?/, '');
@@ -4437,6 +4674,7 @@ function go(route) {
 
 function renderRoute() {
   let route = getRoute();
+  if (route === 'path') renderLessonPath();
   document.querySelectorAll('[data-view]').forEach(el => {
     el.classList.toggle('active', el.dataset.view === route);
   });
@@ -4727,9 +4965,35 @@ function renderHome() {
     </div>`;
 
   // ─── Up Next card ───
-  const next = nextChordTo(mastered);
+  // The lesson path is the spine now: the home card points at the next LESSON,
+  // so "where do I start?" always has one answer.
   const upnextEl = document.getElementById('upnext');
-  if (next) {
+  const lesson = currentLesson();
+  const lessonsLeft = !isLessonDone(lesson.id);
+  if (lessonsLeft) {
+    const chord = lesson.chord ? CHORDS.find(c => c.name === lesson.chord) : null;
+    upnextEl.innerHTML = `
+      <div class="upnext-eyebrow">Up next · lesson ${lesson.id} of ${LESSONS.length}</div>
+      <div class="upnext-body">
+        ${chord ? `<div class="upnext-diagram">${chordSVG(chord)}</div>` : ''}
+        <div class="upnext-meta">
+          <h2 class="upnext-title">${lesson.title}</h2>
+          <p class="upnext-desc">${lesson.goal}</p>
+          <div class="upnext-actions">
+            <button class="btn btn-primary" onclick="go('path')">
+              Start lesson ${lesson.id}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+            ${chord ? `<button class="btn btn-ghost" onclick="playChord('${chord.name}','down')">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Hear ${chord.name}
+            </button>` : ''}
+          </div>
+          <p class="upnext-mins">About ${lesson.mins} minutes</p>
+        </div>
+      </div>`;
+  } else if (false) {
+    const next = nextChordTo(mastered);
     upnextEl.innerHTML = `
       <div class="upnext-eyebrow">Up next · your next chord</div>
       <div class="upnext-body">
@@ -6787,6 +7051,7 @@ function populateChordSelects() {
 function render() {
   renderHome();
   renderPath();
+  renderLessonPath();
   renderSongs();
   populateChordSelects();
   renderAchievements();
