@@ -3336,7 +3336,7 @@
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 4 4 5 4 9a4 4 0 11-8 0c0-2 1-3 2-4 0 2 2 2 2-1 0-2 0-3 0-4zM8 14a4 4 0 008 0c0 4-2 6-4 8-2-2-4-4-4-8z"/></svg>
         <div>
           <div class="streak-num" id="side-streak">0</div>
-          <div class="streak-label">day streak</div>
+          <div class="streak-label">days played</div>
         </div>
       </div>
       <button class="log-btn" id="practiced-btn" onclick="markPracticed()">
@@ -3360,10 +3360,10 @@
         <span class="brand-word">Strum</span>
       </a>
       <div class="topbar-actions">
-        <div class="topbar-pill" title="Practice streak">
+        <div class="topbar-pill" title="Days played">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 4 4 5 4 9a4 4 0 11-8 0c0-2 1-3 2-4 0 2 2 2 2-1 0-2 0-3 0-4zM8 14a4 4 0 008 0c0 4-2 6-4 8-2-2-4-4-4-8z"/></svg>
           <span class="num" id="top-streak">0</span>
-          <span class="label">&nbsp;day streak</span>
+          <span class="label">&nbsp;days played</span>
         </div>
         <button class="topbar-btn" id="practiced-btn-mobile" onclick="markPracticed()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -4481,19 +4481,27 @@ function toggleMastered(name) {
 // ═══════════════════════════════════════════════════════════════════════════
 const getStreakData = () => getJSON('strum_streak_v1', { streak: 0, lastDate: null });
 
+// Days played — a record, not a hostage. A consecutive-day streak punishes the
+// ordinary life of a 13-year-old (school, illness, travel) and the research is
+// clear that when it finally breaks the guilt takes the habit with it. This
+// counts every day she picks the guitar up and never resets.
 function markPracticed() {
   const today = todayStr();
   const data  = getStreakData();
   if (data.lastDate === today) return;
-  const y = new Date(); y.setDate(y.getDate() - 1);
-  const newStreak = data.lastDate === ymd(y) ? (data.streak || 0) + 1 : 1;
+  const newStreak = (data.streak || 0) + 1;
   setJSON('strum_streak_v1', { streak: newStreak, lastDate: today });
   syncToConvex();
   addHistory(today);
   renderHeader();
   renderHome();
   renderCalendar();
-  showToast(`Logged. ${newStreak} day${newStreak !== 1 ? 's' : ''} in a row.`);
+  const lines = [
+    'Logged. That is the whole job today.',
+    `Logged — ${newStreak} day${newStreak !== 1 ? 's' : ''} of playing so far.`,
+    'Logged. Your hands remember more than you think.',
+  ];
+  showToast(lines[newStreak % lines.length]);
   checkAchievements();
 }
 
@@ -4685,9 +4693,11 @@ function renderHome() {
   const pct = total > 0 ? (count / total) * 100 : 0;
 
   // ─── Greeting ───
-  const eyebrow = streak === 0
-    ? (count === 0 ? 'Day one!' : 'Welcome back!')
-    : `${streak} day${streak !== 1 ? 's' : ''} in a row!`;
+  const eyebrow = count === 0
+    ? 'Day one!'
+    : streak === 0
+    ? 'Pick it up when you want.'
+    : `${count} chord${count !== 1 ? 's' : ''} down · ${streak} day${streak !== 1 ? 's' : ''} played`;
   document.getElementById('greet-eyebrow').textContent = eyebrow;
   document.getElementById('greet-name').textContent = `Hi, ${userName}!`;
 
@@ -4699,7 +4709,7 @@ function renderHome() {
     </div>
     <div class="ministat">
       <div class="ministat-num">${streak}</div>
-      <div class="ministat-label">day streak</div>
+      <div class="ministat-label">days played</div>
     </div>
     <div class="ministat">
       <div class="ministat-num">${songsReady.length}</div>
@@ -5302,17 +5312,16 @@ function autoCorrelate(buf, sampleRate) {
 // ACHIEVEMENTS
 // ═══════════════════════════════════════════════════════════════════════════
 const ACHIEVEMENTS = [
-  { id: 'first_chord',  icon: 'seed',    title: 'First chord',      desc: 'Mastered one chord' },
-  { id: 'first_song',   icon: 'music',   title: 'First song',       desc: 'Unlocked a song' },
-  { id: 'level_2',      icon: 'star',    title: 'Level 2',          desc: 'Reached Level 2' },
-  { id: 'level_3',      icon: 'zap',     title: 'Level 3',          desc: 'Reached Level 3' },
-  { id: 'level_4',      icon: 'diamond', title: 'Level 4',          desc: 'Reached Level 4' },
-  { id: 'streak_3',     icon: 'flame',   title: 'Three day streak', desc: '3 days in a row' },
-  { id: 'streak_7',     icon: 'rocket',  title: 'One week strong',  desc: '7 days in a row' },
-  { id: 'streak_14',    icon: 'star',    title: 'Two weeks',        desc: '14 days in a row' },
-  { id: 'all_chords',   icon: 'trophy',  title: 'All seven',        desc: 'Every chord mastered' },
-  { id: 'used_tuner',   icon: 'target',  title: 'In tune',          desc: 'Used the tuner' },
-  { id: 'trainer_done', icon: 'repeat',  title: 'Smooth switcher',  desc: 'Completed a drill' }
+  // Milestones describe a SKILL she now has — not attendance. Day-count badges
+  // were removed on purpose: rewarding showing-up competes with the music.
+  { id: 'first_chord',  icon: 'seed',    title: 'First chord',       desc: 'You can shape a chord' },
+  { id: 'first_song',   icon: 'music',   title: 'First song',        desc: 'You know enough chords to play a real song' },
+  { id: 'level_2',      icon: 'star',    title: 'Shape transfer',    desc: 'You moved a shape you knew onto new strings' },
+  { id: 'level_3',      icon: 'zap',     title: 'Open strings',      desc: 'You can play chords that skip strings cleanly' },
+  { id: 'level_4',      icon: 'diamond', title: 'Full strums',       desc: 'You can play the G-C-D family' },
+  { id: 'all_chords',   icon: 'trophy',  title: 'Every open chord',  desc: 'All eight essential chords' },
+  { id: 'used_tuner',   icon: 'target',  title: 'You tune by ear',   desc: 'Tuned the guitar yourself' },
+  { id: 'trainer_done', icon: 'repeat',  title: 'Smooth switcher',   desc: 'Changed between chords in time' }
 ];
 
 function bumpAchievement(id) {
@@ -5326,13 +5335,11 @@ function bumpAchievement(id) {
 
 function checkAchievements() {
   const m = getMastered();
-  const streak = getStreakData().streak || 0;
   const songsAvail = SONGS.some(s => s.chords.every(c => m.has(c)));
   const unlocked = maxUnlockedStage(m);
   const checks = [
     ['first_chord', m.size >= 1], ['first_song', songsAvail],
     ['level_2', unlocked >= 2], ['level_3', unlocked >= 3], ['level_4', unlocked >= 4],
-    ['streak_3', streak >= 3], ['streak_7', streak >= 7], ['streak_14', streak >= 14],
     ['all_chords', m.size === CHORDS.length],
   ];
   for (const [id, ok] of checks) if (ok) bumpAchievement(id);
