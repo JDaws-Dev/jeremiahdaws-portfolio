@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#FFF8EA">
+  <meta name="theme-color" content="#14101B">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Strum">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Strum</title>
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0A0F'/%3E%3Cpath d='M22 14h20c0 3-2 5-5 5h-3v6l8 10c2 3 2 7 0 10l-3 4c-4 5-11 5-15 0l-3-4c-2-3-2-7 0-10l8-10v-6h-3c-3 0-5-2-5-5z' fill='%23E8C46A'/%3E%3C/svg%3E">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%230A0A0F'/%3E%3Cpath d='M62 39h56c0 9-6 14-14 14h-8v17l22 28c6 8 6 19 0 27l-8 11c-11 14-30 14-41 0l-8-11c-6-8-6-19 0-27l22-28V53h-8c-8 0-13-5-13-14z' fill='%23E8C46A'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0A0F'/%3E%3Cpath d='M22 14h20c0 3-2 5-5 5h-3v6l8 10c2 3 2 7 0 10l-3 4c-4 5-11 5-15 0l-3-4c-2-3-2-7 0-10l8-10v-6h-3c-3 0-5-2-5-5z' fill='%23FFB347'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%230A0A0F'/%3E%3Cpath d='M62 39h56c0 9-6 14-14 14h-8v17l22 28c6 8 6 19 0 27l-8 11c-11 14-30 14-41 0l-8-11c-6-8-6-19 0-27l22-28V53h-8c-8 0-13-5-13-14z' fill='%23FFB347'/%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,38 +19,41 @@
 
   <style>
     :root {
-      /* Surfaces — sunnier, warmer base */
-      --bg:           #FFF8EA;
-      --bg-2:         #FCEFCC;
-      --surface:      #FFFFFF;
-      --surface-2:    #FFFCEC;
-      --ink:          #1A1929;
-      --ink-2:        #2E2D40;
-      --muted:        #7C7282;
-      --subtle:       #B8AFA2;
-      --border:       #F0E1BE;
-      --border-2:     #E5D29A;
-      --divider:      #F6EAC8;
+      /* Amp glow — a warm dark stage instead of the old cream. Built for a
+         13-year-old's phone at night, with sunset accents that carry the
+         "turn it up" feeling the cream palette never had. */
+      --bg:           #14101B;
+      --bg-2:         #1C1626;
+      --surface:      #1E1828;
+      --surface-2:    #262034;
+      --ink:          #F7F3FF;
+      --ink-2:        #DCD5EA;
+      --muted:        #9C93B0;
+      --subtle:       #6F6683;
+      --border:       #322A44;
+      --border-2:     #453A5C;
+      --divider:      #2A2338;
 
-      /* Brand — happy palette */
-      --primary:      #6366F1;
-      --primary-soft: #EEF0FE;
-      --accent:       #FCC93C;     /* sunshine yellow */
-      --accent-soft:  #FEF4C7;
-      --accent-deep:  #E0A100;
-      --coral:        #FF7A6E;     /* warm coral for joyful surfaces */
-      --coral-soft:   #FFE8E4;
-      --success:      #16A34A;     /* fresh mint-green */
-      --success-soft: #DCFCE7;
-      --sky:          #38BDF8;
-      --sky-soft:     #E0F2FE;
-      --warning:      #F59E0B;
-      --danger:       #E11D48;
+      /* Brand — sunset on a stage */
+      --primary:      #FF4F81;     /* hot magenta — the "play" colour */
+      --primary-soft: #3A1B2A;
+      --accent:       #FFB347;     /* amp-light amber */
+      --accent-soft:  #3A2C18;
+      --accent-deep:  #FF8C42;
+      --coral:        #FF7A6E;
+      --coral-soft:   #3A211F;
+      --success:      #4ADE80;
+      --success-soft: #14301F;
+      --sky:          #56CCF2;
+      --sky-soft:     #12303A;
+      --warning:      #FFB347;
+      --danger:       #FF5470;
+      --glow:         linear-gradient(120deg,#FF4F81,#FF8C42);
 
-      --shadow-xs: 0 1px 2px rgba(10,10,15,.04);
-      --shadow-sm: 0 1px 2px rgba(10,10,15,.04), 0 2px 6px rgba(10,10,15,.04);
-      --shadow-md: 0 2px 4px rgba(10,10,15,.04), 0 8px 24px rgba(10,10,15,.06);
-      --shadow-lg: 0 4px 12px rgba(10,10,15,.06), 0 24px 48px rgba(10,10,15,.10);
+      --shadow-xs: 0 1px 2px rgba(0,0,0,.3);
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.3), 0 2px 6px rgba(0,0,0,.25);
+      --shadow-md: 0 2px 4px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+      --shadow-lg: 0 4px 12px rgba(0,0,0,.35), 0 24px 48px rgba(0,0,0,.45);
 
       --r-xs: 6px;  --r-sm: 10px;  --r-md: 14px;  --r-lg: 20px;
 
@@ -58,6 +61,39 @@
       --topbar-h: 56px;
       --tabbar-h: 64px;
     }
+
+    .vid-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:700px){.vid-pair{grid-template-columns:1fr}}
+
+
+    .chord-watch{display:block;width:100%;margin-top:8px;padding:8px 10px;border-radius:var(--r-sm);
+      border:1px solid var(--border-2);background:var(--surface);color:var(--ink-2);
+      font-size:12px;font-weight:600;cursor:pointer;font-family:inherit}
+    .chord-watch:hover{border-color:var(--primary);color:var(--primary)}
+    .vidsheet-wrap{position:fixed;inset:0;z-index:400;display:grid;place-items:center;padding:16px}
+    .vidsheet-scrim{position:absolute;inset:0;background:rgba(8,6,12,.72);backdrop-filter:blur(4px)}
+    .vidsheet{position:relative;width:min(46rem,96vw);background:var(--surface);
+      border:1px solid var(--border-2);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-lg)}
+    .vidsheet-close{position:absolute;top:8px;right:10px;z-index:2;width:34px;height:34px;border-radius:50%;
+      border:1px solid var(--border-2);background:rgba(20,16,27,.8);color:var(--ink);font-size:20px;cursor:pointer}
+
+
+    /* ── watch-it video cards ── */
+    .vidcard{margin:14px 0;border:1px solid var(--border);border-radius:var(--r-md);
+      overflow:hidden;background:var(--surface-2)}
+    .vid-play{display:block;position:relative;width:100%;padding:0;border:0;background:#000;cursor:pointer}
+    .vid-play img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;opacity:.82;transition:opacity .2s}
+    .vid-play:hover img{opacity:1}
+    .vid-btn{position:absolute;inset:0;margin:auto;width:56px;height:56px;border-radius:50%;
+      display:grid;place-items:center;font-size:20px;color:#fff;background:var(--glow);
+      box-shadow:0 6px 22px rgba(255,79,129,.45)}
+    .vid-frame{position:relative;padding-top:56.25%;background:#000}
+    .vid-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .vid-meta{padding:9px 12px;font-size:13px;color:var(--ink-2)}
+    .vid-meta b{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);
+      margin-right:6px}
+    .vid-meta span{color:var(--muted)}
+
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { -webkit-text-size-adjust: 100%; }
@@ -508,7 +544,7 @@
 
     /* Up Next card */
     .upnext {
-      background: linear-gradient(135deg, #FFFFFF 0%, var(--accent-soft) 100%);
+      background: linear-gradient(135deg, var(--surface) 0%, var(--accent-soft) 100%);
       border: 1px solid var(--accent);
       border-radius: var(--r-lg);
       padding: 28px 32px 28px 36px;
@@ -630,7 +666,7 @@
       border-color: var(--success);
     }
     .journey-cell.active {
-      background: linear-gradient(135deg, #FFFFFF 0%, var(--accent-soft) 100%);
+      background: linear-gradient(135deg, var(--surface) 0%, var(--accent-soft) 100%);
       border-color: var(--accent);
       border-width: 2px;
       padding: 13px 11px;
@@ -860,7 +896,7 @@
       border-color: var(--border-2);
     }
     .chord-card.mastered {
-      background: linear-gradient(135deg, var(--success-soft) 0%, #FFFFFF 70%);
+      background: linear-gradient(135deg, var(--success-soft) 0%, var(--surface) 70%);
       border-color: var(--success);
     }
     .chord-card.locked {
@@ -1646,7 +1682,7 @@
     }
     .ach-card.earned {
       border-color: var(--accent);
-      background: linear-gradient(135deg, #FFFFFF 0%, var(--accent-soft) 100%);
+      background: linear-gradient(135deg, var(--surface) 0%, var(--accent-soft) 100%);
     }
     .ach-card.locked { opacity: 0.4; }
     .ach-icon {
@@ -1769,7 +1805,7 @@
     .onboarding {
       position: fixed;
       inset: 0;
-      background: linear-gradient(180deg, #FFF8EA 0%, #FCEFCC 100%);
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       z-index: 200;
       display: none;
       align-items: center;
@@ -2667,7 +2703,7 @@
       border-radius: 99px;
       background: var(--success);
     }
-    .key-chord.magic .key-chord-mark { background: #FFFFFF; }
+    .key-chord.magic .key-chord-mark { background: var(--ink); }
     @media (max-width: 560px) {
       .key-chords { grid-template-columns: repeat(7, 1fr); gap: 3px; padding: 10px; }
       .key-chord { padding: 10px 2px 8px; }
@@ -2755,11 +2791,11 @@
       color: white;
       border-color: var(--ink);
     }
-    .guitar-anatomy-svg .gp { fill: #FBFAF6; stroke: #D9D4C8; stroke-width: 1; transition: fill .2s; }
-    .guitar-anatomy-svg .gp.active { fill: #B8862B; }
-    .guitar-anatomy-svg .gp-string { stroke: #A8A6A0; stroke-width: 0.5; }
-    .guitar-anatomy-svg .gp-fret { stroke: #D9D4C8; stroke-width: 0.6; }
-    .guitar-anatomy-svg .gp-peg { fill: #D9D4C8; stroke: #A8A6A0; stroke-width: 0.5; }
+    .guitar-anatomy-svg .gp { fill: #2A2338; stroke: #5A5070; stroke-width: 1; transition: fill .2s; }
+    .guitar-anatomy-svg .gp.active { fill: #FF4F81; }
+    .guitar-anatomy-svg .gp-string { stroke: #6F6683; stroke-width: 0.5; }
+    .guitar-anatomy-svg .gp-fret { stroke: #5A5070; stroke-width: 0.6; }
+    .guitar-anatomy-svg .gp-peg { fill: #5A5070; stroke: #6F6683; stroke-width: 0.5; }
 
     /* Music notes (Daisy 03) */
     .notes-row {
@@ -3408,6 +3444,7 @@
           <div class="view-eyebrow">Tuner</div>
           <h1 class="view-title">Get in <em>tune.</em></h1>
           <p class="view-sub">Pluck one string at a time. The needle shows you sharp or flat. Tap a string below for a reference pitch.</p>
+          <div id="tuner-video"></div>
         </div>
 
         <div class="tuner-page">
@@ -3468,6 +3505,7 @@
               <div class="module-num serif">01</div>
               <div>
                 <h2 class="module-title serif">Meet your guitar</h2>
+                <div id="theory-parts-video"></div>
                 <p class="module-sub">Before you can play it, it helps to know what everything is called. Tap any part below to learn about it.</p>
               </div>
             </div>
@@ -3531,6 +3569,7 @@
               <div class="module-num serif">05</div>
               <div>
                 <h2 class="module-title serif">What's a fret?</h2>
+                <div id="theory-fret-video"></div>
                 <p class="module-sub">Frets are the little metal bars on the long part of the guitar. When you press a string against one and pluck, the note goes <em>higher</em>. The closer to your body, the higher the sound.</p>
               </div>
             </div>
@@ -3800,6 +3839,10 @@
           <div class="view-eyebrow">Practice tools</div>
           <h1 class="view-title">Drill, <em>strum, repeat.</em></h1>
           <p class="view-sub">Metronome, strum patterns, and chord-change drills. The work that makes songs feel easy.</p>
+          <div class="vid-pair">
+            <div id="practice-strum-video"></div>
+            <div id="practice-changes-video"></div>
+          </div>
         </div>
 
         <div class="tool-grid">
@@ -4008,6 +4051,78 @@ const ICONS = {
 };
 
 // ═══════════════════════════════════════════════════════════════════════════
+
+// ─── Watch-it videos: real lessons, lazy-loaded so nothing slows the app ───
+const VIDEOS = {
+  tune:    { id: '5jTsSvkBv60', label: 'How to tune your guitar', by: 'Marty Music' },
+  Em:      { id: 'lqcd3jVysXY', label: 'Play the Em chord', by: 'JustinGuitar' },
+  Am:      { id: '1Y2veGF9s44', label: 'Play the Am chord', by: 'JustinGuitar' },
+  D:       { id: 'QkrIZBLZEXw', label: 'Play the D chord', by: 'JustinGuitar' },
+  G:       { id: 'OIqTrnT5OAY', label: 'Play the G chord', by: 'School of Guitar' },
+  C:       { id: 'f18EV2dr008', label: 'Play the C chord', by: 'JustinGuitar' },
+  E:       { id: '9NSoRXC9PJI', label: 'Play the E chord', by: 'JustinGuitar' },
+  A:       { id: '1X2rW5ATdLQ', label: 'Play the A chord', by: 'JustinGuitar' },
+  strum:   { id: 'v3EWWZnCg2c', label: 'Down, down-up, up-down-up', by: 'Bromley Music Academy' },
+  changes: { id: 'OZh562SYyCo', label: 'Change chords faster', by: 'Andy Guitar' },
+  parts:   { id: '1ANma3HMfSU', label: 'Every part of the guitar', by: 'Guitar Center' },
+  fret:    { id: 'tSVChbfH_Ek', label: "What's a fret?", by: 'Sean Beavers' },
+};
+
+// Renders a poster-first video card. The iframe only mounts on tap, so the
+// page never loads twelve YouTube players at once.
+function videoCard(key) {
+  const v = VIDEOS[key];
+  if (!v) return '';
+  return `<div class="vidcard" data-vid="${v.id}">
+    <button class="vid-play" type="button" aria-label="Play ${v.label}">
+      <img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="" loading="lazy">
+      <span class="vid-btn" aria-hidden="true">&#9654;</span>
+    </button>
+    <div class="vid-meta"><b>Watch it</b> ${v.label} <span>&middot; ${v.by}</span></div>
+  </div>`;
+}
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.vid-play');
+  if (!btn) return;
+  const card = btn.closest('.vidcard');
+  const id = card?.dataset.vid;
+  if (!id) return;
+  card.innerHTML = `<div class="vid-frame"><iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0&autoplay=1" title="Lesson video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>` + card.innerHTML.replace(/<button[\s\S]*?<\/button>/, '');
+});
+
+
+// ─── Video sheet: opens a lesson over the app, closes on tap-away ───
+function openVideoSheet(key) {
+  const v = VIDEOS[key];
+  if (!v) return;
+  const wrap = document.createElement('div');
+  wrap.className = 'vidsheet-wrap';
+  wrap.innerHTML = `<div class="vidsheet-scrim"></div>
+    <div class="vidsheet" role="dialog" aria-modal="true" aria-label="${v.label}">
+      <button class="vidsheet-close" type="button" aria-label="Close">&times;</button>
+      <div class="vid-frame"><iframe src="https://www.youtube-nocookie.com/embed/${v.id}?rel=0&autoplay=1"
+        title="${v.label}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe></div>
+      <div class="vid-meta"><b>Watch it</b> ${v.label} <span>&middot; ${v.by}</span></div>
+    </div>`;
+  const close = () => wrap.remove();
+  wrap.querySelector('.vidsheet-scrim').addEventListener('click', close);
+  wrap.querySelector('.vidsheet-close').addEventListener('click', close);
+  document.body.appendChild(wrap);
+}
+
+
+// Drop the lesson videos into their slots once the page exists.
+window.addEventListener('DOMContentLoaded', () => {
+  const put = (id, key) => { const el = document.getElementById(id); if (el) el.innerHTML = videoCard(key); };
+  put('tuner-video', 'tune');
+  put('theory-parts-video', 'parts');
+  put('theory-fret-video', 'fret');
+  put('practice-strum-video', 'strum');
+  put('practice-changes-video', 'changes');
+});
+
 // USER + CONVEX SYNC
 // localStorage is the working cache; Convex is the source of truth so progress
 // follows the same name across devices. The app renders instantly from local
@@ -4491,22 +4606,22 @@ function chordSVG(chord) {
   let v = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">`;
   for (let i = 0; i <= FRETS; i++) {
     const sw = i === 0 ? 2.5 : 0.8;
-    const color = i === 0 ? '#0A0A0F' : '#D9D4C8';
+    const color = i === 0 ? '#F7F3FF' : '#5A5070';
     v += `<line x1="${SX[0]}" y1="${fY(i)}" x2="${SX[5]}" y2="${fY(i)}" stroke="${color}" stroke-width="${sw}" stroke-linecap="round"/>`;
   }
   for (let i = 0; i < 6; i++) {
-    v += `<line x1="${SX[i]}" y1="${NUT_Y}" x2="${SX[i]}" y2="${fY(FRETS)}" stroke="#D9D4C8" stroke-width="0.8"/>`;
+    v += `<line x1="${SX[i]}" y1="${NUT_Y}" x2="${SX[i]}" y2="${fY(FRETS)}" stroke="#5A5070" stroke-width="0.8"/>`;
   }
   for (let i = 0; i < 6; i++) {
     if (chord.muted.includes(i)) {
       v += `<g transform="translate(${SX[i]}, 14)"><line x1="-3" y1="-3" x2="3" y2="3" stroke="#B91C1C" stroke-width="1.4" stroke-linecap="round"/><line x1="-3" y1="3" x2="3" y2="-3" stroke="#B91C1C" stroke-width="1.4" stroke-linecap="round"/></g>`;
     } else if (chord.open.includes(i)) {
-      v += `<circle cx="${SX[i]}" cy="14" r="3.4" fill="none" stroke="#0A0A0F" stroke-width="1.2"/>`;
+      v += `<circle cx="${SX[i]}" cy="14" r="3.4" fill="none" stroke="#DCD5EA" stroke-width="1.2"/>`;
     }
   }
   for (const {s, f, n} of chord.fingers) {
     const cx = SX[s], cy = dotY(f);
-    v += `<circle cx="${cx}" cy="${cy}" r="7" fill="#0A0A0F"/>`;
+    v += `<circle cx="${cx}" cy="${cy}" r="7" fill="#FF4F81"/>`;
     if (n) v += `<text x="${cx}" y="${cy + 3.2}" text-anchor="middle" font-size="8" font-weight="700" font-family="Inter, sans-serif" fill="white">${n}</text>`;
   }
   return v + '</svg>';
@@ -4704,10 +4819,11 @@ function renderPath() {
           <div class="chord-diagram">${chordSVG(chord)}</div>
           <div class="chord-tip">${chord.tip}</div>
           <div class="chord-piano">${chord.piano}</div>
+          ${VIDEOS[chord.name] ? `<button class="chord-watch" type="button" onclick="event.stopPropagation(); openVideoSheet('${chord.name}')">▶ Watch someone play ${chord.name}</button>` : ''}
           <div class="chord-actions">
             <div class="chord-toggle">
               ${isMastered
-                ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" fill="currentColor" stroke="none"/><polyline points="8 12 11 15 16 9" stroke="#FAF8F3"/></svg>Mastered'
+                ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" fill="currentColor" stroke="none"/><polyline points="8 12 11 15 16 9" stroke="#14101B"/></svg>Mastered'
                 : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/></svg>Tap card to mark'}
             </div>
             <button class="play-btn" aria-label="Hear ${chord.name}"
@@ -5231,7 +5347,7 @@ function confetti() {
   const wrap = document.createElement('div');
   wrap.className = 'confetti';
   document.body.appendChild(wrap);
-  const colors = ['#0A0A0F', '#4F46E5', '#B8862B', '#047857', '#E8C46A'];
+  const colors = ['#FF4F81', '#FFB347', '#4ADE80', '#56CCF2', '#FF8C42'];
   for (let i = 0; i < 80; i++) {
     const s = document.createElement('span');
     s.style.left = Math.random() * 100 + '%';
@@ -5344,8 +5460,8 @@ function renderPianoKeyboard(elId, litNotes = []) {
   PIANO_WHITE.forEach((note, i) => {
     const lit = litNotes.includes(note);
     svg += `<rect x="${i * wW + 0.5}" y="0.5" width="${wW - 1}" height="${wH - 1}"
-              fill="${lit ? '#B8862B' : '#FFFFFF'}"
-              stroke="#D9D4C8" stroke-width="1"
+              fill="${lit ? '#FFB347' : '#1E1828'}"
+              stroke="#5A5070" stroke-width="1"
               class="piano-key-svg" data-note="${note}" rx="3"
               style="cursor:pointer"/>`;
     svg += `<text x="${i * wW + wW/2}" y="${wH - 14}" text-anchor="middle"
@@ -5359,7 +5475,7 @@ function renderPianoKeyboard(elId, litNotes = []) {
     const x = (i + 1) * wW - bW / 2;
     const lit = litNotes.includes(black);
     svg += `<rect x="${x}" y="0" width="${bW}" height="${bH}"
-              fill="${lit ? '#B8862B' : '#0A0A0F'}"
+              fill="${lit ? '#FFB347' : '#3A3350'}"
               class="piano-key-svg" data-note="${black}" rx="2"
               style="cursor:pointer"/>`;
     svg += `<text x="${x + bW/2}" y="${bH - 9}" text-anchor="middle"
@@ -5388,7 +5504,7 @@ function renderFretboard(elId, highlights = [], maxFret = 12) {
   let svg = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="fretboard-svg">`;
 
   // Background wood-tone-ish strip
-  svg += `<rect x="${padLeft}" y="${padTop - 2}" width="${maxFret * fretSpacing}" height="${5 * stringSpacing + 4}" fill="#FBFAF6"/>`;
+  svg += `<rect x="${padLeft}" y="${padTop - 2}" width="${maxFret * fretSpacing}" height="${5 * stringSpacing + 4}" fill="#241E33"/>`;
 
   // Inlay dots
   const INLAY_SINGLE = [3, 5, 7, 9];
@@ -5408,7 +5524,7 @@ function renderFretboard(elId, highlights = [], maxFret = 12) {
   for (let f = 0; f <= maxFret; f++) {
     const x = padLeft + f * fretSpacing;
     const sw = f === 0 ? 3 : 1;
-    const color = f === 0 ? '#0A0A0F' : '#D9D4C8';
+    const color = f === 0 ? '#F7F3FF' : '#5A5070';
     svg += `<line x1="${x}" y1="${padTop}" x2="${x}" y2="${padTop + 5 * stringSpacing}" stroke="${color}" stroke-width="${sw}" stroke-linecap="round"/>`;
   }
 
@@ -5431,7 +5547,7 @@ function renderFretboard(elId, highlights = [], maxFret = 12) {
   for (const h of highlights) {
     const x = h.fret === 0 ? padLeft - 12 : padLeft + (h.fret - 0.5) * fretSpacing;
     const y = padTop + (5 - h.string) * stringSpacing;
-    const fill = h.primary ? '#0A0A0F' : '#B8862B';
+    const fill = h.primary ? '#FF4F81' : '#FFB347';
     svg += `<circle cx="${x}" cy="${y}" r="10" fill="${fill}"/>`;
     if (h.label) {
       svg += `<text x="${x}" y="${y + 3.4}" text-anchor="middle" font-size="9" font-weight="700" font-family="Inter" fill="white" pointer-events="none">${h.label.replace('#', '♯')}</text>`;
@@ -5472,12 +5588,12 @@ function chordSVGAnatomy(chord, triad) {
   // Frets
   for (let i = 0; i <= FRETS; i++) {
     const sw = i === 0 ? 3 : 0.9;
-    const color = i === 0 ? '#0A0A0F' : '#D9D4C8';
+    const color = i === 0 ? '#F7F3FF' : '#5A5070';
     v += `<line x1="${SX[0]}" y1="${fY(i)}" x2="${SX[5]}" y2="${fY(i)}" stroke="${color}" stroke-width="${sw}" stroke-linecap="round"/>`;
   }
   // Strings
   for (let i = 0; i < 6; i++) {
-    v += `<line x1="${SX[i]}" y1="${NUT_Y}" x2="${SX[i]}" y2="${fY(FRETS)}" stroke="#D9D4C8" stroke-width="0.9"/>`;
+    v += `<line x1="${SX[i]}" y1="${NUT_Y}" x2="${SX[i]}" y2="${fY(FRETS)}" stroke="#5A5070" stroke-width="0.9"/>`;
   }
 
   // Note dots at every played string (open OR fretted), labeled with note name
@@ -5492,7 +5608,7 @@ function chordSVGAnatomy(chord, triad) {
     const noteIdx = (STRING_NOTE_IDX[s] + fret) % 12;
     const note = CHROMATIC[noteIdx];
     const isRoot = note === triad[0];
-    const fill = isRoot ? '#0A0A0F' : '#B8862B';
+    const fill = isRoot ? '#FF4F81' : '#FFB347';
     const cx = SX[s];
     const cy = fret === 0 ? 22 : dotY(fret);
     v += `<circle cx="${cx}" cy="${cy}" r="10" fill="${fill}"/>`;
@@ -6093,7 +6209,7 @@ function renderRiffTab(riff, activeBeat = -1) {
   // Strings (rows): top row = high e
   for (let row = 0; row < 6; row++) {
     const y = 12 + row * rowH;
-    svg += `<line x1="${labelW + 2}" y1="${y}" x2="${W - 4}" y2="${y}" stroke="#D9D4C8" stroke-width="0.8"/>`;
+    svg += `<line x1="${labelW + 2}" y1="${y}" x2="${W - 4}" y2="${y}" stroke="#5A5070" stroke-width="0.8"/>`;
     svg += `<text x="${labelW - 4}" y="${y + 3.4}" text-anchor="end" font-size="10" font-weight="700" font-family="Fraunces" fill="#A8A6A0">${RIFF_STRING_LABELS[row]}</text>`;
   }
   // Beat columns
@@ -6107,9 +6223,9 @@ function renderRiffTab(riff, activeBeat = -1) {
     beat.notes.forEach(n => {
       const row = 5 - n.s; // s=5 (high e) → row 0 (top)
       const y = 12 + row * rowH;
-      const fill = active ? '#0A0A0F' : '#FFFFFF';
-      const stroke = active ? '#0A0A0F' : '#D9D4C8';
-      const textFill = active ? '#FFFFFF' : '#0A0A0F';
+      const fill = active ? '#FF4F81' : '#1E1828';
+      const stroke = active ? '#FF4F81' : '#5A5070';
+      const textFill = active ? '#14101B' : '#DCD5EA';
       svg += `<circle cx="${cx}" cy="${y}" r="9" fill="${fill}" stroke="${stroke}" stroke-width="1"/>`;
       svg += `<text x="${cx}" y="${y + 3.4}" text-anchor="middle" font-size="10" font-weight="700" font-family="Inter" fill="${textFill}">${n.f}</text>`;
     });
