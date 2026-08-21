@@ -66,6 +66,19 @@
       --tabbar-h: 64px;
     }
 
+    .refresher-head{margin:28px 0 4px;font-size:18px}
+    .refresher-sub{margin:0 0 12px;font-size:13px;color:var(--muted)}
+    #refresher-list{display:flex;flex-wrap:wrap;gap:8px}
+    .refresher{font:inherit;font-size:13px;padding:8px 14px;border-radius:99px;cursor:pointer;
+      background:var(--surface);border:1px solid var(--border-2);color:var(--ink-2)}
+    .refresher:hover{border-color:var(--primary);color:var(--primary)}
+    .refresher-empty{font-size:13px;color:var(--muted);margin:0}
+
+
+    .module-flash{animation:modFlash 1.6s ease}
+    @keyframes modFlash{0%{box-shadow:0 0 0 0 var(--primary)}30%{box-shadow:0 0 0 3px var(--primary)}100%{box-shadow:0 0 0 0 transparent}}
+
+
     /* ── one step at a time ── */
     .lesson-progress{height:4px;border-radius:99px;background:var(--surface-2);overflow:hidden;margin:0 0 6px}
     .lesson-progress span{display:block;height:100%;background:var(--glow);border-radius:99px;transition:width .3s ease}
@@ -3393,10 +3406,6 @@
         Chords
         <span class="nav-badge" id="nav-chords-badge">0/7</span>
       </button>
-      <button class="nav-item" data-nav="theory" onclick="go('theory')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><rect x="7" y="5" width="2" height="8" fill="currentColor" stroke="none"/><rect x="13" y="5" width="2" height="8" fill="currentColor" stroke="none"/></svg>
-        Theory
-      </button>
       <button class="nav-item" data-nav="practice" onclick="go('practice')">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
         Practice
@@ -3527,6 +3536,12 @@
           <p class="view-sub">Fourteen lessons, about fifteen minutes each. Finish one and the next opens. Everything else in the app is a tool these lessons send you to.</p>
         </div>
         <div id="path-list"></div>
+
+        <div id="refresher-wrap" hidden>
+          <h3 class="refresher-head">Refreshers</h3>
+          <p class="refresher-sub">Short explainers your lessons have already covered. Dip back in whenever you want.</p>
+          <div id="refresher-list"></div>
+        </div>
       </section>
 
       <section data-view="tuner">
@@ -3582,7 +3597,7 @@
         <div class="view-head">
           <div class="view-eyebrow" id="theory-eyebrow">Learn</div>
           <h1 class="view-title" id="theory-title">Everything you need <em>to play.</em></h1>
-          <p class="view-sub" id="theory-sub">Start with the guitar itself, work through music basics, then go deeper. Tap, listen, and explore — fifteen short lessons.</p>
+          <p class="view-sub" id="theory-sub">The reference shelf. Your lessons send you here at the right moment, but you can wander in any time — fifteen short explainers you can tap, hear and play with.</p>
         </div>
 
 
@@ -3590,7 +3605,7 @@
         <div class="theory-content">
 
           <!-- 01 — Meet your guitar -->
-          <div class="theory-module">
+          <div class="theory-module" id="tm-meet-your-guitar">
             <div class="module-head">
               <div class="module-num serif">01</div>
               <div>
@@ -3604,7 +3619,7 @@
           </div>
 
           <!-- 02 — The six strings -->
-          <div class="theory-module">
+          <div class="theory-module" id="tm-the-six-strings">
             <div class="module-head">
               <div class="module-num serif">02</div>
               <div>
@@ -3617,7 +3632,7 @@
           </div>
 
           <!-- 03 — Music notes -->
-          <div class="theory-module">
+          <div class="theory-module" id="tm-music-notes">
             <div class="module-head">
               <div class="module-num serif">03</div>
               <div>
@@ -3630,7 +3645,7 @@
           </div>
 
           <!-- 04 — Higher and lower -->
-          <div class="theory-module">
+          <div class="theory-module" id="tm-higher-and-lower">
             <div class="module-head">
               <div class="module-num serif">04</div>
               <div>
@@ -3654,7 +3669,7 @@
           </div>
 
           <!-- 05 — What's a fret -->
-          <div class="theory-module">
+          <div class="theory-module" id="tm-what-s-a-fret">
             <div class="module-head">
               <div class="module-num serif">05</div>
               <div>
@@ -3687,7 +3702,7 @@
           </div>
 
           <!-- 06 — Open vs pressed -->
-          <div class="theory-module">
+          <div class="theory-module" id="tm-open-and-pressed">
             <div class="module-head">
               <div class="module-num serif">06</div>
               <div>
@@ -3717,7 +3732,7 @@
           </div>
 
           <!-- 07 — The beat -->
-          <div class="theory-module">
+          <div class="theory-module" id="tm-the-beat">
             <div class="module-head">
               <div class="module-num serif">07</div>
               <div>
@@ -3741,7 +3756,7 @@
           </div>
 
           <!-- 08 — What's a chord -->
-          <div class="theory-module">
+          <div class="theory-module" id="tm-what-s-a-chord">
             <div class="module-head">
               <div class="module-num serif">08</div>
               <div>
@@ -3754,7 +3769,7 @@
           </div>
 
           <!-- 09 — Down and up strums -->
-          <div class="theory-module">
+          <div class="theory-module" id="tm-strumming-down-and-up">
             <div class="module-head">
               <div class="module-num serif">09</div>
               <div>
@@ -3782,7 +3797,7 @@
           </div>
 
           <!-- 10 — Reading TAB -->
-          <div class="theory-module">
+          <div class="theory-module" id="tm-reading-tab">
             <div class="module-head">
               <div class="module-num serif">10</div>
               <div>
@@ -3794,7 +3809,7 @@
           </div>
 
           <!-- Module 11: Note explorer -->
-          <div class="theory-module">
+          <div class="theory-module" id="tm-notes-on-the-fretboard">
             <div class="module-head">
               <div class="module-num serif">11</div>
               <div>
@@ -3817,7 +3832,7 @@
           </div>
 
           <!-- Module 12: Chord anatomy -->
-          <div class="theory-module">
+          <div class="theory-module" id="tm-every-chord-is-a-triad-you-know">
             <div class="module-head">
               <div class="module-num serif">12</div>
               <div>
@@ -3840,7 +3855,7 @@
           </div>
 
           <!-- Module 13: Key explorer -->
-          <div class="theory-module">
+          <div class="theory-module" id="tm-why-the-same-four-chords-are-in-every-song">
             <div class="module-head">
               <div class="module-num serif">13</div>
               <div>
@@ -3854,7 +3869,7 @@
           </div>
 
           <!-- Module 14: Capo as transpose -->
-          <div class="theory-module">
+          <div class="theory-module" id="tm-the-capo-is-a-transpose-button">
             <div class="module-head">
               <div class="module-num serif">14</div>
               <div>
@@ -3883,7 +3898,7 @@
           </div>
 
           <!-- 15 — Listen: happy or sad? -->
-          <div class="theory-module">
+          <div class="theory-module" id="tm-happy-or-sad">
             <div class="module-head">
               <div class="module-num serif">15</div>
               <div>
@@ -4104,10 +4119,6 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/><circle cx="9" cy="7" r="1.5" fill="currentColor"/><circle cx="15" cy="12" r="1.5" fill="currentColor"/><circle cx="7" cy="17" r="1.5" fill="currentColor"/></svg>
           Chords
         </button>
-        <button class="tab" data-nav="theory" onclick="go('theory')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><rect x="7" y="5" width="2" height="8" fill="currentColor" stroke="none"/><rect x="13" y="5" width="2" height="8" fill="currentColor" stroke="none"/></svg>
-          Theory
-        </button>
         <button class="tab" data-nav="practice" onclick="go('practice')">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
           Practice
@@ -4225,11 +4236,12 @@ window.addEventListener('DOMContentLoaded', () => {
 // things to DO, and she ticks them off herself.
 // ═══════════════════════════════════════════════════════════════════════════
 const LESSONS = [
-  { id: 1, title: 'Meet the guitar', mins: 10,
+  { id: 1, title: 'Pick it up and tune it', mins: 10,
     goal: 'Learn the parts, get it in tune, and make your first sound.',
     steps: [
       { t: 'watch', text: 'Watch: every part of the guitar', video: 'parts' },
-      { t: 'do',    text: 'Find the six strings. Thickest is low E, thinnest is high E.', go: 'theory' },
+      { t: 'read',  text: 'Read: the six strings, and why they are named that way', read: 'tm-the-six-strings' },
+      { t: 'read',  text: "Read: what's a fret?", read: 'tm-what-s-a-fret' },
       { t: 'tool',  text: 'Tune your guitar with the tuner', go: 'tuner' },
       { t: 'do',    text: 'Strum all six strings slowly, four times. That is the sound of E minor waiting to happen.' },
     ] },
@@ -4239,12 +4251,14 @@ const LESSONS = [
       { t: 'watch', text: 'Watch someone play Em', video: 'Em' },
       { t: 'do',    text: 'Put finger 2 and finger 3 on the second fret, A and D strings.', chord: 'Em' },
       { t: 'do',    text: 'Strum once. Any string buzzing? Press a little closer to the fret and try again.' },
+      { t: 'read',  text: "Read: what's a chord? (it's the triad you already know from piano)", read: 'tm-what-s-a-chord' },
       { t: 'do',    text: 'Strum Em four times, slowly, without looking at your hand.' },
       { t: 'mark',  text: 'Mark Em as learned', chord: 'Em' },
     ] },
   { id: 3, title: 'Keeping time', mins: 12,
     goal: 'Strum in rhythm — the piano half of your brain already knows this.',
     steps: [
+      { t: 'read',  text: 'Read: the beat — counting time', read: 'tm-the-beat' },
       { t: 'watch', text: 'Watch: the basic strumming pattern', video: 'strum' },
       { t: 'tool',  text: 'Set the metronome to 60 and strum Em on every click', go: 'practice' },
       { t: 'do',    text: 'Now four down-strums per click-group: 1, 2, 3, 4. Count out loud.' },
@@ -4319,6 +4333,7 @@ const LESSONS = [
   { id: 12, title: 'Four chords, many songs', mins: 15,
     goal: 'G, C, D and Em together play more songs than any other four shapes.',
     steps: [
+      { t: 'read',  text: 'Read: why the same four chords are in every song', read: 'tm-why-the-same-four-chords-are-in-every-song' },
       { t: 'do',    text: 'Play G · C · D · Em, four strums each, around and around.' },
       { t: 'tool',  text: 'Find a song in Songs that uses all four and play it start to finish', go: 'songs' },
       { t: 'do',    text: 'Record it on your phone. Listen back once. Notice one thing you would fix.' },
@@ -4328,6 +4343,7 @@ const LESSONS = [
     steps: [
       { t: 'do',    text: 'Dm is D with the high finger moved back one fret. Small change, very different mood.', chord: 'Dm' },
       { t: 'do',    text: 'Play Am · Dm · Em slowly. Hear how sad that is? That is a minor key.' },
+      { t: 'read',  text: 'Read: happy or sad — what makes a chord minor', read: 'tm-happy-or-sad' },
       { t: 'mark',  text: 'Mark Dm as learned', chord: 'Dm' },
     ] },
   { id: 14, title: 'Play for someone', mins: 20,
@@ -4406,6 +4422,7 @@ function celebrateLesson(l, newSongs, next) {
 }
 
 function renderLessonPath() {
+  setTimeout(renderRefreshers, 0);
   const badge = document.getElementById('nav-path-badge');
   if (badge) {
     const doneCount = getLessonsDone().size;
@@ -4441,6 +4458,7 @@ function renderLessonPath() {
               <span class="lstep-text">${st.text}</span>
               ${st.video ? `<button class="lstep-go" onclick="openVideoSheet('${st.video}')">Watch</button>` : ''}
               ${st.go ? `<button class="lstep-go" onclick="go('${st.go}')">Open</button>` : ''}
+              ${st.read ? `<button class="lstep-go" onclick="openTheory('${st.read}')">Read</button>` : ''}
             </li>`;
           }).join('')}
         </ol>
@@ -4455,6 +4473,53 @@ function renderLessonPath() {
       </div>
     </div>`;
   }).join('');
+}
+
+// Theory is the reference library; the lessons are the path. A "read" step
+// jumps to the exact module instead of the lesson re-explaining it.
+function openTheory(anchor) {
+  go('theory');
+  setTimeout(() => {
+    const el = document.getElementById(anchor);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.classList.add('module-flash');
+      setTimeout(() => el.classList.remove('module-flash'), 1600);
+    }
+  }, 220);
+}
+
+
+// Every theory module, and the lesson that earns it. Theory is no longer a
+// separate destination — the lessons hand these out, and they stay available
+// afterwards as refreshers.
+const THEORY_INDEX = [
+  { a: 'tm-meet-your-guitar',                        t: 'Meet your guitar',                 l: 1 },
+  { a: 'tm-the-six-strings',                         t: 'The six strings',                  l: 1 },
+  { a: 'tm-what-s-a-fret',                           t: "What's a fret?",                   l: 1 },
+  { a: 'tm-music-notes',                             t: 'Music notes',                      l: 1 },
+  { a: 'tm-higher-and-lower',                        t: 'Higher and lower',                 l: 1 },
+  { a: 'tm-open-and-pressed',                        t: 'Open and pressed',                 l: 2 },
+  { a: 'tm-what-s-a-chord',                          t: "What's a chord?",                  l: 2 },
+  { a: 'tm-the-beat',                                t: 'The beat',                         l: 3 },
+  { a: 'tm-strumming-down-and-up',                   t: 'Strumming — down and up',          l: 3 },
+  { a: 'tm-every-chord-is-a-triad-you-know',         t: 'Every chord is a triad you know',  l: 4 },
+  { a: 'tm-reading-tab',                             t: 'Reading TAB',                      l: 6 },
+  { a: 'tm-notes-on-the-fretboard',                  t: 'Notes on the fretboard',           l: 7 },
+  { a: 'tm-why-the-same-four-chords-are-in-every-song', t: 'Why the same four chords are in every song', l: 12 },
+  { a: 'tm-the-capo-is-a-transpose-button',          t: 'The capo is a transpose button',   l: 12 },
+  { a: 'tm-happy-or-sad',                            t: 'Happy or sad?',                    l: 13 },
+];
+
+function renderRefreshers() {
+  const el = document.getElementById('refresher-list');
+  if (!el) return;
+  const open = THEORY_INDEX.filter(m => isLessonDone(m.l));
+  el.innerHTML = open.length === 0
+    ? `<p class="refresher-empty">Finish lesson 1 and the explainers start collecting here.</p>`
+    : open.map(m => `<button class="refresher" onclick="openTheory('${m.a}')">${m.t}</button>`).join('');
+  const wrap = document.getElementById('refresher-wrap');
+  if (wrap) wrap.hidden = open.length === 0;
 }
 
 function toggleLesson(id) {
