@@ -66,6 +66,10 @@
       --tabbar-h: 64px;
     }
 
+    .session-block.is-secondary{opacity:.9}
+    .session-block.is-secondary .session-title{font-size:17px;line-height:1.3}
+
+
     .refresher-head{margin:28px 0 4px;font-size:18px}
     .refresher-sub{margin:0 0 12px;font-size:13px;color:var(--muted)}
     #refresher-list{display:flex;flex-wrap:wrap;gap:8px}
@@ -3496,7 +3500,7 @@
         </div>
 
         <!-- TODAY'S SESSION -->
-        <div class="session-block">
+        <div class="session-block" id="session-block">
           <div class="session-head">
             <div>
               <div class="session-eyebrow">Today's session</div>
@@ -4423,6 +4427,9 @@ function celebrateLesson(l, newSongs, next) {
 
 function renderLessonPath() {
   setTimeout(renderRefreshers, 0);
+  // While the course is running the practice block is secondary, not a rival.
+  const sb = document.getElementById('session-block');
+  if (sb) sb.classList.toggle('is-secondary', !isLessonDone(LESSONS[LESSONS.length - 1].id));
   const badge = document.getElementById('nav-path-badge');
   if (badge) {
     const doneCount = getLessonsDone().size;
@@ -6375,8 +6382,16 @@ function renderSession() {
   const stepsEl = document.getElementById('session-steps');
   if (!stepsEl) return;
   const totalMins = plan.reduce((a, s) => a + s.minutes, 0);
-  document.getElementById('session-title').textContent =
-    `Your ${totalMins}-minute practice plan`;
+  const courseLeft = !isLessonDone(LESSONS[LESSONS.length - 1].id);
+  const titleEl = document.getElementById('session-title');
+  const eyebrowEl = document.querySelector('.session-eyebrow');
+  if (courseLeft) {
+    if (eyebrowEl) eyebrowEl.textContent = 'Or just play';
+    titleEl.textContent = `Not up for a new lesson? Here's ${totalMins} minutes of practice`;
+  } else {
+    if (eyebrowEl) eyebrowEl.textContent = "Today's session";
+    titleEl.textContent = `Your ${totalMins}-minute practice plan`;
+  }
 
   stepsEl.innerHTML = plan.map((step, i) => {
     const done = state.done.includes(step.id);
