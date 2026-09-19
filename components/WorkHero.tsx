@@ -30,7 +30,7 @@ export function WorkHero() {
 
       <div className="mt-8 grid gap-8 md:grid-cols-[1.4fr_1fr]">
         <div>
-          <p className="text-base text-ink/80 dark:text-paper/80 md:text-lg">
+          <p className="text-base text-ink/80 md:text-lg">
             <strong>Producer / Director at FORM</strong>, an Atlanta story
             company, where I direct the Form Films animated comedy series{" "}
             <em>Calendar Jockeys</em>. Before that, six years{" "}
@@ -47,7 +47,7 @@ export function WorkHero() {
             at a private performing-arts school in metro Atlanta. Story-first, fast turnaround,
             multi-cam comfortable, finishing-friendly.
           </p>
-          <p className="mt-4 text-sm text-ink-muted dark:text-paper-muted">
+          <p className="mt-4 text-sm text-ink-muted">
             Long-form narrative, branded shorts, broadcast reality, social
             cuts. Same hands.
           </p>
@@ -57,14 +57,14 @@ export function WorkHero() {
               href="https://calendarjockeys.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accent dark:bg-paper dark:text-ink dark:hover:bg-accent dark:hover:text-paper"
+              className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accent"
             >
               Watch Calendar Jockeys <IconArrowRight className="h-4 w-4" />
             </a>
             <a
               href="/resumes/resume-video.pdf"
               download
-              className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-2.5 text-sm font-medium transition hover:border-accent hover:text-accent dark:border-paper/30"
+              className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-2.5 text-sm font-medium transition hover:border-accent hover:text-accent"
             >
               <IconDownload className="h-4 w-4" />
               Video résumé (PDF)
@@ -72,7 +72,7 @@ export function WorkHero() {
           </div>
         </div>
 
-        <aside className="rounded-2xl border border-ink/10 bg-paper-muted/40 p-5 text-sm dark:border-paper/15 dark:bg-ink/30">
+        <aside className="rounded-2xl border border-ink/10 bg-paper-muted/40 p-5 text-sm">
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent">
             Credits
           </p>
@@ -80,18 +80,18 @@ export function WorkHero() {
             {CREDITS.map((c) => (
               <li
                 key={c}
-                className="rounded-full border border-ink/15 bg-paper/60 px-2.5 py-1 text-xs text-ink/80 dark:border-paper/15 dark:bg-ink/40 dark:text-paper/85"
+                className="rounded-full border border-ink/15 bg-paper/60 px-2.5 py-1 text-xs text-ink/80"
               >
                 {c}
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-xs text-ink-muted dark:text-paper-muted">
+          <p className="mt-4 text-xs text-ink-muted">
             DaVinci Resolve · Premiere Pro · Avid · After Effects. Comfortable on
             multi-cam reality, scripted narrative, and 30-second branded social.
           </p>
-          <p className="mt-3 text-xs text-ink-muted dark:text-paper-muted">
-            <strong className="text-ink/80 dark:text-paper/85">Resolve + Claude Code:</strong>{" "}
+          <p className="mt-3 text-xs text-ink-muted">
+            <strong className="text-ink/80">Resolve + Claude Code:</strong>{" "}
             I automate the prep. Footage lands in bins sorted by episode, every
             take traces back to where it came from, and a stringout is built
             before I sit down to cut.

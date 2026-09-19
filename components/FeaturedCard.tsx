@@ -70,9 +70,9 @@ export function FeaturedCard({ entry }: { entry: PortfolioEntry }) {
   return (
     <Link
       href={LANE_HREF[entry.lane] ?? "/work"}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-paper transition hover:-translate-y-0.5 hover:border-accent/60 hover:shadow-md dark:border-paper/15 dark:bg-ink/40 dark:hover:border-accent/60"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-paper transition hover:-translate-y-0.5 hover:border-accent/60 hover:shadow-md"
     >
-      <div className="relative aspect-video w-full overflow-hidden bg-gradient-to-br from-ink/80 to-accent/40">
+      <div className="relative aspect-[16/10] w-full overflow-hidden bg-gradient-to-br from-ink/80 to-accent/40">
         {thumbnail ? (
           thumbnail.startsWith("/") ? (
             <Image
@@ -104,9 +104,9 @@ export function FeaturedCard({ entry }: { entry: PortfolioEntry }) {
           {LANE_LABEL[entry.lane]}
           {entry.year ? ` · ${entry.year}` : ""}
         </p>
-        <h3 className="line-clamp-1 font-serif text-lg leading-tight">{entry.title}</h3>
+        <h3 className="line-clamp-2 font-serif text-lg leading-tight">{entry.title}</h3>
         {summaryLine ? (
-          <p className="line-clamp-2 text-sm leading-snug text-ink/70 dark:text-paper/70">
+          <p className="line-clamp-2 text-sm leading-snug text-ink/70">
             {summaryLine}
           </p>
         ) : null}

@@ -65,16 +65,16 @@ export function ContactForm({
     <form onSubmit={onSubmit} className="grid gap-3" noValidate={false}>
       <div className="grid gap-3 sm:grid-cols-2">
         <label className="grid gap-1.5">
-          <span className="text-xs font-medium uppercase tracking-[0.16em] text-paper/60">Name</span>
+          <span className="text-xs font-medium uppercase tracking-[0.16em] text-paper/75">Name</span>
           <input name="name" required autoComplete="name" className={field} />
         </label>
         <label className="grid gap-1.5">
-          <span className="text-xs font-medium uppercase tracking-[0.16em] text-paper/60">Email</span>
+          <span className="text-xs font-medium uppercase tracking-[0.16em] text-paper/75">Email</span>
           <input name="email" type="email" required autoComplete="email" className={field} />
         </label>
       </div>
       <label className="grid gap-1.5">
-        <span className="text-xs font-medium uppercase tracking-[0.16em] text-paper/60">Message</span>
+        <span className="text-xs font-medium uppercase tracking-[0.16em] text-paper/75">Message</span>
         <textarea name="message" required rows={4} placeholder={placeholder} className={field} />
       </label>
       {/* Honeypot: hidden from people, tempting to bots. */}
@@ -89,7 +89,7 @@ export function ContactForm({
         <button
           type="submit"
           disabled={status === "sending"}
-          className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-paper shadow-xl shadow-accent/30 transition hover:-translate-y-0.5 hover:bg-accent-muted disabled:translate-y-0 disabled:opacity-60"
+          className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-paper shadow-lg shadow-accent/20 transition hover:-translate-y-0.5 hover:bg-accent-muted disabled:translate-y-0 disabled:opacity-60"
         >
           {status === "sending" ? "Sending…" : submitLabel}
           <span aria-hidden="true">→</span>

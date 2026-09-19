@@ -26,7 +26,7 @@ export function AlsoShipped({ entries }: { entries: PortfolioEntry[] }) {
           <h2 className="mt-2 font-serif text-2xl leading-tight tracking-[-0.01em] md:text-3xl">
             Side projects, weekend builds, scratch-my-own-itch.
           </h2>
-          <p className="mt-2 max-w-2xl text-sm text-ink-muted dark:text-paper-muted">
+          <p className="mt-2 max-w-2xl text-sm text-ink-muted">
             Most of these started as a question — &ldquo;could I build that in
             a weekend?&rdquo; — and shipped because the answer was yes.
           </p>
@@ -37,9 +37,9 @@ export function AlsoShipped({ entries }: { entries: PortfolioEntry[] }) {
         {items.map((e) => {
           const href = e.externalUrl;
           const card = (
-            <article className="flex h-full flex-col overflow-hidden rounded-xl border border-ink/10 bg-paper transition hover:-translate-y-0.5 hover:border-accent/60 hover:shadow-md dark:border-paper/15 dark:bg-ink/40">
+            <article className="flex h-full flex-col overflow-hidden rounded-xl border border-ink/10 bg-paper transition hover:-translate-y-0.5 hover:border-accent/60 hover:shadow-md">
               {e.thumbnail ? (
-                <div className="relative aspect-video w-full overflow-hidden border-b border-ink/10 bg-ink/5 dark:border-paper/15">
+                <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-ink/10 bg-ink/5">
                   <Image
                     src={e.thumbnail}
                     alt=""
@@ -56,10 +56,10 @@ export function AlsoShipped({ entries }: { entries: PortfolioEntry[] }) {
                     <IconArrowUpRight className="h-3.5 w-3.5 shrink-0 text-accent" />
                   ) : null}
                 </div>
-                <p className="line-clamp-3 text-[13px] leading-snug text-ink/70 dark:text-paper/70">
+                <p className="line-clamp-3 text-[13px] leading-snug text-ink/70">
                   {e.summary}
                 </p>
-                <p className="mt-auto pt-1 text-[10px] uppercase tracking-[0.16em] text-ink-muted dark:text-paper-muted">
+                <p className="mt-auto pt-1 text-[10px] uppercase tracking-[0.16em] text-ink-muted">
                   {e.year}
                 </p>
               </div>

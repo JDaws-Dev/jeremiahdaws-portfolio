@@ -42,7 +42,7 @@ export function MakerHero() {
 
       <div className="mt-8 grid gap-8 md:grid-cols-[1.4fr_1fr]">
         <div>
-          <p className="text-base text-ink/80 dark:text-paper/80 md:text-lg">
+          <p className="text-base text-ink/80 md:text-lg">
             What I ran: CNC mill, CNC lathe, manual machining, 3D printing,
             vacuum forming, welding, electronics, theatrical props.
             <strong>SkillsUSA National
@@ -53,7 +53,7 @@ export function MakerHero() {
             builds live on in the channel (<em>Filmmaker → Machinist</em>) and
             the archive below.
           </p>
-          <p className="mt-4 text-sm text-ink-muted dark:text-paper-muted">
+          <p className="mt-4 text-sm text-ink-muted">
             One-off props. Production fixtures. Working dollies. A full
             Beauty-and-the-Beast Lumière candle, scanned and printed from a
             Disney source. Same hands.
@@ -62,14 +62,14 @@ export function MakerHero() {
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accent dark:bg-paper dark:text-ink dark:hover:bg-accent dark:hover:text-paper"
+              className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accent"
             >
               Get in touch <IconArrowRight className="h-4 w-4" />
             </Link>
             <a
               href="/resumes/resume-maker.pdf"
               download
-              className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-2.5 text-sm font-medium transition hover:border-accent hover:text-accent dark:border-paper/30"
+              className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-2.5 text-sm font-medium transition hover:border-accent hover:text-accent"
             >
               <IconDownload className="h-4 w-4" />
               Maker résumé (PDF)
@@ -77,7 +77,7 @@ export function MakerHero() {
           </div>
         </div>
 
-        <aside className="rounded-2xl border border-ink/10 bg-paper-muted/40 p-5 text-sm dark:border-paper/15 dark:bg-ink/30">
+        <aside className="rounded-2xl border border-ink/10 bg-paper-muted/40 p-5 text-sm">
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent">
             Machines I&rsquo;ve run
           </p>
@@ -85,13 +85,13 @@ export function MakerHero() {
             {SHOP.map((s) => (
               <li
                 key={s}
-                className="rounded-full border border-ink/15 bg-paper/60 px-2.5 py-1 text-xs text-ink/80 dark:border-paper/15 dark:bg-ink/40 dark:text-paper/85"
+                className="rounded-full border border-ink/15 bg-paper/60 px-2.5 py-1 text-xs text-ink/80"
               >
                 {s}
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-xs text-ink-muted dark:text-paper-muted">
+          <p className="mt-4 text-xs text-ink-muted">
             Bullfrog Machining, Buford, GA (2021–2026). CAD-to-cut on real
             production parts, not just demos.
           </p>

@@ -102,7 +102,7 @@ export function NetworkCredits({ entries }: { entries: PortfolioEntry[] }) {
         <h2 className="mt-2 font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">
           Four kinds of work. One résumé.
         </h2>
-        <p className="mt-3 max-w-2xl text-sm text-ink-muted dark:text-paper-muted">
+        <p className="mt-3 max-w-2xl text-sm text-ink-muted">
           Producer / Director at FORM today. Before that, six years inside Disney as Director, Producer, and short-form Editor
           (Yellow Shoes Parks marketing + Disney Consumer Products: Marvel,
           Lucasfilm, ABC, Freeform). Plus broadcast Editor credits at National
@@ -117,9 +117,9 @@ export function NetworkCredits({ entries }: { entries: PortfolioEntry[] }) {
           return (
             <li
               key={entry.slug}
-              className="flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-paper dark:border-paper/15 dark:bg-ink/40"
+              className="flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-paper"
             >
-              <div className="group relative block aspect-video w-full overflow-hidden border-b border-ink/10 bg-ink/5 dark:border-paper/15">
+              <div className="group relative block aspect-[16/10] w-full overflow-hidden border-b border-ink/10 bg-ink/5">
                 {thumb ? (
                   thumb.startsWith("http") ? (
                     // eslint-disable-next-line @next/next/no-img-element
@@ -153,13 +153,13 @@ export function NetworkCredits({ entries }: { entries: PortfolioEntry[] }) {
                 <h3 className="font-serif text-xl leading-tight tracking-tight">
                   {cardTitle}
                 </h3>
-                <p className="text-[11px] uppercase tracking-[0.16em] text-ink-muted dark:text-paper-muted">
+                <p className="text-[11px] uppercase tracking-[0.16em] text-ink-muted">
                   {client}
                 </p>
-                <p className="text-sm leading-relaxed italic text-ink/65 dark:text-paper/65">
+                <p className="text-sm leading-relaxed italic text-ink/65">
                   {storyKicker}
                 </p>
-                <ul className="mt-1 space-y-1.5 text-[13px] text-ink/75 dark:text-paper/75">
+                <ul className="mt-1 space-y-1.5 text-[13px] text-ink/75">
                   {highlights.map((h) => (
                     <li key={h} className="flex gap-2">
                       <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
@@ -167,7 +167,7 @@ export function NetworkCredits({ entries }: { entries: PortfolioEntry[] }) {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-auto pt-2 text-[10px] uppercase tracking-[0.18em] text-ink-muted dark:text-paper-muted">
+                <p className="mt-auto pt-2 text-[10px] uppercase tracking-[0.18em] text-ink-muted">
                   {years}
                 </p>
               </div>

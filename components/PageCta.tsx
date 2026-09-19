@@ -59,7 +59,9 @@ export function PageCta({
             </div>
           </div>
 
-          <ContactForm topic={topic} placeholder={placeholder} />
+          <div>
+            <ContactForm topic={topic} placeholder={placeholder} />
+          </div>
         </div>
       </section>
     </>

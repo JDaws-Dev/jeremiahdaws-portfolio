@@ -6,6 +6,9 @@ export default {
     "./components/**/*.{ts,tsx}",
     "./content/**/*.{md,mdx}",
   ],
+  // No dark theme. Kept on the class strategy (and no .dark class is ever set)
+  // so leftover dark: utilities stay inert instead of firing on prefers-color-scheme.
+  darkMode: "class",
   theme: {
     extend: {
       colors: {

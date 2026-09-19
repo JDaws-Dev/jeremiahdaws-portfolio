@@ -15,7 +15,7 @@ export function Featured({ entries, total }: { entries: PortfolioEntry[]; total:
         </div>
         <Link
           href="/work"
-          className="hidden items-center gap-2 text-sm font-medium text-ink-muted transition hover:text-accent dark:text-paper-muted dark:hover:text-accent md:inline-flex"
+          className="hidden items-center gap-2 text-sm font-medium text-ink-muted transition hover:text-accent md:inline-flex"
         >
           See all <IconArrowRight className="h-4 w-4" />
         </Link>
@@ -30,7 +30,7 @@ export function Featured({ entries, total }: { entries: PortfolioEntry[]; total:
       <div className="mt-8 md:hidden">
         <Link
           href="/work"
-          className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent dark:border-paper/30 dark:hover:border-accent dark:hover:text-accent"
+          className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"
         >
           See all work <IconArrowRight className="h-4 w-4" />
         </Link>

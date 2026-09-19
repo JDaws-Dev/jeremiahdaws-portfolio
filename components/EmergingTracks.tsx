@@ -39,7 +39,7 @@ const TRACKS: Track[] = [
 
 export function EmergingTracks() {
   return (
-    <section className="border-y border-ink/10 bg-paper-muted/30 py-14 dark:border-paper/10 dark:bg-ink/20">
+    <section className="border-y border-ink/10 bg-paper-muted/30 py-14">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-end">
           <div>
@@ -50,7 +50,7 @@ export function EmergingTracks() {
               Two more tracks.<br />Same teacher.
             </h2>
           </div>
-          <p className="text-sm text-ink/75 dark:text-paper/75">
+          <p className="text-sm text-ink/75">
             The Film and Creative-Tech programs were the established ones.
             Game &amp; Web Design and AI &amp; Automation were the newer
             tracks, taught with the same project-based, capstone-oriented
@@ -63,7 +63,7 @@ export function EmergingTracks() {
           {TRACKS.map((t) => (
             <li
               key={t.name}
-              className="flex flex-col gap-3 rounded-2xl border border-ink/10 bg-paper p-6 dark:border-paper/15 dark:bg-ink/40"
+              className="flex flex-col gap-3 rounded-2xl border border-ink/10 bg-paper p-6"
             >
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent">
@@ -73,14 +73,14 @@ export function EmergingTracks() {
                   {t.name}
                 </h3>
               </div>
-              <p className="text-sm leading-relaxed text-ink/75 dark:text-paper/75">
+              <p className="text-sm leading-relaxed text-ink/75">
                 {t.oneLiner}
               </p>
               <ul className="flex flex-wrap gap-1.5 pt-1">
                 {t.courses.map((c) => (
                   <li
                     key={c}
-                    className="rounded-full border border-ink/15 bg-paper-muted/50 px-2.5 py-1 text-xs text-ink-muted dark:border-paper/15 dark:bg-ink/30 dark:text-paper-muted"
+                    className="rounded-full border border-ink/15 bg-paper-muted/50 px-2.5 py-1 text-xs text-ink-muted"
                   >
                     {c}
                   </li>

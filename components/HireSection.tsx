@@ -212,7 +212,7 @@ export function HireSection() {
             Off the clock, I&apos;m{" "}
             <a
               href="/movies.html"
-              className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper/60"
+              className="text-accent-muted underline decoration-accent/40 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper/60"
             >
               a movie-obsessed nerd with a collection
             </a>

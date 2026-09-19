@@ -17,7 +17,7 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -left-32 top-20 h-72 w-72 rounded-full bg-accent/15 blur-3xl dark:bg-accent/10" />
+        <div className="absolute -left-32 top-20 h-72 w-72 rounded-full bg-accent/15 blur-3xl" />
         <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-blue-soft/20 blur-3xl" />
       </div>
 
@@ -26,7 +26,7 @@ export function Hero() {
         <div className="grid gap-8 md:grid-cols-[1.15fr_auto] md:items-center md:gap-12">
           <div className="order-2 min-w-0 md:order-1">
             <div className="flex flex-wrap items-center gap-2">
-              <div className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-paper-muted/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-ink-muted dark:border-paper/20 dark:bg-ink/40 dark:text-paper-muted sm:text-xs">
+              <div className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-paper-muted/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-ink-muted sm:text-xs">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                 Producer / Director at FORM · Atlanta
               </div>
@@ -39,12 +39,12 @@ export function Hero() {
               Jeremiah Daws
             </h1>
 
-            <p className="mt-5 max-w-2xl font-serif text-2xl leading-tight text-ink dark:text-paper sm:text-3xl md:text-[2.1rem]">
+            <p className="mt-5 max-w-2xl font-serif text-2xl leading-tight text-ink sm:text-3xl md:text-[2.1rem]">
               <span className="text-accent">I tell the story.</span>{" "}
               <span className="text-accent">I build the thing.</span>
             </p>
 
-            <p className="mt-5 max-w-2xl text-base leading-snug text-ink/85 dark:text-paper/85 md:text-lg">
+            <p className="mt-5 max-w-2xl text-base leading-snug text-ink/85 md:text-lg">
               Producer / Director at FORM, an Atlanta story company, where I
               direct the animated comedy series <em>Calendar Jockeys</em>. Before that:
               six years producing branded video for Disney Parks (Marvel,
@@ -56,13 +56,13 @@ export function Hero() {
             <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
               <a
                 href="#choose"
-                className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper shadow-lg transition hover:bg-accent dark:bg-paper dark:text-ink dark:hover:bg-accent dark:hover:text-paper"
+                className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper shadow-lg transition hover:bg-accent"
               >
                 Pick the Jeremiah you need <IconArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="#hire"
-                className="text-sm font-medium text-ink-muted transition hover:text-accent dark:text-paper-muted"
+                className="text-sm font-medium text-ink-muted transition hover:text-accent"
               >
                 or hire me for AI &amp; web →
               </a>
@@ -71,7 +71,7 @@ export function Hero() {
 
           <div className="order-1 md:order-2">
             <div className="relative mx-auto aspect-[4/5] w-64 sm:w-80 md:w-72 lg:w-80">
-              <div className="absolute inset-0 -rotate-2 rounded-2xl border border-ink/15 dark:border-paper/15" />
+              <div className="absolute inset-0 -rotate-2 rounded-2xl border border-ink/15" />
               <Image
                 src="/headshot.jpg"
                 alt="Jeremiah Daws"
@@ -85,7 +85,7 @@ export function Hero() {
         </div>
 
         {/* Brand strip — under the hero, signals scale at a glance */}
-        <div className="mt-10 border-t border-ink/10 pt-5 dark:border-paper/10 md:mt-14">
+        <div className="mt-10 border-t border-ink/10 pt-5 md:mt-14">
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-blue">
             Worked on projects for
           </p>
@@ -93,7 +93,7 @@ export function Hero() {
             {BRANDS.map((b) => (
               <li
                 key={b}
-                className="font-serif text-base text-ink/70 dark:text-paper/70"
+                className="font-serif text-base text-ink/70"
               >
                 {b}
               </li>

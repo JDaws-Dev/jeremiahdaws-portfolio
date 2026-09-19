@@ -27,7 +27,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="border-y border-paper-muted bg-blue-wash py-20 dark:border-paper/10 dark:bg-ink/30"
+      className="border-y border-paper-muted bg-blue-wash py-20"
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr]">
@@ -81,10 +81,10 @@ export function About() {
               {PROOF.map((p) => (
                 <li
                   key={p.l}
-                  className="rounded-2xl border border-ink/10 bg-paper p-4 dark:border-paper/15 dark:bg-ink/40"
+                  className="rounded-2xl border border-ink/10 bg-paper p-4"
                 >
                   <div className="font-serif text-2xl tracking-tight text-accent">{p.v}</div>
-                  <div className="mt-1 text-[10px] uppercase tracking-[0.16em] text-ink-muted dark:text-paper-muted">
+                  <div className="mt-1 text-[10px] uppercase tracking-[0.16em] text-ink-muted">
                     {p.l}
                   </div>
                 </li>
@@ -99,7 +99,7 @@ export function About() {
                     <span className="min-w-[3rem] font-serif text-xs uppercase tracking-[0.16em] text-accent">
                       {group}
                     </span>
-                    <span className="text-ink-muted dark:text-paper-muted">
+                    <span className="text-ink-muted">
                       {items.join(" · ")}
                     </span>
                   </li>

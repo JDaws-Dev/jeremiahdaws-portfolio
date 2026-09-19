@@ -199,7 +199,7 @@ export default function MozartVoiceButton() {
       </button>
 
       {message && (
-        <p className="mt-4 max-w-md text-center text-sm text-ink-muted dark:text-paper-muted">
+        <p className="mt-4 max-w-md text-center text-sm text-ink-muted">
           {message}
         </p>
       )}

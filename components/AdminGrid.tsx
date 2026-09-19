@@ -77,8 +77,8 @@ function AdminRow({ entry }: { entry: EntryRow }) {
   return (
     <article
       className={[
-        "rounded-2xl border bg-paper p-5 transition dark:bg-ink/40",
-        hidden ? "border-red-500/50 opacity-60" : "border-ink/10 dark:border-paper/15",
+        "rounded-2xl border bg-paper p-5 transition",
+        hidden ? "border-red-500/50 opacity-60" : "border-ink/10",
       ].join(" ")}
     >
       <header className="flex flex-wrap items-start justify-between gap-3">
@@ -87,7 +87,7 @@ function AdminRow({ entry }: { entry: EntryRow }) {
             {LANE_LABEL[entry.lane]} · {entry.year || "—"}
           </p>
           <h3 className="mt-1 font-serif text-xl leading-tight">{entry.title}</h3>
-          <p className="mt-0.5 text-xs text-ink-muted dark:text-paper-muted">
+          <p className="mt-0.5 text-xs text-ink-muted">
             {entry.role} {entry.org ? `· ${entry.org}` : ""}
           </p>
         </div>
@@ -95,7 +95,7 @@ function AdminRow({ entry }: { entry: EntryRow }) {
           href={`/work#${entry.slug}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-xs text-ink-muted underline-offset-2 hover:text-accent hover:underline dark:text-paper-muted"
+          className="inline-flex items-center gap-1 text-xs text-ink-muted underline-offset-2 hover:text-accent hover:underline"
         >
           slug: {entry.slug} <IconArrowUpRight className="h-3 w-3" />
         </a>
@@ -114,7 +114,7 @@ function AdminRow({ entry }: { entry: EntryRow }) {
           </label>
 
           <div>
-            <label className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+            <label className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">
               Thumbnail URL
             </label>
             <input
@@ -122,14 +122,14 @@ function AdminRow({ entry }: { entry: EntryRow }) {
               value={thumbnail}
               onChange={(e) => setThumbnail(e.target.value)}
               placeholder="/portfolio/foo.jpg or https://..."
-              className="mt-1 w-full rounded-md border border-ink/15 bg-transparent px-2.5 py-1.5 text-xs focus:border-accent focus:outline-none dark:border-paper/20"
+              className="mt-1 w-full rounded-md border border-ink/15 bg-transparent px-2.5 py-1.5 text-xs focus:border-accent focus:outline-none"
             />
             {thumbnail ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={thumbnail}
                 alt=""
-                className="mt-2 aspect-video w-full rounded-md border border-ink/10 object-cover dark:border-paper/15"
+                className="mt-2 aspect-video w-full rounded-md border border-ink/10 object-cover"
               />
             ) : null}
           </div>
@@ -137,18 +137,18 @@ function AdminRow({ entry }: { entry: EntryRow }) {
 
         <div className="space-y-3">
           <div>
-            <label className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+            <label className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">
               Description (live on site)
             </label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows={4}
-              className="mt-1 w-full rounded-md border border-ink/15 bg-transparent px-2.5 py-1.5 text-sm focus:border-accent focus:outline-none dark:border-paper/20"
+              className="mt-1 w-full rounded-md border border-ink/15 bg-transparent px-2.5 py-1.5 text-sm focus:border-accent focus:outline-none"
             />
           </div>
 
-          <details className="rounded-md border border-ink/10 bg-paper-muted/40 p-3 dark:border-paper/10 dark:bg-ink/20">
+          <details className="rounded-md border border-ink/10 bg-paper-muted/40 p-3">
             <summary className="cursor-pointer text-xs font-semibold uppercase tracking-[0.14em] text-accent">
               ✨ Polish with AI
             </summary>
@@ -158,7 +158,7 @@ function AdminRow({ entry }: { entry: EntryRow }) {
                 onChange={(e) => setPolishInput(e.target.value)}
                 rows={3}
                 placeholder="Type a rough description in your own words. AI rewrites it to match the site's voice."
-                className="w-full rounded-md border border-ink/15 bg-paper px-2.5 py-1.5 text-sm focus:border-accent focus:outline-none dark:border-paper/20 dark:bg-ink/40"
+                className="w-full rounded-md border border-ink/15 bg-paper px-2.5 py-1.5 text-sm focus:border-accent focus:outline-none"
               />
               <button
                 type="button"
@@ -177,7 +177,7 @@ function AdminRow({ entry }: { entry: EntryRow }) {
       <footer className="mt-4 flex items-center justify-between gap-3">
         <div className="text-xs">
           {status ? (
-            <span className={status.kind === "ok" ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}>
+            <span className={status.kind === "ok" ? "text-green-600" : "text-red-600"}>
               {status.msg}
             </span>
           ) : null}
@@ -186,7 +186,7 @@ function AdminRow({ entry }: { entry: EntryRow }) {
           type="button"
           onClick={save}
           disabled={busy !== null}
-          className="inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-1.5 text-xs font-medium text-paper transition hover:bg-accent disabled:opacity-50 dark:bg-paper dark:text-ink dark:hover:bg-accent dark:hover:text-paper"
+          className="inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-1.5 text-xs font-medium text-paper transition hover:bg-accent disabled:opacity-50"
         >
           {busy === "save" ? "Saving…" : "Save"}
         </button>
@@ -211,7 +211,7 @@ export function AdminGrid({ entries }: { entries: EntryRow[] }) {
 
   return (
     <div>
-      <div className="sticky top-14 z-30 -mx-6 mb-6 border-b border-ink/10 bg-paper/85 px-6 py-3 backdrop-blur dark:border-paper/10 dark:bg-ink/85">
+      <div className="sticky top-14 z-30 -mx-6 mb-6 border-b border-ink/10 bg-paper/85 px-6 py-3 backdrop-blur">
         <div className="flex flex-wrap items-center gap-2">
           {(["all", "video", "education", "making", "building"] as const).map((l) => (
             <button
@@ -221,8 +221,8 @@ export function AdminGrid({ entries }: { entries: EntryRow[] }) {
               className={[
                 "rounded-full border px-3 py-1.5 text-sm font-medium transition",
                 lane === l
-                  ? "border-ink bg-ink text-paper dark:border-paper dark:bg-paper dark:text-ink"
-                  : "border-ink/15 text-ink-muted hover:border-accent hover:text-accent dark:border-paper/20 dark:text-paper-muted",
+                  ? "border-ink bg-ink text-paper"
+                  : "border-ink/15 text-ink-muted hover:border-accent hover:text-accent",
               ].join(" ")}
             >
               {l === "all" ? "All" : LANE_LABEL[l]}
@@ -233,7 +233,7 @@ export function AdminGrid({ entries }: { entries: EntryRow[] }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search title, slug, description…"
-            className="ml-auto w-64 rounded-full border border-ink/15 bg-transparent px-3 py-1.5 text-sm focus:border-accent focus:outline-none dark:border-paper/20"
+            className="ml-auto w-64 rounded-full border border-ink/15 bg-transparent px-3 py-1.5 text-sm focus:border-accent focus:outline-none"
           />
         </div>
       </div>

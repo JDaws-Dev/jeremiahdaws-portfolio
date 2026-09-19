@@ -54,7 +54,7 @@ export default function JarvisGate() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
-        className="rounded-md border border-ink/20 bg-paper px-4 py-3 text-base text-ink shadow-sm focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink dark:bg-ink/40 dark:text-paper"
+        className="rounded-md border border-ink/20 bg-paper px-4 py-3 text-base text-ink shadow-sm focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink"
       />
       <button
         type="submit"
@@ -64,7 +64,7 @@ export default function JarvisGate() {
         {submitting ? "Checking…" : "Enter"}
       </button>
       {error && (
-        <p className="text-center text-xs text-red-600 dark:text-red-400">
+        <p className="text-center text-xs text-red-600">
           {error}
         </p>
       )}

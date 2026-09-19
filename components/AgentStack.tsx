@@ -78,7 +78,7 @@ export function AgentStack({ entries }: { entries: PortfolioEntry[] }) {
   if (items.length === 0) return null;
 
   return (
-    <section className="border-t border-ink/10 bg-paper-muted/30 py-14 dark:border-paper/10 dark:bg-ink/20">
+    <section className="border-t border-ink/10 bg-paper-muted/30 py-14">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-end">
           <div>
@@ -89,7 +89,7 @@ export function AgentStack({ entries }: { entries: PortfolioEntry[] }) {
               Three agents.<br />One household.
             </h2>
           </div>
-          <p className="text-sm text-ink/75 dark:text-paper/75">
+          <p className="text-sm text-ink/75">
             I built a personal AI for myself, one for my wife, one for my son.
             They share a household SQLite store, bridge over localhost, and
             stay in their lanes — the JARVIS-Anna split was the technical
@@ -102,7 +102,7 @@ export function AgentStack({ entries }: { entries: PortfolioEntry[] }) {
           {items.map(({ entry, forWhom, oneLiner, number, unusualThing, sampleTools }) => (
             <li
               key={entry.slug}
-              className="flex flex-col gap-3 rounded-2xl border border-ink/10 bg-paper p-6 dark:border-paper/15 dark:bg-ink/40"
+              className="flex flex-col gap-3 rounded-2xl border border-ink/10 bg-paper p-6"
             >
               <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent">
                 {forWhom}
@@ -110,27 +110,27 @@ export function AgentStack({ entries }: { entries: PortfolioEntry[] }) {
               <h3 className="font-serif text-2xl leading-tight tracking-tight">
                 {entry.title.split("—")[0].trim()}
               </h3>
-              <p className="text-sm leading-relaxed text-ink/75 dark:text-paper/75">
+              <p className="text-sm leading-relaxed text-ink/75">
                 {oneLiner}
               </p>
               <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
                 {number}
               </p>
-              <p className="text-[13px] leading-relaxed text-ink/70 dark:text-paper/70">
+              <p className="text-[13px] leading-relaxed text-ink/70">
                 {unusualThing}
               </p>
-              <div className="mt-1 rounded-lg border border-ink/10 bg-ink/[0.03] p-3 font-mono text-[10px] leading-relaxed text-ink/65 dark:border-paper/10 dark:bg-paper/[0.04] dark:text-paper/65">
-                <p className="mb-1.5 text-[9px] uppercase tracking-[0.18em] text-ink-muted dark:text-paper-muted">
+              <div className="mt-1 rounded-lg border border-ink/10 bg-ink/[0.03] p-3 font-mono text-[10px] leading-relaxed text-ink/65">
+                <p className="mb-1.5 text-[9px] uppercase tracking-[0.18em] text-ink-muted">
                   Selected tools
                 </p>
                 <div className="flex flex-wrap gap-x-3 gap-y-0.5">
                   {sampleTools.map((t) => (
                     <span key={t}>{t}()</span>
                   ))}
-                  <span className="text-ink-muted dark:text-paper-muted">…</span>
+                  <span className="text-ink-muted">…</span>
                 </div>
               </div>
-              <p className="mt-auto pt-2 text-[10px] uppercase tracking-[0.18em] text-ink-muted dark:text-paper-muted">
+              <p className="mt-auto pt-2 text-[10px] uppercase tracking-[0.18em] text-ink-muted">
                 {entry.role.split("·")[0].trim()} · {entry.year}
               </p>
             </li>

@@ -34,7 +34,7 @@ export function AlsoBuilt({ entries }: { entries: PortfolioEntry[] }) {
         <h2 className="mt-2 font-serif text-2xl leading-tight tracking-[-0.01em] md:text-3xl">
           Recognition, the program, the back catalog.
         </h2>
-        <p className="mt-2 max-w-2xl text-sm text-ink-muted dark:text-paper-muted">
+        <p className="mt-2 max-w-2xl text-sm text-ink-muted">
           The SkillsUSA National Silver in CNC Turning. The Lanier Tech
           Precision Machining program where I served as shop assistant and
           social-media producer. And the long-running back catalog of one-off
@@ -47,9 +47,9 @@ export function AlsoBuilt({ entries }: { entries: PortfolioEntry[] }) {
           const href = e.externalUrl ?? e.embedUrl;
           const thumb = thumbForEntry(e);
           const card = (
-            <article className="flex h-full flex-col overflow-hidden rounded-xl border border-ink/10 bg-paper transition hover:-translate-y-0.5 hover:border-accent/60 hover:shadow-md dark:border-paper/15 dark:bg-ink/40">
+            <article className="flex h-full flex-col overflow-hidden rounded-xl border border-ink/10 bg-paper transition hover:-translate-y-0.5 hover:border-accent/60 hover:shadow-md">
               {thumb ? (
-                <div className="relative aspect-video w-full overflow-hidden border-b border-ink/10 bg-ink/5 dark:border-paper/15">
+                <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-ink/10 bg-ink/5">
                   {thumb.startsWith("http") ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
@@ -77,10 +77,10 @@ export function AlsoBuilt({ entries }: { entries: PortfolioEntry[] }) {
                     <IconArrowUpRight className="h-3.5 w-3.5 shrink-0 text-accent" />
                   ) : null}
                 </div>
-                <p className="line-clamp-3 text-[12px] leading-snug text-ink/70 dark:text-paper/70">
+                <p className="line-clamp-3 text-[12px] leading-snug text-ink/70">
                   {e.summary}
                 </p>
-                <p className="mt-auto pt-1 text-[10px] uppercase tracking-[0.16em] text-ink-muted dark:text-paper-muted">
+                <p className="mt-auto pt-1 text-[10px] uppercase tracking-[0.16em] text-ink-muted">
                   {e.role} · {e.year}
                 </p>
               </div>

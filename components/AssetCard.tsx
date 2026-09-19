@@ -68,7 +68,7 @@ export function AssetCard({
   }
 
   return (
-    <article className="group relative overflow-hidden rounded-xl border border-ink/10 bg-paper shadow-sm transition hover:-translate-y-0.5 hover:border-accent/60 hover:shadow-md dark:border-paper/15 dark:bg-ink/40 dark:hover:border-accent/60">
+    <article className="group relative overflow-hidden rounded-xl border border-ink/10 bg-paper shadow-sm transition hover:-translate-y-0.5 hover:border-accent/60 hover:shadow-md">
       <button
         type="button"
         onClick={handleClick}
@@ -120,11 +120,11 @@ export function AssetCard({
         <div className="flex flex-col gap-1.5 p-3">
           <h3 className="line-clamp-2 font-serif text-sm leading-snug">{asset.title}</h3>
           {asset.caption ? (
-            <p className="line-clamp-3 text-[11px] leading-snug text-ink/70 dark:text-paper/70">
+            <p className="line-clamp-3 text-[11px] leading-snug text-ink/70">
               {asset.caption}
             </p>
           ) : null}
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] uppercase tracking-[0.14em] text-ink-muted">
             <span className="inline-flex items-center gap-1 font-semibold text-accent">
               <SourceIcon source={asset.source} className="h-3 w-3" />
               {LANE_LABEL[asset.lane]}

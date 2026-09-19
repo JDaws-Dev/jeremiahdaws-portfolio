@@ -26,7 +26,7 @@ export function TopNav() {
       className={[
         "fixed inset-x-0 top-0 z-40 transition-all",
         scrolled || menuOpen
-          ? "border-b border-ink/10 bg-paper/85 backdrop-blur-md dark:border-paper/10 dark:bg-ink/85"
+          ? "border-b border-ink/10 bg-paper/85 backdrop-blur-md"
           : "border-b border-transparent bg-transparent",
       ].join(" ")}
     >
@@ -43,7 +43,7 @@ export function TopNav() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-ink-muted transition hover:text-ink dark:text-paper-muted dark:hover:text-paper"
+              className="text-sm font-medium text-ink-muted transition hover:text-ink"
             >
               {l.label}
             </a>
@@ -52,7 +52,7 @@ export function TopNav() {
         <div className="ml-auto flex items-center gap-2 md:ml-0">
           <a
             href="mailto:jedaws@gmail.com"
-            className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-3 py-1.5 text-xs font-medium transition hover:border-accent hover:text-accent dark:border-paper/30 dark:hover:border-accent dark:hover:text-accent"
+            className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-3 py-1.5 text-xs font-medium transition hover:border-accent hover:text-accent"
           >
             <IconMail className="h-3.5 w-3.5" />
             <span className="hidden sm:inline">jedaws@gmail.com</span>
@@ -61,7 +61,7 @@ export function TopNav() {
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
-            className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-ink/15 transition hover:border-accent hover:text-accent dark:border-paper/20 md:hidden"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-ink/15 transition hover:border-accent hover:text-accent md:hidden"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
@@ -87,7 +87,7 @@ export function TopNav() {
       {menuOpen ? (
         <nav
           id="mobile-nav"
-          className="border-t border-ink/10 bg-paper px-4 py-3 dark:border-paper/10 dark:bg-ink md:hidden"
+          className="border-t border-ink/10 bg-paper px-4 py-3 md:hidden"
         >
           <ul className="flex flex-col gap-1">
             {LINKS.map((l) => (
@@ -95,7 +95,7 @@ export function TopNav() {
                 <a
                   href={l.href}
                   onClick={() => setMenuOpen(false)}
-                  className="block rounded-md px-3 py-2 text-base font-medium text-ink transition hover:bg-paper-muted hover:text-accent dark:text-paper dark:hover:bg-ink/60"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-ink transition hover:bg-paper-muted hover:text-accent"
                 >
                   {l.label}
                 </a>

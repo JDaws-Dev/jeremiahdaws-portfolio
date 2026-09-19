@@ -40,7 +40,7 @@ export function SignatureBuilds({ entries }: { entries: PortfolioEntry[] }) {
   if (items.length === 0) return null;
 
   return (
-    <section className="border-y border-ink/10 bg-paper-muted/30 py-14 dark:border-paper/10 dark:bg-ink/20">
+    <section className="border-y border-ink/10 bg-paper-muted/30 py-14">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-end">
           <div>
@@ -51,7 +51,7 @@ export function SignatureBuilds({ entries }: { entries: PortfolioEntry[] }) {
               Three builds.<br />Three different tools.
             </h2>
           </div>
-          <p className="text-sm text-ink/75 dark:text-paper/75">
+          <p className="text-sm text-ink/75">
             A theatrical prop. A film-industry production part. A small-batch
             consumer product. Different muscles — but the same span:
             CAD-to-cut, design-to-ship, scan-to-screen. The proof that the
@@ -63,9 +63,9 @@ export function SignatureBuilds({ entries }: { entries: PortfolioEntry[] }) {
           {items.map(({ entry, format, storyKicker, thumb }) => (
             <li
               key={entry.slug}
-              className="flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-paper dark:border-paper/15 dark:bg-ink/40"
+              className="flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-paper"
             >
-              <div className="relative aspect-[4/5] w-full overflow-hidden border-b border-ink/10 bg-ink/5 dark:border-paper/15">
+              <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-ink/10 bg-ink/5">
                 <Image
                   src={thumb}
                   alt={entry.title}
@@ -81,10 +81,10 @@ export function SignatureBuilds({ entries }: { entries: PortfolioEntry[] }) {
                 <h3 className="font-serif text-xl leading-tight tracking-tight">
                   {entry.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-ink/75 dark:text-paper/75">
+                <p className="text-sm leading-relaxed text-ink/75">
                   {storyKicker}
                 </p>
-                <p className="mt-auto pt-2 text-[10px] uppercase tracking-[0.18em] text-ink-muted dark:text-paper-muted">
+                <p className="mt-auto pt-2 text-[10px] uppercase tracking-[0.18em] text-ink-muted">
                   {entry.role}
                 </p>
               </div>

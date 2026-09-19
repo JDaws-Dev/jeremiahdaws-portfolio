@@ -20,7 +20,7 @@ export default async function MozartPage() {
     !!gateCookie && !!expectedGate && gateCookie.value === expectedGate;
 
   return (
-    <main className="min-h-screen bg-paper-muted/40 dark:bg-ink/30">
+    <main className="min-h-screen bg-paper-muted/40">
       <div className="mx-auto flex min-h-screen max-w-2xl flex-col items-center justify-center px-6 py-24">
         <div className="mb-12 text-center">
           <p className="text-xs uppercase tracking-[0.22em] text-ink-muted">
@@ -29,7 +29,7 @@ export default async function MozartPage() {
           <h1 className="mt-3 font-serif text-5xl leading-tight tracking-[-0.01em]">
             Mozart
           </h1>
-          <p className="mt-4 max-w-md text-sm text-ink-muted dark:text-paper-muted">
+          <p className="mt-4 max-w-md text-sm text-ink-muted">
             Tap and talk. He's your full Mozart — knows your catalog, your
             sessions, your Suno library, your inbox. Whatever he can't answer
             in voice goes to your Telegram.

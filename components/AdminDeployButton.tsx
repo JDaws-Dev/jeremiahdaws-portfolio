@@ -54,13 +54,13 @@ export function AdminDeployButton() {
       </button>
 
       {result?.ok && result.nothing ? (
-        <span className="text-xs text-ink-muted dark:text-paper-muted">
+        <span className="text-xs text-ink-muted">
           Nothing to push — already in sync.
         </span>
       ) : null}
 
       {result?.ok && !result.nothing ? (
-        <span className="text-xs text-emerald-600 dark:text-emerald-400">
+        <span className="text-xs text-emerald-600">
           ✓ Pushed {result.changed} change{result.changed === 1 ? "" : "s"} (
           <code className="font-mono">{result.commit}</code>) — Vercel rebuilding.
         </span>

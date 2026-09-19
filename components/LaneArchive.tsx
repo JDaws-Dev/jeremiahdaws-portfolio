@@ -247,24 +247,25 @@ export function LaneArchive({
         >
           {title ?? LANE_TITLE[lane]}
         </h2>
-        <p className="mt-3 max-w-2xl text-base text-ink-muted dark:text-paper-muted md:text-lg">
+        <p className="mt-3 max-w-2xl text-base text-ink-muted md:text-lg">
           {intro}
         </p>
-        <p className="mt-3 text-xs uppercase tracking-[0.18em] text-ink-muted dark:text-paper-muted">
+        <p className="mt-3 text-xs uppercase tracking-[0.18em] text-ink-muted">
           {filtered.length} {filtered.length === 1 ? "piece" : "pieces"}
         </p>
       </header>
 
       {showFilters ? (
-        <div className="border-y border-ink/10 bg-paper/85 backdrop-blur-md dark:border-paper/10 dark:bg-ink/85 md:sticky md:top-14 md:z-30">
+        <div className="border-y border-ink/10 bg-paper/85 backdrop-blur-md md:sticky md:top-14 md:z-30">
           <div className="mx-auto max-w-6xl space-y-2 px-4 py-3 sm:px-6">
             <div className="flex flex-wrap items-center gap-2">
-              <label className="inline-flex items-center gap-1.5 text-xs text-ink-muted dark:text-paper-muted">
-                <span className="font-semibold uppercase tracking-[0.18em] text-accent">Sort</span>
+              <label className="inline-flex items-center gap-1.5 text-xs text-ink-muted">
+                <span className="font-semibold uppercase tracking-[0.18em] text-blue">Sort</span>
                 <select
                   value={sortKey}
                   onChange={(e) => setSortKey(e.target.value as SortKey)}
-                  className="rounded-full border border-ink/15 bg-transparent px-2.5 py-1 text-xs text-ink focus:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 dark:border-paper/15 dark:text-paper"
+                  className="appearance-none rounded-full border border-ink/15 bg-paper bg-[length:10px] bg-[right_0.75rem_center] bg-no-repeat px-3 py-2 pr-8 text-xs text-ink focus:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
+                  style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%235b6068' stroke-width='1.5'><path d='M1 1l5 5 5-5'/></svg>\")" }}
                 >
                   <option value="featured">Featured first</option>
                   <option value="title">Title (A–Z)</option>
@@ -274,13 +275,13 @@ export function LaneArchive({
               {totalSelected > 0 || query ? (
                 <button
                   onClick={clearAll}
-                  className="rounded-full border border-ink/15 px-2.5 py-1 text-xs text-ink-muted hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 dark:border-paper/15 dark:text-paper-muted"
+                  className="rounded-full border border-ink/15 px-2.5 py-1 text-xs text-ink-muted hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
                 >
                   Clear all{totalSelected ? ` (${totalSelected})` : ""}
                 </button>
               ) : null}
 
-              <div className="flex w-full items-center gap-1.5 rounded-full border border-ink/15 bg-transparent pl-2.5 pr-1 focus-within:border-accent dark:border-paper/15 sm:ml-auto sm:w-auto">
+              <div className="flex w-full items-center gap-1.5 rounded-full border border-ink/15 bg-transparent pl-2.5 pr-1 focus-within:border-accent sm:ml-auto sm:w-auto">
                 <svg
                   width="13"
                   height="13"
@@ -289,7 +290,7 @@ export function LaneArchive({
                   stroke="currentColor"
                   strokeWidth="2.2"
                   aria-hidden="true"
-                  className="text-ink-muted dark:text-paper-muted"
+                  className="text-ink-muted"
                 >
                   <circle cx="11" cy="11" r="7" />
                   <path d="M20 20l-3.5-3.5" strokeLinecap="round" />
@@ -300,7 +301,7 @@ export function LaneArchive({
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   aria-label="Search the archive"
-                  className="w-full bg-transparent py-1.5 text-sm placeholder:text-ink-muted focus:outline-none dark:placeholder:text-paper-muted sm:w-52"
+                  className="w-full bg-transparent py-1.5 text-sm placeholder:text-ink-muted focus:outline-none sm:w-52"
                 />
               </div>
             </div>
@@ -330,11 +331,11 @@ export function LaneArchive({
 
       <section className="mx-auto max-w-6xl px-6 py-10">
         {filtered.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-ink/15 p-10 text-center text-ink-muted dark:border-paper/15 dark:text-paper-muted">
+          <div className="rounded-2xl border border-dashed border-ink/15 p-10 text-center text-ink-muted">
             <p>No pieces match these filters.</p>
             <button
               onClick={clearAll}
-              className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-ink/20 px-4 py-2 text-sm font-medium text-ink transition hover:border-accent hover:text-accent dark:border-paper/30 dark:text-paper"
+              className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-ink/20 px-4 py-2 text-sm font-medium text-ink transition hover:border-accent hover:text-accent"
             >
               Clear all filters
             </button>
@@ -365,7 +366,7 @@ export function LaneArchive({
       <section className="mx-auto mt-8 max-w-6xl px-6 text-center">
         <Link
           href="/#contact"
-          className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent dark:border-paper/30 dark:hover:border-accent dark:hover:text-accent"
+          className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"
         >
           Like what you see? Get in touch <IconArrowRight className="h-4 w-4" />
         </Link>
@@ -389,7 +390,7 @@ function FilterRow({
 }) {
   if (items.length === 0) return null;
   return (
-    <div className="border-t border-ink/5 pt-2 dark:border-paper/5">
+    <div className="border-t border-ink/5 pt-2">
       <div className="flex flex-wrap items-center gap-1.5 text-xs">
         <span className="mr-1 w-14 shrink-0 font-semibold uppercase tracking-[0.18em] text-accent">
           {label}
@@ -402,11 +403,11 @@ function FilterRow({
               onClick={() => onToggle(k)}
               aria-pressed={sel}
               className={[
-                "inline-flex items-center gap-1 rounded-full border px-2.5 py-1 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+                "inline-flex items-center gap-1 rounded-full border px-3 py-2 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
                 capitalize ? "capitalize" : "",
                 sel
                   ? "border-accent bg-accent text-paper shadow-sm"
-                  : "border-ink/10 text-ink-muted hover:border-accent hover:text-accent dark:border-paper/15 dark:text-paper-muted",
+                  : "border-ink/10 text-ink-muted hover:border-accent hover:text-accent",
               ].join(" ")}
             >
               {sel ? <span aria-hidden="true">✓</span> : null}

@@ -20,15 +20,15 @@ export function AdminTabs({
 
   return (
     <div>
-      <div className="mb-6 inline-flex rounded-full border border-ink/15 bg-paper p-1 dark:border-paper/15 dark:bg-ink/40">
+      <div className="mb-6 inline-flex rounded-full border border-ink/15 bg-paper p-1">
         <button
           onClick={() => setTab("assets")}
           aria-pressed={tab === "assets"}
           className={[
             "rounded-full px-4 py-1.5 text-sm font-medium transition",
             tab === "assets"
-              ? "bg-ink text-paper dark:bg-paper dark:text-ink"
-              : "text-ink-muted hover:text-accent dark:text-paper-muted",
+              ? "bg-ink text-paper"
+              : "text-ink-muted hover:text-accent",
           ].join(" ")}
         >
           Assets ({assets.length})
@@ -39,8 +39,8 @@ export function AdminTabs({
           className={[
             "rounded-full px-4 py-1.5 text-sm font-medium transition",
             tab === "entries"
-              ? "bg-ink text-paper dark:bg-paper dark:text-ink"
-              : "text-ink-muted hover:text-accent dark:text-paper-muted",
+              ? "bg-ink text-paper"
+              : "text-ink-muted hover:text-accent",
           ].join(" ")}
         >
           Entries ({entries.length})

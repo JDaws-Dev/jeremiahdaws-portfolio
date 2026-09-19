@@ -77,14 +77,14 @@ export function ShopFlagships({ entries }: { entries: PortfolioEntry[] }) {
           return (
             <li
               key={entry.slug}
-              className="flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-paper dark:border-paper/15 dark:bg-ink/40"
+              className="flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-paper"
             >
               {thumb ? (
                 <Link
                   href={cta?.href ?? entry.externalUrl ?? "#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative block aspect-[16/10] w-full overflow-hidden border-b border-ink/10 bg-ink/5 dark:border-paper/15"
+                  className="group relative block aspect-[16/10] w-full overflow-hidden border-b border-ink/10 bg-ink/5"
                 >
                   {thumb.startsWith("http") ? (
                     // eslint-disable-next-line @next/next/no-img-element
@@ -112,16 +112,16 @@ export function ShopFlagships({ entries }: { entries: PortfolioEntry[] }) {
                   <h3 className="font-serif text-2xl leading-tight tracking-tight">
                     {entry.title}
                   </h3>
-                  <p className="mt-2 text-sm font-medium text-ink/80 dark:text-paper/85">
+                  <p className="mt-2 text-sm font-medium text-ink/80">
                     {tagline}
                   </p>
                 </div>
 
-                <p className="text-sm leading-relaxed italic text-ink/65 dark:text-paper/65">
+                <p className="text-sm leading-relaxed italic text-ink/65">
                   {storyKicker}
                 </p>
 
-                <ul className="space-y-1.5 text-sm text-ink/75 dark:text-paper/75">
+                <ul className="space-y-1.5 text-sm text-ink/75">
                   {proof.map((p) => (
                     <li key={p} className="flex gap-2">
                       <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
@@ -131,7 +131,7 @@ export function ShopFlagships({ entries }: { entries: PortfolioEntry[] }) {
                 </ul>
 
                 <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-2">
-                  <span className="text-[10px] uppercase tracking-[0.18em] text-ink-muted dark:text-paper-muted">
+                  <span className="text-[10px] uppercase tracking-[0.18em] text-ink-muted">
                     {entry.role} · {entry.year}
                   </span>
                   {cta ? (

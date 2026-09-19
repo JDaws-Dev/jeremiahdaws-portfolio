@@ -217,12 +217,12 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
   return (
     <article
       className={[
-        "rounded-xl border bg-paper p-3 transition dark:bg-ink/40",
-        hidden ? "border-red-500/50 opacity-60" : "border-ink/10 dark:border-paper/15",
+        "rounded-xl border bg-paper p-3 transition",
+        hidden ? "border-red-500/50 opacity-60" : "border-ink/10",
       ].join(" ")}
     >
       <div className="flex gap-3">
-        <div className="relative aspect-video w-32 shrink-0 overflow-hidden rounded-md bg-ink/10 dark:bg-paper/10">
+        <div className="relative aspect-video w-32 shrink-0 overflow-hidden rounded-md bg-ink/10">
           {previewThumb ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={previewThumb} alt="" referrerPolicy="no-referrer" className="h-full w-full object-cover" loading="lazy" />
@@ -237,12 +237,12 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
               href={asset.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-0.5 text-[11px] text-ink-muted hover:text-accent dark:text-paper-muted"
+              className="inline-flex items-center gap-0.5 text-[11px] text-ink-muted hover:text-accent"
             >
               open <IconArrowUpRight className="h-3 w-3" />
             </a>
           </div>
-          <p className="mt-0.5 line-clamp-1 text-xs text-ink-muted dark:text-paper-muted">
+          <p className="mt-0.5 line-clamp-1 text-xs text-ink-muted">
             {asset.parentTitle}
           </p>
           <h3 className="mt-1 line-clamp-1 font-serif text-sm leading-snug">{title || asset.title}</h3>
@@ -265,14 +265,14 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
             type="number"
             value={sortOrder}
             onChange={(e) => setSortOrder(Number(e.target.value))}
-            className="w-16 rounded border border-ink/15 bg-transparent px-1.5 py-0.5 text-xs focus:border-accent focus:outline-none dark:border-paper/20"
+            className="w-16 rounded border border-ink/15 bg-transparent px-1.5 py-0.5 text-xs focus:border-accent focus:outline-none"
             placeholder="0"
           />
-          <span className="text-ink-muted dark:text-paper-muted">(lower = earlier; default 0)</span>
+          <span className="text-ink-muted">(lower = earlier; default 0)</span>
         </label>
 
         <label className="md:col-span-2">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
             Title override (optional — leave empty to use original)
           </span>
           <input
@@ -280,24 +280,24 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder={asset.title}
-            className="mt-1 w-full rounded border border-ink/15 bg-transparent px-2 py-1 text-xs focus:border-accent focus:outline-none dark:border-paper/20"
+            className="mt-1 w-full rounded border border-ink/15 bg-transparent px-2 py-1 text-xs focus:border-accent focus:outline-none"
           />
         </label>
 
         <label className="md:col-span-2">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
             Caption (live on card)
           </span>
           <textarea
             value={caption}
             onChange={(e) => setCaption(e.target.value)}
             rows={2}
-            className="mt-1 w-full rounded border border-ink/15 bg-transparent px-2 py-1 text-xs focus:border-accent focus:outline-none dark:border-paper/20"
+            className="mt-1 w-full rounded border border-ink/15 bg-transparent px-2 py-1 text-xs focus:border-accent focus:outline-none"
           />
         </label>
 
         <div className="md:col-span-2">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
             Custom thumbnail
           </span>
 
@@ -307,7 +307,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
               "mt-1 flex cursor-pointer items-center gap-2 rounded-md border border-dashed px-3 py-2 text-xs transition",
               busy === "upload"
                 ? "border-accent bg-accent/5 text-accent"
-                : "border-ink/20 text-ink-muted hover:border-accent hover:text-accent dark:border-paper/20 dark:text-paper-muted",
+                : "border-ink/20 text-ink-muted hover:border-accent hover:text-accent",
             ].join(" ")}
             onDragOver={(e) => {
               e.preventDefault();
@@ -349,11 +349,11 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
                 value={thumbnail}
                 onChange={(e) => setThumbnail(e.target.value)}
                 placeholder="…or paste a URL: https://… or /portfolio/xyz.jpg"
-                className="w-full rounded border border-ink/15 bg-transparent px-2 py-1 text-xs focus:border-accent focus:outline-none dark:border-paper/20"
+                className="w-full rounded border border-ink/15 bg-transparent px-2 py-1 text-xs focus:border-accent focus:outline-none"
               />
               {suggestions.length ? (
                 <div className="mt-1.5 flex flex-wrap gap-1">
-                  <span className="text-[10px] uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+                  <span className="text-[10px] uppercase tracking-[0.14em] text-ink-muted">
                     Quick pick:
                   </span>
                   {suggestions.map((s) => (
@@ -365,7 +365,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
                         "rounded-full border px-2 py-0.5 text-[10px] transition",
                         thumbnail === s.url
                           ? "border-accent bg-accent/10 text-accent"
-                          : "border-ink/15 text-ink-muted hover:border-accent hover:text-accent dark:border-paper/15 dark:text-paper-muted",
+                          : "border-ink/15 text-ink-muted hover:border-accent hover:text-accent",
                       ].join(" ")}
                     >
                       {s.label}
@@ -384,7 +384,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
               ) : null}
             </div>
             {thumbnail ? (
-              <div className="relative aspect-video w-28 shrink-0 overflow-hidden rounded-md border border-ink/15 bg-ink/5 dark:border-paper/15 dark:bg-paper/5">
+              <div className="relative aspect-video w-28 shrink-0 overflow-hidden rounded-md border border-ink/15 bg-ink/5">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={thumbnail}
@@ -399,7 +399,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
         </div>
 
         <div className="md:col-span-2">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
             Currently tagged with
           </span>
           <div className="mt-1 flex flex-wrap gap-1">
@@ -418,7 +418,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
               .map((t) => (
                 <span
                   key={`inh-${t}`}
-                  className="inline-flex items-center gap-1 rounded-full border border-ink/15 bg-paper-muted/40 px-2 py-0.5 text-[10px] capitalize text-ink-muted dark:border-paper/15 dark:bg-ink/30 dark:text-paper-muted"
+                  className="inline-flex items-center gap-1 rounded-full border border-ink/15 bg-paper-muted/40 px-2 py-0.5 text-[10px] capitalize text-ink-muted"
                   title="Inherited from the parent entry's tags"
                 >
                   <span className="text-[9px] uppercase tracking-[0.14em] opacity-60">inh</span>
@@ -428,7 +428,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
             {(asset.override?.tags ?? []).map((t) => (
               <span
                 key={`ovr-${t}`}
-                className="inline-flex items-center gap-1 rounded-full bg-ink px-2 py-0.5 text-[10px] capitalize text-paper dark:bg-paper dark:text-ink"
+                className="inline-flex items-center gap-1 rounded-full bg-ink px-2 py-0.5 text-[10px] capitalize text-paper"
                 title="Admin-added tag (override)"
               >
                 <span className="text-[9px] uppercase tracking-[0.14em] opacity-60">ovr</span>
@@ -438,7 +438,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
             {(asset.roles ?? []).length === 0 &&
             (asset.tags ?? []).length === 0 &&
             (asset.override?.tags ?? []).length === 0 ? (
-              <span className="text-[10px] italic text-ink-muted dark:text-paper-muted">
+              <span className="text-[10px] italic text-ink-muted">
                 No tags yet
               </span>
             ) : null}
@@ -447,10 +447,10 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
 
         <div className="md:col-span-2">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
               Client / org (one per asset — drives the Client filter chip)
             </span>
-            <span className="text-[9px] uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+            <span className="text-[9px] uppercase tracking-[0.14em] text-ink-muted">
               {client && client !== (asset.org ?? "") ? "override" : "inherited"}
             </span>
           </div>
@@ -459,7 +459,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
             value={client}
             onChange={(e) => setClient(e.target.value)}
             placeholder="Disney Consumer Products, Daws Brothers…"
-            className="mt-1 w-full rounded border border-ink/15 bg-transparent px-2 py-1 text-xs focus:border-accent focus:outline-none dark:border-paper/20"
+            className="mt-1 w-full rounded border border-ink/15 bg-transparent px-2 py-1 text-xs focus:border-accent focus:outline-none"
           />
           <div className="mt-1.5 flex flex-wrap gap-1">
             {CLIENT_PRESETS.map((c) => {
@@ -474,7 +474,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
                     "rounded-full border px-2 py-0.5 text-[10px] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
                     sel
                       ? "border-accent bg-accent text-paper shadow-sm"
-                      : "border-ink/15 text-ink-muted hover:border-accent hover:text-accent dark:border-paper/15 dark:text-paper-muted",
+                      : "border-ink/15 text-ink-muted hover:border-accent hover:text-accent",
                   ].join(" ")}
                 >
                   {sel ? <span aria-hidden="true">✓ </span> : null}
@@ -487,10 +487,10 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
 
         <div className="md:col-span-2">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
               Tags (toggle on/off — these REPLACE inherited tags on save)
             </span>
-            <span className="text-[9px] uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+            <span className="text-[9px] uppercase tracking-[0.14em] text-ink-muted">
               {tags.size} selected
             </span>
           </div>
@@ -507,7 +507,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
                     "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] capitalize transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
                     sel
                       ? "border-accent bg-accent text-paper shadow-sm"
-                      : "border-ink/15 text-ink-muted hover:border-accent hover:text-accent dark:border-paper/15 dark:text-paper-muted",
+                      : "border-ink/15 text-ink-muted hover:border-accent hover:text-accent",
                   ].join(" ")}
                 >
                   {sel ? <span aria-hidden="true">✓</span> : null}
@@ -517,7 +517,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
             })}
           </div>
           <label className="mt-1.5 block">
-            <span className="text-[9px] uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+            <span className="text-[9px] uppercase tracking-[0.14em] text-ink-muted">
               Plus extra tags (optional, comma-separated)
             </span>
             <input
@@ -525,13 +525,13 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
               value={extraTagsInput}
               onChange={(e) => setExtraTagsInput(e.target.value)}
               placeholder="custom, free-form tags"
-              className="mt-0.5 w-full rounded border border-ink/15 bg-transparent px-2 py-1 text-xs focus:border-accent focus:outline-none dark:border-paper/20"
+              className="mt-0.5 w-full rounded border border-ink/15 bg-transparent px-2 py-1 text-xs focus:border-accent focus:outline-none"
             />
           </label>
         </div>
       </div>
 
-      <details className="mt-2 rounded-md border border-ink/10 bg-paper-muted/30 p-2 dark:border-paper/10 dark:bg-ink/20">
+      <details className="mt-2 rounded-md border border-ink/10 bg-paper-muted/30 p-2">
         <summary className="cursor-pointer text-[10px] font-semibold uppercase tracking-[0.14em] text-accent">
           ✨ Polish caption with AI
         </summary>
@@ -541,7 +541,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
             onChange={(e) => setPolishInput(e.target.value)}
             rows={2}
             placeholder="Describe in your own words. Leave empty to polish the existing caption."
-            className="w-full rounded border border-ink/15 bg-paper px-2 py-1 text-xs focus:border-accent focus:outline-none dark:border-paper/20 dark:bg-ink/40"
+            className="w-full rounded border border-ink/15 bg-paper px-2 py-1 text-xs focus:border-accent focus:outline-none"
           />
           <button
             type="button"
@@ -558,7 +558,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
       <div className="mt-2 flex items-center justify-between gap-2">
         <div className="text-[11px]">
           {status ? (
-            <span className={status.kind === "ok" ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}>
+            <span className={status.kind === "ok" ? "text-green-600" : "text-red-600"}>
               {status.msg}
             </span>
           ) : null}
@@ -567,7 +567,7 @@ function AdminAssetRow({ asset }: { asset: AssetWithMeta }) {
           type="button"
           onClick={save}
           disabled={busy !== null}
-          className="rounded-full bg-ink px-3 py-1 text-[11px] font-medium text-paper transition hover:bg-accent disabled:opacity-50 dark:bg-paper dark:text-ink dark:hover:bg-accent dark:hover:text-paper"
+          className="rounded-full bg-ink px-3 py-1 text-[11px] font-medium text-paper transition hover:bg-accent disabled:opacity-50"
         >
           {busy === "save" ? "Saving…" : "Save"}
         </button>
@@ -625,7 +625,7 @@ export function AdminAssetGrid({ assets }: { assets: AssetWithMeta[] }) {
 
   return (
     <div>
-      <div className="sticky top-14 z-30 -mx-6 mb-4 border-b border-ink/10 bg-paper/85 px-6 py-3 backdrop-blur dark:border-paper/10 dark:bg-ink/85">
+      <div className="sticky top-14 z-30 -mx-6 mb-4 border-b border-ink/10 bg-paper/85 px-6 py-3 backdrop-blur">
         <div className="flex flex-wrap items-center gap-2">
           {(["all", "video", "education", "making", "building"] as const).map((l) => (
             <button
@@ -635,8 +635,8 @@ export function AdminAssetGrid({ assets }: { assets: AssetWithMeta[] }) {
               className={[
                 "rounded-full border px-3 py-1.5 text-sm font-medium transition",
                 lane === l
-                  ? "border-ink bg-ink text-paper dark:border-paper dark:bg-paper dark:text-ink"
-                  : "border-ink/15 text-ink-muted hover:border-accent hover:text-accent dark:border-paper/20 dark:text-paper-muted",
+                  ? "border-ink bg-ink text-paper"
+                  : "border-ink/15 text-ink-muted hover:border-accent hover:text-accent",
               ].join(" ")}
             >
               {l === "all" ? "All" : LANE_LABEL[l]}
@@ -645,7 +645,7 @@ export function AdminAssetGrid({ assets }: { assets: AssetWithMeta[] }) {
               </span>
             </button>
           ))}
-          <label className="ml-2 inline-flex items-center gap-1.5 text-xs text-ink-muted dark:text-paper-muted">
+          <label className="ml-2 inline-flex items-center gap-1.5 text-xs text-ink-muted">
             <input
               type="checkbox"
               checked={showHidden}
@@ -659,7 +659,7 @@ export function AdminAssetGrid({ assets }: { assets: AssetWithMeta[] }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search…"
-            className="ml-auto w-56 rounded-full border border-ink/15 bg-transparent px-3 py-1.5 text-sm focus:border-accent focus:outline-none dark:border-paper/20"
+            className="ml-auto w-56 rounded-full border border-ink/15 bg-transparent px-3 py-1.5 text-sm focus:border-accent focus:outline-none"
           />
         </div>
 
@@ -672,7 +672,7 @@ export function AdminAssetGrid({ assets }: { assets: AssetWithMeta[] }) {
               {roles.size > 0 ? (
                 <button
                   onClick={() => setRoles(new Set())}
-                  className="rounded-full border border-ink/15 px-2.5 py-1 text-ink-muted hover:border-accent hover:text-accent dark:border-paper/15 dark:text-paper-muted"
+                  className="rounded-full border border-ink/15 px-2.5 py-1 text-ink-muted hover:border-accent hover:text-accent"
                 >
                   Clear ({roles.size})
                 </button>
@@ -688,7 +688,7 @@ export function AdminAssetGrid({ assets }: { assets: AssetWithMeta[] }) {
                       "inline-flex items-center gap-1 rounded-full border px-2.5 py-1 capitalize transition",
                       sel
                         ? "border-accent bg-accent/10 text-accent"
-                        : "border-ink/10 text-ink-muted hover:border-accent hover:text-accent dark:border-paper/15 dark:text-paper-muted",
+                        : "border-ink/10 text-ink-muted hover:border-accent hover:text-accent",
                     ].join(" ")}
                   >
                     {r}
@@ -700,7 +700,7 @@ export function AdminAssetGrid({ assets }: { assets: AssetWithMeta[] }) {
           </div>
         ) : null}
 
-        <p className="mt-2 text-[11px] text-ink-muted dark:text-paper-muted">
+        <p className="mt-2 text-[11px] text-ink-muted">
           Showing {filtered.length} of {assets.length} assets
         </p>
       </div>

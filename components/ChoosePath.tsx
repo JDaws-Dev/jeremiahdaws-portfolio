@@ -144,7 +144,7 @@ export function ChoosePath() {
   }, [active]);
 
   return (
-    <section id="choose" className="border-y border-paper-muted bg-paper-muted/40 py-16 dark:border-paper/10 dark:bg-ink/30">
+    <section id="choose" className="border-y border-paper-muted bg-paper-muted/40 py-16">
       <div className="mx-auto max-w-6xl px-6">
         <p className="text-xs uppercase tracking-[0.22em] text-blue">Choose your own adventure</p>
         <h2 className="mt-2 max-w-3xl font-serif text-3xl leading-tight tracking-[-0.01em] md:text-[2.6rem]">
@@ -163,8 +163,8 @@ export function ChoosePath() {
                 className={[
                   "group flex h-full flex-col rounded-2xl border p-5 text-left transition",
                   isActive
-                    ? "border-accent bg-paper shadow-md dark:bg-ink/60"
-                    : "border-ink/10 bg-paper hover:-translate-y-0.5 hover:border-accent hover:shadow-md dark:border-paper/15 dark:bg-ink/40 dark:hover:border-accent",
+                    ? "border-accent bg-paper shadow-md"
+                    : "border-ink/10 bg-paper hover:-translate-y-0.5 hover:border-accent hover:shadow-md",
                 ].join(" ")}
               >
                 <span
@@ -178,7 +178,7 @@ export function ChoosePath() {
                 <h3 className="mt-5 font-serif text-xl leading-tight tracking-tight">
                   {p.label}
                 </h3>
-                <p className="mt-1 text-sm text-ink/70 dark:text-paper/70">{p.hero}</p>
+                <p className="mt-1 text-sm text-ink/70">{p.hero}</p>
               </button>
             );
           })}
@@ -187,7 +187,7 @@ export function ChoosePath() {
         {path ? (
           <div
             ref={detailRef}
-            className="mt-10 scroll-mt-20 rounded-3xl border border-ink/10 bg-paper p-6 shadow-sm dark:border-paper/15 dark:bg-ink/40 md:p-8"
+            className="mt-10 scroll-mt-20 rounded-3xl border border-ink/10 bg-paper p-6 shadow-sm md:p-8"
           >
             <div className="grid gap-8 md:grid-cols-[1.1fr_1fr] md:items-start">
               <div>
@@ -195,23 +195,23 @@ export function ChoosePath() {
                 <h3 className="mt-2 font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">
                   {path.hero}
                 </h3>
-                <p className="mt-4 max-w-prose text-base leading-relaxed text-ink/80 dark:text-paper/80 md:text-lg">
+                <p className="mt-4 max-w-prose text-base leading-relaxed text-ink/80 md:text-lg">
                   {path.pitch}
                 </p>
-                <p className="mt-4 text-xs uppercase tracking-[0.16em] text-ink-muted dark:text-paper-muted">
+                <p className="mt-4 text-xs uppercase tracking-[0.16em] text-ink-muted">
                   {path.proof}
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <Link
                     href={path.workHref}
-                    className="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-sm font-medium text-paper transition hover:bg-accent dark:bg-paper dark:text-ink dark:hover:bg-accent dark:hover:text-paper"
+                    className="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-sm font-medium text-paper transition hover:bg-accent"
                   >
                     See all {path.label.toLowerCase()} work <IconArrowRight className="h-4 w-4" />
                   </Link>
                   <a
                     href={path.resume}
                     download
-                    className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-4 py-2.5 text-sm font-medium transition hover:border-accent hover:text-accent dark:border-paper/30 dark:hover:border-accent dark:hover:text-accent"
+                    className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-4 py-2.5 text-sm font-medium transition hover:border-accent hover:text-accent"
                   >
                     <IconDownload className="h-4 w-4" />
                     {path.resumeLabel}
@@ -228,9 +228,9 @@ export function ChoosePath() {
                     <li key={h.title}>
                       <Link
                         href={h.href}
-                        className="group flex items-center gap-3 rounded-xl border border-ink/10 bg-paper-muted/30 p-2.5 transition hover:border-accent dark:border-paper/15 dark:bg-ink/30 dark:hover:border-accent"
+                        className="group flex items-center gap-3 rounded-xl border border-ink/10 bg-paper-muted/30 p-2.5 transition hover:border-accent"
                       >
-                        <div className="relative aspect-video w-28 shrink-0 overflow-hidden rounded-md bg-ink/10 dark:bg-paper/10">
+                        <div className="relative aspect-video w-28 shrink-0 overflow-hidden rounded-md bg-ink/10">
                           {h.thumb.startsWith("http") ? (
                             // eslint-disable-next-line @next/next/no-img-element
                             <img
@@ -246,11 +246,11 @@ export function ChoosePath() {
                         </div>
                         <div className="min-w-0 flex-1">
                           <p className="line-clamp-1 font-serif text-sm leading-tight">{h.title}</p>
-                          <p className="line-clamp-1 mt-0.5 text-[11px] uppercase tracking-[0.14em] text-ink-muted dark:text-paper-muted">
+                          <p className="line-clamp-1 mt-0.5 text-[11px] uppercase tracking-[0.14em] text-ink-muted">
                             {h.meta}
                           </p>
                         </div>
-                        <IconArrowRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:text-accent dark:text-paper-muted" />
+                        <IconArrowRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:text-accent" />
                       </Link>
                     </li>
                   ))}
@@ -259,7 +259,7 @@ export function ChoosePath() {
             </div>
           </div>
         ) : (
-          <p className="mt-8 max-w-xl text-sm text-ink-muted dark:text-paper-muted">
+          <p className="mt-8 max-w-xl text-sm text-ink-muted">
             Pick one and I'll show you the most relevant work, the right résumé, and a path into the rest. Or <Link href="/work" className="font-medium text-accent hover:underline">browse the whole catalog</Link>.
           </p>
         )}

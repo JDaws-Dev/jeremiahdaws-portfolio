@@ -25,7 +25,7 @@ export function TeachHero() {
 
       <div className="mt-8 grid gap-8 md:grid-cols-[1.4fr_1fr]">
         <div>
-          <p className="text-base text-ink/80 dark:text-paper/80 md:text-lg">
+          <p className="text-base text-ink/80 md:text-lg">
             As Department Head, I built two academic programs from zero — Film &amp; Story and
             Creative Technology — at a private classical school in metro
             Atlanta, 2022 to 2026. <strong>Twelve-plus courses, fifty-plus students,
@@ -37,7 +37,7 @@ export function TeachHero() {
             studio full-time as Producer / Director at FORM, and I still teach
             adults and teams to use AI as a consultant.
           </p>
-          <p className="mt-4 text-sm text-ink-muted dark:text-paper-muted">
+          <p className="mt-4 text-sm text-ink-muted">
             Project-based, capstone-oriented, story-first. Students left
             with a finished short, a printed prop, a shipped game, or a
             working AI tool — and an editor&rsquo;s eye for what makes work
@@ -47,14 +47,14 @@ export function TeachHero() {
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accent dark:bg-paper dark:text-ink dark:hover:bg-accent dark:hover:text-paper"
+              className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accent"
             >
               Get in touch <IconArrowRight className="h-4 w-4" />
             </Link>
             <a
               href="/resumes/resume-education.pdf"
               download
-              className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-2.5 text-sm font-medium transition hover:border-accent hover:text-accent dark:border-paper/30"
+              className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-2.5 text-sm font-medium transition hover:border-accent hover:text-accent"
             >
               <IconDownload className="h-4 w-4" />
               Education résumé (PDF)
@@ -62,11 +62,11 @@ export function TeachHero() {
           </div>
         </div>
 
-        <aside className="rounded-2xl border border-ink/10 bg-paper-muted/40 p-5 text-sm dark:border-paper/15 dark:bg-ink/30">
+        <aside className="rounded-2xl border border-ink/10 bg-paper-muted/40 p-5 text-sm">
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent">
             The record
           </p>
-          <ul className="mt-3 space-y-1.5 text-ink/80 dark:text-paper/85">
+          <ul className="mt-3 space-y-1.5 text-ink/80">
             {RECORD.map((o) => (
               <li key={o} className="flex gap-2">
                 <span className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-accent" />
@@ -74,7 +74,7 @@ export function TeachHero() {
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-xs text-ink-muted dark:text-paper-muted">
+          <p className="mt-4 text-xs text-ink-muted">
             Curriculum samples and syllabi available on request for schools
             building a similar program.
           </p>
