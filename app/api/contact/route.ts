@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 const TO = "jedaws@gmail.com";
 // Only Jeremiah ever sees this sender; replies go to the visitor via reply_to.
-const FROM = "Jeremiah Daws — Website <contact@getsafefamily.com>";
+const FROM = "Jeremiah Daws Website <contact@jeremiahdaws.com>";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
