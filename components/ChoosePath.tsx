@@ -95,8 +95,8 @@ const PATHS: Path[] = [
     label: "Apps & AI",
     hero: "I ship the tool.",
     pitch:
-      "AI consulting, team training, vibe-coding builds, and websites with AI built in. Rebuilt the FORM studio website. Built the SafeFamily app suite (kid-safe YouTube, music, books, homework). JARVIS, a personal AI OS with 150+ tools, plus Mozart and Anna for household coordination. Stack: Next.js, Convex, Vapi, MCP.",
-    proof: "FORM website · SafeFamily · 10+ shipped apps · multi-agent home AI",
+      "AI consulting, team training, vibe-coding builds, and websites with AI built in. Rebuilt the FORM studio website. Client builds for Artios Cafe (fully automated ordering with a staff AI assistant) and ReadyTote (website + AI assistant). Built the SafeFamily app suite (kid-safe YouTube, music, books, homework). Stack: Next.js, Convex, Claude.",
+    proof: "Artios Cafe · ReadyTote · FORM website · SafeFamily",
     resume: "/resumes/resume-tech.pdf",
     resumeLabel: "Apps & AI résumé",
     workHref: "/apps",
@@ -120,9 +120,9 @@ const PATHS: Path[] = [
         href: "/apps",
       },
       {
-        title: "JARVIS — personal AI OS",
-        meta: "Telegram-fronted · 150+ MCP tools · self-tooling",
-        thumb: "https://i.ytimg.com/vi/A3V_AN36pUs/hqdefault.jpg",
+        title: "ReadyTote",
+        meta: "Client site · AI assistant · booking",
+        thumb: "/portfolio/client-readytote.jpg",
         href: "/apps",
       },
     ],
