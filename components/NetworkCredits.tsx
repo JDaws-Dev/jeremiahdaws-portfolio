@@ -23,6 +23,7 @@ const CREDITS: Credit[] = [
     highlights: [
       "Calendar Jockeys — director, Form Films comedy series",
       "FORM studio website — rebuilt end to end",
+      "Internal AI assistant for the FORM team",
     ],
   },
   {

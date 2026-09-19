@@ -49,7 +49,8 @@ export function About() {
               <p>
                 Producer / Director at FORM, where I direct{" "}
                 <em>Calendar Jockeys</em>{" "}
-                and rebuilt the studio&rsquo;s website.
+                and built the studio&rsquo;s website and an internal AI assistant
+                for the team.
                 Six years producing branded video at Disney Parks before that.
                 Editor on National Geographic and Hallmark. SkillsUSA National
                 Silver in CNC turning. Former Tormach brand ambassador. AI consultant

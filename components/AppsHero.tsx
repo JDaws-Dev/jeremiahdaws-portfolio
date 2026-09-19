@@ -39,7 +39,8 @@ export function AppsHero() {
           </p>
           <p className="mt-4 text-sm text-ink-muted dark:text-paper-muted">
             A kid-safe app suite with paying customers. Three agents running my
-            household. The website for FORM, the studio where I work. On the
+            household. The website and an internal AI assistant for FORM, the
+            studio where I work. On the
             side, I take on AI consulting, team training, vibe-coding builds,
             and websites with AI built in, like the ones running ReadyTote
             and Artios Cafe.
