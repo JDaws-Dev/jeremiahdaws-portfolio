@@ -3,15 +3,15 @@ import Link from "next/link";
 import type { PortfolioEntry } from "@/lib/portfolio";
 
 const LANE_LABEL: Record<string, string> = {
-  video: "Video",
   education: "Education",
+  video: "Video",
   making: "Making",
   building: "Apps & AI",
 };
 
 const LANE_HREF: Record<string, string> = {
-  video: "/work",
   education: "/teach",
+  video: "/work",
   making: "/maker",
   building: "/apps",
 };

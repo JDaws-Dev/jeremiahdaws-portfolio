@@ -8,8 +8,8 @@ import { AssetLightbox } from "./AssetLightbox";
 import { IconArrowRight } from "./icons";
 
 const LANE_TITLE: Record<Lane, string> = {
-  video: "Video work.",
   education: "Teaching.",
+  video: "Video work.",
   making: "Maker work.",
   building: "Apps & AI.",
 };

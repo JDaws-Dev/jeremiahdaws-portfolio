@@ -26,6 +26,13 @@ export async function GET(
     );
   }
 
+  // Only serve our own pages: this proxies Jeremiah's TMDB quota.
+  const origin = req.headers.get("origin") ?? req.headers.get("referer") ?? "";
+  const allowed = ["https://jeremiahdaws.com", "https://jeremiahdaws.vercel.app", "http://localhost"];
+  if (origin && !allowed.some((a) => origin.startsWith(a))) {
+    return NextResponse.json({ error: "Not allowed" }, { status: 403 });
+  }
+
   const { path } = await params;
   if (!path?.length) {
     return NextResponse.json({ error: "missing TMDB path" }, { status: 400 });

@@ -14,3 +14,8 @@ tsconfig.tsbuildinfo
 # IG crawler login session (cookies — DO NOT commit)
 scripts/.ig-session/
 scripts/.ig-session/**
+
+# Private working notes and scraped data — keep out of the public repo
+scripts/job-targets.md
+scripts/ig-deep-*.json
+scripts/ig-reel-views-*.json

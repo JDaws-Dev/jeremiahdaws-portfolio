@@ -19,7 +19,7 @@ const PRODUCTS: Product[] = [
     tagline:
       "A kid-safe content suite for Christian families — four apps under one family code.",
     storyKicker:
-      "I built this because my own kids deserved a quiet corner of the internet. Same conviction that drove me to build the film and creative-tech programs at their school — kids deserve real ones.",
+      "I built this because my own kids deserved a quiet corner of the internet.",
     proof: [
       "Four apps · SafeTube, SafeTunes, SafeReads, SafeStudy",
       "Single-source JWT auth · one family code · one subscription",

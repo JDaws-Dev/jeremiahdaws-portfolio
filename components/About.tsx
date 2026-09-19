@@ -59,12 +59,12 @@ export function About() {
                 those credentials live alone — every one feeds the next.
               </p>
               <p>
-                When Artios needed Lumière&rsquo;s articulated candle hands for
-                Beauty and the Beast: I 3D-scanned a model, designed it in Fusion,
+                When a school production of Beauty and the Beast needed
+                Lumière&rsquo;s articulated candle hands: I 3D-scanned a model, designed it in Fusion,
                 printed and painted the parts, wired the LEDs and switches, fit
                 them to a kid&rsquo;s hands, and shot the rehearsal. A five-person
                 crew needs hand-offs and two weeks. I needed four days. The same
-                pattern repeats — Inception spinning top, Hollywood-set steadi-cam
+                pattern repeats — Inception spinning top, Hollywood-set Steadicam
                 dolly, the Tormach Garage Series I hosted. Make the thing. Film the
                 thing.
               </p>

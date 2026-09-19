@@ -66,8 +66,28 @@ function renderEmail(o: {
 </body></html>`;
 }
 
-function clean(v: unknown, max: number): string {
-  return typeof v === "string" ? v.trim().slice(0, max) : "";
+// Fields that end up in mail headers (name, email, topic) are flattened so they
+// can never inject one; the message body keeps its line breaks.
+function clean(v: unknown, max: number, multiline = false): string {
+  if (typeof v !== "string") return "";
+  const s = multiline ? v.replace(/\r\n?/g, "\n") : v.replace(/[\r\n\t]+/g, " ");
+  return s.trim().slice(0, max);
+}
+
+// One inbox, one person: enough to stop a loop without a database.
+const RATE_LIMIT = 5;
+const RATE_WINDOW_MS = 60 * 60 * 1000;
+const hits = new Map<string, number[]>();
+
+function rateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (hits.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
+  recent.push(now);
+  hits.set(ip, recent);
+  if (hits.size > 500) {
+    for (const [k, v] of hits) if (v.every((t) => now - t > RATE_WINDOW_MS)) hits.delete(k);
+  }
+  return recent.length > RATE_LIMIT;
 }
 
 function escapeHtml(s: string): string {
@@ -75,10 +95,19 @@ function escapeHtml(s: string): string {
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 export async function POST(req: Request) {
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  if (rateLimited(ip)) {
+    return NextResponse.json(
+      { ok: false, error: "Too many messages just now. Try again later, or email me directly." },
+      { status: 429 },
+    );
+  }
+
   const data = await req.json().catch(() => null);
   if (!data || typeof data !== "object") {
     return NextResponse.json({ ok: false, error: "Bad request" }, { status: 400 });
@@ -91,7 +120,7 @@ export async function POST(req: Request) {
 
   const name = clean(data.name, 120);
   const email = clean(data.email, 200);
-  const message = clean(data.message, 5000);
+  const message = clean(data.message, 5000, true);
   const topic = clean(data.topic, 120) || "General";
   const page = clean(data.page, 200);
 

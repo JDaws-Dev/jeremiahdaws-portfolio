@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "Maker — Jeremiah Daws",
   description:
     "Ran Bullfrog Machining (Buford, GA) from 2021 to 2026. SkillsUSA National Silver in CNC Turning. Former Tormach brand ambassador and Garage Series host. CNC mill + lathe, 3D printing, fabrication, theatrical props, film-industry parts. The Filmmaker → Machinist YouTube channel documents the work.",
+  alternates: { canonical: "/maker" },
 };
 
 export default function MakerPage() {

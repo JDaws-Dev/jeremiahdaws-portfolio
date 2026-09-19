@@ -43,8 +43,9 @@ export function MakerHero() {
       <div className="mt-8 grid gap-8 md:grid-cols-[1.4fr_1fr]">
         <div>
           <p className="text-base text-ink/80 dark:text-paper/80 md:text-lg">
-            CNC mill, CNC lathe, manual machining, 3D printing, vacuum forming,
-            welding, electronics, theatrical props. <strong>SkillsUSA National
+            What I ran: CNC mill, CNC lathe, manual machining, 3D printing,
+            vacuum forming, welding, electronics, theatrical props.
+            <strong>SkillsUSA National
             Silver in CNC Turning.</strong> Former Tormach brand ambassador and
             host of their Garage Series tutorials. For five years I ran
             Bullfrog Machining in Buford, GA, doing paid film-industry fab work

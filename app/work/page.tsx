@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Filmmaker — Jeremiah Daws",
   description:
     "Producer / Director at FORM, directing the Form Films comedy series Calendar Jockeys. Six years at Disney Yellow Shoes (Parks marketing) and Disney Consumer Products (Marvel, Lucasfilm, ABC, Freeform, Target). Editor on National Geographic's Building Wild, Hallmark's Our Wild Hearts, and the U.S. Army reality series Starting Strong. Daws Brothers indie features. Director · Producer · Editor.",
+  alternates: { canonical: "/work" },
 };
 
 export default function WorkPage() {

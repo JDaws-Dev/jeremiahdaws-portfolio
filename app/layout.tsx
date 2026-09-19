@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const SITE_URL = "https://jeremiahdaws.vercel.app";
+const SITE_URL = "https://jeremiahdaws.com";
 const NAME = "Jeremiah Daws";
 const TAGLINE = "Producer / Director at FORM — Atlanta";
 const SHORT_DESC =
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     creator: "@JeremiahDaws",
   },
   robots: { index: true, follow: true },
-  icons: { icon: "/favicon.ico" },
+  alternates: { canonical: "/" },
 };
 
 const personSchema = {

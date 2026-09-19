@@ -32,7 +32,7 @@ export function WorkHero() {
         <div>
           <p className="text-base text-ink/80 dark:text-paper/80 md:text-lg">
             <strong>Producer / Director at FORM</strong>, an Atlanta story
-            company, where I direct the Form Films comedy series{" "}
+            company, where I direct the Form Films animated comedy series{" "}
             <em>Calendar Jockeys</em>. Before that, six years{" "}
             <strong>producing branded content</strong> for Disney
             Parks and Disney Consumer Products — Marvel, Lucasfilm, ABC,

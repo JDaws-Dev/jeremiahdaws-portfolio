@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Apps & AI — Jeremiah Daws",
   description:
     "AI consulting, training, vibe-coding builds, and AI-powered websites. Builder of GetSafeFamily (kid-safe app suite with paying customers), the FORM studio website, a client site for ReadyTote, the fully automated Artios Cafe ordering system with a staff AI assistant, a three-agent household AI stack (JARVIS, Anna, Mozart), plus side-project apps. Tech early adopter, full-stack engineer, digital hospitality. Stack: Next.js, TypeScript, Convex, Stripe, Anthropic, MCP, Vapi.",
+  alternates: { canonical: "/apps" },
 };
 
 export default function AppsPage() {

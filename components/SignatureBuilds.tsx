@@ -55,7 +55,7 @@ export function SignatureBuilds({ entries }: { entries: PortfolioEntry[] }) {
             A theatrical prop. A film-industry production part. A small-batch
             consumer product. Different muscles — but the same span:
             CAD-to-cut, design-to-ship, scan-to-screen. The proof that the
-            shop isn&rsquo;t one-trick.
+            shop wasn&rsquo;t one-trick.
           </p>
         </div>
 

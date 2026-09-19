@@ -46,7 +46,7 @@ export function Hero() {
 
             <p className="mt-5 max-w-2xl text-base leading-snug text-ink/85 dark:text-paper/85 md:text-lg">
               Producer / Director at FORM, an Atlanta story company, where I
-              direct the comedy series <em>Calendar Jockeys</em>. Before that:
+              direct the animated comedy series <em>Calendar Jockeys</em>. Before that:
               six years producing branded video for Disney Parks (Marvel,
               Lucasfilm, ABC, Freeform). Editor on National Geographic and
               Hallmark. SkillsUSA National Silver in CNC turning. Former Tormach
@@ -64,7 +64,7 @@ export function Hero() {
                 href="#hire"
                 className="text-sm font-medium text-ink-muted transition hover:text-accent dark:text-paper-muted"
               >
-                or hire me for AI + web →
+                or hire me for AI &amp; web →
               </a>
             </div>
           </div>

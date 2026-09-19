@@ -96,8 +96,8 @@ export function HireSection() {
                 >
                   Artios Cafe
                 </a>
-                , a fully automated cafe ordering system whose staff run it by
-                talking to an AI assistant.
+                , a cafe ordering and operations system the
+                staff run by talking to an AI assistant.
               </p>
               <p className="mt-3 text-sm text-paper/55">
                 Need a brand film or series instead? That&rsquo;s my day job as

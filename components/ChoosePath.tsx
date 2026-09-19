@@ -31,7 +31,7 @@ const PATHS: Path[] = [
     label: "Filmmaker",
     hero: "I tell the story.",
     pitch:
-      "Producer / Director at FORM, directing the comedy series Calendar Jockeys. Six years producing branded marketing for Disney Parks. Editor on National Geographic, Hallmark, and reality broadcast. Independent narrative features I write and direct with my brother under our Daws Brothers banner. Story-first, fast turnaround, multi-cam comfortable.",
+      "Producer / Director at FORM, directing the animated comedy series Calendar Jockeys. Six years producing branded marketing for Disney Parks. Editor on National Geographic, Hallmark, and reality broadcast. Independent narrative features I write and direct with my brother under our Daws Brothers banner. Story-first, fast turnaround, multi-cam comfortable.",
     proof: "FORM · Disney · Marvel · Lucasfilm · Target · Hallmark · National Geographic",
     resume: "/resumes/resume-video.pdf",
     resumeLabel: "Video résumé",
@@ -92,7 +92,7 @@ const PATHS: Path[] = [
   {
     id: "building",
     Icon: IconSpark,
-    label: "Apps & AI",
+    label: "AI Builder",
     hero: "I ship the tool.",
     pitch:
       "AI consulting, team training, vibe-coding builds, and websites with AI built in. Rebuilt the FORM studio website. Client builds for Artios Cafe (fully automated ordering with a staff AI assistant) and ReadyTote (website + AI assistant). Built the SafeFamily app suite (kid-safe YouTube, music, books, homework). Stack: Next.js, Convex, Claude.",
