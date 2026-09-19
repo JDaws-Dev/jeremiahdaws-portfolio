@@ -8,7 +8,6 @@ const LINKS = [
   { href: "/work", label: "Filmmaker" },
   { href: "/maker", label: "Maker" },
   { href: "/apps", label: "AI Builder" },
-  { href: "/teach", label: "Teacher" },
   { href: "/#hire", label: "Hire" },
 ];
 

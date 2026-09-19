@@ -1,6 +1,5 @@
 import {
   IconArrowUpRight,
-  IconBook,
   IconDownload,
   IconFilm,
   IconImdb,
@@ -17,9 +16,15 @@ import {
 
 const RESUMES = [
   { id: "video", label: "Video", href: "/resumes/resume-video.pdf", Icon: IconFilm },
-  { id: "education", label: "Education", href: "/resumes/resume-education.pdf", Icon: IconBook },
   { id: "maker", label: "Maker", href: "/resumes/resume-maker.pdf", Icon: IconWrench },
   { id: "tech", label: "Apps & AI", href: "/resumes/resume-tech.pdf", Icon: IconSpark },
+];
+
+const SERVICES = [
+  "AI consulting: find where AI fits",
+  "AI training for your team",
+  "Vibe-coded tools and apps",
+  "Websites with AI built in",
 ];
 
 const SOCIAL = [
@@ -38,7 +43,7 @@ export function HireSection() {
 
       <section
         id="hire"
-        className="relative bg-ink py-24 text-paper"
+        className="relative scroll-mt-14 bg-ink py-24 text-paper"
       >
         {/* Soft accent glows so the section reads as a "stage" not a footer */}
         <div className="pointer-events-none absolute inset-0 -z-0">
@@ -48,35 +53,77 @@ export function HireSection() {
 
         <div className="relative mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">
-            Hire me
+            Hire me · AI &amp; web
           </p>
           <h2 className="mt-3 font-serif text-6xl leading-[0.95] tracking-[-0.025em] md:text-[7rem]">
-            Let&rsquo;s make<br />something.
+            Let&rsquo;s put AI<br />to work.
           </h2>
 
           <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr] md:gap-16">
             <div>
               <p className="text-base text-paper/80 md:text-lg">
-                Full-time, contract, or one-off. Atlanta or remote. I&rsquo;m most
-                useful on projects that need a creative eye, a technical brain, a
-                teacher&rsquo;s patience, and a maker&rsquo;s willingness to figure
-                it out — the kind of messy, undefined work where the answer
-                isn&rsquo;t obvious yet.
+                On the side, I help small businesses, schools, and teams put AI to
+                work, not just talk about it. You work with me directly: I scope
+                it, build it, and teach your people to use it.
               </p>
-              <p className="mt-4 text-sm text-paper/55">
-                I&rsquo;m probably interested if it&rsquo;s a film/edit role at a
-                studio that respects craft, a school building a film or creative-tech
-                program, a shop or product team that needs design + fabrication +
-                content under one roof, or a small team shipping AI tools for real
-                people.
+              <ul className="mt-5 grid gap-2 text-sm text-paper/85 sm:grid-cols-2">
+                {SERVICES.map((svc) => (
+                  <li key={svc} className="flex gap-2">
+                    <span className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                    <span>{svc}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 text-sm text-paper/70">
+                Recent client work:{" "}
+                <a
+                  href="https://readytote.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-paper underline decoration-paper/30 underline-offset-4 transition hover:text-accent"
+                >
+                  ReadyTote
+                </a>
+, a website with an AI assistant that books, answers customers,
+                and briefs the owner; and{" "}
+                <a
+                  href="https://artioscafe.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-paper underline decoration-paper/30 underline-offset-4 transition hover:text-accent"
+                >
+                  Artios Cafe
+                </a>
+                , a fully automated cafe ordering system whose staff run it by
+                talking to an AI assistant.
+              </p>
+              <p className="mt-3 text-sm text-paper/55">
+                Need a brand film or series instead? That&rsquo;s my day job as
+                Producer / Director at{" "}
+                <a
+                  href="https://www.formgreatstories.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-paper/80 underline decoration-paper/30 underline-offset-4 transition hover:text-accent"
+                >
+                  FORM
+                </a>
+                .
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
-                  href="mailto:jedaws@gmail.com?subject=Hiring%20Jeremiah%20Daws&body=Hi%20Jeremiah%2C%20%0A%0AI%20saw%20your%20site%20and%20wanted%20to%20talk%20about..."
+                  href="mailto:jedaws@gmail.com?subject=AI%20%2F%20web%20project&body=Hi%20Jeremiah%2C%20%0A%0AWe%27d%20like%20help%20with..."
                   className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-paper shadow-xl shadow-accent/30 transition hover:-translate-y-0.5 hover:bg-accent-muted hover:shadow-2xl hover:shadow-accent/40"
                 >
                   Start a conversation
+                  <span aria-hidden="true">→</span>
+                </a>
+                <a
+                  href="/apps"
+                  className="inline-flex items-center gap-2 rounded-full border border-paper/25 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"
+                >
+                  See what I&rsquo;ve built
                   <span aria-hidden="true">→</span>
                 </a>
               </div>
@@ -85,7 +132,7 @@ export function HireSection() {
             <div className="space-y-5">
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-paper/55">
-                  Or grab a résumé
+                  Résumés
                 </p>
                 <ul id="resumes" className="mt-3 flex flex-wrap gap-2 scroll-mt-20">
                   {RESUMES.map((r) => (
@@ -129,7 +176,7 @@ export function HireSection() {
           </div>
 
           {/* Hard divider before contact details so they read as a separate block */}
-          <div className="mt-16 border-t border-paper/15 pt-8" id="contact">
+          <div className="mt-16 scroll-mt-20 border-t border-paper/15 pt-8" id="contact">
             <ul className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm">
               <li>
                 <a

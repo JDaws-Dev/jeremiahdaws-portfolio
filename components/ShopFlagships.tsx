@@ -15,25 +15,25 @@ const FLAGSHIPS: Flagship[] = [
   {
     slug: "bullfrog-machining",
     tagline:
-      "My machine shop in Buford, GA. CNC turning, CNC milling, fabrication, prototype-to-small-batch for paying clients.",
+      "The machine shop I ran in Buford, GA from 2021 to 2026. CNC turning, CNC milling, fabrication, prototype-to-small-batch for paying clients.",
     storyKicker:
-      "Paid CNC fab work — including parts for Atlanta-area film productions: steadicam sleds, dolly components, on-set fixtures. Hospitality with horsepower.",
+      "Paid CNC fab work, including parts for Atlanta-area film productions: steadicam sleds, dolly components, on-set fixtures. Hospitality with horsepower.",
     proof: [
       "Tormach 1100MX (mill) · Tormach 15L Slant Pro (lathe)",
       "Manual Bridgeport · manual lathe · MIG / TIG",
       "Film-industry parts for Atlanta productions",
-      "Working shop, not a hobby bench",
+      "A working shop, not a hobby bench (closed 2026)",
     ],
     cta: { label: "Bullfrog Machining on Instagram", href: "https://www.instagram.com/bullfrogmachining/" },
   },
   {
     slug: "youtube-channel",
     tagline:
-      "Filmmaker → Machinist. The YouTube channel that documents the pivot. Tormach brand ambassador hosting their Garage Series.",
+      "Filmmaker → Machinist. The YouTube channel that documents the pivot. Former Tormach brand ambassador and host of their Garage Series.",
     storyKicker:
       "Tormach (the CNC manufacturer) tapped me to host their official beginner-CNC tutorials. The channel doubles as a teaching sample and a public proof-of-shop.",
     proof: [
-      "Tormach Garage Series — official tutorial host",
+      "Tormach Garage Series — official tutorial host (former)",
       "Top videos: Montessori bed · Ninja Turtles diorama · rideable train",
       "Restoration: Bridgeport mill (Stark Industries makeover)",
       "100+ shop and field videos across YouTube + Instagram",

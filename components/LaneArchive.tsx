@@ -364,7 +364,7 @@ export function LaneArchive({
 
       <section className="mx-auto mt-8 max-w-6xl px-6 text-center">
         <Link
-          href="/#hire"
+          href="/#contact"
           className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent dark:border-paper/30 dark:hover:border-accent dark:hover:text-accent"
         >
           Like what you see? Get in touch <IconArrowRight className="h-4 w-4" />

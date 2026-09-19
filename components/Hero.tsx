@@ -28,7 +28,7 @@ export function Hero() {
             <div className="flex flex-wrap items-center gap-2">
               <div className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-paper-muted/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-ink-muted dark:border-paper/20 dark:bg-ink/40 dark:text-paper-muted sm:text-xs">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                Open to full-time · Buford, GA
+                Producer / Director at FORM · Atlanta
               </div>
             </div>
 
@@ -41,16 +41,16 @@ export function Hero() {
 
             <p className="mt-5 max-w-2xl font-serif text-2xl leading-tight text-ink dark:text-paper sm:text-3xl md:text-[2.1rem]">
               <span className="text-accent">I tell the story.</span>{" "}
-              <span className="text-accent">I build the thing.</span>{" "}
-              <span className="text-accent">I teach the process.</span>
+              <span className="text-accent">I build the thing.</span>
             </p>
 
             <p className="mt-5 max-w-2xl text-base leading-snug text-ink/85 dark:text-paper/85 md:text-lg">
-              I left the Walt Disney Company to make stuff, teach stuff, and film stuff
-              — sometimes in the same week. Six years producing branded video for
-              Disney Parks (Marvel, Lucasfilm, ABC, Freeform). Editor on National
-              Geographic and Hallmark. SkillsUSA National Silver in CNC turning.
-              Tormach brand ambassador. Founder of AnswerAxis.
+              Producer / Director at FORM, an Atlanta story company, where I
+              direct the comedy series <em>Calendar Jockeys</em>. Before that:
+              six years producing branded video for Disney Parks (Marvel,
+              Lucasfilm, ABC, Freeform). Editor on National Geographic and
+              Hallmark. SkillsUSA National Silver in CNC turning. Former Tormach
+              brand ambassador. On the side, I do AI consulting and training.
             </p>
 
             <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
@@ -64,7 +64,7 @@ export function Hero() {
                 href="#hire"
                 className="text-sm font-medium text-ink-muted transition hover:text-accent dark:text-paper-muted"
               >
-                or jump to hire →
+                or hire me for AI + web →
               </a>
             </div>
           </div>

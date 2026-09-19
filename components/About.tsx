@@ -1,7 +1,7 @@
 const PROOF = [
+  { v: "FORM", l: "Producer / Director" },
   { v: "6 yrs", l: "Disney Parks & DCPI" },
   { v: "Silver", l: "SkillsUSA Nationals · CNC" },
-  { v: "12+", l: "Courses built from zero" },
   { v: "10+", l: "Production apps shipped" },
   { v: "150+", l: "Tools in JARVIS, my AI OS" },
   { v: "60+", l: "Maker videos on YouTube" },
@@ -21,7 +21,6 @@ const STACK = {
   ],
   Tech: ["Arduino · ESP32", "Servos · NeoPixels", "Sensors · OLED", "Soldering", "3D printing"],
   Code: ["Next.js", "TypeScript", "Convex", "Stripe", "Vapi", "MCP", "Vercel"],
-  Teach: ["Curriculum design", "Project-based learning", "Capstone mentoring"],
 };
 
 export function About() {
@@ -42,18 +41,19 @@ export function About() {
               <p>
                 Generalists ship faster than specialists. Not because we cut corners
                 — because nothing gets translated between people. I direct the
-                story, edit the cut, design the prop in Fusion, machine it on the
-                Tormach, light and shoot the demo, write the AI agent that
-                automates the workflow, and teach the curriculum that walks kids
-                through the same loop. One head. One calendar. Zero hand-off
+                story, edit the cut, design the prop in Fusion, machine it, light
+                and shoot the demo, and write the AI agent that
+                automates the workflow. One head. One calendar. Zero hand-off
                 latency.
               </p>
               <p>
-                Six years producing branded video at Disney Parks. Editor on
-                National Geographic and Hallmark. SkillsUSA National Silver in
-                CNC turning. Tormach brand ambassador. Department Head at a
-                Christian classical school where I built two programs from zero.
-                Founder of AnswerAxis (AI consulting, paying clients). Sixty-plus
+                Producer / Director at FORM, where I direct{" "}
+                <em>Calendar Jockeys</em>{" "}
+                and rebuilt the studio&rsquo;s website.
+                Six years producing branded video at Disney Parks before that.
+                Editor on National Geographic and Hallmark. SkillsUSA National
+                Silver in CNC turning. Former Tormach brand ambassador. AI consultant
+                on the side. Sixty-plus
                 maker videos on YouTube. Ten production apps shipped. None of
                 those credentials live alone — every one feeds the next.
               </p>
@@ -64,17 +64,13 @@ export function About() {
                 them to a kid&rsquo;s hands, and shot the rehearsal. A five-person
                 crew needs hand-offs and two weeks. I needed four days. The same
                 pattern repeats — Inception spinning top, Hollywood-set steadi-cam
-                dolly, the Tormach Garage Series I host. Make the thing. Film the
-                thing. Teach the thing.
+                dolly, the Tormach Garage Series I hosted. Make the thing. Film the
+                thing.
               </p>
               <p>
-                Faith and family drive it. My kids attend Artios — I built the
-                Film and Creative Tech programs there because I wanted them
-                taught the craft the way professionals actually do it, not a
-                watered-down hobby version. SafeFamily and IllPrayForYou come
+                Faith and family drive it. SafeFamily and IllPrayForYou come
                 from the same instinct: real tools for Christian families that
-                don&rsquo;t sacrifice quality for safety. Hire me for the project
-                nobody else can scope.
+                don&rsquo;t sacrifice quality for safety.
               </p>
             </div>
           </div>

@@ -4,9 +4,9 @@ import "./globals.css";
 
 const SITE_URL = "https://jeremiahdaws.vercel.app";
 const NAME = "Jeremiah Daws";
-const TAGLINE = "Filmmaker · Maker · AI Builder · Teacher — Atlanta";
+const TAGLINE = "Producer / Director at FORM — Atlanta";
 const SHORT_DESC =
-  "Atlanta-based filmmaker, machinist, AI builder, and teacher. Six years at Disney producing branded content (Marvel, Lucasfilm, ABC, Freeform). Broadcast editor on National Geographic, Hallmark, and Ricky Schroder. Founder of AnswerAxis (AI consulting and custom builds for small business) and GetSafeFamily (kid-safe content suite). SkillsUSA National Silver, Tormach brand ambassador. Department Head running the film and creative-tech programs at a private classical school.";
+  "Producer / Director at FORM, an Atlanta story company, where he directs the comedy series Calendar Jockeys. Filmmaker, maker, and AI builder. Six years at Disney producing branded content (Marvel, Lucasfilm, ABC, Freeform). Broadcast editor on National Geographic, Hallmark, and Ricky Schroder. AI consultant (consulting, training, vibe-coding builds, and AI-powered websites). Founder of GetSafeFamily (kid-safe content suite with paying customers). SkillsUSA National Silver, former Tormach brand ambassador.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     title: `${NAME} — ${TAGLINE}`,
-    description: "Filmmaker · Maker · AI Builder · Teacher. Buford, GA.",
+    description: "Producer / Director at FORM. Filmmaker · Maker · AI Builder. Atlanta.",
     siteName: NAME,
   },
   twitter: {
     card: "summary_large_image",
     title: `${NAME} — ${TAGLINE}`,
-    description: "Filmmaker · Maker · AI Builder · Teacher.",
+    description: "Producer / Director at FORM. Filmmaker · Maker · AI Builder.",
     creator: "@JeremiahDaws",
   },
   robots: { index: true, follow: true },
@@ -39,7 +39,8 @@ const personSchema = {
   "@type": "Person",
   name: NAME,
   url: SITE_URL,
-  jobTitle: "Video Producer, AI Builder, Maker, Teacher",
+  jobTitle: "Producer / Director",
+  worksFor: { "@type": "Organization", name: "FORM", url: "https://www.formgreatstories.com/" },
   address: { "@type": "PostalAddress", addressLocality: "Buford", addressRegion: "GA", addressCountry: "US" },
   email: "jedaws@gmail.com",
   telephone: "+1-310-845-5702",
@@ -53,7 +54,6 @@ const personSchema = {
     "https://www.youtube.com/c/JeremiahDaws",
     "https://www.instagram.com/jeremiahdaws/",
     "https://twitter.com/JeremiahDaws",
-    "https://www.answeraxis.com/",
   ],
 };
 

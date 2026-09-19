@@ -13,6 +13,19 @@ type Credit = {
 
 const CREDITS: Credit[] = [
   {
+    slug: "calendar-jockeys",
+    cardTitle: "Studio production",
+    hat: "Producer / Director",
+    client: "FORM · Form Films",
+    years: "2026–present",
+    storyKicker:
+      "In-house at FORM, an Atlanta story company making brand films, studio content, interactive experiences, and original films. Back to directing and producing full-time.",
+    highlights: [
+      "Calendar Jockeys — director, Form Films comedy series",
+      "FORM studio website — rebuilt end to end",
+    ],
+  },
+  {
     slug: "disney-director",
     cardTitle: "Branded campaigns",
     hat: "Director / Producer",
@@ -86,10 +99,10 @@ export function NetworkCredits({ entries }: { entries: PortfolioEntry[] }) {
           Studio &amp; broadcast credits
         </p>
         <h2 className="mt-2 font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">
-          Three kinds of work. One résumé.
+          Four kinds of work. One résumé.
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-ink-muted dark:text-paper-muted">
-          Six years inside Disney as Director, Producer, and short-form Editor
+          Producer / Director at FORM today. Before that, six years inside Disney as Director, Producer, and short-form Editor
           (Yellow Shoes Parks marketing + Disney Consumer Products: Marvel,
           Lucasfilm, ABC, Freeform). Plus broadcast Editor credits at National
           Geographic, Hallmark, and the U.S. Army reality series produced by
@@ -97,7 +110,7 @@ export function NetworkCredits({ entries }: { entries: PortfolioEntry[] }) {
         </p>
       </div>
 
-      <ul className="mt-8 grid gap-5 md:grid-cols-3">
+      <ul className="mt-8 grid gap-5 md:grid-cols-2">
         {items.map(({ entry, cardTitle, hat, client, years, storyKicker, highlights }) => {
           const thumb = thumbForEntry(entry);
           return (

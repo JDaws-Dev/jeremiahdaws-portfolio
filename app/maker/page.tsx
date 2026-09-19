@@ -11,7 +11,7 @@ import { getAllAssets, getAllEntries } from "@/lib/portfolio";
 export const metadata: Metadata = {
   title: "Maker — Jeremiah Daws",
   description:
-    "Owner of Bullfrog Machining (Buford, GA). SkillsUSA National Silver in CNC Turning. Tormach brand ambassador hosting their Garage Series. CNC mill + lathe, 3D printing, fabrication, theatrical props, film-industry parts. The Filmmaker → Machinist YouTube channel documents the work.",
+    "Ran Bullfrog Machining (Buford, GA) from 2021 to 2026. SkillsUSA National Silver in CNC Turning. Former Tormach brand ambassador and Garage Series host. CNC mill + lathe, 3D printing, fabrication, theatrical props, film-industry parts. The Filmmaker → Machinist YouTube channel documents the work.",
 };
 
 export default function MakerPage() {
@@ -33,11 +33,11 @@ export default function MakerPage() {
         showFilters={false}
       />
       <PageCta
-        eyebrow="Need a part?"
-        title="Need it on the truck Tuesday morning?"
-        body="Bullfrog Machining (Buford, GA) takes on film-industry fab, theatrical props, prototype-to-small-batch CNC work, and one-off design-build jobs. Also open to machinist roles and brand-content partnerships."
-        emailSubject="Maker / machining inquiry"
-        emailBody="Hi Jeremiah,%0A%0AWe need..."
+        eyebrow="Want to talk shop?"
+        title="The shop is closed. The builds are still here."
+        body="Bullfrog Machining closed in 2026. The channel and the full build archive stay up. Always happy to talk props, fabrication, and making things with a camera rolling."
+        emailSubject="Maker question"
+        emailBody="Hi Jeremiah,%0A%0AI saw your builds and..."
         resume={{ href: "/resumes/resume-maker.pdf", label: "Maker résumé (PDF)" }}
       />
     </main>

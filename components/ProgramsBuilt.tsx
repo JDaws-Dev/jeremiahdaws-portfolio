@@ -122,7 +122,7 @@ export function ProgramsBuilt() {
       </ul>
 
       <p className="mt-8 max-w-2xl text-sm text-ink-muted dark:text-paper-muted">
-        I also teach Game &amp; Web Design and an emerging AI &amp; Automation
+        I also taught Game &amp; Web Design and an emerging AI &amp; Automation
         track — see all four tracks below.
       </p>
     </section>

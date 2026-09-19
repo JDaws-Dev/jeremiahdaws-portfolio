@@ -8,7 +8,6 @@ const SLUGS = [
   "apps-fridaynightvideo",
   "apps-illprayforyou",
   "apps-artiosconnect",
-  "apps-artioscafe",
 ];
 
 export function AlsoShipped({ entries }: { entries: PortfolioEntry[] }) {

@@ -9,7 +9,7 @@ import { getAllAssets, getAllEntries } from "@/lib/portfolio";
 export const metadata: Metadata = {
   title: "Filmmaker — Jeremiah Daws",
   description:
-    "Six years at Disney Yellow Shoes (Parks marketing) and Disney Consumer Products (Marvel, Lucasfilm, ABC, Freeform, Target). Editor on National Geographic's Building Wild, Hallmark's Our Wild Hearts, and the U.S. Army reality series Starting Strong. Daws Brothers indie features. Director · Producer · Editor.",
+    "Producer / Director at FORM, directing the Form Films comedy series Calendar Jockeys. Six years at Disney Yellow Shoes (Parks marketing) and Disney Consumer Products (Marvel, Lucasfilm, ABC, Freeform, Target). Editor on National Geographic's Building Wild, Hallmark's Our Wild Hearts, and the U.S. Army reality series Starting Strong. Daws Brothers indie features. Director · Producer · Editor.",
 };
 
 export default function WorkPage() {
@@ -25,14 +25,14 @@ export default function WorkPage() {
         lane="video"
         eyebrow="Full archive"
         title="Every video, every cut."
-        intro="The full filmography — Disney Parks brand work, broadcast credits, Daws Brothers indie features, private-school productions and social, and everything in between. Filter by role, format, or client to see only what you're hiring for."
+        intro="The full filmography — Disney Parks brand work, broadcast credits, Daws Brothers indie features, private-school productions and social, and everything in between. Filter by role, format, or client to see only what you're looking for."
       />
       <PageCta
-        eyebrow="Hiring a video producer?"
-        title="Branded content, social media, broadcast, narrative — same hands."
-        body="Six years producing branded content at Disney. Social-media producer for two ongoing clients. Broadcast editor for Nat Geo, Hallmark, and Ricky Schroder. Independent narrative director under the Daws Brothers banner I run with my brother. Full-time, contract, or one-off — direct, produce, edit, or all three. Atlanta or remote."
-        emailSubject="Video producer / editor inquiry"
-        emailBody="Hi Jeremiah,%0A%0AWe're looking for a video..."
+        eyebrow="Have a story to tell?"
+        title="Brand films, series, and original stories at FORM."
+        body="I'm Producer / Director at FORM, an Atlanta story company making brand films, studio content, interactive experiences, and original films. If you have a story that needs telling, reach out and I'll bring it to the team."
+        emailSubject="Story project for FORM"
+        emailBody="Hi Jeremiah,%0A%0AWe have a story we'd like to talk about..."
         resume={{ href: "/resumes/resume-video.pdf", label: "Video résumé (PDF)" }}
       />
     </main>

@@ -31,44 +31,52 @@ const PRODUCTS: Product[] = [
     imageAlt: "GetSafeFamily — kid-safe content suite",
   },
   {
-    slug: "answeraxis",
+    slug: "apps-artioscafe",
     tagline:
-      "AI consulting for small businesses. I find where AI fits in your business — then build the AI that fits.",
+      "A school lunch cafe, run end to end by software, with an AI assistant the staff simply talk to.",
     storyKicker:
-      "Most owners know AI can help; they just don't know where to start. Every engagement begins with a $1,000 AI Readiness Assessment — Annie (my AI interviewer) maps the bottlenecks on the client's own schedule, then I deliver a written 48-hour action plan with quick wins.",
+      "Parents pre-order, the restaurant order goes out every morning, Venmo payments match themselves to orders, and volunteers sign themselves up. The owner and staff ask the AI things like \"close the 26th for Thanksgiving\", and it proposes the change for them to approve.",
     proof: [
-      "Call the demo: __TEL_BUSINESS__ · or AnswerAxis line __TEL_DEMO__",
-      "AI Readiness Assessment ($1,000) · Phone Agent ($500/mo) · Speed-to-Lead · Workflow Automation",
-      "$99+ assessment track for professionals, educators, parents",
-      "Stack: Vapi · Convex · Stripe · Twilio · Google Calendar — real clients, real testimonials",
+      "Paying client · designed, built, and maintained solo",
+      "Orders, payments, counter POS, P&L, volunteer scheduling",
+      "AI assistant with confirm-before-change safety",
     ],
-    cta: { label: "Visit AnswerAxis", href: "https://www.answeraxis.com/", icon: "external" },
-    image: "/portfolio/answeraxis.jpg",
-    imageAlt: "AnswerAxis — AI consulting for small business",
+    cta: { label: "Visit Artios Cafe", href: "https://artioscafe.com/", icon: "external" },
+    image: "/portfolio/apps-artioscafe-v2.png",
+    imageAlt: "Artios Cafe — ordering and operations app",
+  },
+  {
+    slug: "form-website",
+    tagline:
+      "The website for FORM, the Atlanta story company where I'm Producer / Director.",
+    storyKicker:
+      "I rebuilt formgreatstories.com so one site carries all four divisions: brand films, studio podcast and broadcast, interactive branching experiences, and original films.",
+    proof: [
+      "Live at formgreatstories.com",
+      "Four divisions · one site · one story",
+    ],
+    cta: { label: "Visit FORM", href: "https://www.formgreatstories.com/", icon: "external" },
+    image: "/portfolio/form-website.png",
+    imageAlt: "FORM — studio website",
+  },
+  {
+    slug: "client-readytote",
+    tagline:
+      "Client build: website and AI assistant for a moving-tote rental business in Dublin, GA.",
+    storyKicker:
+      "One Claude-powered assistant with three jobs: it sizes up a visitor's move, answers a customer's questions about their own booking, and briefs the owner on the week's deliveries and inventory.",
+    proof: [
+      "Paying client · designed and built solo",
+      "Booking flow · order pages · owner dashboard",
+      "One AI, three roles: visitor, customer, owner",
+    ],
+    cta: { label: "Visit ReadyTote", href: "https://readytote.vercel.app/", icon: "external" },
+    image: "/portfolio/client-readytote.png",
+    imageAlt: "ReadyTote — moving tote rental website",
   },
 ];
 
 function renderProof(p: string) {
-  if (p.includes("__TEL_BUSINESS__") || p.includes("__TEL_DEMO__")) {
-    return (
-      <>
-        Call the AI:{" "}
-        <a
-          href="tel:+16787716794"
-          className="font-semibold text-accent transition hover:underline"
-        >
-          (678) 771-6794
-        </a>{" "}
-        · demo line{" "}
-        <a
-          href="tel:+14044809199"
-          className="font-semibold text-accent transition hover:underline"
-        >
-          (404) 480-9199
-        </a>
-      </>
-    );
-  }
   return p;
 }
 
@@ -83,10 +91,10 @@ export function ProductBuilds({ entries }: { entries: PortfolioEntry[] }) {
     <section className="mx-auto max-w-6xl px-6 py-12">
       <div>
         <p className="text-xs uppercase tracking-[0.22em] text-accent">
-          Products with paying customers
+          Shipped and live
         </p>
         <h2 className="mt-2 font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">
-          Two businesses. Both live. Both mine.
+          Built for real people. Live right now.
         </h2>
       </div>
 

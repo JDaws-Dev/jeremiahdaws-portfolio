@@ -27,7 +27,7 @@ const TRACKS: Track[] = [
     name: "AI & Automation",
     oneLiner:
       "Practical AI for makers. Students wire ChatGPT into Arduino projects, prompt-engineer real workflows, and ship working tools — not theory decks.",
-    proof: "Backed by: Founder of AnswerAxis · 150+ tools in JARVIS · 10+ shipped apps",
+    proof: "Backed by: AI consultant · 150+ tools in JARVIS · 10+ shipped apps",
     courses: [
       "AI vibe-coding",
       "Prompt engineering for makers",
@@ -51,8 +51,8 @@ export function EmergingTracks() {
             </h2>
           </div>
           <p className="text-sm text-ink/75 dark:text-paper/75">
-            The Film and Creative-Tech programs are the established ones.
-            Game &amp; Web Design and AI &amp; Automation are the newer
+            The Film and Creative-Tech programs were the established ones.
+            Game &amp; Web Design and AI &amp; Automation were the newer
             tracks, taught with the same project-based, capstone-oriented
             cadence — and the same insistence that a student should walk
             out with something they made.

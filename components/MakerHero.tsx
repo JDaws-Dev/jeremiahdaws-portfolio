@@ -45,33 +45,25 @@ export function MakerHero() {
           <p className="text-base text-ink/80 dark:text-paper/80 md:text-lg">
             CNC mill, CNC lathe, manual machining, 3D printing, vacuum forming,
             welding, electronics, theatrical props. <strong>SkillsUSA National
-            Silver in CNC Turning.</strong> Brand ambassador for Tormach,
-            hosting their Garage Series tutorials. Owner of Bullfrog Machining
-            in Buford, GA — paid film-industry fab work for Atlanta
-            productions. The maker work feeds the channel
-            (<em>Filmmaker → Machinist</em>) and the channel feeds the work.
+            Silver in CNC Turning.</strong> Former Tormach brand ambassador and
+            host of their Garage Series tutorials. For five years I ran
+            Bullfrog Machining in Buford, GA, doing paid film-industry fab work
+            for Atlanta productions, until I closed the shop in 2026. The
+            builds live on in the channel (<em>Filmmaker → Machinist</em>) and
+            the archive below.
           </p>
           <p className="mt-4 text-sm text-ink-muted dark:text-paper-muted">
             One-off props. Production fixtures. Working dollies. A full
             Beauty-and-the-Beast Lumière candle, scanned and printed from a
             Disney source. Same hands.
           </p>
-          <p className="mt-3 text-sm text-ink/75 dark:text-paper/75">
-            <strong>I&rsquo;m the right hire if you&rsquo;re</strong>
-            {" "}an Atlanta film/TV production needing a part on the truck
-            Tuesday morning, a
-            theatrical company who&rsquo;d rather build than rent, a machine
-            shop hiring CNC operators with content-creator chops, or a
-            manufacturer wanting branded shop content that doesn&rsquo;t look
-            like every other YouTube channel.
-          </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <Link
-              href="/#hire"
+              href="/#contact"
               className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accent dark:bg-paper dark:text-ink dark:hover:bg-accent dark:hover:text-paper"
             >
-              Hire me <IconArrowRight className="h-4 w-4" />
+              Get in touch <IconArrowRight className="h-4 w-4" />
             </Link>
             <a
               href="/resumes/resume-maker.pdf"
@@ -86,7 +78,7 @@ export function MakerHero() {
 
         <aside className="rounded-2xl border border-ink/10 bg-paper-muted/40 p-5 text-sm dark:border-paper/15 dark:bg-ink/30">
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent">
-            The shop
+            Machines I&rsquo;ve run
           </p>
           <ul className="mt-3 flex flex-wrap gap-1.5">
             {SHOP.map((s) => (
@@ -99,8 +91,8 @@ export function MakerHero() {
             ))}
           </ul>
           <p className="mt-4 text-xs text-ink-muted dark:text-paper-muted">
-            Home shop in Buford, GA. CAD-to-cut on real production parts —
-            not just demos.
+            Bullfrog Machining, Buford, GA (2021–2026). CAD-to-cut on real
+            production parts, not just demos.
           </p>
         </aside>
       </div>

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { IconArrowRight, IconDownload } from "./icons";
 
 const STACK = [
@@ -18,7 +17,7 @@ export function AppsHero() {
   return (
     <section className="relative mx-auto max-w-6xl px-6 pt-24 pb-10">
       <p className="text-xs uppercase tracking-[0.22em] text-accent">
-        Apps & AI — Founder · Engineer
+        Apps & AI — Builder · Consultant
       </p>
       <h1
         className="mt-3 font-serif leading-[1.02] tracking-[-0.025em]"
@@ -39,17 +38,20 @@ export function AppsHero() {
             work, different surfaces.
           </p>
           <p className="mt-4 text-sm text-ink-muted dark:text-paper-muted">
-            Two products with paying customers. Three agents running my
-            household. The systems plumbing under all of it.
+            A kid-safe app suite with paying customers. Three agents running my
+            household. The website for FORM, the studio where I work. On the
+            side, I take on AI consulting, team training, vibe-coding builds,
+            and websites with AI built in, like the ones running ReadyTote
+            and Artios Cafe.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <Link
+            <a
               href="/#hire"
               className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accent dark:bg-paper dark:text-ink dark:hover:bg-accent dark:hover:text-paper"
             >
-              Hire me <IconArrowRight className="h-4 w-4" />
-            </Link>
+              Hire me for AI <IconArrowRight className="h-4 w-4" />
+            </a>
             <a
               href="/resumes/resume-tech.pdf"
               download

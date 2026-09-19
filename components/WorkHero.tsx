@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { IconArrowRight, IconDownload } from "./icons";
 
 const CREDITS = [
+  "FORM",
   "Disney",
   "Marvel",
   "Lucasfilm",
@@ -31,7 +31,10 @@ export function WorkHero() {
       <div className="mt-8 grid gap-8 md:grid-cols-[1.4fr_1fr]">
         <div>
           <p className="text-base text-ink/80 dark:text-paper/80 md:text-lg">
-            Six years <strong>producing branded content</strong> for Disney
+            <strong>Producer / Director at FORM</strong>, an Atlanta story
+            company, where I direct the Form Films comedy series{" "}
+            <em>Calendar Jockeys</em>. Before that, six years{" "}
+            <strong>producing branded content</strong> for Disney
             Parks and Disney Consumer Products — Marvel, Lucasfilm, ABC,
             Freeform, Target. <strong>Social-media producer</strong>
             {" "}for ongoing brand clients. <strong>Broadcast editor</strong>
@@ -40,9 +43,8 @@ export function WorkHero() {
             <em> Starting Strong</em>. <strong>Director</strong>
             {" "}on independent narrative features I write and direct with my brother under our
             <em> Daws Brothers</em> banner.
-            Producer, director, and editor every season on the productions
-            at the private classical school where I built the film and
-            creative-technology programs. Story-first, fast turnaround,
+            Four years as producer, director, and editor on the productions
+            at a private performing-arts school in metro Atlanta. Story-first, fast turnaround,
             multi-cam comfortable, finishing-friendly.
           </p>
           <p className="mt-4 text-sm text-ink-muted dark:text-paper-muted">
@@ -51,12 +53,14 @@ export function WorkHero() {
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <Link
-              href="/#hire"
+            <a
+              href="https://calendarjockeys.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accent dark:bg-paper dark:text-ink dark:hover:bg-accent dark:hover:text-paper"
             >
-              Hire me <IconArrowRight className="h-4 w-4" />
-            </Link>
+              Watch Calendar Jockeys <IconArrowRight className="h-4 w-4" />
+            </a>
             <a
               href="/resumes/resume-video.pdf"
               download

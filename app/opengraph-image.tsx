@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const runtime = "edge";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
-export const alt = "Jeremiah Daws — Filmmaker, Maker, AI Builder, Teacher.";
+export const alt = "Jeremiah Daws — Producer / Director at FORM.";
 
 export default async function OG() {
   return new ImageResponse(
@@ -65,7 +65,7 @@ export default async function OG() {
               backgroundColor: "#b8431f",
             }}
           />
-          Available · Buford, GA
+          Producer / Director · FORM · Atlanta
         </div>
 
         <div
@@ -92,8 +92,8 @@ export default async function OG() {
             maxWidth: "900px",
           }}
         >
-          I left the Walt Disney Company to make stuff, teach stuff, and film stuff.
-          Sometimes in the same week.
+          Producer / Director at FORM. Six years at Disney before that.
+          I tell the story and build the thing.
         </div>
 
         <div
@@ -114,8 +114,6 @@ export default async function OG() {
           <span>Maker</span>
           <span style={{ color: "#b8431f" }}>·</span>
           <span>AI Builder</span>
-          <span style={{ color: "#b8431f" }}>·</span>
-          <span>Teacher</span>
         </div>
 
         <div
@@ -131,7 +129,7 @@ export default async function OG() {
             fontWeight: 600,
           }}
         >
-          Disney · Nat Geo · Hallmark · Tormach · AnswerAxis
+          FORM · Disney · Nat Geo · Hallmark · Tormach
         </div>
       </div>
     ),

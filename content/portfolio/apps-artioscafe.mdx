@@ -1,10 +1,17 @@
 ---
-title: Artios Cafe
-role: Founder
-year: "2025"
+title: "Artios Cafe — ordering, operations + AI assistant"
+role: Designer · Developer · Maintainer
+year: "2025–present"
 lane: building
 externalUrl: https://artioscafe.com/
-thumbnail: /portfolio/apps-artioscafe.jpg
+thumbnail: /portfolio/apps-artioscafe-v2.png
+tags: [ai, web, automation, operations]
 ---
 
-A lunch-ordering and operations app I built for the on-campus cafe at Artios Academies. Parents pre-order, the kitchen gets a clean prep list, and the cafe runs on a fraction of the volunteer hours it used to. Stack: Next.js, Convex, Stripe.
+A paying client: I built the whole system behind the lunch cafe at a private school in metro Atlanta, and I maintain it. It's live at artioscafe.com. It replaced a static site and a Google Apps Script setup.
+
+**The automation:** parents pre-order the week's lunches online. Each morning the restaurant's order goes out automatically, and the kitchen gets a daily order sheet and a check-off list. Venmo payment receipts are read from email and matched to orders on their own. The walk-up counter's Square register syncs in. Admins get expenses and a monthly profit-and-loss report. Volunteers and drivers sign themselves up, and the schedule is a calendar they can subscribe to.
+
+**The AI assistant:** the owner and cafe staff can't read a database, so they ask the site instead: who's driving Monday, what's on for Thursday, close the 26th for Thanksgiving. The assistant acts with the same permissions as whoever is signed in. It never changes anything by itself: it proposes the change in one plain sentence, and a person taps yes. Refunds and anything touching the ledger stay off-limits to it entirely.
+
+Stack: Next.js, Convex, Resend (outgoing and inbound email), Square, Claude. 135 automated tests.

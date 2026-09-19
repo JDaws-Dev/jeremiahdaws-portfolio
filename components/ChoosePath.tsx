@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
   IconArrowRight,
-  IconBook,
   IconDownload,
   IconFilm,
   IconSpark,
@@ -32,12 +31,18 @@ const PATHS: Path[] = [
     label: "Filmmaker",
     hero: "I tell the story.",
     pitch:
-      "Six years producing branded marketing for Disney Parks. Editor on National Geographic, Hallmark, and reality broadcast. Independent narrative features I write and direct with my brother under our Daws Brothers banner. Story-first, fast turnaround, multi-cam comfortable.",
-    proof: "Disney · Marvel · Lucasfilm · Target · Hallmark · National Geographic",
+      "Producer / Director at FORM, directing the comedy series Calendar Jockeys. Six years producing branded marketing for Disney Parks. Editor on National Geographic, Hallmark, and reality broadcast. Independent narrative features I write and direct with my brother under our Daws Brothers banner. Story-first, fast turnaround, multi-cam comfortable.",
+    proof: "FORM · Disney · Marvel · Lucasfilm · Target · Hallmark · National Geographic",
     resume: "/resumes/resume-video.pdf",
     resumeLabel: "Video résumé",
     workHref: "/work",
     highlights: [
+      {
+        title: "Calendar Jockeys",
+        meta: "Director · Form Films comedy series · 2026",
+        thumb: "/portfolio/calendar-jockeys.jpg",
+        href: "/work",
+      },
       {
         title: "Target × Disney — Backyard Theater",
         meta: "$1.5M campaign · Disney Channel/XD · 2016",
@@ -50,44 +55,6 @@ const PATHS: Path[] = [
         thumb: "/portfolio/uploaded/dec2832c4403.png",
         href: "/work",
       },
-      {
-        title: "Dangerous Calling",
-        meta: "Director / Editor · feature thriller · 2020",
-        thumb: "https://i.ytimg.com/vi/fJHMbqUdnjU/hqdefault.jpg",
-        href: "/work",
-      },
-    ],
-  },
-  {
-    id: "education",
-    Icon: IconBook,
-    label: "Educator",
-    hero: "I teach the process.",
-    pitch:
-      "Department Head of Film and Creative Technology at a private classical school — built two programs from zero, twelve-plus courses spanning screenwriting through Arduino. Twenty-two productions on the school's streaming platform. Five-lesson Fusion 360 series public on YouTube as a teaching sample.",
-    proof: "12+ courses · 50+ students · 22 productions · two programs built from zero",
-    resume: "/resumes/resume-education.pdf",
-    resumeLabel: "Education résumé",
-    workHref: "/teach",
-    highlights: [
-      {
-        title: "Private school production catalog",
-        meta: "Producer · Director · Editor · 2022–present",
-        thumb: "https://vumbnail.com/1115834134.jpg",
-        href: "/teach",
-      },
-      {
-        title: "Creative Technology curriculum",
-        meta: "Fusion 360, Arduino, embedded computing",
-        thumb: "https://i.ytimg.com/vi/cQRgMfAq6oc/hqdefault.jpg",
-        href: "/teach",
-      },
-      {
-        title: "Performing-arts school — social-media marketing",
-        meta: "Producer · Director · Editor",
-        thumb: "/portfolio/ig-thumbs/C8N5lZ5Ma7V.jpg",
-        href: "/teach",
-      },
     ],
   },
   {
@@ -96,8 +63,8 @@ const PATHS: Path[] = [
     label: "Maker",
     hero: "I build the thing.",
     pitch:
-      "CNC mill and lathe, manual machining, 3D printing, fabrication, welding, vacuum forming, electronics, theatrical props. SkillsUSA National Silver in CNC Turning. Tormach brand ambassador hosting their Garage Series. 100+ shop and field videos on YouTube and Instagram.",
-    proof: "Tormach ambassador · SkillsUSA Silver · Bullfrog Machining · 100+ build videos",
+      "CNC mill and lathe, manual machining, 3D printing, fabrication, welding, vacuum forming, electronics, theatrical props. SkillsUSA National Silver in CNC Turning. Former Tormach brand ambassador and Garage Series host. 100+ shop and field videos on YouTube and Instagram.",
+    proof: "SkillsUSA Silver · Tormach Garage Series · Bullfrog Machining (2021–2026) · 100+ build videos",
     resume: "/resumes/resume-maker.pdf",
     resumeLabel: "Maker résumé",
     workHref: "/maker",
@@ -128,16 +95,16 @@ const PATHS: Path[] = [
     label: "Apps & AI",
     hero: "I ship the tool.",
     pitch:
-      "Founder of AnswerAxis — voice-AI phone agents and small-business automation. Built the SafeFamily app suite (kid-safe YouTube, music, books, homework). JARVIS, a personal AI OS with 150+ tools, plus Mozart and Anna for household coordination. Stack: Next.js, Convex, Vapi, MCP.",
-    proof: "AnswerAxis · SafeFamily · 10+ shipped apps · multi-agent home AI",
+      "AI consulting, team training, vibe-coding builds, and websites with AI built in. Rebuilt the FORM studio website. Built the SafeFamily app suite (kid-safe YouTube, music, books, homework). JARVIS, a personal AI OS with 150+ tools, plus Mozart and Anna for household coordination. Stack: Next.js, Convex, Vapi, MCP.",
+    proof: "FORM website · SafeFamily · 10+ shipped apps · multi-agent home AI",
     resume: "/resumes/resume-tech.pdf",
     resumeLabel: "Apps & AI résumé",
     workHref: "/apps",
     highlights: [
       {
-        title: "AnswerAxis",
-        meta: "AI consulting · voice agents · paying clients",
-        thumb: "/portfolio/answeraxis.jpg",
+        title: "FORM studio website",
+        meta: "Rebuilt end to end · 2026",
+        thumb: "/portfolio/form-website.png",
         href: "/apps",
       },
       {
@@ -147,9 +114,9 @@ const PATHS: Path[] = [
         href: "/apps",
       },
       {
-        title: "Beavers Bathroom Blitz",
-        meta: "3D web game · ships and works",
-        thumb: "/portfolio/apps-beaversbathroomblitz.jpg",
+        title: "Artios Cafe",
+        meta: "Fully automated ordering · staff AI assistant",
+        thumb: "/portfolio/apps-artioscafe-v2.png",
         href: "/apps",
       },
       {
@@ -184,7 +151,7 @@ export function ChoosePath() {
           Which Jeremiah are you <span className="text-accent">looking for?</span>
         </h2>
 
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {PATHS.map((p) => {
             const isActive = active === p.id;
             return (

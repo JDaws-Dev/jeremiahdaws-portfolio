@@ -18,9 +18,9 @@ const BUILDS: Build[] = [
   },
   {
     slug: "film-industry-fabrication",
-    format: "Commercial fab · ongoing",
+    format: "Commercial fab · 2022–2026",
     storyKicker:
-      "Paid CNC fab work for Atlanta-area film productions — steadicam sled, dolly components, on-set fixtures. Bullfrog Machining clients who need a part on the truck Tuesday morning.",
+      "Paid CNC fab work for Atlanta-area film productions — steadicam sled, dolly components, on-set fixtures. Built for Bullfrog Machining clients who needed a part on the truck Tuesday morning.",
     thumb: "/portfolio/ig-thumbs/Ch7jk4frlEm.jpg",
   },
   {
