@@ -31,8 +31,8 @@ export default function WorkPage() {
         eyebrow="Have a story to tell?"
         title="Brand films, series, and original stories at FORM."
         body="I'm Producer / Director at FORM, an Atlanta story company making brand films, studio content, interactive experiences, and original films. If you have a story that needs telling, reach out and I'll bring it to the team."
-        emailSubject="Story project for FORM"
-        emailBody={"Hi Jeremiah,\n\nWe have a story we'd like to talk about..."}
+        topic="Story project for FORM"
+        placeholder="Tell me about the story you want to tell."
         resume={{ href: "/resumes/resume-video.pdf", label: "Video résumé (PDF)" }}
       />
     </main>

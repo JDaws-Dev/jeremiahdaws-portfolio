@@ -1,12 +1,12 @@
-import { IconArrowRight, IconDownload, IconMail } from "./icons";
-import { ContactButton } from "./ContactButton";
+import { IconDownload } from "./icons";
+import { ContactForm } from "./ContactForm";
 
 export type PageCtaProps = {
   eyebrow: string;
   title: string;
   body: string;
-  emailSubject: string;
-  emailBody?: string;
+  topic: string;
+  placeholder?: string;
   resume: { href: string; label: string };
 };
 
@@ -14,8 +14,8 @@ export function PageCta({
   eyebrow,
   title,
   body,
-  emailSubject,
-  emailBody,
+  topic,
+  placeholder,
   resume,
 }: PageCtaProps) {
   return (
@@ -27,45 +27,39 @@ export function PageCta({
           <div className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-blue/25 blur-3xl" />
         </div>
 
-        <div className="relative mx-auto max-w-6xl px-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">
-            {eyebrow}
-          </p>
-          <h2
-            className="mt-3 max-w-3xl font-serif leading-[1.02] tracking-[-0.02em]"
-            style={{ fontSize: "clamp(2rem, 5.5vw, 3.5rem)" }}
-          >
-            {title}
-          </h2>
-          <p className="mt-5 max-w-2xl text-base text-paper/80 md:text-lg">
-            {body}
-          </p>
-
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <ContactButton
-              subject={emailSubject}
-              body={emailBody}
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-base font-semibold text-paper shadow-xl shadow-accent/30 transition hover:-translate-y-0.5 hover:bg-accent-muted hover:shadow-2xl hover:shadow-accent/40"
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-[1fr_1.1fr] md:gap-16">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">
+              {eyebrow}
+            </p>
+            <h2
+              className="mt-3 max-w-3xl font-serif leading-[1.02] tracking-[-0.02em]"
+              style={{ fontSize: "clamp(2rem, 5.5vw, 3.5rem)" }}
             >
-              <IconMail className="h-4 w-4" />
-              Start a conversation
-              <IconArrowRight className="h-4 w-4" />
-            </ContactButton>
-            <a
-              href={resume.href}
-              download
-              className="inline-flex items-center gap-2 rounded-full border border-paper/25 px-5 py-2.5 text-sm font-medium text-paper transition hover:border-accent hover:text-accent"
-            >
-              <IconDownload className="h-4 w-4" />
-              {resume.label}
-            </a>
-            <a
-              href="tel:+13108455702"
-              className="text-sm font-medium text-paper/70 transition hover:text-accent"
-            >
-              or call (310) 845-5702
-            </a>
+              {title}
+            </h2>
+            <p className="mt-5 max-w-2xl text-base text-paper/80 md:text-lg">
+              {body}
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <a
+                href={resume.href}
+                download
+                className="inline-flex items-center gap-2 rounded-full border border-paper/25 px-5 py-2.5 text-sm font-medium text-paper transition hover:border-accent hover:text-accent"
+              >
+                <IconDownload className="h-4 w-4" />
+                {resume.label}
+              </a>
+              <a
+                href="tel:+13108455702"
+                className="text-sm font-medium text-paper/70 transition hover:text-accent"
+              >
+                or call (310) 845-5702
+              </a>
+            </div>
           </div>
+
+          <ContactForm topic={topic} placeholder={placeholder} />
         </div>
       </section>
     </>

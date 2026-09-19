@@ -13,7 +13,7 @@ import {
   IconX,
   IconYouTube,
 } from "./icons";
-import { ContactButton } from "./ContactButton";
+import { ContactForm } from "./ContactForm";
 
 const RESUMES = [
   { id: "video", label: "Video", href: "/resumes/resume-video.pdf", Icon: IconFilm },
@@ -113,23 +113,19 @@ export function HireSection() {
                 .
               </p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <ContactButton
-                  subject="AI / web project"
-                  body={"Hi Jeremiah,\n\nWe'd like help with..."}
-                  className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-paper shadow-xl shadow-accent/30 transition hover:-translate-y-0.5 hover:bg-accent-muted hover:shadow-2xl hover:shadow-accent/40"
-                >
-                  Start a conversation
-                  <span aria-hidden="true">→</span>
-                </ContactButton>
-                <a
-                  href="/apps"
-                  className="inline-flex items-center gap-2 rounded-full border border-paper/25 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"
-                >
-                  See what I&rsquo;ve built
-                  <span aria-hidden="true">→</span>
-                </a>
+              <div className="mt-8">
+                <ContactForm
+                  topic="AI / web project"
+                  placeholder="What would you like AI to do for you or your team?"
+                />
               </div>
+              <a
+                href="/apps"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-paper/75 transition hover:text-accent"
+              >
+                See what I&rsquo;ve built
+                <span aria-hidden="true">→</span>
+              </a>
             </div>
 
             <div className="space-y-5">

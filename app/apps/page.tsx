@@ -26,8 +26,8 @@ export default function AppsPage() {
         eyebrow="Want AI working in your business?"
         title="AI consulting, training, vibe coding, and websites with AI built in."
         body="I find where AI fits in your business, train your team to use it, vibe-code the tools you need, and build websites with AI working inside them: voice agents, booking, lead follow-up, review requests. Small businesses, schools, and professionals. You work with me directly."
-        emailSubject="AI build / consulting inquiry"
-        emailBody={"Hi Jeremiah,\n\nWe'd like AI help with..."}
+        topic="AI build / consulting inquiry"
+        placeholder="What would you like AI to do for your business?"
         resume={{ href: "/resumes/resume-tech.pdf", label: "Apps & AI résumé (PDF)" }}
       />
     </main>
