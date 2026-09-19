@@ -8,7 +8,7 @@ const PROOF = [
 ];
 
 const STACK = {
-  Film: ["Premiere Pro", "Avid", "After Effects", "Multi-cam", "Directing", "Producing"],
+  Film: ["DaVinci Resolve", "Premiere Pro", "Avid", "After Effects", "Multi-cam", "Directing", "Producing"],
   Shop: [
     "Fusion 360",
     "CNC mill & lathe",
@@ -20,7 +20,7 @@ const STACK = {
     "Bambu Studio",
   ],
   Tech: ["Arduino · ESP32", "Servos · NeoPixels", "Sensors · OLED", "Soldering", "3D printing"],
-  Code: ["Next.js", "TypeScript", "Convex", "Stripe", "Vapi", "MCP", "Vercel"],
+  Code: ["Claude Code", "Next.js", "TypeScript", "Convex", "Stripe", "MCP", "Vercel"],
 };
 
 export function About() {

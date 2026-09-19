@@ -87,8 +87,14 @@ export function WorkHero() {
             ))}
           </ul>
           <p className="mt-4 text-xs text-ink-muted dark:text-paper-muted">
-            Premiere Pro · Avid · After Effects. Comfortable on multi-cam reality,
-            scripted narrative, and 30-second branded social.
+            DaVinci Resolve · Premiere Pro · Avid · After Effects. Comfortable on
+            multi-cam reality, scripted narrative, and 30-second branded social.
+          </p>
+          <p className="mt-3 text-xs text-ink-muted dark:text-paper-muted">
+            <strong className="text-ink/80 dark:text-paper/85">Resolve + Claude Code:</strong>{" "}
+            I automate the prep. Footage lands in bins sorted by episode, every
+            take traces back to where it came from, and a stringout is built
+            before I sit down to cut.
           </p>
         </aside>
       </div>
