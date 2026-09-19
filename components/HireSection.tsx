@@ -25,6 +25,7 @@ const SERVICES = [
   "AI training for your team",
   "Vibe-coded tools and apps",
   "Websites with AI built in",
+  "AI-automated video workflows (DaVinci Resolve)",
 ];
 
 const SOCIAL = [
