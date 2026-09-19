@@ -13,6 +13,7 @@ import {
   IconX,
   IconYouTube,
 } from "./icons";
+import { ContactButton } from "./ContactButton";
 
 const RESUMES = [
   { id: "video", label: "Video", href: "/resumes/resume-video.pdf", Icon: IconFilm },
@@ -113,13 +114,14 @@ export function HireSection() {
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <a
-                  href="mailto:jedaws@gmail.com?subject=AI%20%2F%20web%20project&body=Hi%20Jeremiah%2C%20%0A%0AWe%27d%20like%20help%20with..."
+                <ContactButton
+                  subject="AI / web project"
+                  body={"Hi Jeremiah,\n\nWe'd like help with..."}
                   className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-paper shadow-xl shadow-accent/30 transition hover:-translate-y-0.5 hover:bg-accent-muted hover:shadow-2xl hover:shadow-accent/40"
                 >
                   Start a conversation
                   <span aria-hidden="true">→</span>
-                </a>
+                </ContactButton>
                 <a
                   href="/apps"
                   className="inline-flex items-center gap-2 rounded-full border border-paper/25 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"

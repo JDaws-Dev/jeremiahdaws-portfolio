@@ -1,4 +1,5 @@
 import { IconArrowRight, IconDownload, IconMail } from "./icons";
+import { ContactButton } from "./ContactButton";
 
 export type PageCtaProps = {
   eyebrow: string;
@@ -17,9 +18,6 @@ export function PageCta({
   emailBody,
   resume,
 }: PageCtaProps) {
-  const mail =
-    `mailto:jedaws@gmail.com?subject=${encodeURIComponent(emailSubject)}` +
-    (emailBody ? `&body=${encodeURIComponent(emailBody)}` : "");
   return (
     <>
       <div className="h-1 w-full bg-gradient-to-r from-accent via-accent-muted to-blue" />
@@ -44,14 +42,15 @@ export function PageCta({
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a
-              href={mail}
+            <ContactButton
+              subject={emailSubject}
+              body={emailBody}
               className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-base font-semibold text-paper shadow-xl shadow-accent/30 transition hover:-translate-y-0.5 hover:bg-accent-muted hover:shadow-2xl hover:shadow-accent/40"
             >
               <IconMail className="h-4 w-4" />
               Start a conversation
               <IconArrowRight className="h-4 w-4" />
-            </a>
+            </ContactButton>
             <a
               href={resume.href}
               download

@@ -37,7 +37,7 @@ export default function MakerPage() {
         title="The shop is closed. The builds are still here."
         body="Bullfrog Machining closed in 2026. The channel and the full build archive stay up. Always happy to talk props, fabrication, and making things with a camera rolling."
         emailSubject="Maker question"
-        emailBody="Hi Jeremiah,%0A%0AI saw your builds and..."
+        emailBody={"Hi Jeremiah,\n\nI saw your builds and..."}
         resume={{ href: "/resumes/resume-maker.pdf", label: "Maker résumé (PDF)" }}
       />
     </main>
