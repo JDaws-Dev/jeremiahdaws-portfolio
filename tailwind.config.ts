@@ -6,7 +6,6 @@ export default {
     "./components/**/*.{ts,tsx}",
     "./content/**/*.{md,mdx}",
   ],
-  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -19,8 +18,13 @@ export default {
           muted: "#eceae3",
         },
         accent: {
-          DEFAULT: "#b8431f",
-          muted: "#d97757",
+          DEFAULT: "#b3312c",
+          muted: "#e0736b",
+        },
+        blue: {
+          DEFAULT: "#2f5b96",
+          soft: "#6f93c6",
+          wash: "#eef3fa",
         },
       },
       fontFamily: {

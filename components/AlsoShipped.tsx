@@ -20,7 +20,7 @@ export function AlsoShipped({ entries }: { entries: PortfolioEntry[] }) {
     <section className="mx-auto max-w-6xl px-6 py-14">
       <div className="flex items-end justify-between gap-4">
         <div>
-          <p className="text-xs uppercase tracking-[0.22em] text-accent">
+          <p className="text-xs uppercase tracking-[0.22em] text-blue">
             Also shipped
           </p>
           <h2 className="mt-2 font-serif text-2xl leading-tight tracking-[-0.01em] md:text-3xl">

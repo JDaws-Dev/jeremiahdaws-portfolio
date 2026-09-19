@@ -41,7 +41,7 @@ export default async function OG() {
             width: "400px",
             height: "400px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(217,119,87,0.35) 0%, rgba(217,119,87,0) 70%)",
+            background: "radial-gradient(circle, rgba(47,91,150,0.35) 0%, rgba(47,91,150,0) 70%)",
           }}
         />
 
@@ -53,7 +53,7 @@ export default async function OG() {
             fontSize: "18px",
             letterSpacing: "0.18em",
             textTransform: "uppercase",
-            color: "#b8431f",
+            color: "#b3312c",
             fontWeight: 600,
           }}
         >
@@ -62,7 +62,7 @@ export default async function OG() {
               width: "10px",
               height: "10px",
               borderRadius: "50%",
-              backgroundColor: "#b8431f",
+              backgroundColor: "#b3312c",
             }}
           />
           Producer / Director · FORM · Atlanta
@@ -110,9 +110,9 @@ export default async function OG() {
           }}
         >
           <span>Filmmaker</span>
-          <span style={{ color: "#b8431f" }}>·</span>
+          <span style={{ color: "#b3312c" }}>·</span>
           <span>Maker</span>
-          <span style={{ color: "#b8431f" }}>·</span>
+          <span style={{ color: "#b3312c" }}>·</span>
           <span>AI Builder</span>
         </div>
 

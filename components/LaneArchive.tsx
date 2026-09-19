@@ -240,7 +240,7 @@ export function LaneArchive({
   return (
     <div className="pt-12">
       <header className="mx-auto max-w-6xl px-6 pb-8">
-        <p className="text-xs uppercase tracking-[0.22em] text-accent">{eyebrow}</p>
+        <p className="text-xs uppercase tracking-[0.22em] text-blue">{eyebrow}</p>
         <h2
           className="mt-2 font-serif leading-[1.04] tracking-[-0.02em]"
           style={{ fontSize: "clamp(2rem, 5.5vw, 3rem)" }}

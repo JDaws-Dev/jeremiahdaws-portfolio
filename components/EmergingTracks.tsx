@@ -43,7 +43,7 @@ export function EmergingTracks() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-end">
           <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-accent">
+            <p className="text-xs uppercase tracking-[0.22em] text-blue">
               Emerging tracks
             </p>
             <h2 className="mt-2 font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">

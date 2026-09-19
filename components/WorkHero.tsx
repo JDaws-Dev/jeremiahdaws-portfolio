@@ -17,7 +17,7 @@ const CREDITS = [
 export function WorkHero() {
   return (
     <section className="relative mx-auto max-w-6xl px-6 pt-24 pb-10">
-      <p className="text-xs uppercase tracking-[0.22em] text-accent">
+      <p className="text-xs uppercase tracking-[0.22em] text-blue">
         Filmmaker — Branded · Social · Broadcast · Narrative
       </p>
       <h1

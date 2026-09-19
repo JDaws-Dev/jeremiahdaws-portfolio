@@ -22,11 +22,11 @@ export function PageCta({
     (emailBody ? `&body=${encodeURIComponent(emailBody)}` : "");
   return (
     <>
-      <div className="h-1 w-full bg-gradient-to-r from-transparent via-accent to-transparent" />
+      <div className="h-1 w-full bg-gradient-to-r from-accent via-accent-muted to-blue" />
       <section className="relative overflow-hidden bg-ink py-20 text-paper">
         <div className="pointer-events-none absolute inset-0 -z-0">
           <div className="absolute -left-32 top-12 h-80 w-80 rounded-full bg-accent/20 blur-3xl" />
-          <div className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-accent-muted/15 blur-3xl" />
+          <div className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-blue/25 blur-3xl" />
         </div>
 
         <div className="relative mx-auto max-w-6xl px-6">

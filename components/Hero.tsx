@@ -18,7 +18,7 @@ export function Hero() {
     <section className="relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute -left-32 top-20 h-72 w-72 rounded-full bg-accent/15 blur-3xl dark:bg-accent/10" />
-        <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-accent-muted/15 blur-3xl dark:bg-accent-muted/10" />
+        <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-blue-soft/20 blur-3xl" />
       </div>
 
       <div className="mx-auto max-w-6xl px-4 pb-12 pt-20 sm:px-6 md:pb-16 md:pt-28">
@@ -86,7 +86,7 @@ export function Hero() {
 
         {/* Brand strip — under the hero, signals scale at a glance */}
         <div className="mt-10 border-t border-ink/10 pt-5 dark:border-paper/10 md:mt-14">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-ink-muted dark:text-paper-muted">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-blue">
             Worked on projects for
           </p>
           <ul className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">

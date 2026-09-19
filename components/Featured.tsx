@@ -8,7 +8,7 @@ export function Featured({ entries, total }: { entries: PortfolioEntry[]; total:
     <section id="featured" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-14">
       <div className="flex items-end justify-between gap-4">
         <div>
-          <p className="text-xs uppercase tracking-[0.22em] text-ink-muted">Featured work</p>
+          <p className="text-xs uppercase tracking-[0.22em] text-blue">Featured work</p>
           <h2 className="mt-2 font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">
             Six pieces that show the range.
           </h2>

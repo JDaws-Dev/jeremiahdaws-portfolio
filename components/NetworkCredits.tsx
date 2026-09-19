@@ -96,7 +96,7 @@ export function NetworkCredits({ entries }: { entries: PortfolioEntry[] }) {
   return (
     <section className="mx-auto max-w-6xl px-6 py-12">
       <div>
-        <p className="text-xs uppercase tracking-[0.22em] text-accent">
+        <p className="text-xs uppercase tracking-[0.22em] text-blue">
           Studio &amp; broadcast credits
         </p>
         <h2 className="mt-2 font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">

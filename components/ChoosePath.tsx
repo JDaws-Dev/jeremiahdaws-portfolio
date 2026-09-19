@@ -146,7 +146,7 @@ export function ChoosePath() {
   return (
     <section id="choose" className="border-y border-paper-muted bg-paper-muted/40 py-16 dark:border-paper/10 dark:bg-ink/30">
       <div className="mx-auto max-w-6xl px-6">
-        <p className="text-xs uppercase tracking-[0.22em] text-ink-muted">Choose your own adventure</p>
+        <p className="text-xs uppercase tracking-[0.22em] text-blue">Choose your own adventure</p>
         <h2 className="mt-2 max-w-3xl font-serif text-3xl leading-tight tracking-[-0.01em] md:text-[2.6rem]">
           Which Jeremiah are you <span className="text-accent">looking for?</span>
         </h2>
@@ -191,7 +191,7 @@ export function ChoosePath() {
           >
             <div className="grid gap-8 md:grid-cols-[1.1fr_1fr] md:items-start">
               <div>
-                <p className="text-xs uppercase tracking-[0.22em] text-accent">{path.label}</p>
+                <p className="text-xs uppercase tracking-[0.22em] text-blue">{path.label}</p>
                 <h3 className="mt-2 font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">
                   {path.hero}
                 </h3>
@@ -220,7 +220,7 @@ export function ChoosePath() {
               </div>
 
               <div>
-                <p className="text-xs uppercase tracking-[0.22em] text-ink-muted dark:text-paper-muted">
+                <p className="text-xs uppercase tracking-[0.22em] text-blue">
                   A few to start with
                 </p>
                 <ul className="mt-3 grid gap-3">

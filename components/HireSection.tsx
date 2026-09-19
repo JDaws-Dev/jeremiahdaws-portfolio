@@ -40,7 +40,7 @@ export function HireSection() {
   return (
     <>
       {/* Accent rule that signals "new section ahead" */}
-      <div className="h-1 w-full bg-gradient-to-r from-transparent via-accent to-transparent" />
+      <div className="h-1 w-full bg-gradient-to-r from-accent via-accent-muted to-blue" />
 
       <section
         id="hire"
@@ -49,7 +49,7 @@ export function HireSection() {
         {/* Soft accent glows so the section reads as a "stage" not a footer */}
         <div className="pointer-events-none absolute inset-0 -z-0">
           <div className="absolute -left-32 top-12 h-96 w-96 rounded-full bg-accent/15 blur-3xl" />
-          <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-accent-muted/10 blur-3xl" />
+          <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-blue/25 blur-3xl" />
         </div>
 
         <div className="relative mx-auto max-w-6xl px-6">
@@ -207,7 +207,7 @@ export function HireSection() {
       </section>
 
       {/* Genuine footer — visually distinct from the hire-me section */}
-      <footer className="bg-black/40 py-8 text-paper">
+      <footer className="bg-[#07080a] py-8 text-paper">
         <div className="mx-auto max-w-6xl px-6">
           {/* Off-the-clock line — discoverable but understated */}
           <p className="mb-3 text-center font-serif text-sm italic text-paper/70">

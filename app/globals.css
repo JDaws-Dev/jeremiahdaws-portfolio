@@ -6,20 +6,12 @@
   color-scheme: light;
 }
 
-.dark {
-  color-scheme: dark;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
   @apply bg-paper text-ink antialiased;
-}
-
-.dark body {
-  @apply bg-ink text-paper;
 }
 
 /* Headings use a slightly tighter line-height by default */

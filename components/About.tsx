@@ -27,12 +27,12 @@ export function About() {
   return (
     <section
       id="about"
-      className="border-y border-paper-muted bg-paper-muted/40 py-20 dark:border-paper/10 dark:bg-ink/30"
+      className="border-y border-paper-muted bg-blue-wash py-20 dark:border-paper/10 dark:bg-ink/30"
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr]">
           <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-accent">About</p>
+            <p className="text-xs uppercase tracking-[0.22em] text-blue">About</p>
             <h2 className="mt-2 font-serif text-4xl leading-[1.02] tracking-[-0.02em] md:text-[3.25rem]">
               Jack of all trades.{" "}
               <span className="text-accent">Master of more than one.</span>
@@ -92,7 +92,7 @@ export function About() {
             </ul>
 
             <div className="space-y-3">
-              <p className="text-xs uppercase tracking-[0.22em] text-ink-muted">Tools I use</p>
+              <p className="text-xs uppercase tracking-[0.22em] text-blue">Tools I use</p>
               <ul className="space-y-2 text-sm">
                 {Object.entries(STACK).map(([group, items]) => (
                   <li key={group} className="flex flex-wrap items-baseline gap-x-2 gap-y-1">

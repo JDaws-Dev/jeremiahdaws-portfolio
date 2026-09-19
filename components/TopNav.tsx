@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
-import { IconMail, IconMoon, IconSun } from "./icons";
+import { IconMail } from "./icons";
 
 const LINKS = [
   { href: "/work", label: "Filmmaker" },
@@ -14,11 +13,8 @@ const LINKS = [
 export function TopNav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const onScroll = () => setScrolled(window.scrollY > 80);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -62,21 +58,6 @@ export function TopNav() {
             <span className="hidden sm:inline">jedaws@gmail.com</span>
             <span className="sm:hidden">Email</span>
           </a>
-          <button
-            type="button"
-            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-            className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-ink/15 transition hover:border-accent hover:text-accent dark:border-paper/20 dark:hover:border-accent dark:hover:text-accent"
-            aria-label="Toggle dark mode"
-            suppressHydrationWarning
-          >
-            {!mounted ? (
-              <span aria-hidden="true">·</span>
-            ) : resolvedTheme === "dark" ? (
-              <IconSun className="h-3.5 w-3.5" />
-            ) : (
-              <IconMoon className="h-3.5 w-3.5" />
-            )}
-          </button>
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
