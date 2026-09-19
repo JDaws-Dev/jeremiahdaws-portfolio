@@ -63,7 +63,7 @@ export function FeaturedCard({ entry }: { entry: PortfolioEntry }) {
   const summaryLine =
     entry.summary
       .replace(/\s+/g, " ")
-      .replace(/[“”"']/g, "")
+      .replace(/[“”"]/g, "")
       .trim()
       .split(/(?<=[.!?])\s+/)[0] ?? "";
 
