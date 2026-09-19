@@ -7,7 +7,6 @@ const SLUGS = [
   "apps-beaversbathroomblitz",
   "apps-fridaynightvideo",
   "apps-illprayforyou",
-  "apps-artiosconnect",
 ];
 
 export function AlsoShipped({ entries }: { entries: PortfolioEntry[] }) {

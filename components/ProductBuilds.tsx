@@ -42,7 +42,7 @@ const PRODUCTS: Product[] = [
       "AI assistant with confirm-before-change safety",
     ],
     cta: { label: "Visit Artios Cafe", href: "https://artioscafe.com/", icon: "external" },
-    image: "/portfolio/apps-artioscafe-v2.png",
+    image: "/portfolio/apps-artioscafe-order.jpg",
     imageAlt: "Artios Cafe — ordering and operations app",
   },
   {
@@ -56,7 +56,7 @@ const PRODUCTS: Product[] = [
       "Four divisions · one site · one story",
     ],
     cta: { label: "Visit FORM", href: "https://www.formgreatstories.com/", icon: "external" },
-    image: "/portfolio/form-website.png",
+    image: "/portfolio/form-website.jpg",
     imageAlt: "FORM — studio website",
   },
   {
@@ -71,7 +71,7 @@ const PRODUCTS: Product[] = [
       "One AI, three roles: visitor, customer, owner",
     ],
     cta: { label: "Visit ReadyTote", href: "https://readytote.vercel.app/", icon: "external" },
-    image: "/portfolio/client-readytote.png",
+    image: "/portfolio/client-readytote.jpg",
     imageAlt: "ReadyTote — moving tote rental website",
   },
 ];

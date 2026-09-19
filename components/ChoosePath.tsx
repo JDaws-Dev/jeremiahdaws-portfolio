@@ -104,7 +104,7 @@ const PATHS: Path[] = [
       {
         title: "FORM studio website",
         meta: "Rebuilt end to end · 2026",
-        thumb: "/portfolio/form-website.png",
+        thumb: "/portfolio/form-website.jpg",
         href: "/apps",
       },
       {
@@ -116,7 +116,7 @@ const PATHS: Path[] = [
       {
         title: "Artios Cafe",
         meta: "Fully automated ordering · staff AI assistant",
-        thumb: "/portfolio/apps-artioscafe-v2.png",
+        thumb: "/portfolio/apps-artioscafe-order.jpg",
         href: "/apps",
       },
       {
