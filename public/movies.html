@@ -226,6 +226,7 @@
     opacity: 0.7;
     margin-bottom: 1rem;
   }
+  .scare-link { text-decoration: none; display: inline-flex; align-items: center; }
   .action-row {
     display: flex;
     gap: 0.8rem;
@@ -1305,6 +1306,7 @@
 <div class="action-row">
   <button class="pick-btn" onclick="pick()">Pick One</button>
   <button class="shelf-btn active" id="shelfBtn" onclick="toggleShelf()">Hide Shelf</button>
+  <a class="shelf-btn scare-link" href="/scare.html">Scare Night</a>
 </div>
 
 <div class="genre-loading" id="genreLoading"></div>
@@ -2375,6 +2377,16 @@ document.getElementById('stat-films').textContent = ALL_MOVIES.length.toLocaleSt
 document.getElementById('stat-directors').textContent = new Set(ALL_MOVIES.map(m => m.director).filter(Boolean)).size.toLocaleString();
 document.getElementById('stat-recent').textContent = (LETTERBOXD_DIARY || []).length.toLocaleString();
 enrichFromTMDB();
+
+// Deep link from Scare Night: /movies.html?movie=<title> opens that VHS case
+(function openFromLink() {
+  const want = new URLSearchParams(location.search).get('movie');
+  if (!want) return;
+  const norm = (s) => s.toLowerCase().replace(/\s*[\(\[].*?[\)\]]/g, '').replace(/^stephen king.s /, '').replace(/[^a-z0-9]+/g, ' ').trim();
+  const w = norm(want);
+  const m = ALL_MOVIES.find((x) => norm(x.title) === w) || ALL_MOVIES.find((x) => norm(x.title).startsWith(w)) || ALL_MOVIES.find((x) => w.startsWith(norm(x.title)));
+  if (m) openCaseModal(m);
+})();
 
 // Mobile: collapse Jeremiah's Picks by default so the grid is above the fold (user can re-expand)
 if (window.matchMedia('(max-width: 700px)').matches) {
