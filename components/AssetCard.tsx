@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import type { Asset } from "@/lib/portfolio";
 import { IconArrowUpRight, IconFilm, IconImdb, IconInstagram, IconYouTube } from "./icons";
 
@@ -57,7 +58,8 @@ export function AssetCard({
   const vimeoThumb = vimeoId ? `https://vumbnail.com/${vimeoId}.jpg` : null;
   const driveThumb = driveId ? `https://drive.google.com/thumbnail?id=${driveId}&sz=w1280` : null;
   const isMedia = Boolean(ytId || vimeoId || igCode || driveId);
-  const useThumbnail = asset.thumbnail || ytThumb || vimeoThumb || driveThumb;
+  const [broken, setBroken] = useState(false);
+  const useThumbnail = broken ? null : asset.thumbnail || ytThumb || vimeoThumb || driveThumb;
 
   function handleClick() {
     if (isMedia && onOpen) {
@@ -93,6 +95,7 @@ export function AssetCard({
                 referrerPolicy="no-referrer"
                 className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
                 loading="lazy"
+                onError={() => setBroken(true)}
               />
             )
           ) : (

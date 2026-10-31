@@ -5,7 +5,7 @@ const OFFERS = [
     label: "For teams",
     title: "AI at work",
     format: "Half day or full day · your team, in one room or on a call",
-    body: "A hands-on session built around the work your team already does: email, writing, research, planning, documents. We use your real tasks, not canned demos.",
+    body: "A hands-on session built around the work your team already does: email, writing, research, planning, documents. We work on your real tasks, in the AI tools your team already has: ChatGPT, Claude, Copilot or Gemini.",
     leave: "Everyone leaves having used AI on a task they'll do again tomorrow, plus a one-page playbook for your tools.",
   },
   {
@@ -43,7 +43,7 @@ export function AiTraining() {
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue">AI training</p>
         <div className="mt-2 grid gap-6 md:grid-cols-[1.3fr_1fr] md:items-end">
           <h2 className="text-balance font-serif text-3xl leading-tight tracking-[-0.01em] md:text-[2.6rem]">
-            I teach people to use AI <span className="text-accent">on their actual work.</span>
+            I teach teams to use AI <span className="text-accent">on the work in front of them.</span>
           </h2>
           <p className="text-base text-ink/75">
             I use these tools every day to make the films and run the builds on

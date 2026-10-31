@@ -53,7 +53,7 @@ export function AiBuilds() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue">AI building</p>
             <h2 className="mt-2 max-w-3xl text-balance font-serif text-3xl leading-tight tracking-[-0.01em] md:text-[2.6rem]">
-              Websites and tools with AI built in. Live, and in use.
+              Websites and tools with AI built in, for real clients.
             </h2>
           </div>
           <Link

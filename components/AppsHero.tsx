@@ -1,16 +1,10 @@
 import { IconArrowRight } from "./icons";
 
-const STACK = [
-  "Next.js",
-  "TypeScript",
-  "Convex",
-  "Stripe",
-  "Anthropic",
-  "MCP",
-  "Vapi",
-  "SQLite",
-  "Playwright",
-  "Vercel",
+const YOU_GET = [
+  "A live site or tool on your own domain",
+  "The AI assistant set up for your business and your customers",
+  "A walkthrough for you and your staff",
+  "Scope and price agreed in writing before I start",
 ];
 
 export function AppsHero() {
@@ -23,8 +17,8 @@ export function AppsHero() {
         className="mt-3 font-serif leading-[1.02] tracking-[-0.025em]"
         style={{ fontSize: "clamp(2.75rem, 8vw, 4.5rem)" }}
       >
-        I build AI systems<br />
-        <span className="text-accent">people actually use.</span>
+        Websites and tools<br />
+        <span className="text-accent">with AI working inside.</span>
       </h1>
 
       <div className="mt-8 grid gap-8 md:grid-cols-[1.4fr_1fr]">
@@ -56,14 +50,12 @@ export function AppsHero() {
 
         <aside className="rounded-2xl border border-ink/10 bg-paper-muted/40 p-5 text-sm">
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent">
-            Stack &amp; systems
+            What you get
           </p>
-          <ul className="mt-3 flex flex-wrap gap-1.5">
-            {STACK.map((s) => (
-              <li
-                key={s}
-                className="rounded-full border border-ink/15 bg-paper/60 px-2.5 py-1 text-xs text-ink/80"
-              >
+          <ul className="mt-3 space-y-2 text-sm text-ink/80">
+            {YOU_GET.map((s) => (
+              <li key={s} className="flex gap-2">
+                <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                 {s}
               </li>
             ))}

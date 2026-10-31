@@ -13,7 +13,7 @@ const BUILDS: Build[] = [
     slug: "lumiere-prop",
     format: "Theatrical prop · 2024",
     storyKicker:
-      "A working Lumière candelabra for a school production of Beauty and the Beast — 3D-scanned from Disney source, sliced, printed, painted, wired, lit. Stage-ready. The kind of prop most schools rent; we built ours.",
+      "A working Lumière candelabra for a school production of Beauty and the Beast — 3D-scanned, printed, painted, wired and lit for the stage. The kind of prop most schools rent; we built ours.",
     thumb: "/portfolio/ig-thumbs/C8meuRVOK-U.jpg",
   },
   {
@@ -52,10 +52,9 @@ export function SignatureBuilds({ entries }: { entries: PortfolioEntry[] }) {
             </h2>
           </div>
           <p className="text-sm text-ink/75">
-            A theatrical prop. A film-industry production part. A small-batch
-            consumer product. Different muscles — but the same span:
-            CAD-to-cut, design-to-ship, scan-to-screen. The proof that the
-            shop wasn&rsquo;t one-trick.
+            A theatrical prop, a film-industry production part, and a
+            small-batch consumer product, each designed, cut and finished
+            in the shop.
           </p>
         </div>
 

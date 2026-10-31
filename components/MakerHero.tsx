@@ -55,8 +55,7 @@ export function MakerHero() {
           </p>
           <p className="mt-4 text-sm text-ink-muted">
             One-off props. Production fixtures. Working dollies. A full
-            Beauty-and-the-Beast Lumière candle, scanned and printed from a
-            Disney source.
+            Lumière candelabra for a school stage production.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -92,8 +91,8 @@ export function MakerHero() {
             ))}
           </ul>
           <p className="mt-4 text-xs text-ink-muted">
-            Bullfrog Machining, Buford, GA (2021–2026). CAD-to-cut on real
-            production parts, not just demos.
+            Bullfrog Machining, Buford, GA (2021–2026). Paid production
+            parts, from CAD to finished piece.
           </p>
         </aside>
       </div>

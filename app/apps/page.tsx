@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   description:
     "Websites and tools with AI built in, by Jeremiah Daws: ReadyTote (booking site with an AI assistant), the Artios Cafe ordering system with a staff AI assistant, GetSafeFamily (kid-safe app suite with paying customers), the FORM studio website, and three AI assistants in daily use. Fixed-price builds, scoped in writing.",
   alternates: { canonical: "/apps" },
+  openGraph: { type: "website", siteName: "Jeremiah Daws", images: ["/opengraph-image"], title: "AI Builds — Jeremiah Daws", description: "Websites and tools with AI built in: ReadyTote, Artios Cafe, GetSafeFamily and more. Fixed-price builds, scoped in writing.", url: "/apps" },
+  twitter: { card: "summary_large_image", images: ["/opengraph-image"], creator: "@JeremiahDaws", title: "AI Builds — Jeremiah Daws", description: "Websites and tools with AI built in: ReadyTote, Artios Cafe, GetSafeFamily and more. Fixed-price builds, scoped in writing." },
 };
 
 export default function AppsPage() {

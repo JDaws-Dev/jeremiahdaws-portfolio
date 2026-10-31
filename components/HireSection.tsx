@@ -57,7 +57,7 @@ export function HireSection() {
             <div>
               <p className="text-base text-paper/80 md:text-lg">
                 Outside FORM, I help small businesses, schools, and teams put AI to
-                work, not just talk about it. You work with me directly: I scope
+                work. You work with me directly: I scope
                 it in writing, build it, and teach your people to use it. Tell me
                 what you have in mind and I&rsquo;ll reply with a plan and a quote.
               </p>

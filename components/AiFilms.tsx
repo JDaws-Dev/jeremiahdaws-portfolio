@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { IconPlay } from "./icons";
 
 type Film = {
@@ -13,6 +13,8 @@ type Film = {
   logline: string;
   tools: string[];
   thumb: string;
+  /** A frame from the film itself, preferred over the titled poster. */
+  still?: string;
 };
 
 const FILMS: Film[] = [
@@ -26,6 +28,7 @@ const FILMS: Film[] = [
       "Halloween night, 1996. Tyler won't take his little brother trick-or-treating, so seven-year-old Joey draws a face on a paper bag and goes out alone.",
     tools: ["Seedance 2.5", "ElevenLabs", "DaVinci Resolve"],
     thumb: "/portfolio/ai-what-are-you-supposed-to-be.jpg",
+    still: "/portfolio/stills/ai-what-are-you-supposed-to-be.jpg",
   },
   {
     id: "FtfUI0XKXyI",
@@ -37,6 +40,7 @@ const FILMS: Film[] = [
       "A love letter to 250 years of courage and invention, told in felt, stop-motion-style moments from American history.",
     tools: ["AI video"],
     thumb: "/portfolio/ai-america-250.jpg",
+    still: "/portfolio/stills/ai-america-250.jpg",
   },
   {
     id: "oootgNdZIRs",
@@ -58,6 +62,7 @@ const FILMS: Film[] = [
       "A dad, his daughter, and a very familiar bedtime question. Form Films' first exploration of Absurd.",
     tools: ["Absurd"],
     thumb: "/portfolio/ai-teeth-brushed.jpg",
+    still: "/portfolio/stills/ai-teeth-brushed.jpg",
   },
 ];
 
@@ -85,7 +90,7 @@ function Player({ film, playing, onPlay, priority }: {
           className="group absolute inset-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           <Image
-            src={film.thumb}
+            src={film.still ?? film.thumb}
             alt=""
             fill
             priority={priority}
@@ -106,6 +111,7 @@ function Player({ film, playing, onPlay, priority }: {
 export function AiFilms({ compact = false }: { compact?: boolean }) {
   const [lead, setLead] = useState(0);
   const [playing, setPlaying] = useState<string | null>(null);
+  const stage = useRef<HTMLDivElement>(null);
   const film = FILMS[lead];
 
   return (
@@ -128,7 +134,7 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
           ) : null}
         </div>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-[1.7fr_1fr] lg:items-start">
+        <div ref={stage} className="mt-8 grid scroll-mt-20 gap-6 lg:grid-cols-[1.7fr_1fr] lg:items-start">
           <Player
             film={film}
             playing={playing === film.id}
@@ -175,6 +181,8 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
                 onClick={() => {
                   setLead(i);
                   setPlaying(null);
+                  const top = stage.current?.getBoundingClientRect().top ?? 0;
+                  if (top < 0) stage.current?.scrollIntoView({ behavior: "smooth", block: "start" });
                 }}
                 aria-pressed={i === lead}
                 className={[
@@ -185,7 +193,7 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
                 ].join(" ")}
               >
                 <span className="relative block aspect-video overflow-hidden rounded-md bg-black">
-                  <Image src={f.thumb} alt="" fill sizes="16rem" className="object-cover" />
+                  <Image src={f.still ?? f.thumb} alt="" fill sizes="16rem" className="object-cover" />
                 </span>
                 <span className="mt-2 block px-1 font-serif text-sm leading-tight">{f.title}</span>
                 <span className="mb-1 block px-1 text-[10px] uppercase tracking-[0.14em] text-paper/50">
