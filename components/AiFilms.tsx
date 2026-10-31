@@ -15,9 +15,11 @@ type Film = {
   thumb: string;
   /** A frame from the film itself, preferred over the titled poster. */
   still?: string;
+  /** Set to drop a film from the site without deleting its entry. */
+  hidden?: boolean;
 };
 
-const FILMS: Film[] = [
+const ALL_FILMS: Film[] = [
   {
     id: "3GjAoZdF874",
     title: "What Are You Supposed To Be?",
@@ -56,7 +58,7 @@ const FILMS: Film[] = [
   {
     id: "I7cHxHLN1r4",
     title: "Teeth Brushed?",
-    kind: "Spec commercial · Form Films",
+    kind: "Brand-style test · Form Films",
     runtime: "0:15",
     year: "2026",
     logline:
@@ -66,6 +68,8 @@ const FILMS: Film[] = [
     still: "/portfolio/stills/ai-teeth-brushed.jpg",
   },
 ];
+
+const FILMS = ALL_FILMS.filter((f) => !f.hidden);
 
 function Player({ film, playing, onPlay, priority }: {
   film: Film;
