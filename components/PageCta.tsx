@@ -28,7 +28,7 @@ export function PageCta({
           <div className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-blue/25 blur-3xl" />
         </div>
 
-        <div className="relative mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-[1fr_1.1fr] md:gap-16">
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-[1fr_1.1fr] md:gap-16">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">
               {eyebrow}

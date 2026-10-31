@@ -9,7 +9,7 @@ const LINKS = [
 export function SiteFooter() {
   return (
     <footer className="bg-[#07080a] py-8 text-paper">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <nav aria-label="Footer">
           <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-paper/70">
             {LINKS.map((l) => (

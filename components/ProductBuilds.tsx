@@ -15,19 +15,19 @@ type Product = {
 
 const PRODUCTS: Product[] = [
   {
-    slug: "apps-safefamily",
+    slug: "client-readytote",
     tagline:
-      "A kid-safe content suite for Christian families: four apps under one family code.",
+      "Client build: website and AI assistant for a moving-tote rental business in Dublin, GA.",
     storyKicker:
-      "I built it because families deserve a quiet corner of the internet.",
+      "One Claude-powered assistant with three jobs: it sizes up a visitor's move, answers a customer's questions about their own booking, and briefs the owner on the week's deliveries and inventory.",
     proof: [
-      "Four apps: SafeTube, SafeTunes, SafeReads, SafeStudy",
-      "One family code and one subscription for all four",
-      "Live, with paying customers; I built and run it myself",
+      "Paying client · designed and built solo",
+      "Booking flow · order pages · owner dashboard",
+      "One AI, three roles: visitor, customer, owner",
     ],
-    cta: { label: "Visit GetSafeFamily", href: "https://www.getsafefamily.com/", icon: "external" },
-    image: "/portfolio/apps-safefamily.jpg",
-    imageAlt: "GetSafeFamily — kid-safe content suite",
+    cta: { label: "Visit ReadyTote", href: "https://readytoterentals.com/", icon: "external" },
+    image: "/portfolio/client-readytote.jpg",
+    imageAlt: "ReadyTote — moving tote rental website",
   },
   {
     slug: "apps-artioscafe",
@@ -45,6 +45,21 @@ const PRODUCTS: Product[] = [
     imageAlt: "Artios Cafe — ordering and operations app",
   },
   {
+    slug: "apps-safefamily",
+    tagline:
+      "A kid-safe content suite for Christian families: four apps under one family code.",
+    storyKicker:
+      "I built it because families deserve a quiet corner of the internet.",
+    proof: [
+      "Four apps: SafeTube, SafeTunes, SafeReads, SafeStudy",
+      "One family code and one subscription for all four",
+      "Live, with paying customers; I built and run it myself",
+    ],
+    cta: { label: "Visit GetSafeFamily", href: "https://www.getsafefamily.com/", icon: "external" },
+    image: "/portfolio/apps-safefamily.jpg",
+    imageAlt: "GetSafeFamily — kid-safe content suite",
+  },
+  {
     slug: "form-website",
     tagline:
       "The website for FORM, the Atlanta story company where I'm Producer / Director.",
@@ -57,21 +72,6 @@ const PRODUCTS: Product[] = [
     cta: { label: "Visit FORM", href: "https://www.formgreatstories.com/", icon: "external" },
     image: "/portfolio/form-website.jpg",
     imageAlt: "FORM — studio website",
-  },
-  {
-    slug: "client-readytote",
-    tagline:
-      "Client build: website and AI assistant for a moving-tote rental business in Dublin, GA.",
-    storyKicker:
-      "One Claude-powered assistant with three jobs: it sizes up a visitor's move, answers a customer's questions about their own booking, and briefs the owner on the week's deliveries and inventory.",
-    proof: [
-      "Paying client · designed and built solo",
-      "Booking flow · order pages · owner dashboard",
-      "One AI, three roles: visitor, customer, owner",
-    ],
-    cta: { label: "Visit ReadyTote", href: "https://readytoterentals.com/", icon: "external" },
-    image: "/portfolio/client-readytote.jpg",
-    imageAlt: "ReadyTote — moving tote rental website",
   },
 ];
 
@@ -87,7 +87,7 @@ export function ProductBuilds({ entries }: { entries: PortfolioEntry[] }) {
   if (items.length === 0) return null;
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-12">
+    <section className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
       <div>
         <p className="text-xs uppercase tracking-[0.22em] text-blue">
           Shipped and live

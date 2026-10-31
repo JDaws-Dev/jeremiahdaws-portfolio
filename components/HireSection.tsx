@@ -45,7 +45,7 @@ export function HireSection() {
           <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-blue/25 blur-3xl" />
         </div>
 
-        <div className="relative mx-auto max-w-6xl px-6">
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">
             Work with me · AI film consulting
           </p>

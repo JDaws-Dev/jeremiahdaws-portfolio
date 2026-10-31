@@ -41,7 +41,7 @@ export function SignatureBuilds({ entries }: { entries: PortfolioEntry[] }) {
 
   return (
     <section className="border-y border-ink/10 bg-paper-muted/30 py-14">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-end">
           <div>
             <p className="text-xs uppercase tracking-[0.22em] text-blue">

@@ -145,7 +145,7 @@ export function ChoosePath() {
 
   return (
     <section id="choose" className="border-y border-paper-muted bg-paper-muted/40 py-16">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <p className="text-xs uppercase tracking-[0.22em] text-blue">Choose your own adventure</p>
         <h2 className="mt-2 max-w-3xl font-serif text-3xl leading-tight tracking-[-0.01em] md:text-[2.6rem]">
           Which Jeremiah are you <span className="text-accent">looking for?</span>

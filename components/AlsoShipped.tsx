@@ -17,7 +17,7 @@ export function AlsoShipped({ entries }: { entries: PortfolioEntry[] }) {
   if (items.length === 0) return null;
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-14">
+    <section className="mx-auto max-w-6xl px-4 sm:px-6 py-14">
       <div className="flex items-end justify-between gap-4">
         <div>
           <p className="text-xs uppercase tracking-[0.22em] text-blue">

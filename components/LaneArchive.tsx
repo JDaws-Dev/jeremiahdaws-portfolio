@@ -241,7 +241,7 @@ export function LaneArchive({
 
   return (
     <div className="pt-12">
-      <header className="mx-auto max-w-6xl px-6 pb-8">
+      <header className="mx-auto max-w-6xl px-4 sm:px-6 pb-8">
         <p className="text-xs uppercase tracking-[0.22em] text-blue">{eyebrow}</p>
         <h2
           className="mt-2 font-serif leading-[1.04] tracking-[-0.02em]"
@@ -258,7 +258,7 @@ export function LaneArchive({
       </header>
 
       {showFilters ? (
-        <div className="mx-auto max-w-6xl px-6 pb-3 md:hidden">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 pb-3 md:hidden">
           <button
             type="button"
             onClick={() => setFiltersOpen((v) => !v)}
@@ -272,7 +272,7 @@ export function LaneArchive({
       ) : null}
 
       {showFilters ? (
-        <div className={`${filtersOpen ? "block" : "hidden"} border-y border-ink/10 bg-paper/85 backdrop-blur-md md:sticky md:top-14 md:z-30 md:block`}>
+        <div className={`${filtersOpen ? "block" : "hidden"} border-y border-ink/10 bg-paper/85 backdrop-blur-md md:block`}>
           <div className="mx-auto max-w-6xl space-y-2 px-4 py-3 sm:px-6">
             <div className="flex flex-wrap items-center gap-2">
               <label className="inline-flex items-center gap-1.5 text-xs text-ink-muted">
@@ -345,7 +345,7 @@ export function LaneArchive({
         </div>
       ) : null}
 
-      <section className="mx-auto max-w-6xl px-6 py-10">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 py-10">
         {filtered.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-ink/15 p-10 text-center text-ink-muted">
             <p>No pieces match these filters.</p>

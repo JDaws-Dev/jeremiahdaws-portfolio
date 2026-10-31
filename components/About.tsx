@@ -29,7 +29,7 @@ export function About() {
       id="about"
       className="border-y border-paper-muted bg-blue-wash py-20"
     >
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr]">
           <div>
             <p className="text-xs uppercase tracking-[0.22em] text-blue">About</p>
