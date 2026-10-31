@@ -1,21 +1,20 @@
 import { Hero } from "@/components/Hero";
 import { TopNav } from "@/components/TopNav";
-import { ChoosePath } from "@/components/ChoosePath";
-import { Featured } from "@/components/Featured";
-import { About } from "@/components/About";
+import { AiFilms } from "@/components/AiFilms";
+import { AiTraining } from "@/components/AiTraining";
+import { AiBuilds } from "@/components/AiBuilds";
+import { Background } from "@/components/Background";
 import { HireSection } from "@/components/HireSection";
-import { getAllEntries, getFeaturedEntries } from "@/lib/portfolio";
 
 export default function Page() {
-  const featured = getFeaturedEntries();
-  const total = getAllEntries().length;
   return (
     <main>
       <TopNav />
       <Hero />
-      <ChoosePath />
-      <Featured entries={featured} total={total} />
-      <About />
+      <AiFilms />
+      <AiTraining />
+      <AiBuilds />
+      <Background />
       <HireSection />
     </main>
   );

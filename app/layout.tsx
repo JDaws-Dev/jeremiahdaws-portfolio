@@ -5,7 +5,7 @@ const SITE_URL = "https://jeremiahdaws.com";
 const NAME = "Jeremiah Daws";
 const TAGLINE = "Producer / Director at FORM — Atlanta";
 const SHORT_DESC =
-  "Producer / Director at FORM, an Atlanta story company, where he directs the comedy series Calendar Jockeys. Filmmaker, maker, and AI builder. Six years at Disney producing branded content (Marvel, Lucasfilm, ABC, Freeform). Broadcast editor on National Geographic, Hallmark, and Ricky Schroder. AI consultant (consulting, training, vibe-coding builds, and AI-powered websites). Founder of GetSafeFamily (kid-safe content suite with paying customers). SkillsUSA National Silver, former Tormach brand ambassador.";
+  "Producer / Director at FORM, an Atlanta story company, where he directs the comedy series Calendar Jockeys. AI filmmaker, AI trainer, and builder of AI-powered websites and tools. Six years at Disney producing branded content (Marvel, Lucasfilm, ABC, Freeform). Broadcast editor on National Geographic, Hallmark, and Ricky Schroder. AI consultant (consulting, training, vibe-coding builds, and AI-powered websites). Founder of GetSafeFamily (kid-safe content suite with paying customers). SkillsUSA National Silver, former Tormach brand ambassador.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     title: `${NAME} — ${TAGLINE}`,
-    description: "Producer / Director at FORM. Filmmaker · Maker · AI Builder. Atlanta.",
+    description: "Producer / Director at FORM. AI films · AI training · AI builds. Atlanta.",
     siteName: NAME,
   },
   twitter: {
     card: "summary_large_image",
     title: `${NAME} — ${TAGLINE}`,
-    description: "Producer / Director at FORM. Filmmaker · Maker · AI Builder.",
+    description: "Producer / Director at FORM. AI films · AI training · AI builds.",
     creator: "@JeremiahDaws",
   },
   robots: { index: true, follow: true },

@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { TopNav } from "@/components/TopNav";
 import { WorkHero } from "@/components/WorkHero";
+import { AiFilms } from "@/components/AiFilms";
 import { NetworkCredits } from "@/components/NetworkCredits";
 import { LaneArchive } from "@/components/LaneArchive";
 import { PageCta } from "@/components/PageCta";
 import { getAllAssets, getAllEntries } from "@/lib/portfolio";
 
 export const metadata: Metadata = {
-  title: "Filmmaker — Jeremiah Daws",
+  title: "Work — Jeremiah Daws",
   description:
     "Producer / Director at FORM, directing the Form Films comedy series Calendar Jockeys. Six years at Disney Yellow Shoes (Parks marketing) and Disney Consumer Products (Marvel, Lucasfilm, ABC, Freeform, Target). Editor on National Geographic's Building Wild, Hallmark's Our Wild Hearts, and the U.S. Army reality series Starting Strong. Daws Brothers indie features. Director · Producer · Editor.",
   alternates: { canonical: "/work" },
@@ -20,6 +21,7 @@ export default function WorkPage() {
     <main className="min-h-screen pb-24">
       <TopNav />
       <WorkHero />
+      <AiFilms compact />
       <NetworkCredits entries={entries} />
       <LaneArchive
         assets={assets}

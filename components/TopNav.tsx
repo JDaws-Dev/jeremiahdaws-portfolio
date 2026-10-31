@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import { IconMail } from "./icons";
 
 const LINKS = [
-  { href: "/work", label: "Filmmaker" },
-  { href: "/maker", label: "Maker" },
-  { href: "/apps", label: "AI Builder" },
+  { href: "/#films", label: "AI Films" },
+  { href: "/#training", label: "Training" },
+  { href: "/apps", label: "Builds" },
+  { href: "/work", label: "Work" },
   { href: "/#hire", label: "Hire" },
 ];
 

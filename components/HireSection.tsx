@@ -22,10 +22,11 @@ const RESUMES = [
 ];
 
 const SERVICES = [
-  "AI consulting: find where AI fits",
   "AI training for your team",
-  "Vibe-coded tools and apps",
+  "AI filmmaking workshops",
   "Websites with AI built in",
+  "Vibe-coded tools and apps",
+  "AI consulting: find where AI fits",
   "AI-automated video workflows (DaVinci Resolve)",
 ];
 
@@ -55,7 +56,7 @@ export function HireSection() {
 
         <div className="relative mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">
-            Hire me · AI &amp; web
+            Work with me · AI training &amp; builds
           </p>
           <h2 className="mt-3 font-serif text-6xl leading-[0.95] tracking-[-0.025em] md:text-[7rem]">
             Let&rsquo;s put AI<br />to work.
@@ -115,8 +116,8 @@ export function HireSection() {
 
               <div className="mt-8">
                 <ContactForm
-                  topic="AI / web project"
-                  placeholder="What would you like AI to do for you or your team?"
+                  topic="AI training / build"
+                  placeholder="A training for your team, a film, or a tool you need built?"
                 />
               </div>
               <a

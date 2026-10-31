@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { IconArrowRight } from "./icons";
+import { IconArrowRight, IconPlay } from "./icons";
 
 const BRANDS = [
   "Disney",
@@ -39,32 +39,31 @@ export function Hero() {
               Jeremiah Daws
             </h1>
 
-            <p className="mt-5 max-w-2xl font-serif text-2xl leading-tight text-ink sm:text-3xl md:text-[2.1rem]">
-              <span className="text-accent">I tell the story.</span>{" "}
-              <span className="text-accent">I build the thing.</span>
+            <p className="mt-5 max-w-2xl text-balance font-serif text-2xl leading-tight text-ink sm:text-3xl md:text-[2.1rem]">
+              I make films with AI, build tools with AI,{" "}
+              <span className="text-accent">and teach people to do both.</span>
             </p>
 
             <p className="mt-5 max-w-2xl text-base leading-snug text-ink/85 md:text-lg">
               Producer / Director at FORM, an Atlanta story company, where I
-              direct the animated comedy series <em>Calendar Jockeys</em>. Before that:
-              six years producing branded video for Disney Parks (Marvel,
-              Lucasfilm, ABC, Freeform). Editor on National Geographic and
-              Hallmark. SkillsUSA National Silver in CNC turning. Former Tormach
-              brand ambassador. On the side, I do AI consulting and training.
+              direct the animated comedy series <em>Calendar Jockeys</em>. Fifteen
+              years in production before that: Disney Parks (Marvel, Lucasfilm,
+              ABC, Freeform), National Geographic, Hallmark. On the side, I train
+              teams on AI and build AI-powered websites and tools.
             </p>
 
-            <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+            <div className="mt-7 flex flex-wrap items-center gap-3">
               <a
-                href="#choose"
+                href="#films"
                 className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper shadow-lg transition hover:bg-accent"
               >
-                Pick the Jeremiah you need <IconArrowRight className="h-4 w-4" />
+                <IconPlay className="h-3.5 w-3.5" /> Watch the AI films
               </a>
               <a
-                href="#hire"
-                className="text-sm font-medium text-ink-muted transition hover:text-accent"
+                href="#training"
+                className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"
               >
-                or hire me for AI &amp; web →
+                AI training for your team <IconArrowRight className="h-4 w-4" />
               </a>
             </div>
           </div>
