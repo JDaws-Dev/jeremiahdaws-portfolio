@@ -1,5 +1,6 @@
 import { IconDownload } from "./icons";
 import { ContactForm } from "./ContactForm";
+import { SiteFooter } from "./SiteFooter";
 
 export type PageCtaProps = {
   eyebrow: string;
@@ -66,6 +67,7 @@ export function PageCta({
           </div>
         </div>
       </section>
+      <SiteFooter />
     </>
   );
 }

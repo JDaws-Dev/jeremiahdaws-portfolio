@@ -18,7 +18,7 @@ export default function WorkPage() {
   const entries = getAllEntries();
   const assets = getAllAssets();
   return (
-    <main className="min-h-screen pb-24">
+    <main className="min-h-screen">
       <TopNav />
       <WorkHero />
       <AiFilms compact />

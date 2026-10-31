@@ -10,7 +10,6 @@ const BRANDS = [
   "National Geographic",
   "Hallmark",
   "Target",
-  "Tormach",
 ];
 
 export function Hero() {
@@ -49,7 +48,7 @@ export function Hero() {
               company, where I direct the animated comedy series{" "}
               <em>Calendar Jockeys</em>. Before that: six years producing for
               Disney (Marvel, Lucasfilm, ABC, Freeform) and editing for National
-              Geographic and Hallmark. On the side, I build AI-powered websites
+              Geographic and Hallmark. Outside FORM, I build AI-powered websites
               and tools for small businesses and run hands-on AI training for teams.
             </p>
 
@@ -70,14 +69,14 @@ export function Hero() {
           </div>
 
           <div className="order-1 md:order-2">
-            <div className="relative mx-auto aspect-[4/5] w-64 sm:w-80 md:w-72 lg:w-80">
+            <div className="relative aspect-[4/5] w-28 sm:w-40 md:mx-auto md:w-72 lg:w-80">
               <div className="absolute inset-0 -rotate-2 rounded-2xl border border-ink/15" />
               <Image
                 src="/headshot.jpg"
                 alt="Jeremiah Daws"
                 fill
                 priority
-                sizes="(min-width: 1024px) 20rem, (min-width: 768px) 18rem, (min-width: 640px) 20rem, 16rem"
+                sizes="(min-width: 1024px) 20rem, (min-width: 768px) 18rem, (min-width: 640px) 10rem, 7rem"
                 className="rounded-2xl object-cover object-[50%_25%] shadow-2xl"
               />
             </div>

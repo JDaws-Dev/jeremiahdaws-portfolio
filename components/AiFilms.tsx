@@ -28,17 +28,6 @@ const FILMS: Film[] = [
     thumb: "/portfolio/ai-what-are-you-supposed-to-be.jpg",
   },
   {
-    id: "I7cHxHLN1r4",
-    title: "Teeth Brushed?",
-    kind: "Spec commercial · Form Films",
-    runtime: "0:15",
-    year: "2026",
-    logline:
-      "A dad, his daughter, and a very familiar bedtime question. Form Films' first exploration of Absurd.",
-    tools: ["Absurd"],
-    thumb: "/portfolio/ai-teeth-brushed.jpg",
-  },
-  {
     id: "FtfUI0XKXyI",
     title: "America: 250 Years of Wonder",
     kind: "Animated short",
@@ -58,6 +47,17 @@ const FILMS: Film[] = [
     logline: "A short film made to share some big personal news.",
     tools: ["InVideo"],
     thumb: "/portfolio/ai-big-plans.jpg",
+  },
+  {
+    id: "I7cHxHLN1r4",
+    title: "Teeth Brushed?",
+    kind: "Spec commercial · Form Films",
+    runtime: "0:15",
+    year: "2026",
+    logline:
+      "A dad, his daughter, and a very familiar bedtime question. Form Films' first exploration of Absurd.",
+    tools: ["Absurd"],
+    thumb: "/portfolio/ai-teeth-brushed.jpg",
   },
 ];
 

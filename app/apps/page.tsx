@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function AppsPage() {
   const entries = getAllEntries();
   return (
-    <main className="min-h-screen pb-24">
+    <main className="min-h-screen">
       <TopNav />
       <AppsHero />
       <ProductBuilds entries={entries} />

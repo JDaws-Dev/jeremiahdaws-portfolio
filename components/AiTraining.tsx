@@ -4,21 +4,30 @@ const OFFERS = [
   {
     label: "For teams",
     title: "AI at work",
+    format: "Half day or full day · your team, in one room or on a call",
     body: "A hands-on session built around the work your team already does: email, writing, research, planning, documents. We use your real tasks, not canned demos.",
     leave: "Everyone leaves having used AI on a task they'll do again tomorrow, plus a one-page playbook for your tools.",
   },
   {
     label: "For creatives and marketing teams",
     title: "AI filmmaking",
+    format: "One or two days · small group",
     body: "How the films above get made: writing for generation, keeping a look and a character consistent shot to shot, voices and sound, then cutting and grading it like a real edit.",
     leave: "Your team makes a short piece together and learns where AI helps and where it still doesn't.",
   },
   {
     label: "For owners and builders",
     title: "Build it with me",
+    format: "A few sessions · one-on-one or a small group",
     body: "Learn to build with AI by building the thing you need: an internal tool, a site, an assistant for your business. You drive, I coach.",
     leave: "You end with a working tool you own, and you know how to change it yourself.",
   },
+];
+
+const AGENDA = [
+  { t: "Part 1", d: "What these tools are good at, bad at, and safe for, shown on your own documents." },
+  { t: "Part 2", d: "Everyone brings a task they do every week. We do it together, with AI, until it works." },
+  { t: "Part 3", d: "We write your team's playbook: the prompts that worked, and the rules for what never goes in." },
 ];
 
 const RECORD = [
@@ -50,6 +59,7 @@ export function AiTraining() {
                 {o.label}
               </p>
               <h3 className="mt-2 font-serif text-2xl leading-tight">{o.title}</h3>
+              <p className="mt-1 text-xs text-ink-muted">{o.format}</p>
               <p className="mt-3 text-sm leading-relaxed text-ink/75">{o.body}</p>
               <div className="mt-auto pt-5">
                 <p className="border-t border-ink/10 pt-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue">
@@ -60,6 +70,20 @@ export function AiTraining() {
             </li>
           ))}
         </ul>
+
+        <div className="mt-8 rounded-2xl border border-ink/10 bg-paper-muted/40 p-6">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue">
+            What a team half day looks like
+          </p>
+          <ol className="mt-4 grid gap-5 md:grid-cols-3">
+            {AGENDA.map((a) => (
+              <li key={a.t}>
+                <p className="font-serif text-lg leading-tight">{a.t}</p>
+                <p className="mt-1 text-sm leading-relaxed text-ink/75">{a.d}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
 
         <div className="mt-8 grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
           <div>

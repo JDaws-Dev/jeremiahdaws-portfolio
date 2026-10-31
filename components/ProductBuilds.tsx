@@ -21,10 +21,9 @@ const PRODUCTS: Product[] = [
     storyKicker:
       "I built it because families deserve a quiet corner of the internet.",
     proof: [
-      "Four apps · SafeTube, SafeTunes, SafeReads, SafeStudy",
-      "Single-source JWT auth · one family code · one subscription",
-      "Five Convex deployments · Stripe billing · Apple Music gap-fix",
-      "Live · paying customers · founded and operated solo",
+      "Four apps: SafeTube, SafeTunes, SafeReads, SafeStudy",
+      "One family code and one subscription for all four",
+      "Live, with paying customers; I built and run it myself",
     ],
     cta: { label: "Visit GetSafeFamily", href: "https://www.getsafefamily.com/", icon: "external" },
     image: "/portfolio/apps-safefamily.jpg",
@@ -94,7 +93,7 @@ export function ProductBuilds({ entries }: { entries: PortfolioEntry[] }) {
           Shipped and live
         </p>
         <h2 className="mt-2 font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">
-          Built for real people. Live right now.
+          Client sites and my own products, all live.
         </h2>
       </div>
 

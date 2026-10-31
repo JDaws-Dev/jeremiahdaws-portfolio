@@ -17,7 +17,7 @@ const FLAGSHIPS: Flagship[] = [
     tagline:
       "The machine shop I ran in Buford, GA from 2021 to 2026. CNC turning, CNC milling, fabrication, prototype-to-small-batch for paying clients.",
     storyKicker:
-      "Paid CNC fab work, including parts for Atlanta-area film productions: steadicam sleds, dolly components, on-set fixtures. Hospitality with horsepower.",
+      "Paid CNC fab work, including parts for Atlanta-area film productions: steadicam sleds, dolly components, on-set fixtures.",
     proof: [
       "Tormach 1100MX (mill) · Tormach 15L Slant Pro (lathe)",
       "Manual Bridgeport · manual lathe · MIG / TIG",
@@ -67,11 +67,11 @@ export function ShopFlagships({ entries }: { entries: PortfolioEntry[] }) {
           The shop &amp; the channel
         </p>
         <h2 className="mt-2 font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">
-          One business. One audience. Both real.
+          The shop, and the channel that documented it.
         </h2>
       </div>
 
-      <ul className="mt-8 grid gap-5 md:grid-cols-2">
+      <ul className="mt-8 grid gap-5 md:grid-cols-2 md:items-start">
         {items.map(({ entry, tagline, storyKicker, proof, cta }) => {
           const thumb = thumbForEntry(entry);
           return (

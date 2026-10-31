@@ -24,11 +24,11 @@ export function AlsoShipped({ entries }: { entries: PortfolioEntry[] }) {
             Also shipped
           </p>
           <h2 className="mt-2 font-serif text-2xl leading-tight tracking-[-0.01em] md:text-3xl">
-            Side projects, weekend builds, scratch-my-own-itch.
+            Side projects.
           </h2>
           <p className="mt-2 max-w-2xl text-sm text-ink-muted">
-            Most of these started as a question — &ldquo;could I build that in
-            a weekend?&rdquo; — and shipped because the answer was yes.
+            Small apps I built for fun or for friends. Most started as a
+            weekend question and shipped.
           </p>
         </div>
       </div>

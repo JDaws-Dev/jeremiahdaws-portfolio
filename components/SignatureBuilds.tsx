@@ -48,7 +48,7 @@ export function SignatureBuilds({ entries }: { entries: PortfolioEntry[] }) {
               Signature builds
             </p>
             <h2 className="mt-2 font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">
-              Three builds.<br />Three different tools.
+              Three builds, three different machines.
             </h2>
           </div>
           <p className="text-sm text-ink/75">

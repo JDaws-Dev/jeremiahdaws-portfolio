@@ -10,7 +10,6 @@ const CREDITS = [
   "Target",
   "Nat Geo",
   "Hallmark",
-  "Ricky Schroder",
   "Daws Brothers",
 ];
 
@@ -48,8 +47,8 @@ export function WorkHero() {
             multi-cam comfortable, finishing-friendly.
           </p>
           <p className="mt-4 text-sm text-ink-muted">
-            Long-form narrative, branded shorts, broadcast reality, social
-            cuts. Same hands.
+            Long-form narrative, branded shorts, broadcast reality and social
+            cuts.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">

@@ -10,6 +10,7 @@ import {
   IconYouTube,
 } from "./icons";
 import { ContactForm } from "./ContactForm";
+import { SiteFooter } from "./SiteFooter";
 
 const SERVICES = [
   "AI training for your team",
@@ -55,7 +56,7 @@ export function HireSection() {
           <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr] md:gap-16">
             <div>
               <p className="text-base text-paper/80 md:text-lg">
-                On the side, I help small businesses, schools, and teams put AI to
+                Outside FORM, I help small businesses, schools, and teams put AI to
                 work, not just talk about it. You work with me directly: I scope
                 it in writing, build it, and teach your people to use it. Tell me
                 what you have in mind and I&rsquo;ll reply with a plan and a quote.
@@ -120,7 +121,17 @@ export function HireSection() {
               </a>
             </div>
 
-            <div className="space-y-5">
+            <div className="space-y-8">
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-paper/55">
+                  What happens next
+                </p>
+                <ol className="mt-3 space-y-3 text-sm text-paper/85">
+                  <li className="flex gap-3"><span className="font-serif text-lg leading-none text-accent">1</span>You tell me what you have in mind, in a sentence or a page.</li>
+                  <li className="flex gap-3"><span className="font-serif text-lg leading-none text-accent">2</span>I reply personally, with questions, then a short call.</li>
+                  <li className="flex gap-3"><span className="font-serif text-lg leading-none text-accent">3</span>You get a written plan with scope and a fixed price before anything starts.</li>
+                </ol>
+              </div>
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-paper/55">
                   Find me elsewhere
@@ -175,26 +186,7 @@ export function HireSection() {
         </div>
       </section>
 
-      {/* Genuine footer — visually distinct from the hire-me section */}
-      <footer className="bg-[#07080a] py-8 text-paper">
-        <div className="mx-auto max-w-6xl px-6">
-          {/* Off-the-clock line — discoverable but understated */}
-          <p className="mb-3 text-center font-serif text-sm italic text-paper/70">
-            Off the clock, I&apos;m{" "}
-            <a
-              href="/movies.html"
-              className="text-accent-muted underline decoration-accent/40 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper/60"
-            >
-              a movie-obsessed nerd with a collection
-            </a>
-            .
-          </p>
-          <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-paper/40">
-            <span>© {new Date().getFullYear()} Jeremiah Daws.</span>
-            <span>Built by hand. Hosted on Vercel.</span>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

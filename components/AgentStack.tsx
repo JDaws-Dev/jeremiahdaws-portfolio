@@ -3,70 +3,34 @@ import type { PortfolioEntry } from "@/lib/portfolio";
 type Agent = {
   slug: string;
   forWhom: string;
-  accent: string;
   oneLiner: string;
-  number: string;
   unusualThing: string;
-  sampleTools: string[];
 };
 
 const AGENTS: Agent[] = [
   {
     slug: "jarvis",
     forWhom: "Mine",
-    accent: "🟦",
     oneLiner:
-      "A 24/7 personal AI operating system. Telegram-fronted launchd daemon on macOS, Claude Opus on subscription.",
-    number: "300+ tools",
+      "My own assistant. I text it like a chief of staff: it reads and drafts email, keeps the calendar, researches, and files things where I'll find them.",
     unusualThing:
-      "Self-tooling — when a job needs a tool that doesn't exist, JARVIS writes it at runtime.",
-    sampleTools: [
-      "gmail_triage",
-      "calendar_create",
-      "brain_note_add",
-      "household_person_upsert",
-      "playwright_login",
-      "applemusic_play",
-      "tool_compile",
-    ],
+      "When a job needs a tool it doesn't have yet, it writes one.",
   },
   {
     slug: "anna",
     forWhom: "The household",
-    accent: "🟪",
     oneLiner:
-      "A household assistant modeled on Anna Bates from Downton Abbey — warm, deferential, attentive, never performative.",
-    number: "230+ tools",
+      "A household assistant: meal plans, grocery lists, school email, the family calendar, and the follow-ups that usually fall through the cracks.",
     unusualThing:
-      "Mood-aware: daily message budgets, do-not-disturb windows, conversational permission instead of approval-button cards.",
-    sampleTools: [
-      "email_learn_sender",
-      "menu_plan_week",
-      "budget_categorize",
-      "host_prep_timeline",
-      "open_tab_remember",
-      "morning_brief",
-      "permission_ask",
-    ],
+      "It knows when not to talk: quiet hours, a daily limit on nudges, and it asks before it acts.",
   },
   {
     slug: "mozart",
     forWhom: "A composer",
-    accent: "🟧",
     oneLiner:
-      "A composer's assistant with a Mozart-inspired persona: playful, sharp, music-literate.",
-    number: "Scores · MIDI · stems",
+      "A composer's assistant with a Mozart-inspired voice: theory, feedback on new pieces, and practice.",
     unusualThing:
-      "Renders full multi-voice arrangements: LilyPond → PDF + MIDI + per-voice stems + MP3 preview from a single prompt.",
-    sampleTools: [
-      "score_analyze",
-      "audio_spectral_balance",
-      "lilypond_render",
-      "compose_scaffold",
-      "hooktheory_trends",
-      "suno_generate",
-      "piece_review_log",
-    ],
+      "Turns a written arrangement into a printed score, MIDI, and an audio preview.",
   },
 ];
 
@@ -86,7 +50,7 @@ export function AgentStack({ entries }: { entries: PortfolioEntry[] }) {
               The household stack
             </p>
             <h2 className="mt-2 font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">
-              Three agents.<br />One household.
+              Three assistants,<br />in daily use.
             </h2>
           </div>
           <p className="text-sm text-ink/75">
@@ -99,7 +63,7 @@ export function AgentStack({ entries }: { entries: PortfolioEntry[] }) {
         </div>
 
         <ul className="mt-10 grid gap-5 md:grid-cols-3">
-          {items.map(({ entry, forWhom, oneLiner, number, unusualThing, sampleTools }) => (
+          {items.map(({ entry, forWhom, oneLiner, unusualThing }) => (
             <li
               key={entry.slug}
               className="flex flex-col gap-3 rounded-2xl border border-ink/10 bg-paper p-6"
@@ -113,23 +77,9 @@ export function AgentStack({ entries }: { entries: PortfolioEntry[] }) {
               <p className="text-sm leading-relaxed text-ink/75">
                 {oneLiner}
               </p>
-              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-                {number}
-              </p>
-              <p className="text-[13px] leading-relaxed text-ink/70">
+              <p className="border-t border-ink/10 pt-3 text-[13px] leading-relaxed text-ink/80">
                 {unusualThing}
               </p>
-              <div className="mt-1 rounded-lg border border-ink/10 bg-ink/[0.03] p-3 font-mono text-[10px] leading-relaxed text-ink/65">
-                <p className="mb-1.5 text-[9px] uppercase tracking-[0.18em] text-ink-muted">
-                  Selected tools
-                </p>
-                <div className="flex flex-wrap gap-x-3 gap-y-0.5">
-                  {sampleTools.map((t) => (
-                    <span key={t}>{t}()</span>
-                  ))}
-                  <span className="text-ink-muted">…</span>
-                </div>
-              </div>
               <p className="mt-auto pt-2 text-[10px] uppercase tracking-[0.18em] text-ink-muted">
                 {entry.role.split("·")[0].trim()} · {entry.year}
               </p>

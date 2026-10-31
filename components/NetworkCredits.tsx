@@ -100,11 +100,11 @@ export function NetworkCredits({ entries }: { entries: PortfolioEntry[] }) {
           Studio &amp; broadcast credits
         </p>
         <h2 className="mt-2 font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">
-          Four kinds of work. One résumé.
+          Studio, brand and broadcast credits.
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-ink-muted">
-          Producer / Director at FORM today. Before that, six years inside Disney as Director, Producer, and short-form Editor
-          (Yellow Shoes Parks marketing + Disney Consumer Products: Marvel,
+          Producer / Director at FORM today. Before that, six years producing and directing for Disney (2015–2021), and
+          short-form editing there from 2010: Yellow Shoes Parks marketing and Disney Consumer Products (Marvel,
           Lucasfilm, ABC, Freeform). Plus broadcast Editor credits at National
           Geographic, Hallmark, and the U.S. Army reality series produced by
           Ricky Schroder.

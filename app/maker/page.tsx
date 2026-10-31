@@ -19,7 +19,7 @@ export default function MakerPage() {
   const entries = getAllEntries();
   const assets = getAllAssets();
   return (
-    <main className="min-h-screen pb-24">
+    <main className="min-h-screen">
       <TopNav />
       <MakerHero />
       <ShopFlagships entries={entries} />

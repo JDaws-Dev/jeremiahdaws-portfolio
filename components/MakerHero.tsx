@@ -44,7 +44,7 @@ export function MakerHero() {
         <div>
           <p className="text-base text-ink/80 md:text-lg">
             What I ran: CNC mill, CNC lathe, manual machining, 3D printing,
-            vacuum forming, welding, electronics, theatrical props.
+            vacuum forming, welding, electronics, theatrical props.{" "}
             <strong>SkillsUSA National
             Silver in CNC Turning.</strong> Former Tormach brand ambassador and
             host of their Garage Series tutorials. For five years I ran
@@ -56,7 +56,7 @@ export function MakerHero() {
           <p className="mt-4 text-sm text-ink-muted">
             One-off props. Production fixtures. Working dollies. A full
             Beauty-and-the-Beast Lumière candle, scanned and printed from a
-            Disney source. Same hands.
+            Disney source.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
