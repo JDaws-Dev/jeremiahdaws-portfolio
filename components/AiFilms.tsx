@@ -129,8 +129,8 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
           </div>
           {!compact ? (
             <p className="max-w-sm text-sm text-paper/65">
-              Written, directed and cut by me. Every shot generated, then edited
-              and graded in DaVinci Resolve like any other film.
+              Every shot generated, then voiced, cut and graded like any other
+              film. Click a title to play it here.
             </p>
           ) : null}
         </div>

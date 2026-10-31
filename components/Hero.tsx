@@ -72,8 +72,8 @@ export function Hero() {
           >
             <span className="relative block aspect-video overflow-hidden rounded-2xl bg-black shadow-2xl">
               <Image
-                src="/portfolio/stills/waystb-walk.jpg"
-                alt="A boy in a paper-bag mask walks a suburban street at dusk, trick-or-treaters behind him"
+                src="/portfolio/stills/waystb-porch.jpg"
+                alt="A teenager leans toward a small figure in a paper-bag mask on a dark porch"
                 fill
                 priority
                 sizes="(min-width: 768px) 36rem, 100vw"
