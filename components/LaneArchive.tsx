@@ -74,6 +74,8 @@ export function LaneArchive({
   showFilters?: boolean;
 }) {
   const [roles, setRoles] = useState<Set<string>>(new Set());
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [showAll, setShowAll] = useState(false);
   const [clients, setClients] = useState<Set<string>>(new Set());
   const [formats, setFormats] = useState<Set<string>>(new Set());
   const [query, setQuery] = useState("");
@@ -256,7 +258,21 @@ export function LaneArchive({
       </header>
 
       {showFilters ? (
-        <div className="border-y border-ink/10 bg-paper/85 backdrop-blur-md md:sticky md:top-14 md:z-30">
+        <div className="mx-auto max-w-6xl px-6 pb-3 md:hidden">
+          <button
+            type="button"
+            onClick={() => setFiltersOpen((v) => !v)}
+            aria-expanded={filtersOpen}
+            className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-4 py-2 text-sm font-medium transition hover:border-accent hover:text-accent"
+          >
+            {filtersOpen ? "Hide filters" : "Filter and search"}
+            {totalSelected > 0 ? ` (${totalSelected})` : ""}
+          </button>
+        </div>
+      ) : null}
+
+      {showFilters ? (
+        <div className={`${filtersOpen ? "block" : "hidden"} border-y border-ink/10 bg-paper/85 backdrop-blur-md md:sticky md:top-14 md:z-30 md:block`}>
           <div className="mx-auto max-w-6xl space-y-2 px-4 py-3 sm:px-6">
             <div className="flex flex-wrap items-center gap-2">
               <label className="inline-flex items-center gap-1.5 text-xs text-ink-muted">
@@ -342,11 +358,22 @@ export function LaneArchive({
           </div>
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filtered.map((a, i) => (
+            {(showAll ? filtered : filtered.slice(0, 12)).map((a, i) => (
               <AssetCard key={a.id} asset={a} onOpen={() => setOpenIndex(i)} />
             ))}
           </div>
         )}
+        {!showAll && filtered.length > 12 ? (
+          <div className="mt-8 text-center">
+            <button
+              type="button"
+              onClick={() => setShowAll(true)}
+              className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition hover:bg-accent"
+            >
+              Show all {filtered.length} pieces
+            </button>
+          </div>
+        ) : null}
       </section>
 
       <AssetLightbox
@@ -365,7 +392,7 @@ export function LaneArchive({
 
       <section className="mx-auto mt-8 max-w-6xl px-6 text-center">
         <Link
-          href="/#contact"
+          href="/#hire"
           className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"
         >
           Like what you see? Get in touch <IconArrowRight className="h-4 w-4" />
