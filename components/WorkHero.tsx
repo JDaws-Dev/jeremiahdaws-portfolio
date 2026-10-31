@@ -34,8 +34,8 @@ export function WorkHero() {
             company, where I direct the Form Films animated comedy series{" "}
             <em>Calendar Jockeys</em>. Before that, six years{" "}
             <strong>producing branded content</strong> for Disney
-            Parks and Disney Consumer Products — Marvel, Lucasfilm, ABC,
-            Freeform, Target. <strong>Social-media producer</strong>
+            Parks and Disney Consumer Products (Marvel, Lucasfilm, ABC,
+            Freeform, Target). <strong>Social-media producer</strong>
             {" "}for ongoing brand clients. <strong>Broadcast editor</strong>
             {" "}on National Geographic&rsquo;s <em>Building Wild</em>,
             Hallmark&rsquo;s <em>Our Wild Hearts</em>, the U.S. Army reality series

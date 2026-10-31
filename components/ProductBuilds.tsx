@@ -17,7 +17,7 @@ const PRODUCTS: Product[] = [
   {
     slug: "apps-safefamily",
     tagline:
-      "A kid-safe content suite for Christian families — four apps under one family code.",
+      "A kid-safe content suite for Christian families: four apps under one family code.",
     storyKicker:
       "I built it because families deserve a quiet corner of the internet.",
     proof: [

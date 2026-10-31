@@ -50,7 +50,7 @@ export function HireSection() {
             Work with me · AI training &amp; builds
           </p>
           <h2 className="mt-3 font-serif text-6xl leading-[0.95] tracking-[-0.025em] md:text-[7rem]">
-            Let&rsquo;s put AI<br />to work.
+            Work with me.
           </h2>
 
           <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr] md:gap-16">

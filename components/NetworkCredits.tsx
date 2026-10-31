@@ -33,7 +33,7 @@ const CREDITS: Credit[] = [
     client: "Disney Consumer Products",
     years: "2015–2021",
     storyKicker:
-      "Brand spots and integrated campaigns under tight clocks. Marvel, Lucasfilm, ABC, Freeform, and Target × Disney work — get the talent, get the shot, get the cut, get the air date.",
+      "Brand spots and integrated campaigns under tight clocks. Marvel, Lucasfilm, ABC, Freeform, and Target × Disney work, from booking talent to delivering for air.",
     highlights: [
       "Target × Disney — Backyard Theater (Disney Channel/XD, $1.5M campaign)",
       "WDW Halloween Hitlist · WDW Thattaway × Zombies",
@@ -63,7 +63,7 @@ const CREDITS: Credit[] = [
     client: "National Geographic · Hallmark · U.S. Army (Ricky Schroder)",
     years: "2010–2014",
     storyKicker:
-      "Multi-cam reality, broadcast finishing, feature-length narrative. The cut is where the story actually happens — story-shaping, pacing, and the difference between a moment that lands and one that gets skipped.",
+      "Multi-cam reality, broadcast finishing, feature-length narrative. Story-shaping and pacing: the difference between a moment that lands and one that gets skipped.",
     highlights: [
       "Building Wild — National Geographic (multi-episode)",
       "Starting Strong — U.S. Army reality series (produced by Ricky Schroder)",
