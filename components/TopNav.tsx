@@ -5,10 +5,10 @@ import { IconMail } from "./icons";
 
 const LINKS = [
   { href: "/#films", label: "AI Films" },
+  { href: "/#builds", label: "Builds" },
   { href: "/#training", label: "Training" },
-  { href: "/apps", label: "Builds" },
-  { href: "/work", label: "Work" },
-  { href: "/#hire", label: "Hire" },
+  { href: "/work", label: "Film work" },
+  { href: "/#hire", label: "Work with me" },
 ];
 
 export function TopNav() {

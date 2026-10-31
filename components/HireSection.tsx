@@ -1,25 +1,15 @@
 import {
   IconArrowUpRight,
-  IconDownload,
-  IconFilm,
   IconImdb,
   IconInstagram,
   IconLinkedIn,
   IconMail,
   IconMapPin,
   IconPhone,
-  IconSpark,
-  IconWrench,
   IconX,
   IconYouTube,
 } from "./icons";
 import { ContactForm } from "./ContactForm";
-
-const RESUMES = [
-  { id: "video", label: "Video", href: "/resumes/resume-video.pdf", Icon: IconFilm },
-  { id: "maker", label: "Maker", href: "/resumes/resume-maker.pdf", Icon: IconWrench },
-  { id: "tech", label: "Apps & AI", href: "/resumes/resume-tech.pdf", Icon: IconSpark },
-];
 
 const SERVICES = [
   "AI training for your team",
@@ -67,7 +57,8 @@ export function HireSection() {
               <p className="text-base text-paper/80 md:text-lg">
                 On the side, I help small businesses, schools, and teams put AI to
                 work, not just talk about it. You work with me directly: I scope
-                it, build it, and teach your people to use it.
+                it in writing, build it, and teach your people to use it. Tell me
+                what you have in mind and I&rsquo;ll reply with a plan and a quote.
               </p>
               <ul className="mt-5 grid gap-2 text-sm text-paper/85 sm:grid-cols-2">
                 {SERVICES.map((svc) => (
@@ -80,7 +71,7 @@ export function HireSection() {
               <p className="mt-5 text-sm text-paper/70">
                 Recent client work:{" "}
                 <a
-                  href="https://readytote.vercel.app/"
+                  href="https://readytoterentals.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-paper underline decoration-paper/30 underline-offset-4 transition hover:text-accent"
@@ -132,27 +123,6 @@ export function HireSection() {
             <div className="space-y-5">
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-paper/55">
-                  Résumés
-                </p>
-                <ul id="resumes" className="mt-3 flex flex-wrap gap-2 scroll-mt-20">
-                  {RESUMES.map((r) => (
-                    <li key={r.id}>
-                      <a
-                        href={r.href}
-                        download
-                        className="group inline-flex items-center gap-2 rounded-full border border-paper/25 bg-ink/40 px-4 py-2 text-sm font-medium transition hover:border-accent hover:bg-accent/10 hover:text-accent"
-                      >
-                        <r.Icon className="h-4 w-4 text-accent" />
-                        <span>{r.label}</span>
-                        <IconDownload className="h-3.5 w-3.5 text-paper/50 transition group-hover:text-accent" />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-paper/55">
                   Find me elsewhere
                 </p>
                 <ul className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -198,7 +168,7 @@ export function HireSection() {
               </li>
               <li className="inline-flex items-center gap-2 text-paper/70">
                 <IconMapPin className="h-4 w-4 text-accent" />
-                Buford, GA · Atlanta area
+                Atlanta area
               </li>
             </ul>
           </div>

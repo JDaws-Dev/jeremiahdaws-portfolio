@@ -4,36 +4,46 @@ import { IconArrowRight, IconArrowUpRight } from "./icons";
 
 const BUILDS = [
   {
+    title: "ReadyTote",
+    meta: "Client · website, booking, AI assistant",
+    body: "A tote-rental business site that takes real bookings and payments. One assistant sizes up a visitor\u2019s move, answers customers about their own order, and briefs the owner on the week.",
+    image: "/portfolio/client-readytote.jpg",
+    href: "https://readytoterentals.com/",
+  },
+  {
     title: "Artios Cafe",
-    meta: "Client · ordering, operations, staff AI assistant",
-    body: "A school lunch cafe run end to end by software. The staff run it by talking to an AI assistant.",
+    meta: "Client · ordering, payments, staff AI assistant",
+    body: "A school lunch cafe run end to end by software: pre-orders, payments, volunteers. Staff change the menu or close a day by asking the assistant, and approve before anything changes.",
     image: "/portfolio/apps-artioscafe-order.jpg",
     href: "https://artioscafe.com/",
   },
   {
-    title: "ReadyTote",
-    meta: "Client · website + AI assistant",
-    body: "Booking, customer questions, and a daily brief for the owner, handled by an assistant built into the site.",
-    image: "/portfolio/client-readytote.jpg",
-    href: "https://readytote.vercel.app/",
+    title: "GetSafeFamily",
+    meta: "My own product · four apps, paying customers",
+    body: "Kid-safe YouTube, music, books and homework help for Christian families, under one family code and one subscription.",
+    image: "/portfolio/apps-safefamily.jpg",
+    href: "https://www.getsafefamily.com/",
   },
   {
     title: "FORM website",
     meta: "Studio site · rebuilt end to end",
-    body: "The website for FORM, the Atlanta story company where I'm Producer / Director.",
+    body: "The site for FORM, the Atlanta story company where I work: brand films, studio, interactive and original films on one site.",
     image: "/portfolio/form-website.jpg",
     href: "https://www.formgreatstories.com/",
   },
-  {
-    title: "GetSafeFamily",
-    meta: "My product · four kid-safe apps",
-    body: "Kid-safe YouTube, music, books and homework help for Christian families, under one family code.",
-    image: "/portfolio/apps-safefamily.jpg",
-    href: "https://www.getsafefamily.com/",
-  },
 ];
 
-const AGENTS = ["JARVIS, my own AI chief of staff", "Anna, my wife's household assistant", "Mozart, a composer's assistant for my son"];
+const AGENTS = [
+  { name: "JARVIS", what: "my own assistant: email, calendar, research, files, and the tools it writes for itself" },
+  { name: "Anna", what: "a household assistant: meals, groceries, school, and the family calendar" },
+  { name: "Mozart", what: "a composer\u2019s assistant that engraves scores and gives notes on new pieces" },
+];
+
+const STEPS = [
+  { n: "1", title: "Scope", body: "We agree in writing what it does, what it doesn\u2019t, and the price, before I start." },
+  { n: "2", title: "Build", body: "I design and build it myself, and you see it working early, on a real link." },
+  { n: "3", title: "Hand off", body: "You own it. I show you and your staff how to run it and how to talk to the AI." },
+];
 
 export function AiBuilds() {
   return (
@@ -43,7 +53,7 @@ export function AiBuilds() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue">AI building</p>
             <h2 className="mt-2 max-w-3xl text-balance font-serif text-3xl leading-tight tracking-[-0.01em] md:text-[2.6rem]">
-              Websites and tools with AI built in.
+              Websites and tools with AI built in. Live, and in use.
             </h2>
           </div>
           <Link
@@ -79,15 +89,33 @@ export function AiBuilds() {
           ))}
         </ul>
 
-        <div className="mt-8 rounded-2xl border border-ink/10 bg-paper p-5 md:flex md:items-center md:gap-8">
-          <p className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue">
-            Personal AI assistants I built and run
-          </p>
-          <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/80 md:mt-0">
-            {AGENTS.map((a) => (
-              <li key={a}>{a}</li>
-            ))}
-          </ul>
+        <div className="mt-10 grid gap-8 lg:grid-cols-[1.2fr_1fr]">
+          <div className="rounded-2xl border border-ink/10 bg-paper p-6">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue">
+              How a build works
+            </p>
+            <ol className="mt-4 grid gap-5 sm:grid-cols-3">
+              {STEPS.map((st) => (
+                <li key={st.n}>
+                  <p className="font-serif text-3xl leading-none text-accent">{st.n}</p>
+                  <p className="mt-2 font-serif text-lg leading-tight">{st.title}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-ink/75">{st.body}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div className="rounded-2xl border border-ink/10 bg-paper p-6">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue">
+              AI assistants I built and run every day
+            </p>
+            <ul className="mt-4 space-y-3 text-sm leading-relaxed text-ink/80">
+              {AGENTS.map((a) => (
+                <li key={a.name}>
+                  <span className="font-serif text-base text-ink">{a.name}</span>, {a.what}.
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

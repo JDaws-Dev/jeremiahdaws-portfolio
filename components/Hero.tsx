@@ -45,11 +45,12 @@ export function Hero() {
             </p>
 
             <p className="mt-5 max-w-2xl text-base leading-snug text-ink/85 md:text-lg">
-              Producer / Director at FORM, an Atlanta story company, where I
-              direct the animated comedy series <em>Calendar Jockeys</em>. Fifteen
-              years in production before that: Disney Parks (Marvel, Lucasfilm,
-              ABC, Freeform), National Geographic, Hallmark. On the side, I train
-              teams on AI and build AI-powered websites and tools.
+              By day I&rsquo;m Producer / Director at FORM, an Atlanta story
+              company, where I direct the animated comedy series{" "}
+              <em>Calendar Jockeys</em>. Before that: six years producing for
+              Disney (Marvel, Lucasfilm, ABC, Freeform) and editing for National
+              Geographic and Hallmark. On the side, I build AI-powered websites
+              and tools for small businesses and run hands-on AI training for teams.
             </p>
 
             <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -60,10 +61,10 @@ export function Hero() {
                 <IconPlay className="h-3.5 w-3.5" /> Watch the AI films
               </a>
               <a
-                href="#training"
+                href="#hire"
                 className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"
               >
-                AI training for your team <IconArrowRight className="h-4 w-4" />
+                Work with me <IconArrowRight className="h-4 w-4" />
               </a>
             </div>
           </div>
@@ -86,7 +87,7 @@ export function Hero() {
         {/* Brand strip — under the hero, signals scale at a glance */}
         <div className="mt-10 border-t border-ink/10 pt-5 md:mt-14">
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-blue">
-            Worked on projects for
+            Credits include
           </p>
           <ul className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
             {BRANDS.map((b) => (

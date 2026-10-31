@@ -12,8 +12,8 @@ export default function Page() {
       <TopNav />
       <Hero />
       <AiFilms />
-      <AiTraining />
       <AiBuilds />
+      <AiTraining />
       <Background />
       <HireSection />
     </main>
