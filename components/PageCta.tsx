@@ -7,7 +7,7 @@ export type PageCtaProps = {
   body: string;
   topic: string;
   placeholder?: string;
-  resume: { href: string; label: string };
+  resume?: { href: string; label: string };
 };
 
 export function PageCta({
@@ -42,6 +42,7 @@ export function PageCta({
               {body}
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
+              {resume ? (
               <a
                 href={resume.href}
                 download
@@ -50,6 +51,7 @@ export function PageCta({
                 <IconDownload className="h-4 w-4" />
                 {resume.label}
               </a>
+              ) : null}
               <a
                 href="tel:+13108455702"
                 className="text-sm font-medium text-paper/70 transition hover:text-accent"

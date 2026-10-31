@@ -1,4 +1,4 @@
-import { IconArrowRight, IconDownload } from "./icons";
+import { IconArrowRight } from "./icons";
 
 const STACK = [
   "Next.js",
@@ -17,7 +17,7 @@ export function AppsHero() {
   return (
     <section className="relative mx-auto max-w-6xl px-6 pt-24 pb-10">
       <p className="text-xs uppercase tracking-[0.22em] text-blue">
-        AI Builder — Consultant · Engineer
+        AI builds — websites · tools · assistants
       </p>
       <h1
         className="mt-3 font-serif leading-[1.02] tracking-[-0.025em]"
@@ -30,20 +30,17 @@ export function AppsHero() {
       <div className="mt-8 grid gap-8 md:grid-cols-[1.4fr_1fr]">
         <div>
           <p className="text-base text-ink/80 md:text-lg">
-            Tech early adopter who cares less about the tech than what it
-            does for people. Call it digital hospitality: a kid opens an app
-            and finds nothing they shouldn&rsquo;t; a homeowner calls a
-            plumber at 9pm and a warm voice picks up; my wife&rsquo;s
-            half-finished thoughts get held until she needs them. Same
-            work, different surfaces.
+            I build websites and tools with AI working inside them, for small
+            businesses and for my own products. A rental site that books and
+            takes payment while an assistant answers customers. A cafe the
+            staff run by talking to it. A kid-safe app suite with paying
+            customers. Everything here is live and in use.
           </p>
           <p className="mt-4 text-sm text-ink-muted">
-            A kid-safe app suite with paying customers. Three agents running my
-            household. The website and an internal AI assistant for FORM, the
-            studio where I work. On the
-            side, I take on AI consulting, team training, vibe-coding builds,
-            and websites with AI built in, like the ones running ReadyTote
-            and Artios Cafe.
+            Day job: Producer / Director at FORM, where I also rebuilt the
+            studio&rsquo;s website. Side work: fixed-price builds, scoped in
+            writing, that you own when we&rsquo;re done, plus training so your
+            team can run them.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -51,16 +48,9 @@ export function AppsHero() {
               href="/#hire"
               className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accent"
             >
-              Hire me for AI <IconArrowRight className="h-4 w-4" />
+              Start a project <IconArrowRight className="h-4 w-4" />
             </a>
-            <a
-              href="/resumes/resume-tech.pdf"
-              download
-              className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-2.5 text-sm font-medium transition hover:border-accent hover:text-accent"
-            >
-              <IconDownload className="h-4 w-4" />
-              Apps &amp; AI résumé (PDF)
-            </a>
+
           </div>
         </div>
 
@@ -79,9 +69,9 @@ export function AppsHero() {
             ))}
           </ul>
           <p className="mt-4 text-xs text-ink-muted">
-            I write TypeScript end-to-end. I design the schema, I write the
-            backend, I write the prompts, I draw the UI, I edit the demo
-            video. One person, full stack, shipping weekly.
+            I design it, write the code and the prompts, and cut the demo
+            video myself. You deal with one person from first call to
+            hand-off.
           </p>
         </aside>
       </div>

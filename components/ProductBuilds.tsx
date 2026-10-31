@@ -19,7 +19,7 @@ const PRODUCTS: Product[] = [
     tagline:
       "A kid-safe content suite for Christian families — four apps under one family code.",
     storyKicker:
-      "I built this because my own kids deserved a quiet corner of the internet.",
+      "I built it because families deserve a quiet corner of the internet.",
     proof: [
       "Four apps · SafeTube, SafeTunes, SafeReads, SafeStudy",
       "Single-source JWT auth · one family code · one subscription",
@@ -70,7 +70,7 @@ const PRODUCTS: Product[] = [
       "Booking flow · order pages · owner dashboard",
       "One AI, three roles: visitor, customer, owner",
     ],
-    cta: { label: "Visit ReadyTote", href: "https://readytote.vercel.app/", icon: "external" },
+    cta: { label: "Visit ReadyTote", href: "https://readytoterentals.com/", icon: "external" },
     image: "/portfolio/client-readytote.jpg",
     imageAlt: "ReadyTote — moving tote rental website",
   },

@@ -13,11 +13,11 @@ type Agent = {
 const AGENTS: Agent[] = [
   {
     slug: "jarvis",
-    forWhom: "For me",
+    forWhom: "Mine",
     accent: "🟦",
     oneLiner:
       "A 24/7 personal AI operating system. Telegram-fronted launchd daemon on macOS, Claude Opus on subscription.",
-    number: "~150 MCP tools",
+    number: "300+ tools",
     unusualThing:
       "Self-tooling — when a job needs a tool that doesn't exist, JARVIS writes it at runtime.",
     sampleTools: [
@@ -32,11 +32,11 @@ const AGENTS: Agent[] = [
   },
   {
     slug: "anna",
-    forWhom: "For my wife",
+    forWhom: "The household",
     accent: "🟪",
     oneLiner:
       "A household assistant modeled on Anna Bates from Downton Abbey — warm, deferential, attentive, never performative.",
-    number: "~240 tools",
+    number: "230+ tools",
     unusualThing:
       "Mood-aware: daily message budgets, do-not-disturb windows, conversational permission instead of approval-button cards.",
     sampleTools: [
@@ -51,11 +51,11 @@ const AGENTS: Agent[] = [
   },
   {
     slug: "mozart",
-    forWhom: "For my son",
+    forWhom: "A composer",
     accent: "🟧",
     oneLiner:
-      "A composer's AI for a high-school composer. Mozart-inspired persona — playful, sharp, music-literate.",
-    number: "~90 music tools · 490 passing tests",
+      "A composer's assistant with a Mozart-inspired persona: playful, sharp, music-literate.",
+    number: "Scores · MIDI · stems",
     unusualThing:
       "Renders full multi-voice arrangements: LilyPond → PDF + MIDI + per-voice stems + MP3 preview from a single prompt.",
     sampleTools: [
@@ -90,11 +90,11 @@ export function AgentStack({ entries }: { entries: PortfolioEntry[] }) {
             </h2>
           </div>
           <p className="text-sm text-ink/75">
-            I built a personal AI for myself, one for my wife, one for my son.
-            They share a household SQLite store, bridge over localhost, and
-            stay in their lanes — the JARVIS-Anna split was the technical
-            problem; the persona-and-permission split was the human one.
-            That&rsquo;s the part most people get wrong.
+            Three assistants for three people in one family, running every
+            day. They share a household store, hand work to each other, and
+            stay in their lanes: each one has its own voice and its own
+            limits on what it may do without asking. Getting those limits
+            right was harder than the code.
           </p>
         </div>
 

@@ -92,8 +92,7 @@ export default async function OG() {
             maxWidth: "900px",
           }}
         >
-          Producer / Director at FORM. Six years at Disney before that.
-          I tell the story and build the thing.
+          I make films with AI, build tools with AI, and teach people to do both.
         </div>
 
         <div
@@ -109,11 +108,11 @@ export default async function OG() {
             fontWeight: 600,
           }}
         >
-          <span>Filmmaker</span>
+          <span>AI Films</span>
           <span style={{ color: "#b3312c" }}>·</span>
-          <span>Maker</span>
+          <span>AI Builds</span>
           <span style={{ color: "#b3312c" }}>·</span>
-          <span>AI Builder</span>
+          <span>AI Training</span>
         </div>
 
         <div
@@ -129,7 +128,7 @@ export default async function OG() {
             fontWeight: 600,
           }}
         >
-          FORM · Disney · Nat Geo · Hallmark · Tormach
+          FORM · Disney · Nat Geo · Hallmark
         </div>
       </div>
     ),

@@ -3,9 +3,9 @@ import "./globals.css";
 
 const SITE_URL = "https://jeremiahdaws.com";
 const NAME = "Jeremiah Daws";
-const TAGLINE = "Producer / Director at FORM — Atlanta";
+const TAGLINE = "AI films, AI builds, AI training";
 const SHORT_DESC =
-  "Producer / Director at FORM, an Atlanta story company, where he directs the comedy series Calendar Jockeys. AI filmmaker, AI trainer, and builder of AI-powered websites and tools. Six years at Disney producing branded content (Marvel, Lucasfilm, ABC, Freeform). Broadcast editor on National Geographic, Hallmark, and Ricky Schroder. AI consultant (consulting, training, vibe-coding builds, and AI-powered websites). Founder of GetSafeFamily (kid-safe content suite with paying customers). SkillsUSA National Silver, former Tormach brand ambassador.";
+  "Jeremiah Daws makes films with AI, builds AI-powered websites and tools, and trains teams to use AI. Producer / Director at FORM, an Atlanta story company, where he directs the comedy series Calendar Jockeys. Six years producing branded content at Disney (Marvel, Lucasfilm, ABC, Freeform); editor for National Geographic and Hallmark.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     title: `${NAME} — ${TAGLINE}`,
-    description: "Producer / Director at FORM. AI films · AI training · AI builds. Atlanta.",
+    description: "I make films with AI, build tools with AI, and teach people to do both. Producer / Director at FORM, Atlanta.",
     siteName: NAME,
   },
   twitter: {
     card: "summary_large_image",
     title: `${NAME} — ${TAGLINE}`,
-    description: "Producer / Director at FORM. AI films · AI training · AI builds.",
+    description: "I make films with AI, build tools with AI, and teach people to do both.",
     creator: "@JeremiahDaws",
   },
   robots: { index: true, follow: true },
@@ -40,7 +40,7 @@ const personSchema = {
   url: SITE_URL,
   jobTitle: "Producer / Director",
   worksFor: { "@type": "Organization", name: "FORM", url: "https://www.formgreatstories.com/" },
-  address: { "@type": "PostalAddress", addressLocality: "Buford", addressRegion: "GA", addressCountry: "US" },
+  address: { "@type": "PostalAddress", addressLocality: "Atlanta", addressRegion: "GA", addressCountry: "US" },
   email: "jedaws@gmail.com",
   telephone: "+1-310-845-5702",
   alumniOf: [
