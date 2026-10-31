@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const runtime = "edge";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
-export const alt = "Jeremiah Daws — Producer / Director at FORM.";
+export const alt = "Jeremiah Daws, AI filmmaker.";
 
 export default async function OG() {
   return new ImageResponse(
@@ -65,7 +65,7 @@ export default async function OG() {
               backgroundColor: "#b3312c",
             }}
           />
-          Producer / Director · FORM · Atlanta
+          AI filmmaker · Atlanta
         </div>
 
         <div
@@ -92,7 +92,7 @@ export default async function OG() {
             maxWidth: "900px",
           }}
         >
-          I make films with AI, build tools with AI, and teach people to do both.
+          I make films with AI, and help other people make theirs.
         </div>
 
         <div
@@ -108,11 +108,11 @@ export default async function OG() {
             fontWeight: 600,
           }}
         >
-          <span>AI Films</span>
+          <span>AI films</span>
           <span style={{ color: "#b3312c" }}>·</span>
-          <span>AI Builds</span>
+          <span>Consulting</span>
           <span style={{ color: "#b3312c" }}>·</span>
-          <span>AI Training</span>
+          <span>Producer / Director at FORM</span>
         </div>
 
         <div

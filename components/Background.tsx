@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { IconArrowRight } from "./icons";
 
@@ -14,6 +15,9 @@ export function Background() {
     <section id="background" className="scroll-mt-14 bg-paper py-16 md:py-20">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-[1fr_1.4fr]">
         <div>
+          <div className="relative mb-6 aspect-square w-24 overflow-hidden rounded-full border border-ink/10">
+            <Image src="/headshot.jpg" alt="Jeremiah Daws" fill sizes="6rem" className="object-cover object-[50%_25%]" />
+          </div>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue">Background</p>
           <h2 className="mt-2 text-balance font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">
             Fifteen years of <span className="text-accent">real production</span> behind it.
@@ -26,8 +30,8 @@ export function Background() {
             <Link href="/work" className="inline-flex items-center gap-1.5 text-ink transition hover:text-accent">
               All film work <IconArrowRight className="h-4 w-4" />
             </Link>
-            <Link href="/maker" className="inline-flex items-center gap-1.5 text-ink-muted transition hover:text-accent">
-              The machinist years <IconArrowRight className="h-4 w-4" />
+            <Link href="/apps" className="inline-flex items-center gap-1.5 text-ink-muted transition hover:text-accent">
+              I also build AI tools <IconArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>

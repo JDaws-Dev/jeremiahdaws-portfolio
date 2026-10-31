@@ -51,6 +51,7 @@ const FILMS: Film[] = [
     logline: "A short film made to share some big personal news.",
     tools: ["InVideo"],
     thumb: "/portfolio/ai-big-plans.jpg",
+    still: "/portfolio/stills/ai-big-plans.jpg",
   },
   {
     id: "I7cHxHLN1r4",

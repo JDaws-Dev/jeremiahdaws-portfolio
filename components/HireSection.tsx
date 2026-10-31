@@ -13,12 +13,12 @@ import { ContactForm } from "./ContactForm";
 import { SiteFooter } from "./SiteFooter";
 
 const SERVICES = [
-  "AI training for your team",
-  "AI filmmaking workshops",
-  "Websites with AI built in",
-  "Vibe-coded tools and apps",
-  "AI consulting: find where AI fits",
-  "AI-automated video workflows (DaVinci Resolve)",
+  "Notes on a cut or a script",
+  "Characters and looks that stay consistent",
+  "Shot lists built for generation",
+  "AI voices and sound",
+  "Edit, grade and finish in DaVinci Resolve",
+  "One-on-one AI training, $100 an hour",
 ];
 
 const SOCIAL = [
@@ -47,7 +47,7 @@ export function HireSection() {
 
         <div className="relative mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">
-            Work with me · AI training &amp; builds
+            Work with me · AI film consulting
           </p>
           <h2 className="mt-3 font-serif text-6xl leading-[0.95] tracking-[-0.025em] md:text-[7rem]">
             Work with me.
@@ -56,10 +56,9 @@ export function HireSection() {
           <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr] md:gap-16">
             <div>
               <p className="text-base text-paper/80 md:text-lg">
-                Outside FORM, I help small businesses, schools, and teams put AI to
-                work. You work with me directly: I scope
-                it in writing, build it, and teach your people to use it. Tell me
-                what you have in mind and I&rsquo;ll reply with a plan and a quote.
+                Outside FORM, I consult on other people&rsquo;s AI films: story,
+                look, shots, sound and the finish. Tell me what you&rsquo;re making
+                and where it&rsquo;s stuck.
               </p>
               <ul className="mt-5 grid gap-2 text-sm text-paper/85 sm:grid-cols-2">
                 {SERVICES.map((svc) => (
@@ -69,30 +68,7 @@ export function HireSection() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-5 text-sm text-paper/70">
-                Recent client work:{" "}
-                <a
-                  href="https://readytoterentals.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-paper underline decoration-paper/30 underline-offset-4 transition hover:text-accent"
-                >
-                  ReadyTote
-                </a>
-, a website with an AI assistant that books, answers customers,
-                and briefs the owner; and{" "}
-                <a
-                  href="https://artioscafe.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-paper underline decoration-paper/30 underline-offset-4 transition hover:text-accent"
-                >
-                  Artios Cafe
-                </a>
-                , a cafe ordering and operations system the
-                staff run by talking to an AI assistant.
-              </p>
-              <p className="mt-3 text-sm text-paper/55">
+              <p className="mt-5 text-sm text-paper/55">
                 Need a brand film or series instead? That&rsquo;s my day job as
                 Producer / Director at{" "}
                 <a
@@ -108,15 +84,15 @@ export function HireSection() {
 
               <div className="mt-8">
                 <ContactForm
-                  topic="AI training / build"
-                  placeholder="A training for your team, a film, or a tool you need built?"
+                  topic="AI film project"
+                  placeholder="What are you making, and where are you stuck?"
                 />
               </div>
               <a
                 href="/apps"
                 className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-paper/75 transition hover:text-accent"
               >
-                See what I&rsquo;ve built
+                I also build AI-powered websites and tools
                 <span aria-hidden="true">→</span>
               </a>
             </div>
@@ -129,7 +105,7 @@ export function HireSection() {
                 <ol className="mt-3 space-y-3 text-sm text-paper/85">
                   <li className="flex gap-3"><span className="font-serif text-lg leading-none text-accent">1</span>You tell me what you have in mind, in a sentence or a page.</li>
                   <li className="flex gap-3"><span className="font-serif text-lg leading-none text-accent">2</span>I reply personally, with questions, then a short call.</li>
-                  <li className="flex gap-3"><span className="font-serif text-lg leading-none text-accent">3</span>You get a written plan with scope and a fixed price before anything starts.</li>
+                  <li className="flex gap-3"><span className="font-serif text-lg leading-none text-accent">3</span>You get a written plan with scope and price before anything starts.</li>
                 </ol>
               </div>
               <div>

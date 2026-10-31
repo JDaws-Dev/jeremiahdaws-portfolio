@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { IconMail } from "./icons";
 
 const LINKS = [
-  { href: "/#films", label: "AI Films" },
-  { href: "/#builds", label: "Builds" },
-  { href: "/#training", label: "Training" },
+  { href: "/#films", label: "Films" },
+  { href: "/#process", label: "Process" },
+  { href: "/#consulting", label: "Consulting" },
   { href: "/work", label: "Film work" },
-  { href: "/#hire", label: "Work with me" },
+  { href: "/#hire", label: "Contact" },
 ];
 
 export function TopNav() {

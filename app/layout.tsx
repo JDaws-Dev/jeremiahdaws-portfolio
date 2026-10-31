@@ -3,9 +3,9 @@ import "./globals.css";
 
 const SITE_URL = "https://jeremiahdaws.com";
 const NAME = "Jeremiah Daws";
-const TAGLINE = "AI films, AI builds, AI training";
+const TAGLINE = "AI filmmaker";
 const SHORT_DESC =
-  "Jeremiah Daws makes films with AI, builds AI-powered websites and tools, and trains teams to use AI. Producer / Director at FORM, an Atlanta story company, where he directs the comedy series Calendar Jockeys. Six years producing branded content at Disney (Marvel, Lucasfilm, ABC, Freeform); editor for National Geographic and Hallmark.";
+  "Jeremiah Daws is an AI filmmaker who also consults on other people's AI films: story, look, shots, sound and finish. Producer / Director at FORM, an Atlanta story company, where he directs the comedy series Calendar Jockeys. Six years producing branded content at Disney (Marvel, Lucasfilm, ABC, Freeform); editor for National Geographic and Hallmark.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     title: `${NAME} — ${TAGLINE}`,
-    description: "I make films with AI, build tools with AI, and teach people to do both. Producer / Director at FORM, Atlanta.",
+    description: "AI filmmaker. I make films with AI and help other people make theirs. Producer / Director at FORM, Atlanta.",
     siteName: NAME,
   },
   twitter: {
     card: "summary_large_image",
     title: `${NAME} — ${TAGLINE}`,
-    description: "I make films with AI, build tools with AI, and teach people to do both.",
+    description: "AI filmmaker. I make films with AI and help other people make theirs.",
     creator: "@JeremiahDaws",
   },
   robots: { index: true, follow: true },
@@ -38,7 +38,7 @@ const personSchema = {
   "@type": "Person",
   name: NAME,
   url: SITE_URL,
-  jobTitle: "Producer / Director",
+  jobTitle: "AI filmmaker; Producer / Director at FORM",
   worksFor: { "@type": "Organization", name: "FORM", url: "https://www.formgreatstories.com/" },
   address: { "@type": "PostalAddress", addressLocality: "Atlanta", addressRegion: "GA", addressCountry: "US" },
   email: "jedaws@gmail.com",

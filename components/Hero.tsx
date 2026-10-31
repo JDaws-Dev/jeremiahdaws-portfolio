@@ -2,6 +2,7 @@ import Image from "next/image";
 import { IconArrowRight, IconPlay } from "./icons";
 
 const BRANDS = [
+  "FORM",
   "Disney",
   "Marvel",
   "Lucasfilm",
@@ -9,7 +10,6 @@ const BRANDS = [
   "Freeform",
   "National Geographic",
   "Hallmark",
-  "Target",
 ];
 
 export function Hero() {
@@ -21,35 +21,32 @@ export function Hero() {
       </div>
 
       <div className="mx-auto max-w-6xl px-4 pb-12 pt-20 sm:px-6 md:pb-16 md:pt-28">
-        {/* Mobile: photo first, full bleed-ish. Desktop: side-by-side. */}
-        <div className="grid gap-8 md:grid-cols-[1.15fr_auto] md:items-center md:gap-12">
+        {/* Mobile: a frame from the film first. Desktop: side by side. */}
+        <div className="grid gap-8 md:grid-cols-[1fr_1.05fr] md:items-center md:gap-12">
           <div className="order-2 min-w-0 md:order-1">
-            <div className="flex flex-wrap items-center gap-2">
-              <div className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-paper-muted/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-ink-muted sm:text-xs">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                Producer / Director at FORM · Atlanta
-              </div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-paper-muted/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-ink-muted sm:text-xs">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+              AI filmmaker · Atlanta
             </div>
 
             <h1
               className="mt-4 font-serif leading-[0.98] tracking-[-0.025em] [overflow-wrap:anywhere]"
-              style={{ fontSize: "clamp(2.75rem, 12vw, 5.5rem)" }}
+              style={{ fontSize: "clamp(2.75rem, 10vw, 5rem)" }}
             >
               Jeremiah Daws
             </h1>
 
-            <p className="mt-5 max-w-2xl text-balance font-serif text-2xl leading-tight text-ink sm:text-3xl md:text-[2.1rem]">
-              I make films with AI, build tools with AI,{" "}
-              <span className="text-accent">and teach people to do both.</span>
+            <p className="mt-5 max-w-xl text-balance font-serif text-2xl leading-tight text-ink sm:text-3xl">
+              I make films with AI,{" "}
+              <span className="text-accent">and help other people make theirs.</span>
             </p>
 
-            <p className="mt-5 max-w-2xl text-base leading-snug text-ink/85 md:text-lg">
-              By day I&rsquo;m Producer / Director at FORM, an Atlanta story
-              company, where I direct the animated comedy series{" "}
-              <em>Calendar Jockeys</em>. Before that: six years producing for
-              Disney (Marvel, Lucasfilm, ABC, Freeform) and editing for National
-              Geographic and Hallmark. Outside FORM, I build AI-powered websites
-              and tools for small businesses and run hands-on AI training for teams.
+            <p className="mt-5 max-w-xl text-base leading-snug text-ink/85 md:text-lg">
+              Written, directed and cut by me, with no camera and no cast. The
+              craft comes from fifteen years in production: Producer / Director
+              at FORM, an Atlanta story company, where I direct the animated
+              comedy <em>Calendar Jockeys</em>; six years producing for Disney;
+              editing for National Geographic and Hallmark.
             </p>
 
             <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -57,49 +54,57 @@ export function Hero() {
                 href="#films"
                 className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper shadow-lg transition hover:bg-accent"
               >
-                <IconPlay className="h-3.5 w-3.5" /> Watch the AI films
+                <IconPlay className="h-3.5 w-3.5" /> Watch the films
               </a>
               <a
-                href="#hire"
+                href="#consulting"
                 className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"
               >
-                Work with me <IconArrowRight className="h-4 w-4" />
+                Help with your AI film <IconArrowRight className="h-4 w-4" />
               </a>
             </div>
           </div>
 
-          <div className="order-1 md:order-2">
-            <div className="relative aspect-[4/5] w-28 sm:w-40 md:mx-auto md:w-72 lg:w-80">
-              <div className="absolute inset-0 -rotate-2 rounded-2xl border border-ink/15" />
+          <a
+            href="#films"
+            aria-label="Watch What Are You Supposed To Be?"
+            className="group order-1 block md:order-2"
+          >
+            <span className="relative block aspect-video overflow-hidden rounded-2xl bg-black shadow-2xl">
               <Image
-                src="/headshot.jpg"
-                alt="Jeremiah Daws"
+                src="/portfolio/stills/waystb-walk.jpg"
+                alt="A boy in a paper-bag mask walks a suburban street at dusk, trick-or-treaters behind him"
                 fill
                 priority
-                sizes="(min-width: 1024px) 20rem, (min-width: 768px) 18rem, (min-width: 640px) 10rem, 7rem"
-                className="rounded-2xl object-cover object-[50%_25%] shadow-2xl"
+                sizes="(min-width: 768px) 36rem, 100vw"
+                className="object-cover transition duration-700 group-hover:scale-[1.02]"
               />
-            </div>
-          </div>
+              <span className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <span className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-3 text-paper">
+                <span className="text-xs leading-tight">
+                  <span className="block font-serif text-sm sm:text-base">What Are You Supposed To Be?</span>
+                  <span className="text-paper/70">Horror short · 2026 · made with AI</span>
+                </span>
+                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-paper px-3 py-1.5 text-xs font-semibold text-ink transition group-hover:bg-accent group-hover:text-paper">
+                  <IconPlay className="h-3 w-3" /> 1:44
+                </span>
+              </span>
+            </span>
+          </a>
         </div>
 
-        {/* Brand strip — under the hero, signals scale at a glance */}
         <div className="mt-10 border-t border-ink/10 pt-5 md:mt-14">
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-blue">
             Credits include
           </p>
           <ul className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
             {BRANDS.map((b) => (
-              <li
-                key={b}
-                className="font-serif text-base text-ink/70"
-              >
+              <li key={b} className="font-serif text-base text-ink/70">
                 {b}
               </li>
             ))}
           </ul>
         </div>
-
       </div>
     </section>
   );
