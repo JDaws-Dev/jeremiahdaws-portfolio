@@ -42,8 +42,6 @@ export function WorkHero() {
             <em> Starting Strong</em>. <strong>Director</strong>
             {" "}on independent narrative features I write and direct with my brother under our
             <em> Daws Brothers</em> banner.
-            Four years as producer, director, and editor on the productions
-            at a private school in metro Atlanta.
           </p>
           <p className="mt-4 text-sm text-ink-muted">
             Long-form narrative, branded shorts, broadcast reality and social

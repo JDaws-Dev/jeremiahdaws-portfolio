@@ -33,7 +33,7 @@ export function FilmProcess() {
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue">How I make them</p>
         <div className="mt-2 grid gap-6 md:grid-cols-[1.3fr_1fr] md:items-end">
           <h2 className="text-balance font-serif text-3xl leading-tight tracking-[-0.01em] md:text-[2.6rem]">
-            The tools are new. <span className="text-accent">The job is still directing.</span>
+            Keeping a character the same <span className="text-accent">from shot to shot.</span>
           </h2>
           <p className="text-base text-ink/75">
             Four frames from <em>What Are You Supposed To Be?</em>: the same

@@ -66,8 +66,8 @@ export function Hero() {
           </div>
 
           <a
-            href="#films"
-            aria-label="Watch What Are You Supposed To Be?"
+            href="#play"
+            aria-label="Play What Are You Supposed To Be?"
             className="group order-1 block md:order-2"
           >
             <span className="relative block aspect-video overflow-hidden rounded-2xl bg-black shadow-2xl">
@@ -95,7 +95,7 @@ export function Hero() {
 
         <div className="mt-10 border-t border-ink/10 pt-5 md:mt-14">
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-blue">
-            Credits include
+            Brand and broadcast work for
           </p>
           <ul className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
             {BRANDS.map((b) => (

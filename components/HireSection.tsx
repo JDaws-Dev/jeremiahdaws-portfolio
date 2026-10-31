@@ -12,14 +12,6 @@ import {
 import { ContactForm } from "./ContactForm";
 import { SiteFooter } from "./SiteFooter";
 
-const SERVICES = [
-  "Notes on a cut or a script",
-  "Characters and looks that stay consistent",
-  "Shot lists built for generation",
-  "AI voices and sound",
-  "Edit, grade and finish in DaVinci Resolve",
-  "One-on-one AI training, $100 an hour",
-];
 
 const SOCIAL = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/jeremiah-daws-0376862a/", Icon: IconLinkedIn },
@@ -60,14 +52,6 @@ export function HireSection() {
                 look, shots, sound and the finish. Tell me what you&rsquo;re making
                 and where it&rsquo;s stuck.
               </p>
-              <ul className="mt-5 grid gap-2 text-sm text-paper/85 sm:grid-cols-2">
-                {SERVICES.map((svc) => (
-                  <li key={svc} className="flex gap-2">
-                    <span className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                    <span>{svc}</span>
-                  </li>
-                ))}
-              </ul>
               <p className="mt-5 text-sm text-paper/55">
                 Need a brand film or series instead? That&rsquo;s my day job as
                 Producer / Director at{" "}

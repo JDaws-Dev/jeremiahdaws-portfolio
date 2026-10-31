@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IconPlay } from "./icons";
 
 type Film = {
@@ -115,6 +115,19 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
   const stage = useRef<HTMLDivElement>(null);
   const film = FILMS[lead];
 
+  // The hero's film card links to #play: start the lead film right here.
+  useEffect(() => {
+    const onHash = () => {
+      if (window.location.hash !== "#play") return;
+      setLead(0);
+      setPlaying(FILMS[0].id);
+      stage.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    onHash();
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+
   return (
     <section id="films" className="scroll-mt-14 bg-ink py-16 text-paper md:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -124,7 +137,7 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
               AI filmmaking
             </p>
             <h2 className="mt-2 max-w-3xl text-balance font-serif text-3xl leading-tight tracking-[-0.01em] md:text-[2.6rem]">
-              No camera. No cast. Still a story.
+              Four short films, made with AI.
             </h2>
           </div>
           {!compact ? (
