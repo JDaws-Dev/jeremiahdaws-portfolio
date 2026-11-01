@@ -30,7 +30,7 @@ export default function WorkPage() {
         lane="video"
         eyebrow="Full archive"
         title="Every video, every cut."
-        intro="The full filmography — Disney Parks brand work, broadcast credits, Daws Brothers indie features, private-school productions and social, and everything in between. Filter by role, format, or client to see only what you're looking for."
+        intro="The full filmography — Disney Parks brand work, broadcast credits, Daws Brothers indie features, social, and everything in between. Filter by role, format, or client to see only what you're looking for."
       />
       <PageCta
         eyebrow="AI consulting"
@@ -38,7 +38,6 @@ export default function WorkPage() {
         body="Outside FORM, I consult on AI projects, from films to the tools and workflows behind them. One-on-one AI training is $100 an hour."
         topic="AI project"
         placeholder="What are you working on?"
-        resume={{ href: "/resumes/resume-video.pdf", label: "Video résumé (PDF)" }}
       />
     </main>
   );

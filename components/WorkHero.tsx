@@ -1,4 +1,4 @@
-import { IconArrowRight, IconDownload } from "./icons";
+import { IconArrowRight } from "./icons";
 
 const CREDITS = [
   "FORM",
@@ -56,14 +56,6 @@ export function WorkHero() {
               className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accent"
             >
               Watch Calendar Jockeys <IconArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href="/resumes/resume-video.pdf"
-              download
-              className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-2.5 text-sm font-medium transition hover:border-accent hover:text-accent"
-            >
-              <IconDownload className="h-4 w-4" />
-              Video résumé (PDF)
             </a>
           </div>
         </div>
