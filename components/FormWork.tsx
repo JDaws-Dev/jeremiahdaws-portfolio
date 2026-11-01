@@ -32,7 +32,7 @@ export function FormWork() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue">At FORM</p>
             <h2 className="mt-2 text-balance font-serif text-3xl leading-tight tracking-[-0.01em] md:text-[2.6rem]">
-              My day job: Producer / Director at FORM.
+              Producer / Director at FORM.
             </h2>
           </div>
           <p className="text-base text-ink/75">
