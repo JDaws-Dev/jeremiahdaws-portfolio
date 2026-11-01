@@ -57,7 +57,7 @@ export function Hero() {
                 <IconPlay className="h-3.5 w-3.5" /> Watch the films
               </a>
               <a
-                href="#consulting"
+                href="#hire"
                 className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"
               >
                 AI consulting <IconArrowRight className="h-4 w-4" />
@@ -66,27 +66,41 @@ export function Hero() {
           </div>
 
           <a
-            href="#play"
-            aria-label="Play What Are You Supposed To Be?"
+            href="#films"
+            aria-label="Watch the films"
             className="group order-1 block md:order-2"
           >
             <span className="relative block aspect-video overflow-hidden rounded-2xl bg-black shadow-2xl">
               <Image
-                src="/portfolio/stills/waystb-porch.jpg"
-                alt="A teenager leans toward a small figure in a paper-bag mask on a dark porch"
+                src="/portfolio/stills/hero-reel-poster.jpg"
+                alt=""
                 fill
                 priority
                 sizes="(min-width: 768px) 36rem, 100vw"
-                className="object-cover transition duration-700 group-hover:scale-[1.02]"
+                className="object-cover"
               />
+              {/* Silent loop of shots from the films; the poster stays for reduced motion. */}
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                poster="/portfolio/stills/hero-reel-poster.jpg"
+                aria-label="Shots from What Are You Supposed To Be?, America: 250 Years of Wonder and Teeth Brushed?"
+                className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
+              >
+                <source src="/portfolio/hero-reel.webm" type="video/webm" />
+                <source src="/portfolio/hero-reel.mp4" type="video/mp4" />
+              </video>
               <span className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <span className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-3 text-paper">
                 <span className="text-xs leading-tight">
-                  <span className="block font-serif text-sm sm:text-base">What Are You Supposed To Be?</span>
-                  <span className="text-paper/70">Horror short · 2026 · made with AI</span>
+                  <span className="block font-serif text-sm sm:text-base">Shots from the films</span>
+                  <span className="text-paper/70">Every frame made with AI</span>
                 </span>
                 <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-paper px-3 py-1.5 text-xs font-semibold text-ink transition group-hover:bg-accent group-hover:text-paper">
-                  <IconPlay className="h-3 w-3" /> 1:44
+                  <IconPlay className="h-3 w-3" /> Watch
                 </span>
               </span>
             </span>

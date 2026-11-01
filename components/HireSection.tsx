@@ -27,6 +27,7 @@ export function HireSection() {
       {/* Accent rule that signals "new section ahead" */}
       <div className="h-1 w-full bg-gradient-to-r from-accent via-accent-muted to-blue" />
 
+      <span id="consulting" aria-hidden="true" className="block" />
       <section
         id="hire"
         className="relative scroll-mt-14 bg-ink py-24 text-paper"
@@ -39,17 +40,21 @@ export function HireSection() {
 
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">
-            Contact
+            Contact · AI consulting
           </p>
-          <h2 className="mt-3 font-serif text-6xl leading-[0.95] tracking-[-0.025em] md:text-[7rem]">
+          <h2 className="mt-3 font-serif text-4xl leading-tight tracking-[-0.01em] md:text-[3.25rem]">
             Work with me.
           </h2>
 
           <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr] md:gap-16">
             <div>
               <p className="text-base text-paper/80 md:text-lg">
-                Outside FORM, I make AI films and consult on AI projects. Tell me
+                Outside FORM, I make AI films and consult on AI projects, from
+                films and spots to the tools and workflows behind them. Tell me
                 what you&rsquo;re working on.
+              </p>
+              <p className="mt-3 text-base text-paper/80 md:text-lg">
+                One-on-one AI training is $100 an hour.
               </p>
               <p className="mt-5 text-sm text-paper/55">
                 Need a brand film or series instead? That&rsquo;s my day job as
