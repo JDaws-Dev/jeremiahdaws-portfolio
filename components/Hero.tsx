@@ -92,16 +92,6 @@ export function Hero() {
                 <source src="/portfolio/hero-reel.webm" type="video/webm" />
                 <source src="/portfolio/hero-reel.mp4" type="video/mp4" />
               </video>
-              <span className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <span className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-3 text-paper">
-                <span className="text-xs leading-tight">
-                  <span className="block font-serif text-sm sm:text-base">Moments from the films</span>
-                  <span className="text-paper/70">Every frame made with AI</span>
-                </span>
-                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-paper px-3 py-1.5 text-xs font-semibold text-ink transition group-hover:bg-accent group-hover:text-paper">
-                  <IconPlay className="h-3 w-3" /> Watch
-                </span>
-              </span>
             </span>
           </a>
         </div>
