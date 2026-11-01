@@ -39,7 +39,7 @@ export function HireSection() {
 
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">
-            Work with me · AI film consulting
+            Contact
           </p>
           <h2 className="mt-3 font-serif text-6xl leading-[0.95] tracking-[-0.025em] md:text-[7rem]">
             Work with me.
@@ -48,9 +48,8 @@ export function HireSection() {
           <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr] md:gap-16">
             <div>
               <p className="text-base text-paper/80 md:text-lg">
-                Outside FORM, I consult on other people&rsquo;s AI films: story,
-                look, shots, sound and the finish. Tell me what you&rsquo;re making
-                and where it&rsquo;s stuck.
+                Outside FORM, I make AI films and consult on AI projects. Tell me
+                what you&rsquo;re working on.
               </p>
               <p className="mt-5 text-sm text-paper/55">
                 Need a brand film or series instead? That&rsquo;s my day job as
@@ -68,8 +67,8 @@ export function HireSection() {
 
               <div className="mt-8">
                 <ContactForm
-                  topic="AI film project"
-                  placeholder="What are you making, and where are you stuck?"
+                  topic="AI project"
+                  placeholder="What are you working on?"
                 />
               </div>
               <a
