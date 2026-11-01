@@ -21,6 +21,18 @@ type Film = {
 
 const ALL_FILMS: Film[] = [
   {
+    id: "8lFUZ3mN74E",
+    title: "NEON RONIN: Part One",
+    kind: "Sci-fi short · Part one of a series",
+    runtime: "3:34",
+    year: "2026",
+    logline:
+      "A samurai of light and a tiny porcelain machine begin the climb toward the Jade Overlord. Part one of a series.",
+    tools: ["Seedance 2.5", "GPT Image", "DaVinci Resolve"],
+    thumb: "/portfolio/ai-neon-ronin.jpg",
+    still: "/portfolio/stills/ai-neon-ronin.jpg",
+  },
+  {
     id: "3GjAoZdF874",
     title: "What Are You Supposed To Be?",
     kind: "Horror short",
@@ -141,7 +153,7 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
               AI filmmaking
             </p>
             <h2 className="mt-2 max-w-3xl text-balance font-serif text-3xl leading-tight tracking-[-0.01em] md:text-[2.6rem]">
-              Four short films, made with AI.
+              Five short films, made with AI.
             </h2>
           </div>
           {!compact ? (
@@ -191,7 +203,7 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
           </div>
         </div>
 
-        <ul className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
+        <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {FILMS.map((f, i) => (
             <li key={f.id}>
               <button
