@@ -36,13 +36,18 @@ export function MotionLayer() {
         for (const e of entries) {
           if (e.isIntersecting) {
             e.target.classList.add("is-in");
+            // A wipe row's items start fully clipped, which the observer
+            // can't see, so the row itself is watched and cues them all.
+            if (e.target.classList.contains("wipe")) {
+              for (const c of Array.from(e.target.children)) c.classList.add("is-in");
+            }
             io.unobserve(e.target);
           }
         }
       },
       { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
     );
-    const els = document.querySelectorAll<HTMLElement>("[data-reveal], [data-stagger] > *");
+    const els = document.querySelectorAll<HTMLElement>("[data-reveal], [data-stagger]:not(.wipe) > *, .wipe");
     els.forEach((el) => io.observe(el));
 
     return () => io.disconnect();

@@ -44,7 +44,7 @@ export function FilmProcess() {
           </p>
         </div>
 
-        <ul className="mt-8 grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3" data-stagger="90">
+        <ul className="wipe mt-8 grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3" data-stagger="160">
           {FRAMES.map((f) => (
             <li key={f.src} className="relative aspect-video overflow-hidden rounded-lg bg-black">
               <Image src={f.src} alt={f.alt} fill sizes="(min-width: 768px) 18rem, 50vw" className="object-cover transition duration-700 motion-safe:hover:scale-105" />
@@ -55,8 +55,8 @@ export function FilmProcess() {
         <ol className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4" data-stagger="120">
           {STEPS.map((s, i) => (
             <li key={s.title} className="border-t border-ink/15 pt-4">
-              <p className="font-serif text-2xl leading-none text-accent">{i + 1}</p>
-              <h3 className="mt-2 font-serif text-xl leading-tight">{s.title}</h3>
+              <p className="font-mono text-xs tracking-[0.2em] text-accent tabular-nums">{String(i + 1).padStart(2, "0")}</p>
+              <h3 className="mt-3 font-serif text-xl leading-tight">{s.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink/75">{s.body}</p>
             </li>
           ))}

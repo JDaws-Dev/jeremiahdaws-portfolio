@@ -43,7 +43,7 @@ export function Background() {
                 <p className="font-serif text-lg leading-tight">{c.org}</p>
                 <p className="mt-0.5 text-sm text-ink/70">{c.what}</p>
               </div>
-              <p className="text-xs uppercase tracking-[0.14em] text-ink-muted [font-variant-numeric:tabular-nums] sm:pt-1">
+              <p className="font-mono text-xs tracking-[0.08em] text-ink-muted tabular-nums sm:min-w-[6.5rem] sm:pt-1 sm:text-right">
                 {c.years}
               </p>
             </li>

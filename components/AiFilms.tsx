@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { IconPlay } from "./icons";
 
 type Film = {
@@ -84,6 +85,13 @@ const ALL_FILMS: Film[] = [
 
 const FILMS = ALL_FILMS.filter((f) => !f.hidden);
 
+/** Slate-style running time: 3:34 -> TRT 03:34. */
+const trt = (runtime: string) => `TRT ${runtime.padStart(5, "0")}`;
+
+type DocWithVT = Document & {
+  startViewTransition?: (update: () => void) => { finished: Promise<void> };
+};
+
 const scrollBehavior = (): ScrollBehavior =>
   matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
 
@@ -137,12 +145,50 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
   const [lead, setLead] = useState(0);
   const [playing, setPlaying] = useState<string | null>(null);
   const stage = useRef<HTMLDivElement>(null);
+  const leadFrame = useRef<HTMLDivElement>(null);
+  /** The film that arrived by a view-transition cut; it skips the film-in fade. */
+  const cutId = useRef<string | null>(null);
   const film = FILMS[lead];
+
+  // Picking a film is a match cut: the chosen frame grows into the player.
+  // Without view transitions (or with reduced motion) the film-in fade runs.
+  const choose = (i: number, thumb: HTMLElement | null) => {
+    const top = stage.current?.getBoundingClientRect().top ?? 0;
+    const doc = document as DocWithVT;
+    const canCut =
+      i !== lead &&
+      top >= 0 &&
+      thumb !== null &&
+      typeof doc.startViewTransition === "function" &&
+      document.documentElement.classList.contains("motion");
+    if (!canCut) {
+      cutId.current = null;
+      setLead(i);
+      setPlaying(null);
+      if (top < 0) stage.current?.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
+      return;
+    }
+    thumb.style.viewTransitionName = "film-frame";
+    const t = doc.startViewTransition!(() => {
+      thumb.style.viewTransitionName = "";
+      cutId.current = FILMS[i].id;
+      flushSync(() => {
+        setLead(i);
+        setPlaying(null);
+      });
+      if (leadFrame.current) leadFrame.current.style.viewTransitionName = "film-frame";
+    });
+    t.finished.finally(() => {
+      thumb.style.viewTransitionName = "";
+      if (leadFrame.current) leadFrame.current.style.viewTransitionName = "";
+    });
+  };
 
   // The hero's film card links to #play: start the lead film right here.
   useEffect(() => {
     const onHash = () => {
       if (window.location.hash !== "#play") return;
+      cutId.current = null;
       setLead(0);
       setPlaying(FILMS[0].id);
       stage.current?.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
@@ -153,9 +199,15 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
   }, []);
 
   return (
-    <section id="films" className="scroll-mt-14 bg-ink py-16 text-paper md:py-20">
+    <>
+    <div aria-hidden="true" className="dip-to-ink h-20 md:h-28" />
+    <section
+      id="films"
+      data-playing={playing !== null ? "" : undefined}
+      className="house scroll-mt-14 bg-ink py-16 text-paper md:py-20"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex flex-wrap items-end justify-between gap-4" data-reveal>
+        <div className="flex flex-wrap items-end justify-between gap-4" data-reveal data-dim>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-muted">
               AI films
@@ -173,16 +225,20 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
         </div>
 
         <div ref={stage} className="mt-8 grid scroll-mt-20 gap-6 lg:grid-cols-[1.7fr_1fr] lg:items-start">
-          <div key={film.id} className="film-in">
+          <div key={film.id} ref={leadFrame} className={cutId.current === film.id ? undefined : "film-in"}>
           <Player
             film={film}
             playing={playing === film.id}
             onPlay={() => setPlaying(film.id)}
           />
           </div>
-          <div key={`${film.id}-info`} className="film-in" style={{ animationDelay: "120ms" }} aria-live="polite">
+          <div key={`${film.id}-info`} className="film-in" style={{ animationDelay: "120ms" }}>
+          <div data-dim>
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-paper/55">
-              {film.kind} · {film.year} · {film.runtime}
+              {film.kind}
+              <span className="mt-1 block font-mono font-normal tracking-[0.12em] tabular-nums">
+                {film.year} · {trt(film.runtime)}
+              </span>
             </p>
             <h3 className="mt-2 text-balance font-serif text-2xl leading-tight md:text-3xl">
               {film.title}
@@ -210,19 +266,17 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
               Watch on YouTube
             </a>
           </div>
+          </div>
         </div>
 
-        <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4" data-stagger="90">
+        <p className="sr-only" aria-live="polite">Now showing {film.title}</p>
+
+        <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4" data-stagger="90" data-dim>
           {FILMS.map((f, i) => (
             <li key={f.id}>
               <button
                 type="button"
-                onClick={() => {
-                  setLead(i);
-                  setPlaying(null);
-                  const top = stage.current?.getBoundingClientRect().top ?? 0;
-                  if (top < 0) stage.current?.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
-                }}
+                onClick={(e) => choose(i, e.currentTarget.querySelector<HTMLElement>("[data-frame]"))}
                 aria-pressed={i === lead}
                 className={[
                   "lift group w-full rounded-lg border p-1.5 text-left",
@@ -231,12 +285,12 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
                     : "border-paper/10 hover:border-paper/40",
                 ].join(" ")}
               >
-                <span className="relative block aspect-video overflow-hidden rounded-md bg-black">
+                <span data-frame className="relative block aspect-video overflow-hidden rounded-md bg-black">
                   <Image src={f.still ?? f.thumb} alt="" fill sizes="(min-width: 640px) 16rem, 50vw" className="object-cover transition duration-500 motion-safe:group-hover:scale-105" />
                 </span>
                 <span className="mt-2 block px-1 font-serif text-sm leading-tight">{f.title}</span>
-                <span className="mb-1 block px-1 text-[10px] uppercase tracking-[0.14em] text-paper/50">
-                  {f.runtime} · {f.kind.split(" · ")[0]}
+                <span className="mb-1 block px-1 text-[10px] uppercase tracking-[0.14em] text-paper/55">
+                  <span className="font-mono tabular-nums">{f.runtime}</span> · {f.kind.split(" · ")[0]}
                 </span>
               </button>
             </li>
@@ -244,5 +298,7 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
         </ul>
       </div>
     </section>
+    <div aria-hidden="true" className="dip-to-paper h-20 md:h-28" />
+    </>
   );
 }
