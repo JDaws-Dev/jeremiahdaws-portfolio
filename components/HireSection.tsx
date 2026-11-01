@@ -48,8 +48,8 @@ export function HireSection() {
           <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr] md:gap-16" data-reveal>
             <div>
               <p className="text-base text-paper/80 md:text-lg">
-                Outside FORM, I consult on
-                AI tools and workflows, and teach people to use AI themselves.
+                Outside FORM, I help teams put AI to work: the tools, the
+                workflows, and the training to run them.
               </p>
               <p className="mt-3 text-base text-paper/80 md:text-lg">
                 One-on-one AI training is $100 an hour.
@@ -71,7 +71,7 @@ export function HireSection() {
               <div className="mt-8">
                 <ContactForm
                   topic="AI consulting"
-                  placeholder="What can I help with?"
+                  placeholder="Where is your team stuck with AI?"
                 />
               </div>
               <a
@@ -89,9 +89,9 @@ export function HireSection() {
                   What happens next
                 </p>
                 <ol className="mt-3 space-y-3 text-sm text-paper/85">
-                  <li className="flex gap-3"><span className="font-serif text-lg leading-none text-accent">1</span>You tell me what you have in mind, in a sentence or a page.</li>
-                  <li className="flex gap-3"><span className="font-serif text-lg leading-none text-accent">2</span>I reply personally, with questions, then a short call.</li>
-                  <li className="flex gap-3"><span className="font-serif text-lg leading-none text-accent">3</span>You get a written plan with scope and price before anything starts.</li>
+                  <li className="flex gap-3"><span className="font-serif text-lg leading-none text-accent">1</span>Tell me where you&rsquo;re stuck, in a sentence or a page.</li>
+                  <li className="flex gap-3"><span className="font-serif text-lg leading-none text-accent">2</span>We talk, and you get a written plan with scope and price.</li>
+                  <li className="flex gap-3"><span className="font-serif text-lg leading-none text-accent">3</span>Your team gets it working, trained to run it without me.</li>
                 </ol>
               </div>
               <div>
