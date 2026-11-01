@@ -33,11 +33,11 @@ export default function WorkPage() {
         intro="The full filmography — Disney Parks brand work, broadcast credits, Daws Brothers indie features, private-school productions and social, and everything in between. Filter by role, format, or client to see only what you're looking for."
       />
       <PageCta
-        eyebrow="Making an AI film?"
-        title="Bring a director and editor onto it."
-        body="Outside FORM, I consult on AI films: story, look and consistency, shot lists, voices and sound, and the edit and finish in DaVinci Resolve. For a brand film or series made the traditional way, that's my day job at FORM, and I'm happy to bring it to the team."
-        topic="AI film project"
-        placeholder="What are you making, and where are you stuck?"
+        eyebrow="AI consulting"
+        title="Working with AI? Bring me in."
+        body="Outside FORM, I consult on AI projects, from films to the tools and workflows behind them. One-on-one AI training is $100 an hour."
+        topic="AI project"
+        placeholder="What are you working on?"
         resume={{ href: "/resumes/resume-video.pdf", label: "Video résumé (PDF)" }}
       />
     </main>

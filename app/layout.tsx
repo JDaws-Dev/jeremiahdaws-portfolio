@@ -5,7 +5,7 @@ const SITE_URL = "https://jeremiahdaws.com";
 const NAME = "Jeremiah Daws";
 const TAGLINE = "AI filmmaker";
 const SHORT_DESC =
-  "Jeremiah Daws is an AI filmmaker who also consults on other people's AI films: story, look, shots, sound and finish. Producer / Director at FORM, an Atlanta story company, where he directs the comedy series Calendar Jockeys. Six years producing branded content at Disney (Marvel, Lucasfilm, ABC, Freeform); editor for National Geographic and Hallmark.";
+  "Jeremiah Daws is an AI filmmaker and AI consultant. Producer / Director at FORM, an Atlanta story company, where he directs the comedy series Calendar Jockeys. Six years producing branded content at Disney (Marvel, Lucasfilm, ABC, Freeform); editor for National Geographic and Hallmark.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

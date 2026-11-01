@@ -60,7 +60,7 @@ export function Hero() {
                 href="#consulting"
                 className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"
               >
-                Help with your AI film <IconArrowRight className="h-4 w-4" />
+                AI consulting <IconArrowRight className="h-4 w-4" />
               </a>
             </div>
           </div>
