@@ -35,9 +35,9 @@ export default function WorkPage() {
       <PageCta
         eyebrow="AI consulting"
         title="Working with AI? Bring me in."
-        body="Outside FORM, I consult on AI projects, from films to the tools and workflows behind them. One-on-one AI training is $100 an hour."
-        topic="AI project"
-        placeholder="What are you working on?"
+        body="Outside FORM, I consult on AI tools and workflows. One-on-one AI training is $100 an hour."
+        topic="AI consulting"
+        placeholder="What can I help with?"
       />
     </main>
   );

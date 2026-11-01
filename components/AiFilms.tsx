@@ -158,8 +158,8 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
           </div>
           {!compact ? (
             <p className="max-w-sm text-sm text-paper/65">
-              Every shot generated, then voiced, cut and graded like any other
-              film. Click a title to play it here.
+              Personal projects, made on my own time. Every shot generated, then
+              voiced, cut and graded like any other film. Click a title to play it here.
             </p>
           ) : null}
         </div>

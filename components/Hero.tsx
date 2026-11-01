@@ -37,8 +37,8 @@ export function Hero() {
             </h1>
 
             <p className="mt-5 max-w-xl text-balance font-serif text-2xl leading-tight text-ink sm:text-3xl">
-              I make films with AI,{" "}
-              <span className="text-accent">and help other people make theirs.</span>
+              I make short films with AI,{" "}
+              <span className="text-accent">as personal projects.</span>
             </p>
 
             <p className="mt-5 max-w-xl text-base leading-snug text-ink/85 md:text-lg">
@@ -60,7 +60,7 @@ export function Hero() {
                 href="#hire"
                 className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"
               >
-                AI consulting <IconArrowRight className="h-4 w-4" />
+                Get in touch <IconArrowRight className="h-4 w-4" />
               </a>
             </div>
           </div>

@@ -40,25 +40,24 @@ export function HireSection() {
 
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">
-            Contact · AI consulting
+            Contact
           </p>
           <h2 className="mt-3 font-serif text-4xl leading-tight tracking-[-0.01em] md:text-[3.25rem]">
-            Work with me.
+            Get in touch.
           </h2>
 
           <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr] md:gap-16">
             <div>
               <p className="text-base text-paper/80 md:text-lg">
-                Outside FORM, I make AI films and consult on AI projects, from
-                films and spots to the tools and workflows behind them. Tell me
-                what you&rsquo;re working on.
+                The films here are personal projects. Outside FORM, I consult on
+                AI tools and workflows, and teach people to use AI themselves.
               </p>
               <p className="mt-3 text-base text-paper/80 md:text-lg">
                 One-on-one AI training is $100 an hour.
               </p>
               <p className="mt-5 text-sm text-paper/55">
-                Need a brand film or series instead? That&rsquo;s my day job as
-                Producer / Director at{" "}
+                Need a brand film, spot or series? That&rsquo;s FORM&rsquo;s work,
+                where I&rsquo;m Producer / Director. Reach the team at{" "}
                 <a
                   href="https://www.formgreatstories.com/"
                   target="_blank"
@@ -72,8 +71,8 @@ export function HireSection() {
 
               <div className="mt-8">
                 <ContactForm
-                  topic="AI project"
-                  placeholder="What are you working on?"
+                  topic="AI consulting"
+                  placeholder="What can I help with?"
                 />
               </div>
               <a
