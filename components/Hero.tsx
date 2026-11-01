@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { HeroReel } from "./HeroReel";
 import { IconArrowRight, IconPlay } from "./icons";
 
@@ -71,9 +72,9 @@ export function Hero() {
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-blue">
             Brand and broadcast work for
           </p>
-          <ul className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2" data-stagger="60">
-            {BRANDS.map((b) => (
-              <li key={b} className="font-serif text-base text-ink/70">
+          <ul className="brands-in mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
+            {BRANDS.map((b, i) => (
+              <li key={b} className="font-serif text-base text-ink/70" style={{ "--i": i } as CSSProperties}>
                 {b}
               </li>
             ))}

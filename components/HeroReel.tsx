@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { LEAD_FILM_TITLE } from "./AiFilms";
 
 const POSTER = "/portfolio/stills/hero-reel-poster.jpg";
 const SOURCES = [
@@ -31,10 +32,14 @@ export function HeroReel() {
     if (net?.saveData || /2g|3g/.test(net?.effectiveType ?? "")) return;
 
     let loaded = false;
+    let gone = false;
+    let idle: number | undefined;
+    let timer: ReturnType<typeof setTimeout> | undefined;
     let visible = false;
     let ready = false;
 
     const sync = () => {
+      if (gone) return;
       if (!ready || !visible || held.current) {
         if (loaded) v.pause();
         return;
@@ -69,13 +74,16 @@ export function HeroReel() {
       sync();
     };
     const afterLoad = () => {
-      if ("requestIdleCallback" in window) window.requestIdleCallback(go, { timeout: 1500 });
-      else setTimeout(go, 200);
+      if ("requestIdleCallback" in window) idle = window.requestIdleCallback(go, { timeout: 1500 });
+      else timer = setTimeout(go, 200);
     };
     if (document.readyState === "complete") afterLoad();
     else window.addEventListener("load", afterLoad, { once: true });
 
     return () => {
+      gone = true;
+      if (idle !== undefined) window.cancelIdleCallback(idle);
+      if (timer !== undefined) clearTimeout(timer);
       io.disconnect();
       v.removeEventListener("playing", onPlaying);
       window.removeEventListener("load", afterLoad);
@@ -92,10 +100,10 @@ export function HeroReel() {
   };
 
   return (
-    <div className="order-1 md:order-2">
+    <div className="group/reel order-1 md:order-2">
       <a
         href="#play"
-        aria-label="Play NEON RONIN: Part One"
+        aria-label={`Play ${LEAD_FILM_TITLE}`}
         onClick={(e) => {
           // Already on #play: hashchange won't fire, so nudge the player.
           if (window.location.hash === "#play") {
@@ -129,7 +137,13 @@ export function HeroReel() {
         </span>
       </a>
       {/* Space is held so the control appearing never shifts the page. */}
-      <div className="mt-2 flex h-4 justify-end">
+      <div className="mt-1 flex h-6 items-center justify-between gap-3">
+        <span
+          aria-hidden="true"
+          className="truncate font-mono text-[10px] uppercase tracking-[0.18em] text-ink-muted opacity-0 transition-opacity duration-300 group-hover/reel:opacity-100"
+        >
+          Click to watch {LEAD_FILM_TITLE}
+        </span>
         <button
           type="button"
           onClick={toggle}
@@ -137,10 +151,11 @@ export function HeroReel() {
           tabIndex={started ? 0 : -1}
           aria-hidden={started ? undefined : true}
           className={[
-            "font-mono text-[10px] uppercase tracking-[0.18em] text-ink-muted transition hover:text-accent",
+            "inline-flex min-h-6 shrink-0 items-center gap-1.5 px-1 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-muted transition hover:text-accent",
             started ? "opacity-100" : "invisible opacity-0",
           ].join(" ")}
         >
+          <span aria-hidden="true" className="text-[9px]">{paused ? "\u25B6" : "\u275A\u275A"}</span>
           {paused ? "Play reel" : "Pause reel"}
         </button>
       </div>

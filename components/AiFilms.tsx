@@ -85,6 +85,9 @@ const ALL_FILMS: Film[] = [
 
 const FILMS = ALL_FILMS.filter((f) => !f.hidden);
 
+/** The film #play starts (the hero frame names it). */
+export const LEAD_FILM_TITLE = FILMS[0].title;
+
 /** Slate-style running time: 3:34 -> TRT 03:34. */
 const trt = (runtime: string) => `TRT ${runtime.padStart(5, "0")}`;
 
@@ -103,7 +106,7 @@ function Player({ film, playing, onPlay }: {
   const frame = useRef<HTMLIFrameElement>(null);
   // The Play button is swapped out for the iframe: keep keyboard focus here.
   useEffect(() => {
-    if (playing) frame.current?.focus();
+    if (playing) frame.current?.focus({ preventScroll: true });
   }, [playing]);
   return (
     <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black">
@@ -200,7 +203,7 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
 
   return (
     <>
-    <div aria-hidden="true" className="dip-to-ink h-20 md:h-28" />
+    <div aria-hidden="true" className="dip-to-ink h-12 md:h-16" />
     <section
       id="films"
       data-playing={playing !== null ? "" : undefined}
@@ -298,7 +301,7 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
         </ul>
       </div>
     </section>
-    <div aria-hidden="true" className="dip-to-paper h-20 md:h-28" />
+    <div aria-hidden="true" className="dip-to-paper h-12 md:h-16" />
     </>
   );
 }

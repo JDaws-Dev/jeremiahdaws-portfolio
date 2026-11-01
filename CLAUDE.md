@@ -17,8 +17,8 @@ secrets, client fees, and private notes out of it.
 
 | Route | What it is |
 |---|---|
-| `/` | Hero → ChoosePath (3 lane cards) → Featured (pinned entries) → About → HireSection |
-| `/work` | Filmmaker lane: WorkHero, NetworkCredits (FORM + Disney + broadcast), LaneArchive, PageCta |
+| `/` | Hero → AiFilms → FilmProcess → FormWork → Background → HireSection |
+| `/work` | Filmmaker lane: WorkHero, AiFilms (compact), FormWork (the one FORM block), NetworkCredits (Disney + broadcast only, no FORM card), LaneArchive, PageCta |
 | `/maker` | Maker lane: past-tense shop story (Bullfrog Machining 2021–2026), builds, archive |
 | `/apps` | AI Builder lane: ProductBuilds (GetSafeFamily, Artios Cafe, FORM site, ReadyTote), AgentStack, AlsoShipped |
 | `/teach` | Hidden. Redirects to `/`. TeachHero / ProgramsBuilt / EmergingTracks are kept for later. |

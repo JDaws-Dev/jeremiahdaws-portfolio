@@ -91,12 +91,12 @@ export function TopNav() {
           {LINKS.map((l) => {
             const on = home
               ? active !== null && l.href.endsWith(`#${active}`)
-              : !l.href.includes("#") && pathname.startsWith(l.href);
+              : !l.href.includes("#") && (pathname === l.href || pathname.startsWith(l.href + "/"));
             return (
               <a
                 key={l.href}
                 href={l.href}
-                aria-current={on ? "true" : undefined}
+                aria-current={on ? (home ? "location" : "page") : undefined}
                 className={[
                   "relative py-1 text-sm font-medium transition-colors hover:text-ink",
                   "after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-accent after:transition-transform after:duration-300",

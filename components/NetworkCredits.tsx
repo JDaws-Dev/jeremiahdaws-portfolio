@@ -86,7 +86,7 @@ export function NetworkCredits({ entries }: { entries: PortfolioEntry[] }) {
           Brand &amp; broadcast credits
         </p>
         <h2 className="mt-2 font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">
-          Before FORM: Disney, and broadcast.
+          Before FORM: Disney and broadcast.
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-ink-muted">
           Producer / Director at FORM today. Before that, six years producing and directing for Disney (2015–2021), after

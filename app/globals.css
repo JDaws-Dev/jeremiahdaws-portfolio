@@ -91,25 +91,29 @@ html.motion .film-in { animation: film-in 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) bo
   height: 100%;
   object-fit: cover;
 }
+/* The rest of the page cuts, not crossfades: the info column runs its own
+   film-in fade, so a root dissolve would double-expose the old text. */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 0.3s;
+  animation: none;
 }
 
 /* House lights: once a film plays, everything else in the room dims.
-   Hover or focus brings a part back. */
-.house { transition: background-color 0.6s ease; }
+   Hover or focus brings a part back. The room keeps its ink background so
+   it meets the dip strips without a seam; dimming alone does the job, and
+   stays light enough that the text and controls remain readable. */
 .house [data-dim]:not([data-reveal]) { transition: opacity 0.6s ease; }
-html.motion .house[data-playing] { background-color: #050608; }
-.house[data-playing] [data-dim]:not(:hover):not(:focus-within) { opacity: 0.35; }
+.house[data-playing] [data-dim]:not(:hover):not(:focus-within) { opacity: 0.6; }
 
 /* Dip to black between the paper pages and the dark screening room. */
 .dip-to-ink {
   background: linear-gradient(
     to bottom,
     theme("colors.paper.DEFAULT") 0%,
-    rgb(11 13 16 / 0.12) 30%,
-    rgb(11 13 16 / 0.55) 60%,
+    rgb(11 13 16 / 0.04) 25%,
+    rgb(11 13 16 / 0.18) 45%,
+    rgb(11 13 16 / 0.45) 65%,
+    rgb(11 13 16 / 0.8) 85%,
     theme("colors.ink.DEFAULT") 100%
   );
   background-color: theme("colors.paper.DEFAULT");
@@ -118,17 +122,22 @@ html.motion .house[data-playing] { background-color: #050608; }
   background: linear-gradient(
     to top,
     theme("colors.paper.DEFAULT") 0%,
-    rgb(11 13 16 / 0.12) 30%,
-    rgb(11 13 16 / 0.55) 60%,
+    rgb(11 13 16 / 0.04) 25%,
+    rgb(11 13 16 / 0.18) 45%,
+    rgb(11 13 16 / 0.45) 65%,
+    rgb(11 13 16 / 0.8) 85%,
     theme("colors.ink.DEFAULT") 100%
   );
   background-color: theme("colors.paper.DEFAULT");
 }
 
+/* The dip lands on paper: a section rule right under it would read as a seam. */
+.dip-to-paper + section { border-top-color: transparent; }
+
 /* The process frames land like cuts on a timeline: a left-to-right wipe,
    one shot after another. Only this row gets it. */
 html.motion .wipe > * {
-  transition: clip-path 0.7s cubic-bezier(0.7, 0, 0.2, 1);
+  transition: clip-path 0.5s cubic-bezier(0.7, 0, 0.2, 1);
   transition-delay: var(--d, 0ms);
 }
 html.motion .wipe > :not(.is-in) {
@@ -138,6 +147,21 @@ html.motion .wipe > :not(.is-in) {
   clip-path: inset(0 100% 0 0);
 }
 html.motion .wipe > .is-in { clip-path: inset(0 0 0 0); }
+
+/* Plain fade (no blur, no rise) for rows that share the screen with a wipe,
+   so only one motion reads at a time. .after-wipe holds them until it ends. */
+html.motion .fade-only[data-reveal]:not(.is-in),
+html.motion .fade-only[data-stagger] > :not(.is-in) {
+  transform: none;
+  filter: none;
+}
+.fade-only.after-wipe > * { transition-delay: calc(var(--d, 0ms) + 700ms); }
+
+/* The credits strip under the hero runs on CSS too, right after the copy. */
+html.motion .brands-in > * {
+  animation: hero-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(450ms + var(--i, 0) * 60ms);
+}
 
 /* Arrow nudge on links and buttons that carry one. */
 .nudge svg:last-child { transition: transform 0.25s ease; }
