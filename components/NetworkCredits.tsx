@@ -9,6 +9,8 @@ type Credit = {
   years: string;
   storyKicker: string;
   highlights: string[];
+  /** Where to send people who want this kind of work. */
+  reach?: { text: string; href: string; label: string };
 };
 
 const CREDITS: Credit[] = [
@@ -25,6 +27,11 @@ const CREDITS: Credit[] = [
       "FORM studio website — rebuilt end to end",
       "Internal AI assistant for the FORM team",
     ],
+    reach: {
+      text: "Need a brand film, spot or series? Reach out to FORM:",
+      href: "https://www.formgreatstories.com/",
+      label: "formgreatstories.com",
+    },
   },
   {
     slug: "disney-director",
@@ -112,7 +119,7 @@ export function NetworkCredits({ entries }: { entries: PortfolioEntry[] }) {
       </div>
 
       <ul className="mt-8 grid gap-5 md:grid-cols-2">
-        {items.map(({ entry, cardTitle, hat, client, years, storyKicker, highlights }) => {
+        {items.map(({ entry, cardTitle, hat, client, years, storyKicker, highlights, reach }) => {
           const thumb = thumbForEntry(entry);
           return (
             <li
@@ -167,6 +174,14 @@ export function NetworkCredits({ entries }: { entries: PortfolioEntry[] }) {
                     </li>
                   ))}
                 </ul>
+                {reach ? (
+                  <p className="text-[13px] text-ink/75">
+                    {reach.text}{" "}
+                    <a href={reach.href} target="_blank" rel="noopener noreferrer" className="font-medium text-ink underline decoration-ink/30 underline-offset-4 transition hover:text-accent">
+                      {reach.label}
+                    </a>
+                  </p>
+                ) : null}
                 <p className="mt-auto pt-2 text-[10px] uppercase tracking-[0.18em] text-ink-muted">
                   {years}
                 </p>

@@ -87,7 +87,7 @@ export function Hero() {
                 playsInline
                 preload="metadata"
                 poster="/portfolio/stills/hero-reel-poster.jpg"
-                aria-label="Moments from my personal AI films"
+                aria-label="Moments from my AI films"
                 className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
               >
                 <source src="/portfolio/hero-reel.webm" type="video/webm" />
@@ -96,7 +96,7 @@ export function Hero() {
               <span className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <span className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-3 text-paper">
                 <span className="text-xs leading-tight">
-                  <span className="block font-serif text-sm sm:text-base">Moments from my personal films</span>
+                  <span className="block font-serif text-sm sm:text-base">Moments from the films</span>
                   <span className="text-paper/70">Every frame made with AI</span>
                 </span>
                 <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-paper px-3 py-1.5 text-xs font-semibold text-ink transition group-hover:bg-accent group-hover:text-paper">

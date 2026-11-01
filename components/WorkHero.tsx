@@ -30,7 +30,7 @@ export function WorkHero() {
       <div className="mt-8 grid gap-8 md:grid-cols-[1.4fr_1fr]">
         <div>
           <p className="text-base text-ink/80 md:text-lg">
-            <strong>Producer / Director at FORM</strong>, an Atlanta story
+            <strong>Producer / Director at{" "}<a href="https://www.formgreatstories.com/" target="_blank" rel="noopener noreferrer" className="underline decoration-ink/30 underline-offset-4 transition hover:text-accent">FORM</a></strong>, an Atlanta story
             company, where I direct the Form Films animated comedy series{" "}
             <em>Calendar Jockeys</em>. Before that, six years{" "}
             <strong>producing branded content</strong> for Disney

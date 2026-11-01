@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { TopNav } from "@/components/TopNav";
 import { WorkHero } from "@/components/WorkHero";
+import { FormWork } from "@/components/FormWork";
 import { AiFilms } from "@/components/AiFilms";
 import { NetworkCredits } from "@/components/NetworkCredits";
 import { LaneArchive } from "@/components/LaneArchive";
@@ -23,6 +24,7 @@ export default function WorkPage() {
     <main className="min-h-screen">
       <TopNav />
       <WorkHero />
+      <FormWork />
       <AiFilms compact />
       <NetworkCredits entries={entries} />
       <LaneArchive

@@ -40,7 +40,7 @@ export function FormWork() {
             podcasts. This is work I directed there. It belongs to FORM. For a
             brand film, spot or series,{" "}
             <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className="underline decoration-ink/30 underline-offset-4 transition hover:text-accent">
-              talk to FORM
+              reach out to FORM
             </a>
             .
           </p>
@@ -100,7 +100,7 @@ export function FormWork() {
         </div>
 
         <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className="mt-10 inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent">
-          More from FORM at formgreatstories.com <IconArrowRight className="h-4 w-4" />
+          Work with FORM: formgreatstories.com <IconArrowRight className="h-4 w-4" />
         </a>
       </div>
     </section>
