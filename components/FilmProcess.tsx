@@ -80,7 +80,7 @@ export function FilmProcess() {
             <p className="mt-3 text-sm leading-relaxed text-ink/75">
               A 30-second test: a kid sky-surfing behind a seaplane, a girl in a
               submarine racing a sailfish. Every shot was blocked in a rough
-              previz first, shown in the corner, so the camera, staging and
+              previz in Blender first, shown in the corner, so the camera, staging and
               timing were decided before anything was generated.
             </p>
           </div>
