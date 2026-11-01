@@ -6,6 +6,7 @@ import { IconMail } from "./icons";
 const LINKS = [
   { href: "/#films", label: "Films" },
   { href: "/#process", label: "Process" },
+  { href: "/#form", label: "FORM" },
   { href: "/work", label: "Film work" },
   { href: "/#hire", label: "Contact" },
 ];

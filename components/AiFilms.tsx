@@ -60,6 +60,7 @@ const ALL_FILMS: Film[] = [
     id: "I7cHxHLN1r4",
     title: "Teeth Brushed?",
     kind: "Brand-style test · Form Films",
+    hidden: true, // FORM work: shown in the At FORM section
     runtime: "0:15",
     year: "2026",
     logline:
@@ -150,15 +151,15 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-muted">
-              AI filmmaking
+              Personal films
             </p>
             <h2 className="mt-2 max-w-3xl text-balance font-serif text-3xl leading-tight tracking-[-0.01em] md:text-[2.6rem]">
-              Five short films, made with AI.
+              Four short films, made with AI on my own time.
             </h2>
           </div>
           {!compact ? (
             <p className="max-w-sm text-sm text-paper/65">
-              Personal projects, made on my own time. Every shot generated, then
+              Every shot generated, then
               voiced, cut and graded like any other film. Click a title to play it here.
             </p>
           ) : null}
@@ -203,7 +204,7 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
           </div>
         </div>
 
-        <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+        <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {FILMS.map((f, i) => (
             <li key={f.id}>
               <button
