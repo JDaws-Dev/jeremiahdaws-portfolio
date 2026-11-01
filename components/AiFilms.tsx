@@ -148,7 +148,7 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
   return (
     <section id="films" className="scroll-mt-14 bg-ink py-16 text-paper md:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex flex-wrap items-end justify-between gap-4">
+        <div className="flex flex-wrap items-end justify-between gap-4" data-reveal>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-muted">
               AI films
@@ -166,13 +166,15 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
         </div>
 
         <div ref={stage} className="mt-8 grid scroll-mt-20 gap-6 lg:grid-cols-[1.7fr_1fr] lg:items-start">
+          <div key={film.id} className="film-in">
           <Player
             film={film}
             playing={playing === film.id}
             onPlay={() => setPlaying(film.id)}
             priority={!compact}
           />
-          <div>
+          </div>
+          <div key={`${film.id}-info`} className="film-in" style={{ animationDelay: "120ms" }}>
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-paper/55">
               {film.kind} · {film.year} · {film.runtime}
             </p>
@@ -204,7 +206,7 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
           </div>
         </div>
 
-        <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4" data-stagger="90">
           {FILMS.map((f, i) => (
             <li key={f.id}>
               <button
@@ -217,14 +219,14 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
                 }}
                 aria-pressed={i === lead}
                 className={[
-                  "group w-full rounded-lg border p-1.5 text-left transition",
+                  "lift group w-full rounded-lg border p-1.5 text-left",
                   i === lead
                     ? "border-accent-muted bg-paper/5"
                     : "border-paper/10 hover:border-paper/40",
                 ].join(" ")}
               >
                 <span className="relative block aspect-video overflow-hidden rounded-md bg-black">
-                  <Image src={f.still ?? f.thumb} alt="" fill sizes="16rem" className="object-cover" />
+                  <Image src={f.still ?? f.thumb} alt="" fill sizes="16rem" className="object-cover transition duration-500 group-hover:scale-105" />
                 </span>
                 <span className="mt-2 block px-1 font-serif text-sm leading-tight">{f.title}</span>
                 <span className="mb-1 block px-1 text-[10px] uppercase tracking-[0.14em] text-paper/50">

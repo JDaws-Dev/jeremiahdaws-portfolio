@@ -35,3 +35,49 @@ p {
   outline-offset: 3px;
   border-radius: 2px;
 }
+
+/* ---------- Motion ---------- */
+/* Hidden states only apply once the head script adds .motion (no reduced-motion). */
+[data-reveal],
+[data-stagger] > * {
+  transition:
+    opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--d, 0ms);
+}
+html.motion [data-reveal]:not(.is-in),
+html.motion [data-stagger] > :not(.is-in) {
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(6px);
+}
+
+/* The hero reel opens like a letterbox. */
+.letterbox {
+  transition: clip-path 1.4s cubic-bezier(0.7, 0, 0.2, 1) 0.25s;
+  clip-path: inset(0 0 0 0 round 1rem);
+}
+html.motion .letterbox:not(.is-in) {
+  clip-path: inset(46% 0 46% 0 round 1rem);
+}
+
+/* Film switcher crossfade. */
+@keyframes film-in {
+  from { opacity: 0; transform: scale(1.015); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+html.motion .film-in { animation: film-in 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+/* Arrow nudge on links and buttons that carry one. */
+.nudge svg:last-child { transition: transform 0.25s ease; }
+.nudge:hover svg:last-child { transform: translateX(3px); }
+
+/* Lift for clickable cards. */
+.lift { transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease, border-color 0.2s ease; }
+.lift:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px rgb(0 0 0 / 0.45); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .lift:hover { transform: none; }
+}

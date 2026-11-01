@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IconMail } from "./icons";
 
 const LINKS = [
@@ -14,9 +14,30 @@ const LINKS = [
 export function TopNav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState<string | null>(null);
+  const bar = useRef<HTMLDivElement>(null);
+
+  // Highlight the section in view.
+  useEffect(() => {
+    const ids = LINKS.map((l) => l.href.split("#")[1]).filter(Boolean) as string[];
+    const els = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+    if (!els.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) setActive(e.target.id);
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 80);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (bar.current) bar.current.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -25,7 +46,7 @@ export function TopNav() {
   return (
     <header
       className={[
-        "fixed inset-x-0 top-0 z-40 transition-all",
+        "fixed inset-x-0 top-0 z-40 transition-all duration-300",
         scrolled || menuOpen
           ? "border-b border-ink/10 bg-paper/85 backdrop-blur-md"
           : "border-b border-transparent bg-transparent",
@@ -40,15 +61,23 @@ export function TopNav() {
           Jeremiah Daws<span className="text-accent">.</span>
         </a>
         <nav className="hidden flex-1 items-center justify-center gap-6 md:flex">
-          {LINKS.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm font-medium text-ink-muted transition hover:text-ink"
-            >
-              {l.label}
-            </a>
-          ))}
+          {LINKS.map((l) => {
+            const on = active !== null && l.href.endsWith(`#${active}`);
+            return (
+              <a
+                key={l.href}
+                href={l.href}
+                aria-current={on ? "true" : undefined}
+                className={[
+                  "relative py-1 text-sm font-medium transition-colors hover:text-ink",
+                  "after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-accent after:transition-transform after:duration-300",
+                  on ? "text-ink after:scale-x-100" : "text-ink-muted after:scale-x-0 hover:after:scale-x-100",
+                ].join(" ")}
+              >
+                {l.label}
+              </a>
+            );
+          })}
         </nav>
         <div className="ml-auto flex items-center gap-2 md:ml-0">
           <a
@@ -84,6 +113,13 @@ export function TopNav() {
           </button>
         </div>
       </div>
+
+      <div
+        ref={bar}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-left bg-accent/70"
+        style={{ transform: "scaleX(0)" }}
+      />
 
       {menuOpen ? (
         <nav

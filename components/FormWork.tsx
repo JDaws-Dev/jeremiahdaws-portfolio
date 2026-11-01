@@ -28,7 +28,7 @@ export function FormWork() {
   return (
     <section id="form" className="scroll-mt-14 border-t border-ink/10 bg-paper py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid gap-6 md:grid-cols-[1.3fr_1fr] md:items-end">
+        <div className="grid gap-6 md:grid-cols-[1.3fr_1fr] md:items-end" data-reveal>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue">At FORM</p>
             <h2 className="mt-2 text-balance font-serif text-3xl leading-tight tracking-[-0.01em] md:text-[2.6rem]">
@@ -46,7 +46,7 @@ export function FormWork() {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
+        <div className="mt-8 grid gap-6 md:grid-cols-2" data-stagger="140">
           {WORK.map((w) => (
             <article key={w.title}>
               <a href={w.href} target="_blank" rel="noopener noreferrer" className="group block">
@@ -62,14 +62,14 @@ export function FormWork() {
               </p>
               <h3 className="mt-1 font-serif text-2xl leading-tight">{w.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink/75">{w.body}</p>
-              <a href={w.href} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium transition hover:text-accent">
+              <a href={w.href} target="_blank" rel="noopener noreferrer" className="nudge mt-3 inline-flex items-center gap-1.5 text-sm font-medium transition hover:text-accent">
                 {w.linkLabel} <IconArrowRight className="h-4 w-4" />
               </a>
             </article>
           ))}
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-[1.7fr_1fr] md:items-center">
+        <div className="mt-12 grid gap-6 md:grid-cols-[1.7fr_1fr] md:items-center" data-reveal>
           <div className="relative">
             <video
               controls
@@ -99,7 +99,7 @@ export function FormWork() {
           </div>
         </div>
 
-        <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className="mt-10 inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent">
+        <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className="nudge mt-10 inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent">
           Work with FORM: formgreatstories.com <IconArrowRight className="h-4 w-4" />
         </a>
       </div>

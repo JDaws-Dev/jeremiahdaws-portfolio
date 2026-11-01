@@ -46,7 +46,7 @@ export function HireSection() {
             Get in touch.
           </h2>
 
-          <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr] md:gap-16">
+          <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr] md:gap-16" data-reveal>
             <div>
               <p className="text-base text-paper/80 md:text-lg">
                 Outside FORM, I consult on

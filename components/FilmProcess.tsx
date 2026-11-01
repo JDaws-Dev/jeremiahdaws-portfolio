@@ -31,7 +31,7 @@ export function FilmProcess() {
     <section id="process" className="scroll-mt-14 bg-paper py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue">How I make them</p>
-        <div className="mt-2 grid gap-6 md:grid-cols-[1.3fr_1fr] md:items-end">
+        <div className="mt-2 grid gap-6 md:grid-cols-[1.3fr_1fr] md:items-end" data-reveal>
           <h2 className="text-balance font-serif text-3xl leading-tight tracking-[-0.01em] md:text-[2.6rem]">
             Keeping a character the same <span className="text-accent">from shot to shot.</span>
           </h2>
@@ -44,15 +44,15 @@ export function FilmProcess() {
           </p>
         </div>
 
-        <ul className="mt-8 grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
+        <ul className="mt-8 grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3" data-stagger="90">
           {FRAMES.map((f) => (
             <li key={f.src} className="relative aspect-video overflow-hidden rounded-lg bg-black">
-              <Image src={f.src} alt={f.alt} fill sizes="(min-width: 768px) 18rem, 50vw" className="object-cover" />
+              <Image src={f.src} alt={f.alt} fill sizes="(min-width: 768px) 18rem, 50vw" className="object-cover transition duration-700 hover:scale-105" />
             </li>
           ))}
         </ul>
 
-        <ol className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4" data-stagger="120">
           {STEPS.map((s, i) => (
             <li key={s.title} className="border-t border-ink/15 pt-4">
               <p className="font-serif text-2xl leading-none text-accent">{i + 1}</p>

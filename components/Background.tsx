@@ -15,7 +15,7 @@ export function Background() {
   return (
     <section id="background" className="scroll-mt-14 bg-paper py-16 md:py-20">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-[1fr_1.4fr]">
-        <div>
+        <div data-reveal>
           <div className="relative mb-6 aspect-square w-24 overflow-hidden rounded-full border border-ink/10">
             <Image src="/headshot.jpg" alt="Jeremiah Daws" fill sizes="6rem" className="object-cover object-[50%_25%]" />
           </div>
@@ -28,7 +28,7 @@ export function Background() {
             brand work did. That&rsquo;s what I bring to the tools.
           </p>
           <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
-            <Link href="/work" className="inline-flex items-center gap-1.5 text-ink transition hover:text-accent">
+            <Link href="/work" className="nudge inline-flex items-center gap-1.5 text-ink transition hover:text-accent">
               All film work <IconArrowRight className="h-4 w-4" />
             </Link>
             <Link href="/apps" className="inline-flex items-center gap-1.5 text-ink-muted transition hover:text-accent">
@@ -36,7 +36,7 @@ export function Background() {
             </Link>
           </div>
         </div>
-        <ul className="divide-y divide-ink/10 border-y border-ink/10">
+        <ul className="divide-y divide-ink/10 border-y border-ink/10" data-stagger="70">
           {CREDITS.map((c) => (
             <li key={c.org} className="grid gap-1 py-4 sm:grid-cols-[1fr_auto] sm:gap-6">
               <div>

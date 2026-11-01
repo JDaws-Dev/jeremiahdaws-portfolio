@@ -23,7 +23,7 @@ export function Hero() {
       <div className="mx-auto max-w-6xl px-4 pb-12 pt-20 sm:px-6 md:pb-16 md:pt-28">
         {/* Mobile: a frame from the film first. Desktop: side by side. */}
         <div className="grid gap-8 md:grid-cols-[1fr_1.05fr] md:items-center md:gap-12">
-          <div className="order-2 min-w-0 md:order-1">
+          <div className="order-2 min-w-0 md:order-1" data-stagger="110">
             <div className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-paper-muted/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-ink-muted sm:text-xs">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               AI filmmaker · Atlanta
@@ -57,7 +57,7 @@ export function Hero() {
               </a>
               <a
                 href="#hire"
-                className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"
+                className="nudge inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"
               >
                 Get in touch <IconArrowRight className="h-4 w-4" />
               </a>
@@ -69,7 +69,7 @@ export function Hero() {
             aria-label="Watch the films"
             className="group order-1 block md:order-2"
           >
-            <span className="relative block aspect-video overflow-hidden rounded-2xl bg-black shadow-2xl">
+            <span className="letterbox relative block aspect-video overflow-hidden rounded-2xl bg-black shadow-2xl">
               <Image
                 src="/portfolio/stills/hero-reel-poster.jpg"
                 alt=""
@@ -100,7 +100,7 @@ export function Hero() {
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-blue">
             Brand and broadcast work for
           </p>
-          <ul className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
+          <ul className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2" data-stagger="60">
             {BRANDS.map((b) => (
               <li key={b} className="font-serif text-base text-ink/70">
                 {b}
