@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { TopNav } from "@/components/TopNav";
+import { SiteFooter } from "@/components/SiteFooter";
 import { MakerHero } from "@/components/MakerHero";
 import { ShopFlagships } from "@/components/ShopFlagships";
 import { SignatureBuilds } from "@/components/SignatureBuilds";
@@ -21,28 +22,31 @@ export default function MakerPage() {
   const entries = getAllEntries();
   const assets = getAllAssets();
   return (
-    <main className="min-h-screen">
+    <>
       <TopNav />
-      <MakerHero />
-      <ShopFlagships entries={entries} />
-      <SignatureBuilds entries={entries} />
-      <AlsoBuilt entries={entries} />
-      <LaneArchive
-        assets={assets}
-        lane="making"
-        eyebrow="Full archive"
-        title="Every build, every clip."
-        intro="Channel videos, shop reels, IG cuts, recognition, theatrical props, and commercial fab work — all of it."
-        showFilters={false}
-      />
-      <PageCta
-        eyebrow="Want to talk shop?"
-        title="The shop is closed. The builds are still here."
-        body="Bullfrog Machining closed in 2026. The channel and the full build archive stay up. Always happy to talk props, fabrication, and making things with a camera rolling."
-        topic="Maker question"
-        placeholder="What are you building?"
-        resume={{ href: "/resumes/resume-maker.pdf", label: "Maker résumé (PDF)" }}
-      />
-    </main>
+      <main id="content" className="min-h-screen">
+        <MakerHero />
+        <ShopFlagships entries={entries} />
+        <SignatureBuilds entries={entries} />
+        <AlsoBuilt entries={entries} />
+        <LaneArchive
+          assets={assets}
+          lane="making"
+          eyebrow="Full archive"
+          title="Every build, every clip."
+          intro="Channel videos, shop reels, IG cuts, recognition, theatrical props, and commercial fab work — all of it."
+          showFilters={false}
+        />
+        <PageCta
+          eyebrow="Want to talk shop?"
+          title="The shop is closed. The builds are still here."
+          body="Bullfrog Machining closed in 2026. The channel and the full build archive stay up. Always happy to talk props, fabrication, and making things with a camera rolling."
+          topic="Maker question"
+          placeholder="What are you building?"
+          resume={{ href: "/resumes/resume-maker.pdf", label: "Maker résumé (PDF)" }}
+        />
+      </main>
+      <SiteFooter />
+    </>
   );
 }

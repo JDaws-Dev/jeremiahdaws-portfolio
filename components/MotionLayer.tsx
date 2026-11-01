@@ -15,6 +15,8 @@ export function MotionLayer() {
   useEffect(() => {
     const root = document.documentElement;
     if (!root.classList.contains("motion")) return;
+    // Tells the head script's failsafe that reveals are wired up.
+    root.setAttribute("data-motion-ready", "");
 
     document.querySelectorAll<HTMLElement>("[data-stagger]").forEach((list) => {
       const step = Number(list.dataset.stagger) || 80;
@@ -40,7 +42,7 @@ export function MotionLayer() {
       },
       { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
     );
-    const els = document.querySelectorAll<HTMLElement>("[data-reveal], [data-stagger] > *, .letterbox");
+    const els = document.querySelectorAll<HTMLElement>("[data-reveal], [data-stagger] > *");
     els.forEach((el) => io.observe(el));
 
     return () => io.disconnect();

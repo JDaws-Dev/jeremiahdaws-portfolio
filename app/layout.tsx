@@ -64,7 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion')",
+              "(function(){var r=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;r.classList.add('motion');setTimeout(function(){if(!r.hasAttribute('data-motion-ready'))r.classList.remove('motion')},3000)})()",
           }}
         />
         <script
@@ -73,6 +73,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <a
+          href="#content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-3 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-paper"
+        >
+          Skip to content
+        </a>
         {children}
         <MotionLayer />
       </body>

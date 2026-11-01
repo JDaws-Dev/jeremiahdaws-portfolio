@@ -10,7 +10,6 @@ import {
   IconYouTube,
 } from "./icons";
 import { ContactForm } from "./ContactForm";
-import { SiteFooter } from "./SiteFooter";
 
 
 const SOCIAL = [
@@ -39,7 +38,7 @@ export function HireSection() {
         </div>
 
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">
+          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent-muted">
             Contact
           </p>
           <h2 className="mt-3 font-serif text-4xl leading-tight tracking-[-0.01em] md:text-[3.25rem]">
@@ -148,8 +147,6 @@ export function HireSection() {
           </div>
         </div>
       </section>
-
-      <SiteFooter />
     </>
   );
 }

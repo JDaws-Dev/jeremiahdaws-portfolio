@@ -5,17 +5,21 @@ import { FilmProcess } from "@/components/FilmProcess";
 import { FormWork } from "@/components/FormWork";
 import { Background } from "@/components/Background";
 import { HireSection } from "@/components/HireSection";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export default function Page() {
   return (
-    <main>
+    <>
       <TopNav />
-      <Hero />
-      <AiFilms />
-      <FilmProcess />
-      <FormWork />
-      <Background />
-      <HireSection />
-    </main>
+      <main id="content">
+        <Hero />
+        <AiFilms />
+        <FilmProcess />
+        <FormWork />
+        <Background />
+        <HireSection />
+      </main>
+      <SiteFooter />
+    </>
   );
 }

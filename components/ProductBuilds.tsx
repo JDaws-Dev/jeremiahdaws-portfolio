@@ -115,7 +115,7 @@ export function ProductBuilds({ entries }: { entries: PortfolioEntry[] }) {
                 alt={imageAlt}
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
-                className="object-cover transition duration-500 group-hover:scale-[1.02]"
+                className="object-cover transition duration-500 motion-safe:group-hover:scale-[1.02]"
                 priority
               />
               <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />

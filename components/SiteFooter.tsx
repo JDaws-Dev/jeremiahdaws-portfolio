@@ -34,7 +34,7 @@ export function SiteFooter() {
           </a>
           .
         </p>
-        <p className="mt-3 text-center text-xs text-paper/40">
+        <p className="mt-3 text-center text-xs text-paper/55">
           © {new Date().getFullYear()} Jeremiah Daws
         </p>
       </div>

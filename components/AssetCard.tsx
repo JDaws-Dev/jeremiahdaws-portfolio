@@ -85,7 +85,7 @@ export function AssetCard({
                 alt=""
                 fill
                 sizes="(min-width: 1280px) 25vw, (min-width: 640px) 33vw, 100vw"
-                className="object-cover transition duration-500 group-hover:scale-[1.02]"
+                className="object-cover transition duration-500 motion-safe:group-hover:scale-[1.02]"
               />
             ) : (
               // eslint-disable-next-line @next/next/no-img-element
@@ -93,7 +93,7 @@ export function AssetCard({
                 src={useThumbnail}
                 alt=""
                 referrerPolicy="no-referrer"
-                className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                className="h-full w-full object-cover transition duration-500 motion-safe:group-hover:scale-[1.02]"
                 loading="lazy"
                 onError={() => setBroken(true)}
               />

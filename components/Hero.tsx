@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { HeroReel } from "./HeroReel";
 import { IconArrowRight, IconPlay } from "./icons";
 
 const BRANDS = [
@@ -23,7 +23,7 @@ export function Hero() {
       <div className="mx-auto max-w-6xl px-4 pb-12 pt-20 sm:px-6 md:pb-16 md:pt-28">
         {/* Mobile: a frame from the film first. Desktop: side by side. */}
         <div className="grid gap-8 md:grid-cols-[1fr_1.05fr] md:items-center md:gap-12">
-          <div className="order-2 min-w-0 md:order-1" data-stagger="110">
+          <div className="hero-in order-2 min-w-0 md:order-1">
             <div className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-paper-muted/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-ink-muted sm:text-xs">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               AI filmmaker · Atlanta
@@ -64,36 +64,7 @@ export function Hero() {
             </div>
           </div>
 
-          <a
-            href="#films"
-            aria-label="Watch the films"
-            className="group order-1 block md:order-2"
-          >
-            <span className="letterbox relative block aspect-video overflow-hidden rounded-2xl bg-black shadow-2xl">
-              <Image
-                src="/portfolio/stills/hero-reel-poster.jpg"
-                alt=""
-                fill
-                priority
-                sizes="(min-width: 768px) 36rem, 100vw"
-                className="object-cover"
-              />
-              {/* Silent loop of shots from the films; the poster stays for reduced motion. */}
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                poster="/portfolio/stills/hero-reel-poster.jpg"
-                aria-label="Moments from my AI films"
-                className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
-              >
-                <source src="/portfolio/hero-reel.webm" type="video/webm" />
-                <source src="/portfolio/hero-reel.mp4" type="video/mp4" />
-              </video>
-            </span>
-          </a>
+          <HeroReel />
         </div>
 
         <div className="mt-10 border-t border-ink/10 pt-5 md:mt-14">

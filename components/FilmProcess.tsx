@@ -47,7 +47,7 @@ export function FilmProcess() {
         <ul className="mt-8 grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3" data-stagger="90">
           {FRAMES.map((f) => (
             <li key={f.src} className="relative aspect-video overflow-hidden rounded-lg bg-black">
-              <Image src={f.src} alt={f.alt} fill sizes="(min-width: 768px) 18rem, 50vw" className="object-cover transition duration-700 hover:scale-105" />
+              <Image src={f.src} alt={f.alt} fill sizes="(min-width: 768px) 18rem, 50vw" className="object-cover transition duration-700 motion-safe:hover:scale-105" />
             </li>
           ))}
         </ul>

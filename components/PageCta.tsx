@@ -1,6 +1,5 @@
 import { IconDownload } from "./icons";
 import { ContactForm } from "./ContactForm";
-import { SiteFooter } from "./SiteFooter";
 
 export type PageCtaProps = {
   eyebrow: string;
@@ -30,7 +29,7 @@ export function PageCta({
 
         <div className="relative mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-[1fr_1.1fr] md:gap-16">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">
+            <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent-muted">
               {eyebrow}
             </p>
             <h2
@@ -67,7 +66,6 @@ export function PageCta({
           </div>
         </div>
       </section>
-      <SiteFooter />
     </>
   );
 }

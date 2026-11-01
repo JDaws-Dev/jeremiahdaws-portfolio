@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { TopNav } from "@/components/TopNav";
+import { SiteFooter } from "@/components/SiteFooter";
 import { AppsHero } from "@/components/AppsHero";
 import { ProductBuilds } from "@/components/ProductBuilds";
 import { AgentStack } from "@/components/AgentStack";
@@ -19,19 +20,22 @@ export const metadata: Metadata = {
 export default function AppsPage() {
   const entries = getAllEntries();
   return (
-    <main className="min-h-screen">
+    <>
       <TopNav />
-      <AppsHero />
-      <ProductBuilds entries={entries} />
-      <AgentStack entries={entries} />
-      <AlsoShipped entries={entries} />
-      <PageCta
-        eyebrow="Want AI working in your business?"
-        title="Tell me what you want AI to do for your business."
-        body="A website that books and answers customers, an internal tool, an assistant for your staff, or training so your team can do it themselves. You work with me directly, and I reply with a plan and a fixed quote."
-        topic="AI build / consulting inquiry"
-        placeholder="What would you like AI to do for your business?"
-      />
-    </main>
+      <main id="content" className="min-h-screen">
+        <AppsHero />
+        <ProductBuilds entries={entries} />
+        <AgentStack entries={entries} />
+        <AlsoShipped entries={entries} />
+        <PageCta
+          eyebrow="Want AI working in your business?"
+          title="Tell me what you want AI to do for your business."
+          body="A website that books and answers customers, an internal tool, an assistant for your staff, or training so your team can do it themselves. You work with me directly, and I reply with a plan and a fixed quote."
+          topic="AI build / consulting inquiry"
+          placeholder="What would you like AI to do for your business?"
+        />
+      </main>
+      <SiteFooter />
+    </>
   );
 }

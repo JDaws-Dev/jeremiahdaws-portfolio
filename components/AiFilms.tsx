@@ -84,16 +84,24 @@ const ALL_FILMS: Film[] = [
 
 const FILMS = ALL_FILMS.filter((f) => !f.hidden);
 
-function Player({ film, playing, onPlay, priority }: {
+const scrollBehavior = (): ScrollBehavior =>
+  matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+
+function Player({ film, playing, onPlay }: {
   film: Film;
   playing: boolean;
   onPlay: () => void;
-  priority?: boolean;
 }) {
+  const frame = useRef<HTMLIFrameElement>(null);
+  // The Play button is swapped out for the iframe: keep keyboard focus here.
+  useEffect(() => {
+    if (playing) frame.current?.focus();
+  }, [playing]);
   return (
     <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black">
       {playing ? (
         <iframe
+          ref={frame}
           src={`https://www.youtube-nocookie.com/embed/${film.id}?autoplay=1&rel=0`}
           title={film.title}
           allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
@@ -111,9 +119,8 @@ function Player({ film, playing, onPlay, priority }: {
             src={film.still ?? film.thumb}
             alt=""
             fill
-            priority={priority}
-            sizes="(min-width: 1024px) 64rem, 100vw"
-            className="object-cover transition duration-500 group-hover:scale-[1.02]"
+            sizes="(min-width: 1152px) 44rem, (min-width: 1024px) 62vw, 100vw"
+            className="object-cover transition duration-500 motion-safe:group-hover:scale-[1.02]"
           />
           <span className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           <span className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full bg-paper px-3.5 py-2 text-xs font-semibold text-ink shadow-lg transition group-hover:bg-accent group-hover:text-paper">
@@ -138,7 +145,7 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
       if (window.location.hash !== "#play") return;
       setLead(0);
       setPlaying(FILMS[0].id);
-      stage.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      stage.current?.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
     };
     onHash();
     window.addEventListener("hashchange", onHash);
@@ -171,10 +178,9 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
             film={film}
             playing={playing === film.id}
             onPlay={() => setPlaying(film.id)}
-            priority={!compact}
           />
           </div>
-          <div key={`${film.id}-info`} className="film-in" style={{ animationDelay: "120ms" }}>
+          <div key={`${film.id}-info`} className="film-in" style={{ animationDelay: "120ms" }} aria-live="polite">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-paper/55">
               {film.kind} · {film.year} · {film.runtime}
             </p>
@@ -182,7 +188,7 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
               {film.title}
             </h3>
             <p className="mt-3 text-base leading-relaxed text-paper/80">{film.logline}</p>
-            <p className="mt-5 text-[10px] font-semibold uppercase tracking-[0.22em] text-paper/45">
+            <p className="mt-5 text-[10px] font-semibold uppercase tracking-[0.22em] text-paper/55">
               Made with
             </p>
             <ul className="mt-2 flex flex-wrap gap-2">
@@ -215,7 +221,7 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
                   setLead(i);
                   setPlaying(null);
                   const top = stage.current?.getBoundingClientRect().top ?? 0;
-                  if (top < 0) stage.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  if (top < 0) stage.current?.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
                 }}
                 aria-pressed={i === lead}
                 className={[
@@ -226,7 +232,7 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
                 ].join(" ")}
               >
                 <span className="relative block aspect-video overflow-hidden rounded-md bg-black">
-                  <Image src={f.still ?? f.thumb} alt="" fill sizes="16rem" className="object-cover transition duration-500 group-hover:scale-105" />
+                  <Image src={f.still ?? f.thumb} alt="" fill sizes="(min-width: 640px) 16rem, 50vw" className="object-cover transition duration-500 motion-safe:group-hover:scale-105" />
                 </span>
                 <span className="mt-2 block px-1 font-serif text-sm leading-tight">{f.title}</span>
                 <span className="mb-1 block px-1 text-[10px] uppercase tracking-[0.14em] text-paper/50">

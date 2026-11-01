@@ -80,7 +80,7 @@ export function FeaturedCard({ entry }: { entry: PortfolioEntry }) {
               alt={entry.title}
               fill
               sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-              className="object-cover transition duration-500 group-hover:scale-[1.02]"
+              className="object-cover transition duration-500 motion-safe:group-hover:scale-[1.02]"
             />
           ) : (
             // eslint-disable-next-line @next/next/no-img-element
@@ -89,7 +89,7 @@ export function FeaturedCard({ entry }: { entry: PortfolioEntry }) {
               alt={entry.title}
               referrerPolicy="no-referrer"
               loading="lazy"
-              className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+              className="h-full w-full object-cover transition duration-500 motion-safe:group-hover:scale-[1.02]"
             />
           )
         ) : (

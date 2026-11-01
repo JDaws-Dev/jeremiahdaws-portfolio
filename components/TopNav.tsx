@@ -37,15 +37,37 @@ export function TopNav() {
     return () => io.disconnect();
   }, [home]);
 
+  // One frame per scroll burst; page height is re-measured only when it changes.
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 80);
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      if (bar.current) bar.current.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+    let max = 0;
+    let tick = 0;
+    const measure = () => {
+      max = document.documentElement.scrollHeight - window.innerHeight;
     };
-    onScroll();
+    const paint = () => {
+      tick = 0;
+      const y = window.scrollY;
+      setScrolled(y > 80);
+      if (bar.current) bar.current.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`;
+    };
+    const onScroll = () => {
+      if (!tick) tick = requestAnimationFrame(paint);
+    };
+    const ro = new ResizeObserver(() => {
+      measure();
+      onScroll();
+    });
+    ro.observe(document.body);
+    window.addEventListener("resize", measure);
+    measure();
+    paint();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      ro.disconnect();
+      cancelAnimationFrame(tick);
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
@@ -65,7 +87,7 @@ export function TopNav() {
         >
           Jeremiah Daws<span className="text-accent">.</span>
         </a>
-        <nav className="hidden flex-1 items-center justify-center gap-6 md:flex">
+        <nav aria-label="Main" className="hidden flex-1 items-center justify-center gap-6 md:flex">
           {LINKS.map((l) => {
             const on = home
               ? active !== null && l.href.endsWith(`#${active}`)
@@ -131,6 +153,7 @@ export function TopNav() {
       {menuOpen ? (
         <nav
           id="mobile-nav"
+          aria-label="Main"
           className="border-t border-ink/10 bg-paper px-4 py-3 md:hidden"
         >
           <ul className="flex flex-col gap-1">

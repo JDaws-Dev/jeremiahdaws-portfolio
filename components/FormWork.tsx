@@ -51,7 +51,7 @@ export function FormWork() {
             <article key={w.title}>
               <a href={w.href} target="_blank" rel="noopener noreferrer" className="group block">
                 <div className="relative aspect-video overflow-hidden rounded-xl bg-black">
-                  <Image src={w.img} alt={w.title} fill sizes="(min-width: 768px) 36rem, 100vw" className="object-cover transition duration-500 group-hover:scale-[1.02]" />
+                  <Image src={w.img} alt={w.title} fill sizes="(min-width: 768px) 36rem, 100vw" className="object-cover transition duration-500 motion-safe:group-hover:scale-[1.02]" />
                   <span className="absolute left-3 top-3 rounded-full bg-paper/95 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink">
                     Made at FORM
                   </span>
