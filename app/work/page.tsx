@@ -24,8 +24,8 @@ export default function WorkPage() {
     <main className="min-h-screen">
       <TopNav />
       <WorkHero />
-      <FormWork />
       <AiFilms compact />
+      <FormWork />
       <NetworkCredits entries={entries} />
       <LaneArchive
         assets={assets}

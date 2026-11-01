@@ -9,30 +9,9 @@ type Credit = {
   years: string;
   storyKicker: string;
   highlights: string[];
-  /** Where to send people who want this kind of work. */
-  reach?: { text: string; href: string; label: string };
 };
 
 const CREDITS: Credit[] = [
-  {
-    slug: "calendar-jockeys",
-    cardTitle: "Studio production",
-    hat: "Producer / Director",
-    client: "FORM · Form Films",
-    years: "2026–present",
-    storyKicker:
-      "In-house at FORM, an Atlanta story company making brand films, studio content, interactive experiences, and original films.",
-    highlights: [
-      "Calendar Jockeys — director, Form Films comedy series",
-      "FORM studio website — rebuilt end to end",
-      "Internal AI assistant for the FORM team",
-    ],
-    reach: {
-      text: "Need a brand film, spot or series? Reach out to FORM:",
-      href: "https://www.formgreatstories.com/",
-      label: "formgreatstories.com",
-    },
-  },
   {
     slug: "disney-director",
     cardTitle: "Branded campaigns",
@@ -104,10 +83,10 @@ export function NetworkCredits({ entries }: { entries: PortfolioEntry[] }) {
     <section className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
       <div>
         <p className="text-xs uppercase tracking-[0.22em] text-blue">
-          Studio &amp; broadcast credits
+          Brand &amp; broadcast credits
         </p>
         <h2 className="mt-2 font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">
-          Studio, brand and broadcast credits.
+          Before FORM: Disney, and broadcast.
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-ink-muted">
           Producer / Director at FORM today. Before that, six years producing and directing for Disney (2015–2021), after
@@ -118,8 +97,8 @@ export function NetworkCredits({ entries }: { entries: PortfolioEntry[] }) {
         </p>
       </div>
 
-      <ul className="mt-8 grid gap-5 md:grid-cols-2">
-        {items.map(({ entry, cardTitle, hat, client, years, storyKicker, highlights, reach }) => {
+      <ul className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {items.map(({ entry, cardTitle, hat, client, years, storyKicker, highlights }) => {
           const thumb = thumbForEntry(entry);
           return (
             <li
@@ -174,14 +153,6 @@ export function NetworkCredits({ entries }: { entries: PortfolioEntry[] }) {
                     </li>
                   ))}
                 </ul>
-                {reach ? (
-                  <p className="text-[13px] text-ink/75">
-                    {reach.text}{" "}
-                    <a href={reach.href} target="_blank" rel="noopener noreferrer" className="font-medium text-ink underline decoration-ink/30 underline-offset-4 transition hover:text-accent">
-                      {reach.label}
-                    </a>
-                  </p>
-                ) : null}
                 <p className="mt-auto pt-2 text-[10px] uppercase tracking-[0.18em] text-ink-muted">
                   {years}
                 </p>

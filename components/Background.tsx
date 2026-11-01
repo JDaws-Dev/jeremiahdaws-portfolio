@@ -7,8 +7,8 @@ const CREDITS = [
   { org: "Disney Parks & Consumer Products", what: "Producer and director · Marvel, Lucasfilm, ABC, Freeform, Target", years: "2015–2021" },
   { org: "National Geographic", what: "Editor · Building Wild", years: "2014" },
   { org: "Hallmark", what: "Editor · Our Wild Hearts", years: "2013" },
-  { org: "Freelance editor", what: "Short-form editing for Disney Parks marketing and Disney Consumer Products", years: "2010–2015" },
   { org: "Daws Brothers", what: "Indie features and shorts, written and directed with my brother", years: "2012–2020" },
+  { org: "Freelance editor", what: "Short-form editing for Disney Parks marketing and Disney Consumer Products", years: "2010–2015" },
 ];
 
 export function Background() {
@@ -32,7 +32,7 @@ export function Background() {
               All film work <IconArrowRight className="h-4 w-4" />
             </Link>
             <Link href="/apps" className="inline-flex items-center gap-1.5 text-ink-muted transition hover:text-accent">
-              I also build AI tools <IconArrowRight className="h-4 w-4" />
+              AI builds <IconArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>

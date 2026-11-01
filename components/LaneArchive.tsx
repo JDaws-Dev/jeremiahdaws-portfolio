@@ -1,11 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Asset, Lane } from "@/lib/portfolio";
 import { AssetCard } from "./AssetCard";
 import { AssetLightbox } from "./AssetLightbox";
-import { IconArrowRight } from "./icons";
 
 const LANE_TITLE: Record<Lane, string> = {
   education: "Teaching.",
@@ -390,14 +388,6 @@ export function LaneArchive({
         }
       />
 
-      <section className="mx-auto mt-8 max-w-6xl px-6 text-center">
-        <Link
-          href="/#hire"
-          className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"
-        >
-          Like what you see? Get in touch <IconArrowRight className="h-4 w-4" />
-        </Link>
-      </section>
     </div>
   );
 }

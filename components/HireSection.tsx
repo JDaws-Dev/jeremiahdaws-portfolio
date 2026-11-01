@@ -79,7 +79,7 @@ export function HireSection() {
                 href="/apps"
                 className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-paper/75 transition hover:text-accent"
               >
-                I also build AI-powered websites and tools
+                AI builds
                 <span aria-hidden="true">→</span>
               </a>
             </div>

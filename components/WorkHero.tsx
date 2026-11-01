@@ -1,4 +1,4 @@
-import { IconArrowRight } from "./icons";
+import { IconPlay } from "./icons";
 
 const CREDITS = [
   "FORM",
@@ -30,32 +30,23 @@ export function WorkHero() {
       <div className="mt-8 grid gap-8 md:grid-cols-[1.4fr_1fr]">
         <div>
           <p className="text-base text-ink/80 md:text-lg">
-            <strong>Producer / Director at{" "}<a href="https://www.formgreatstories.com/" target="_blank" rel="noopener noreferrer" className="underline decoration-ink/30 underline-offset-4 transition hover:text-accent">FORM</a></strong>, an Atlanta story
-            company, where I direct the Form Films animated comedy series{" "}
-            <em>Calendar Jockeys</em>. Before that, six years{" "}
-            <strong>producing branded content</strong> for Disney
-            Parks and Disney Consumer Products (Marvel, Lucasfilm, ABC,
-            Freeform, Target). <strong>Social-media producer</strong>
-            {" "}for ongoing brand clients. <strong>Broadcast editor</strong>
-            {" "}on National Geographic&rsquo;s <em>Building Wild</em>,
-            Hallmark&rsquo;s <em>Our Wild Hearts</em>, the U.S. Army reality series
-            <em> Starting Strong</em>. <strong>Director</strong>
-            {" "}on independent narrative features I write and direct with my brother under our
-            <em> Daws Brothers</em> banner.
+            Producer / Director at{" "}
+            <a href="https://www.formgreatstories.com/" target="_blank" rel="noopener noreferrer" className="underline decoration-ink/30 underline-offset-4 transition hover:text-accent">FORM</a>,
+            an Atlanta story company, where I direct the Form Films animated
+            comedy <em>Calendar Jockeys</em>.
           </p>
-          <p className="mt-4 text-sm text-ink-muted">
-            Long-form narrative, branded shorts, broadcast reality and social
-            cuts.
+          <p className="mt-3 text-base text-ink/80 md:text-lg">
+            Before that, six years producing branded content for Disney, and
+            broadcast editing for National Geographic, Hallmark and the U.S.
+            Army series <em>Starting Strong</em>.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <a
-              href="https://calendarjockeys.com/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#films"
               className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accent"
             >
-              Watch Calendar Jockeys <IconArrowRight className="h-4 w-4" />
+              <IconPlay className="h-3.5 w-3.5" /> Watch the films
             </a>
           </div>
         </div>

@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { IconMail } from "./icons";
 
 const LINKS = [
-  { href: "/#films", label: "Films" },
+  { href: "/#films", label: "AI films" },
   { href: "/#process", label: "Process" },
   { href: "/#form", label: "FORM" },
   { href: "/work", label: "Film work" },
@@ -16,9 +17,13 @@ export function TopNav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);
   const bar = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const home = pathname === "/";
 
-  // Highlight the section in view.
+  // On home, highlight the section in view. Elsewhere the route is the highlight.
   useEffect(() => {
+    setActive(null);
+    if (!home) return;
     const ids = LINKS.map((l) => l.href.split("#")[1]).filter(Boolean) as string[];
     const els = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
     if (!els.length) return;
@@ -30,7 +35,7 @@ export function TopNav() {
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, []);
+  }, [home]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -62,7 +67,9 @@ export function TopNav() {
         </a>
         <nav className="hidden flex-1 items-center justify-center gap-6 md:flex">
           {LINKS.map((l) => {
-            const on = active !== null && l.href.endsWith(`#${active}`);
+            const on = home
+              ? active !== null && l.href.endsWith(`#${active}`)
+              : !l.href.includes("#") && pathname.startsWith(l.href);
             return (
               <a
                 key={l.href}

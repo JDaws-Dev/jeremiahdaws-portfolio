@@ -72,10 +72,10 @@ const ALL_FILMS: Film[] = [
   {
     id: "oootgNdZIRs",
     title: "Big Plans",
-    kind: "Personal short",
+    kind: "Short",
     runtime: "1:21",
     year: "2026",
-    logline: "A short film made to share some big personal news.",
+    logline: "A short film made to share some big news.",
     tools: ["InVideo"],
     thumb: "/portfolio/ai-big-plans.jpg",
     still: "/portfolio/stills/ai-big-plans.jpg",
