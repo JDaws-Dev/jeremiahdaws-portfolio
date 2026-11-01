@@ -37,7 +37,7 @@ export function FormWork() {
           </div>
           <p className="text-base text-ink/75">
             FORM is an Atlanta story company making brand films, series and
-            podcasts. This is work I directed there. It belongs to FORM. For a
+            podcasts. This is work I directed there. For a
             brand film, spot or series,{" "}
             <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className="underline decoration-ink/30 underline-offset-4 transition hover:text-accent">
               reach out to FORM

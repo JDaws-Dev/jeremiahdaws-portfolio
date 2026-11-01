@@ -49,7 +49,7 @@ export function HireSection() {
           <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr] md:gap-16">
             <div>
               <p className="text-base text-paper/80 md:text-lg">
-                The films here are personal projects. Outside FORM, I consult on
+                Outside FORM, I consult on
                 AI tools and workflows, and teach people to use AI themselves.
               </p>
               <p className="mt-3 text-base text-paper/80 md:text-lg">

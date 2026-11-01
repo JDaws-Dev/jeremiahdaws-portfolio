@@ -151,10 +151,10 @@ export function AiFilms({ compact = false }: { compact?: boolean }) {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-muted">
-              Personal films
+              AI films
             </p>
             <h2 className="mt-2 max-w-3xl text-balance font-serif text-3xl leading-tight tracking-[-0.01em] md:text-[2.6rem]">
-              Four short films, made with AI on my own time.
+              Four short films, made with AI.
             </h2>
           </div>
           {!compact ? (
