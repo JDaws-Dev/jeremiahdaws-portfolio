@@ -37,8 +37,7 @@ export function Hero() {
             </h1>
 
             <p className="mt-5 max-w-xl text-balance font-serif text-2xl leading-tight text-ink sm:text-3xl">
-              I make short films with AI,{" "}
-              <span className="text-accent">as personal projects.</span>
+              I make short films with AI.
             </p>
 
             <p className="mt-5 max-w-xl text-base leading-snug text-ink/85 md:text-lg">
