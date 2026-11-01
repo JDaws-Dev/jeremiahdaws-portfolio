@@ -85,7 +85,7 @@ export function Hero() {
                 muted
                 loop
                 playsInline
-                preload="auto"
+                preload="metadata"
                 poster="/portfolio/stills/hero-reel-poster.jpg"
                 aria-label="Moments from my AI films"
                 className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"

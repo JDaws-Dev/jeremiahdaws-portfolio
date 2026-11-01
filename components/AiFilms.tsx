@@ -45,17 +45,6 @@ const ALL_FILMS: Film[] = [
     still: "/portfolio/stills/ai-america-250.jpg",
   },
   {
-    id: "oootgNdZIRs",
-    title: "Big Plans",
-    kind: "Personal short",
-    runtime: "1:21",
-    year: "2026",
-    logline: "A short film made to share some big personal news.",
-    tools: ["InVideo"],
-    thumb: "/portfolio/ai-big-plans.jpg",
-    still: "/portfolio/stills/ai-big-plans.jpg",
-  },
-  {
     id: "I7cHxHLN1r4",
     title: "Teeth Brushed?",
     kind: "Brand-style test · Form Films",
@@ -66,6 +55,17 @@ const ALL_FILMS: Film[] = [
     tools: ["Absurd"],
     thumb: "/portfolio/ai-teeth-brushed.jpg",
     still: "/portfolio/stills/ai-teeth-brushed.jpg",
+  },
+  {
+    id: "oootgNdZIRs",
+    title: "Big Plans",
+    kind: "Personal short",
+    runtime: "1:21",
+    year: "2026",
+    logline: "A short film made to share some big personal news.",
+    tools: ["InVideo"],
+    thumb: "/portfolio/ai-big-plans.jpg",
+    still: "/portfolio/stills/ai-big-plans.jpg",
   },
 ];
 

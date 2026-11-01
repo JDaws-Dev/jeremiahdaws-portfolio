@@ -19,7 +19,7 @@ const CREDITS: Credit[] = [
     client: "FORM · Form Films",
     years: "2026–present",
     storyKicker:
-      "In-house at FORM, an Atlanta story company making brand films, studio content, interactive experiences, and original films. Back to directing and producing full-time.",
+      "In-house at FORM, an Atlanta story company making brand films, studio content, interactive experiences, and original films.",
     highlights: [
       "Calendar Jockeys — director, Form Films comedy series",
       "FORM studio website — rebuilt end to end",
@@ -35,7 +35,7 @@ const CREDITS: Credit[] = [
     storyKicker:
       "Brand spots and integrated campaigns under tight clocks. Marvel, Lucasfilm, ABC, Freeform, and Target × Disney work, from booking talent to delivering for air.",
     highlights: [
-      "Target × Disney — Backyard Theater (Disney Channel/XD, $1.5M campaign)",
+      "Target × Disney — Backyard Theater (Disney Channel/XD)",
       "WDW Halloween Hitlist · WDW Thattaway × Zombies",
       "Marvel · Lucasfilm · ABC · Freeform brand work",
       "Social, broadcast, and commercial cuts shipped to Disney Parks",
