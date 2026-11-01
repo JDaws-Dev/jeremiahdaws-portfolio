@@ -31,7 +31,7 @@ export function AppsHero() {
             customers. Everything here is live and in use.
           </p>
           <p className="mt-4 text-sm text-ink-muted">
-            IDay job: Producer / Director at FORM, where I also rebuilt theapos;m Producer / Director at FORM, where I also rebuilt the
+            I&rsquo;m Producer / Director at FORM, where I also rebuilt the
             studio&rsquo;s website. Side work: fixed-price builds, scoped in
             writing, that you own when we&rsquo;re done, plus training so your
             team can run them.
