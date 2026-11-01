@@ -48,11 +48,8 @@ export function HireSection() {
           <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr] md:gap-16" data-reveal>
             <div>
               <p className="text-base text-paper/80 md:text-lg">
-                Outside FORM, I help teams put AI to work: the tools, the
-                workflows, and the training to run them.
-              </p>
-              <p className="mt-3 text-base text-paper/80 md:text-lg">
-                One-on-one AI training is $100 an hour.
+                Want to talk shop, AI, or something else entirely? Drop me a
+                line. Outside FORM, I&rsquo;m open to the occasional AI project.
               </p>
               <p className="mt-5 text-sm text-paper/55">
                 Need a brand film, spot or series? That&rsquo;s FORM&rsquo;s work,
@@ -70,8 +67,8 @@ export function HireSection() {
 
               <div className="mt-8">
                 <ContactForm
-                  topic="AI consulting"
-                  placeholder="Where is your team stuck with AI?"
+                  topic="Hello"
+                  placeholder="What's on your mind?"
                 />
               </div>
               <a
@@ -84,16 +81,6 @@ export function HireSection() {
             </div>
 
             <div className="space-y-8">
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-paper/55">
-                  What happens next
-                </p>
-                <ol className="mt-3 space-y-3 text-sm text-paper/85">
-                  <li className="flex gap-3"><span className="font-serif text-lg leading-none text-accent">1</span>Tell me where you&rsquo;re stuck, in a sentence or a page.</li>
-                  <li className="flex gap-3"><span className="font-serif text-lg leading-none text-accent">2</span>We talk, and you get a written plan with scope and price.</li>
-                  <li className="flex gap-3"><span className="font-serif text-lg leading-none text-accent">3</span>Your team gets it working, trained to run it without me.</li>
-                </ol>
-              </div>
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-paper/55">
                   Find me elsewhere

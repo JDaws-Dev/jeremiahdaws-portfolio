@@ -57,10 +57,10 @@ export function Hero() {
                 <IconPlay className="h-3.5 w-3.5" /> Watch the films
               </a>
               <a
-                href="#teams"
+                href="#hire"
                 className="nudge inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"
               >
-                AI for your team <IconArrowRight className="h-4 w-4" />
+                Get in touch <IconArrowRight className="h-4 w-4" />
               </a>
             </div>
           </div>

@@ -37,11 +37,11 @@ export default function WorkPage() {
           intro="The full filmography — Disney Parks brand work, broadcast credits, Daws Brothers indie features, social, and everything in between. Filter by role, format, or client to see only what you're looking for."
         />
         <PageCta
-          eyebrow="AI consulting"
-          title="Working with AI? Bring me in."
-          body="Outside FORM, I consult on AI tools and workflows. One-on-one AI training is $100 an hour."
-          topic="AI consulting"
-          placeholder="What can I help with?"
+          eyebrow="Contact"
+          title="Say hello."
+          body="Want to talk shop, AI, or something else entirely? Outside FORM, I'm open to the occasional AI project."
+          topic="Hello"
+          placeholder="What's on your mind?"
         />
       </main>
       <SiteFooter />

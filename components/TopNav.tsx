@@ -9,7 +9,6 @@ const LINKS = [
   { href: "/#process", label: "Process" },
   { href: "/#form", label: "FORM" },
   { href: "/work", label: "Film work" },
-  { href: "/#teams", label: "For teams" },
   { href: "/#hire", label: "Contact" },
 ];
 
