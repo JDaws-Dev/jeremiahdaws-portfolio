@@ -61,6 +61,30 @@ export function FilmProcess() {
             </li>
           ))}
         </ol>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-[1.7fr_1fr] md:items-center">
+          <video
+            controls
+            playsInline
+            preload="none"
+            poster="/portfolio/stills/previz-to-picture.jpg"
+            className="aspect-video w-full rounded-xl bg-black"
+          >
+            <source src="/portfolio/previz-to-picture.mp4" type="video/mp4" />
+          </video>
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue">Previz to picture</p>
+            <h3 className="mt-2 text-balance font-serif text-2xl leading-tight">
+              Blocked first, then generated to match.
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-ink/75">
+              A 30-second test: a kid sky-surfing behind a seaplane, a girl in a
+              submarine racing a sailfish. Every shot was blocked in a rough
+              previz first, shown in the corner, so the camera, staging and
+              timing were decided before anything was generated.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
