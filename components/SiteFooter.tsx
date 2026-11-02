@@ -1,8 +1,8 @@
 const LINKS = [
-  { href: "/#films", label: "AI films" },
-  { href: "/#process", label: "Process" },
+  { href: "/#work", label: "Work" },
   { href: "/#form", label: "FORM" },
-  { href: "/work", label: "Film work" },
+  { href: "/#films", label: "AI films" },
+  { href: "/work", label: "Archive" },
   { href: "/#hire", label: "Contact" },
   { href: "/apps", label: "AI builds" },
   { href: "/maker", label: "Maker archive" },

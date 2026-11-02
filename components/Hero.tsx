@@ -27,7 +27,7 @@ export function Hero() {
           <div className="hero-in order-2 min-w-0 md:order-1">
             <div className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-paper-muted/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-ink-muted sm:text-xs">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              AI filmmaker · Atlanta
+              Producer · Director · Editor · Atlanta
             </div>
 
             <h1
@@ -38,23 +38,23 @@ export function Hero() {
             </h1>
 
             <p className="mt-5 max-w-xl text-balance font-serif text-2xl leading-tight text-ink sm:text-3xl">
-              I make short films with AI.
+              I produce, direct and edit films.
             </p>
 
             <p className="mt-5 max-w-xl text-base leading-snug text-ink/85 md:text-lg">
-              Written, directed and cut by me, with no camera and no cast. The
-              craft comes from fifteen years in production: Producer / Director
-              at FORM, an Atlanta story company, where I direct the animated
-              comedy <em>Calendar Jockeys</em>; six years producing for Disney;
-              editing for National Geographic and Hallmark.
+              Producer / Director at FORM, an Atlanta story company, where I
+              direct the animated comedy <em>Calendar Jockeys</em>. Before that,
+              six years producing and directing for Disney, editing for National
+              Geographic and Hallmark, and indie features with my brother.
+              Lately, short films made with AI too.
             </p>
 
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <a
-                href="#films"
+                href="#work"
                 className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper shadow-lg transition hover:bg-accent"
               >
-                <IconPlay className="h-3.5 w-3.5" /> Watch the films
+                <IconPlay className="h-3.5 w-3.5" /> See the work
               </a>
               <a
                 href="#hire"

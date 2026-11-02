@@ -21,11 +21,11 @@ export function Background() {
           </div>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue">Background</p>
           <h2 className="mt-2 text-balance font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">
-            Fifteen years of <span className="text-accent">real production</span> behind it.
+            Where I&rsquo;ve <span className="text-accent">worked</span>.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-ink/75">
-            AI didn&rsquo;t teach me story, pacing or a clean cut. Broadcast and
-            brand work did. That&rsquo;s what I bring to the tools.
+            From cutting network reality TV to directing campaigns for Disney
+            Channel, and now running productions at FORM.
           </p>
           <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
             <Link href="/work" className="nudge inline-flex items-center gap-1.5 text-ink transition hover:text-accent">

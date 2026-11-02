@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const runtime = "edge";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
-export const alt = "Jeremiah Daws, AI filmmaker.";
+export const alt = "Jeremiah Daws, producer, director and editor.";
 
 export default async function OG() {
   return new ImageResponse(
@@ -65,7 +65,7 @@ export default async function OG() {
               backgroundColor: "#b3312c",
             }}
           />
-          AI filmmaker · Atlanta
+          Producer · Director · Editor · Atlanta
         </div>
 
         <div
@@ -92,7 +92,7 @@ export default async function OG() {
             maxWidth: "900px",
           }}
         >
-          I make films with AI, and help other people make theirs.
+          Fifteen years making films for Disney, Nat Geo and Hallmark.
         </div>
 
         <div
@@ -108,9 +108,9 @@ export default async function OG() {
             fontWeight: 600,
           }}
         >
-          <span>AI films</span>
+          <span>Disney</span>
           <span style={{ color: "#b3312c" }}>·</span>
-          <span>Consulting</span>
+          <span>National Geographic</span>
           <span style={{ color: "#b3312c" }}>·</span>
           <span>Producer / Director at FORM</span>
         </div>

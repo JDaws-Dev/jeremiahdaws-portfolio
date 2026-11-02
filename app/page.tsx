@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { SelectedWork } from "@/components/SelectedWork";
 import { TopNav } from "@/components/TopNav";
 import { AiFilms } from "@/components/AiFilms";
 import { FilmProcess } from "@/components/FilmProcess";
@@ -13,9 +14,10 @@ export default function Page() {
       <TopNav />
       <main id="content">
         <Hero />
+        <SelectedWork />
+        <FormWork />
         <AiFilms />
         <FilmProcess />
-        <FormWork />
         <Background />
         <HireSection />
       </main>
