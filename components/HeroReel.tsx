@@ -6,8 +6,8 @@ import { LEAD_FILM_TITLE } from "./AiFilms";
 
 const POSTER = "/portfolio/stills/hero-reel-poster.jpg";
 const SOURCES = [
-  { src: "/portfolio/hero-reel.webm?v=ai", type: "video/webm" },
-  { src: "/portfolio/hero-reel.mp4?v=ai", type: "video/mp4" },
+  { src: "/portfolio/hero-reel.webm?v=dw", type: "video/webm" },
+  { src: "/portfolio/hero-reel.mp4?v=dw", type: "video/mp4" },
 ];
 
 type NetInfo = { saveData?: boolean; effectiveType?: string };

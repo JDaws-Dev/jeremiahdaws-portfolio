@@ -14,6 +14,15 @@ const WORK = [
     img: "/portfolio/calendar-jockeys.jpg",
   },
   {
+    title: "Downwind",
+    kind: "Spec commercial",
+    role: "",
+    body: "A boy comes home from school. Mom knows it's time to freshen up. A 30-second after-school comedy for a fictional body spray.",
+    href: "https://www.youtube.com/watch?v=VOGM5PTEulw",
+    linkLabel: "Watch on YouTube",
+    img: "/portfolio/stills/form-downwind.jpg",
+  },
+  {
     title: "Teeth Brushed?",
     kind: "Brand-style test",
     role: "",
@@ -46,12 +55,12 @@ export function FormWork() {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-2" data-stagger="140">
+        <div className="mt-8 grid gap-6 md:grid-cols-3" data-stagger="140">
           {WORK.map((w) => (
             <article key={w.title}>
               <a href={w.href} target="_blank" rel="noopener noreferrer" className="group block">
                 <div className="relative aspect-video overflow-hidden rounded-xl bg-black">
-                  <Image src={w.img} alt={w.title} fill sizes="(min-width: 768px) 36rem, 100vw" className="object-cover transition duration-500 motion-safe:group-hover:scale-[1.02]" />
+                  <Image src={w.img} alt={w.title} fill sizes="(min-width: 768px) 24rem, 100vw" className="object-cover transition duration-500 motion-safe:group-hover:scale-[1.02]" />
                   <span className="absolute left-3 top-3 rounded-full bg-paper/95 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink">
                     Made at FORM
                   </span>
