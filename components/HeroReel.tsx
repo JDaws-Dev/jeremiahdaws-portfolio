@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { LEAD_FILM_TITLE } from "./AiFilms";
 
-const POSTER = "/portfolio/stills/hero-reel-poster.jpg?v=career";
+const POSTER = "/portfolio/stills/hero-reel-poster-career.jpg";
 const SOURCES = [
   { src: "/portfolio/hero-reel.webm?v=career", type: "video/webm" },
   { src: "/portfolio/hero-reel.mp4?v=career", type: "video/mp4" },
