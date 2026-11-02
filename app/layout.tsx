@@ -6,7 +6,7 @@ const SITE_URL = "https://jeremiahdaws.com";
 const NAME = "Jeremiah Daws";
 const TAGLINE = "Producer, director, editor";
 const SHORT_DESC =
-  "Jeremiah Daws is a producer, director and editor in Atlanta. Producer / Director at FORM, where he directs the comedy series Calendar Jockeys. Six years producing and directing at Disney (Marvel, Lucasfilm, ABC, Freeform); editor for National Geographic and Hallmark. He also makes short films with AI.";
+  "Jeremiah Daws is a producer, director and editor in Atlanta. Producer / Director at FORM, where he directs the comedy series Calendar Jockeys. Six years producing and editing marketing video at Disney (Marvel, Lucasfilm, ABC, Freeform); editor for National Geographic and Hallmark. He also makes short films with AI.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

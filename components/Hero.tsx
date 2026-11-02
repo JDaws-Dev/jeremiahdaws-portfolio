@@ -44,9 +44,10 @@ export function Hero() {
             <p className="mt-5 max-w-xl text-base leading-snug text-ink/85 md:text-lg">
               Producer / Director at FORM, an Atlanta story company, where I
               direct the animated comedy <em>Calendar Jockeys</em>. Before that,
-              six years producing and directing for Disney, editing for National
-              Geographic and Hallmark, and indie features with my brother.
-              Lately, short films made with AI too.
+              six years producing and editing marketing video for Disney. Before
+              Disney, freelance editing for National Geographic and Hallmark.
+              Along the way, indie features with my brother, and lately short
+              films made with AI.
             </p>
 
             <div className="mt-7 flex flex-wrap items-center gap-3">

@@ -47,7 +47,7 @@ const CREDITS: Credit[] = [
     cardTitle: "Broadcast & feature editing",
     hat: "Editor",
     client: "National Geographic · Hallmark · U.S. Army (Ricky Schroder)",
-    years: "2010–2014",
+    years: "2010–2015",
     storyKicker:
       "Multi-cam reality, broadcast finishing, feature-length narrative. Story-shaping and pacing: the difference between a moment that lands and one that gets skipped.",
     highlights: [
@@ -89,11 +89,10 @@ export function NetworkCredits({ entries }: { entries: PortfolioEntry[] }) {
           Before FORM: Disney and broadcast.
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-ink-muted">
-          Producer / Director at FORM today. Before that, six years producing and directing for Disney (2015–2021), after
-          freelance short-form editing for Disney from 2010: Yellow Shoes Parks marketing and Disney Consumer Products (Marvel,
-          Lucasfilm, ABC, Freeform). Plus broadcast Editor credits at National
-          Geographic, Hallmark, and the U.S. Army reality series produced by
-          Ricky Schroder.
+          Producer / Director at FORM today. Before that, six years as a marketing video producer and editor at Disney
+          (2015–2021): Yellow Shoes Parks marketing and Disney Consumer Products (Marvel, Lucasfilm, ABC, Freeform). Before
+          Disney, freelance editing (2010–2015) for National Geographic, Hallmark, and the U.S. Army reality series produced
+          by Ricky Schroder.
         </p>
       </div>
 

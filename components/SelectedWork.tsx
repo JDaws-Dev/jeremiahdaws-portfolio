@@ -35,7 +35,7 @@ const WORK: Piece[] = [
     title: "Disney short-form",
     org: "Disney Parks · Consumer Products",
     role: "Editor",
-    years: "2010–2015",
+    years: "Disney, 2015–2021",
     still: "/portfolio/stills/career-disney-editor.jpg",
     href: "https://drive.google.com/file/d/1Y64ZpibjrvCMQwzrnve0KRZadV3a8KZg/view",
     blurb: "Spots, social and brand pieces cut for Disney.",

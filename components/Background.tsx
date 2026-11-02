@@ -4,11 +4,9 @@ import { IconArrowRight } from "./icons";
 
 const CREDITS = [
   { org: "FORM", what: "Producer / Director · Calendar Jockeys", years: "2026–" },
-  { org: "Disney Parks & Consumer Products", what: "Producer and director · Marvel, Lucasfilm, ABC, Freeform, Target", years: "2015–2021" },
-  { org: "National Geographic", what: "Editor · Building Wild", years: "2014" },
-  { org: "Hallmark", what: "Editor · Our Wild Hearts", years: "2013" },
-  { org: "Daws Brothers", what: "Indie features and shorts, written and directed with my brother", years: "2012–2020" },
-  { org: "Freelance editor", what: "Short-form editing for Disney Parks marketing and Disney Consumer Products", years: "2010–2015" },
+  { org: "Disney Parks & Disney Consumer Products", what: "Marketing video producer / editor · Marvel, Lucasfilm, ABC, Freeform, Target", years: "2015–2021" },
+  { org: "Freelance editor", what: "Building Wild (National Geographic) · Our Wild Hearts (Hallmark) · Starting Strong (Ricky Schroder Productions)", years: "2010–2015" },
+  { org: "Daws Brothers", what: "Indie features and shorts with my brother · Dangerous Calling, Missing in the Mansion", years: "Ongoing" },
 ];
 
 export function Background() {

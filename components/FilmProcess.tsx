@@ -20,10 +20,10 @@ const STEPS = [
 ];
 
 const FRAMES = [
-  { src: "/portfolio/stills/waystb-joey.jpg", alt: "Joey, seven, holds up the paper bag he means to wear" },
-  { src: "/portfolio/stills/waystb-draw.jpg", alt: "A child's hand draws a red crayon smile on the bag" },
-  { src: "/portfolio/stills/waystb-mask.jpg", alt: "Joey pulls the paper-bag mask over his head" },
-  { src: "/portfolio/stills/waystb-search.jpg", alt: "His older brother Tyler searches a foggy street at night" },
+  { src: "/portfolio/stills/waystb-joey-living.jpg", alt: "Joey, seven, holds the paper bag he means to wear" },
+  { src: "/portfolio/stills/waystb-joey-porch.jpg", alt: "Joey on the front porch at dusk" },
+  { src: "/portfolio/stills/waystb-joey-street.jpg", alt: "Joey in his paper-bag mask, trick-or-treating alone" },
+  { src: "/portfolio/stills/waystb-joey-night.jpg", alt: "Joey, still masked, back on a porch late at night" },
 ];
 
 export function FilmProcess() {
@@ -36,9 +36,10 @@ export function FilmProcess() {
             Keeping a character the same <span className="text-accent">from shot to shot.</span>
           </h2>
           <p className="text-base text-ink/75">
-            Four frames from <em>What Are You Supposed To Be?</em>: the same
-            boys and the same bag, held across separate generations in
-            Seedance 2.5. The hard part of an AI film is the same as any film:
+            Four shots of Joey from <em>What Are You Supposed To Be?</em>:
+            the same boy, the same striped shirt and the same paper bag, from
+            the living room to the street at night, each a separate generation
+            in Seedance 2.5. The hard part of an AI film is the same as any film:
             keeping the story and the character intact from the first shot to
             the last.
           </p>
