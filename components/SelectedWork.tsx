@@ -18,7 +18,7 @@ const WORK: Piece[] = [
     org: "Disney Channel · Disney XD",
     role: "Director / Producer",
     years: "Disney, 2015–2021",
-    still: "/portfolio/stills/career-target-disney.jpg",
+    still: "/portfolio/stills/career-target-disney-2.jpg",
     href: "https://drive.google.com/file/d/1wAEXhYluSbR8qrlzjFKILVvicRwRDpLa/view",
     blurb: "A back-to-school campaign that aired on Disney Channel and Disney XD.",
   },
