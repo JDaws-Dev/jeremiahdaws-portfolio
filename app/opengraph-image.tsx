@@ -92,7 +92,7 @@ export default async function OG() {
             maxWidth: "900px",
           }}
         >
-          Fifteen years making films for Disney, Nat Geo and Hallmark.
+          Films for FORM, Disney, Nat Geo and Hallmark.
         </div>
 
         <div

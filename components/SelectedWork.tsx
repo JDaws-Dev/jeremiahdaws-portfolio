@@ -77,7 +77,7 @@ export function SelectedWork() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue">Selected work</p>
             <h2 className="mt-2 text-balance font-serif text-3xl leading-tight tracking-[-0.01em] md:text-4xl">
-              Fifteen years of making things people watch.
+              Brand, broadcast and indie work.
             </h2>
           </div>
           <Link
