@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { LEAD_FILM_TITLE } from "./AiFilms";
 
-const POSTER = "/portfolio/stills/hero-reel-poster.jpg";
+const POSTER = "/portfolio/stills/hero-reel-poster.jpg?v=career";
 const SOURCES = [
-  { src: "/portfolio/hero-reel.webm", type: "video/webm" },
-  { src: "/portfolio/hero-reel.mp4", type: "video/mp4" },
+  { src: "/portfolio/hero-reel.webm?v=career", type: "video/webm" },
+  { src: "/portfolio/hero-reel.mp4?v=career", type: "video/mp4" },
 ];
 
 type NetInfo = { saveData?: boolean; effectiveType?: string };
