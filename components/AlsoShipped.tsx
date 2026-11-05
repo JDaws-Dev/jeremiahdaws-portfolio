@@ -4,6 +4,7 @@ import type { PortfolioEntry } from "@/lib/portfolio";
 import { IconArrowUpRight } from "./icons";
 
 const SLUGS = [
+  "apps-ourtapes",
   "apps-beaversbathroomblitz",
   "apps-fridaynightvideo",
   "apps-illprayforyou",
