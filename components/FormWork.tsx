@@ -16,7 +16,7 @@ const WORK = [
   {
     title: "Downwind",
     kind: "Spec commercial",
-    role: "",
+    role: "Concept & director",
     body: "A boy comes home from school. Mom knows it's time to freshen up. A 30-second after-school comedy for a fictional body spray.",
     href: "https://www.youtube.com/watch?v=VOGM5PTEulw",
     linkLabel: "Watch on YouTube",
