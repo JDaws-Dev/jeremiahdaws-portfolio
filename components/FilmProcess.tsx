@@ -63,24 +63,6 @@ export function FilmProcess() {
           ))}
         </ol>
 
-        <div className="fade-only mt-12 flex flex-col gap-4 border-t border-ink/15 pt-6 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-8" data-reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue">Go deeper</p>
-          <a
-            href="/seedance"
-            className="group text-base font-medium text-ink underline decoration-ink/25 underline-offset-4 transition hover:text-accent hover:decoration-accent"
-          >
-            The Seedance 2.5 field guide <span aria-hidden="true" className="inline-block transition group-hover:translate-x-0.5">→</span>
-          </a>
-          <a
-            href="https://www.youtube.com/watch?v=A2-c4RlFgR0"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group text-base font-medium text-ink underline decoration-ink/25 underline-offset-4 transition hover:text-accent hover:decoration-accent"
-          >
-            Video: I Made an AI Film With Just Words. 7 Things I Learned. <span aria-hidden="true" className="inline-block transition group-hover:translate-x-0.5">↗</span>
-          </a>
-        </div>
-
       </div>
     </section>
   );

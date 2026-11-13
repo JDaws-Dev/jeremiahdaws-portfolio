@@ -8,6 +8,7 @@ const LINKS = [
   { href: "/#work", label: "Work" },
   { href: "/#form", label: "FORM" },
   { href: "/#films", label: "AI films" },
+  { href: "/seedance", label: "Seedance guide" },
   { href: "/work", label: "Archive" },
   { href: "/#hire", label: "Contact" },
 ];

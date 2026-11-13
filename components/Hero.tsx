@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import { HeroReel } from "./HeroReel";
+import { Latest } from "./Latest";
 import { IconArrowRight, IconPlay } from "./icons";
 
 const BRANDS = [
@@ -22,6 +23,8 @@ export function Hero() {
       </div>
 
       <div className="mx-auto max-w-6xl px-4 pb-12 pt-20 sm:px-6 md:pb-16 md:pt-28">
+        <Latest />
+
         {/* Mobile: a frame from the film first. Desktop: side by side. */}
         <div className="grid gap-8 md:grid-cols-[1fr_1.05fr] md:items-center md:gap-12">
           <div className="hero-in order-2 min-w-0 md:order-1">
