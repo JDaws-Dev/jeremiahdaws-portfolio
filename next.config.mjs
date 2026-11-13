@@ -13,6 +13,14 @@ const nextConfig = {
       { protocol: "https", hostname: "lh3.googleusercontent.com" },
     ],
   },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        { source: '/seedance', destination: 'https://seedance-field-guide.vercel.app/seedance' },
+        { source: '/seedance/:path*', destination: 'https://seedance-field-guide.vercel.app/seedance/:path*' },
+      ],
+    };
+  },
 };
 
 const withMDX = createMDX();
