@@ -8,17 +8,19 @@ const LATEST: {
   date: string;
   title: string;
   img: string;
+  /** A companion link shown under the title (e.g. the guide that goes with a video). */
+  also?: { href: string; label: string };
   /** Held slot for a video still being made: no link, no picture yet. */
   soon?: boolean;
 }[] = [
   {
-    href: "#seedance-video",
-    external: false,
-    label: "Coming soon",
-    date: "Seedance 2.5",
-    title: "A video on making films with Seedance 2.5",
-    img: "",
-    soon: true,
+    href: "https://www.youtube.com/watch?v=8IpdKyaKC1Y",
+    external: true,
+    label: "New video",
+    date: "Nov 13",
+    title: "Six Ways to Use Seedance 2.5 (Tested on One Grumpy Cat)",
+    img: "/portfolio/latest-seedance-video.jpg",
+    also: { href: "/seedance", label: "Read the Seedance 2.5 field guide" },
   },
   {
     href: "https://www.youtube.com/watch?v=A2-c4RlFgR0",
@@ -27,14 +29,6 @@ const LATEST: {
     date: "Nov 11",
     title: "I Made an AI Film With Just Words. 7 Things I Learned.",
     img: "/portfolio/latest-words-video.jpg",
-  },
-  {
-    href: "/seedance",
-    external: false,
-    label: "Field guide",
-    date: "Nov 2026",
-    title: "Seedance 2.5, every option explained for filmmakers",
-    img: "/portfolio/latest-seedance-guide.jpg",
   },
   {
     href: "#play",
@@ -50,7 +44,7 @@ export function Latest() {
   return (
     <div className="hero-in mb-10 md:mb-14">
       <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-blue">Latest</p>
-      <ul className="-mx-4 mt-3 flex snap-x snap-mandatory scroll-px-4 gap-4 sm:scroll-px-6 md:scroll-px-0 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:px-0 md:pb-0">
+      <ul className="-mx-4 mt-3 flex snap-x snap-mandatory scroll-px-4 gap-4 sm:scroll-px-6 md:scroll-px-0 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0">
         {LATEST.map((item) => (
           <li key={item.href} className="w-[78%] shrink-0 snap-start sm:w-[46%] md:w-auto">
             {item.soon ? (
@@ -74,7 +68,7 @@ export function Latest() {
                   src={item.img}
                   alt=""
                   fill
-                  sizes="(min-width: 1024px) 18rem, (min-width: 768px) 24rem, 78vw"
+                  sizes="(min-width: 768px) 24rem, 78vw"
                   className="object-cover transition duration-500 motion-safe:group-hover:scale-105"
                 />
               </span>
@@ -87,6 +81,14 @@ export function Latest() {
               </span>
             </a>
             )}
+            {item.also ? (
+              <a
+                href={item.also.href}
+                className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-ink/70 underline decoration-ink/25 underline-offset-4 transition hover:text-accent hover:decoration-accent"
+              >
+                {item.also.label} <span aria-hidden="true">→</span>
+              </a>
+            ) : null}
           </li>
         ))}
       </ul>
