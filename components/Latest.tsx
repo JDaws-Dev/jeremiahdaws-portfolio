@@ -31,6 +31,14 @@ const LATEST: {
     img: "/portfolio/latest-words-video.jpg",
   },
   {
+    href: "https://www.youtube.com/watch?v=3GjAoZdF874",
+    external: true,
+    label: "Halloween short",
+    date: "Oct 31",
+    title: "What Are You Supposed To Be?",
+    img: "/portfolio/stills/ai-what-are-you-supposed-to-be.jpg",
+  },
+  {
     href: "#play",
     external: false,
     label: "New film",
@@ -44,7 +52,7 @@ export function Latest() {
   return (
     <div className="hero-in mb-10 md:mb-14">
       <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-blue">Latest</p>
-      <ul className="-mx-4 mt-3 flex snap-x snap-mandatory scroll-px-4 gap-4 sm:scroll-px-6 md:scroll-px-0 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0">
+      <ul className="-mx-4 mt-3 flex snap-x snap-mandatory scroll-px-4 gap-4 sm:scroll-px-6 md:scroll-px-0 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:px-0 md:pb-0">
         {LATEST.map((item) => (
           <li key={item.href} className="w-[78%] shrink-0 snap-start sm:w-[46%] md:w-auto">
             {item.soon ? (
@@ -68,7 +76,7 @@ export function Latest() {
                   src={item.img}
                   alt=""
                   fill
-                  sizes="(min-width: 768px) 24rem, 78vw"
+                  sizes="(min-width: 1024px) 18rem, (min-width: 768px) 24rem, 78vw"
                   className="object-cover transition duration-500 motion-safe:group-hover:scale-105"
                 />
               </span>
