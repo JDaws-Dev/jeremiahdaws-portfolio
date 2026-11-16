@@ -44,7 +44,7 @@ const LATEST: {
     label: "Halloween short",
     date: "Oct 31",
     title: "What Are You Supposed To Be?",
-    img: "/portfolio/stills/ai-what-are-you-supposed-to-be.jpg",
+    img: "/portfolio/latest-waystb-video.jpg",
   },
 ];
 
