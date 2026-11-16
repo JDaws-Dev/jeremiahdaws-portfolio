@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d1b17">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Holiday Night">
+<title>Holiday Night</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,700&display=swap">
+<style>
+/* Layout: phone-app shell. Sticky top bar + preset strip, poster grid, bottom tab bar; filters and details open as bottom sheets. Pine night, candle wax and cranberry. */
+:root{
+  color-scheme:dark;
+  --night:#11241e; --deep:#0a1612; --card:#18302a; --card2:#21403a; --line:rgba(242,197,138,.18);
+  --gold:#f2c58a; --gold-soft:rgba(242,197,138,.65); --ink:#f4efe6; --muted:rgba(244,239,230,.62);
+  --s-low:#a9c4c9; --s-mid:#f2c58a; --s-high:#c9445c; --berry:#c9445c;
+  --display:'Fraunces','Iowan Old Style',Georgia,serif;
+  --body:'Inter','Helvetica Neue',system-ui,-apple-system,sans-serif;
+  --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--deep)}
+body{color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45;
+  background:radial-gradient(ellipse 80% 45% at 50% -5%,rgba(242,197,138,.16) 0%,transparent 60%),radial-gradient(ellipse 90% 50% at 50% 0%,#1d3a32 0%,var(--night) 45%,var(--deep) 100%) fixed;min-height:100dvh}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+.top{position:sticky;top:0;z-index:20;padding:calc(var(--safe-t) + 10px) 16px 10px;
+  background:linear-gradient(var(--night) 70%,rgba(17,36,30,0));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.bar{display:flex;align-items:center;gap:10px;max-width:1100px;margin:0 auto}
+.back{display:flex;align-items:center;gap:4px;color:var(--gold-soft);font-size:13px;text-decoration:none;white-space:nowrap}
+.back svg{width:18px;height:18px}
+h1{flex:1;margin:0;text-align:center;font-family:var(--display);font-style:italic;font-weight:500;font-size:24px;color:var(--gold);letter-spacing:.01em}
+.iconbtn{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:1px solid var(--line)}
+.iconbtn svg{width:18px;height:18px}
+.search{max-width:1100px;margin:10px auto 0;position:relative}
+.search input{width:100%;font:inherit;font-size:16px;padding:11px 14px 11px 38px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;opacity:.6}
+.presets{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;max-width:1100px;margin:10px auto 0;padding-bottom:2px}
+.presets::-webkit-scrollbar{display:none}
+.pill{flex:0 0 auto;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:13px;font-weight:600;white-space:nowrap}
+.pill small{display:block;font-weight:400;font-size:11px;color:var(--muted)}
+.pill[aria-pressed="true"]{background:var(--gold);color:#2a1a06;border-color:var(--gold)}
+.pill[aria-pressed="true"] small{color:#4a3416}
+
+main{max-width:1100px;margin:0 auto;padding:4px 16px calc(var(--safe-b) + 96px)}
+.summary{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin:8px 2px 12px}
+.summary b{color:var(--ink);font-weight:600}
+.summary button{color:var(--gold);font-weight:600;font-size:12px;padding:4px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+@media (max-width:420px){.grid{grid-template-columns:repeat(2,1fr);gap:12px}}
+.card{text-align:left;display:flex;flex-direction:column;gap:6px;min-width:0}
+.poster{position:relative;aspect-ratio:2/3;border-radius:10px;overflow:hidden;background:var(--card2);box-shadow:0 6px 18px rgba(0,0,0,.45)}
+.poster img{width:100%;height:100%;object-fit:cover;display:block}
+.badge{position:absolute;top:8px;left:8px;min-width:34px;height:34px;padding:0 6px;border-radius:10px;display:grid;place-items:center;
+  font-weight:700;font-size:16px;color:#14100a;font-variant-numeric:tabular-nums;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.lv-low{background:var(--s-low)} .lv-mid{background:var(--s-mid)} .lv-high{background:var(--s-high);color:#fff}
+.ct{font-weight:600;font-size:14px;line-height:1.25;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.cm{font-size:12px;color:var(--muted);margin-top:-3px}
+.empty{grid-column:1/-1;text-align:center;padding:48px 16px;color:var(--muted)}
+.empty b{display:block;color:var(--ink);font-size:16px;margin-bottom:6px}
+
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;justify-content:space-around;
+  padding:8px 8px calc(var(--safe-b) + 8px);background:rgba(10,22,18,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;font-weight:600;color:var(--muted);padding:4px 14px;position:relative}
+.tab svg{width:22px;height:22px}
+.tab.on{color:var(--gold)}
+.dot{position:absolute;top:0;right:12px;min-width:16px;height:16px;border-radius:8px;background:var(--gold);color:#2a1a06;font-size:10px;display:grid;place-items:center;padding:0 4px}
+
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:40;opacity:0;pointer-events:none;transition:opacity .2s}
+.scrim.open{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:50;max-height:88dvh;overflow-y:auto;overscroll-behavior:contain;
+  background:#13261f;border-radius:20px 20px 0 0;border-top:1px solid var(--line);
+  padding:8px 18px calc(var(--safe-b) + 22px);transform:translateY(100%);transition:transform .28s cubic-bezier(.2,.8,.2,1);max-width:640px;margin:0 auto}
+.sheet.open{transform:none}
+.grab{width:40px;height:5px;border-radius:3px;background:rgba(232,227,213,.25);margin:4px auto 12px}
+.sheet h2{font-family:var(--display);font-style:italic;font-weight:500;color:var(--gold);font-size:22px;margin:0 0 4px}
+.sec{padding:14px 0;border-bottom:1px solid var(--line)}
+.sec:last-of-type{border-bottom:0}
+.sec-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:8px}
+.sec-h span{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--muted)}
+.sec-h b{color:var(--gold);font-variant-numeric:tabular-nums}
+.hint{font-size:12px;color:var(--muted);margin:6px 0 0}
+input[type=range]{width:100%;accent-color:var(--gold);height:28px}
+.dual{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center;font-size:12px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:13px}
+.chip[aria-pressed="true"]{background:var(--gold);color:#2a1a06;border-color:var(--gold);font-weight:600}
+.switch{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.switch input{width:46px;height:28px;appearance:none;-webkit-appearance:none;background:var(--card2);border-radius:14px;position:relative;border:1px solid var(--line);transition:background .2s}
+.switch input::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--ink);transition:transform .2s}
+.switch input:checked{background:var(--gold)} .switch input:checked::after{transform:translateX(18px);background:#2a1a06}
+select{width:100%;font:inherit;font-size:16px;padding:10px;border-radius:10px;background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.sheet-actions{display:flex;gap:10px;position:sticky;bottom:calc(-1 * (var(--safe-b) + 22px));background:#13261f;padding:12px 0 calc(var(--safe-b) + 4px);margin-top:4px}
+.btn{flex:1;padding:13px;border-radius:12px;font-weight:700;text-align:center;text-decoration:none;font-size:15px}
+.btn.primary{background:var(--gold);color:#2a1a06;flex:2;white-space:nowrap}
+.btn.ghost{border:1px solid var(--line);background:var(--card);color:var(--ink)}
+
+.d-top{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:start}
+.d-top img{width:110px;aspect-ratio:2/3;object-fit:cover;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+.d-title{font-family:var(--display);font-style:italic;font-size:24px;line-height:1.1;color:var(--gold);margin:2px 0 6px;text-wrap:balance}
+.d-meta{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 10px}
+.d-meta .r{border:1px solid var(--muted);border-radius:4px;padding:0 5px;color:var(--ink);font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tag{font-size:11px;padding:2px 8px;border-radius:999px;background:var(--card2);color:var(--ink)}
+.tag.warn{background:transparent;border:1px solid var(--s-mid);color:var(--s-mid)}
+.meters{display:grid;gap:12px;margin-top:16px}
+.meter-row{display:grid;grid-template-columns:96px 1fr 44px;gap:10px;align-items:center;font-size:13px}
+.meter-row .lbl{color:var(--muted)}
+.meter-row .val{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.track{display:flex;gap:3px}
+.track i{flex:1;height:8px;border-radius:2px;background:var(--card2)}
+.track i.on{background:var(--c)}
+.meter-note{grid-column:2/-1;font-size:12px;color:var(--muted);margin-top:-6px}
+.d-why{margin:16px 0 0;padding:12px 14px;border-radius:12px;background:rgba(201,68,92,.12);border:1px solid rgba(201,68,92,.4);font-size:14px}
+.d-why b{color:var(--s-high)}
+.d-syn{margin:14px 0 0;font-size:15px;line-height:1.55}
+.guess{font-size:12px;color:var(--muted);font-style:italic;margin-top:8px}
+@media (prefers-reduced-motion:reduce){.sheet,.scrim{transition:none}}
+@media (min-width:700px){.tabs{max-width:520px;margin:0 auto 14px;border-radius:18px;border:1px solid var(--line);left:16px;right:16px}}
+.badge{border-radius:50% 50% 50% 50%/58% 58% 42% 42%}
+.deb{position:absolute;bottom:8px;left:8px;right:8px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:3px 4px;border-radius:6px;background:rgba(10,22,18,.82);color:var(--gold);border:1px solid var(--line)}
+.cozy{position:absolute;top:8px;right:8px;font-size:12px;padding:3px 7px;border-radius:999px;background:rgba(10,22,18,.8);color:var(--gold);font-weight:600;font-variant-numeric:tabular-nums}
+.alt{display:block;margin:8px auto 0;max-width:1100px;font-size:12px;color:var(--gold-soft);text-decoration:none}
+.seg{display:flex;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.seg button{flex:1;padding:9px 6px;font-size:13px;background:var(--card)}
+.seg button[aria-pressed="true"]{background:var(--gold);color:#2a1a06;font-weight:700}
+h1 i{font-style:normal;color:var(--berry)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="bar">
+    <a class="back" href="/movies.html" aria-label="Back to Movie Night"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>Movie Night</a>
+    <h1>Holiday Night</h1>
+    <button class="iconbtn" id="openFilters2" aria-label="Filters"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg></button>
+  </div>
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="Search titles, plots, Santa…" autocomplete="off" enterkeyhint="search">
+  </div>
+  <div class="presets" id="presets" role="group" aria-label="Who's watching"></div>
+</header>
+
+<main>
+  <div class="summary"><span id="summary"></span><button id="reset" type="button">Reset</button></div>
+  <div class="grid" id="grid"></div>
+  <a class="alt" href="/scare.html">Wrong season? Try Scare Night →</a>
+</main>
+
+<nav class="tabs" aria-label="App">
+  <button class="tab on" id="tabBrowse" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="9" rx="1.5"/><rect x="3" y="15" width="7" height="6" rx="1.5"/><rect x="14" y="15" width="7" height="6" rx="1.5"/></svg>Browse</button>
+  <button class="tab" id="openFilters" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Filters<span class="dot" id="fcount" hidden></span></button>
+  <button class="tab" id="surprise" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H7.5a2.5 2.5 0 110-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 100-5C13 2 12 7 12 7z"/></svg>Surprise me</button>
+</nav>
+
+<div class="scrim" id="scrim"></div>
+
+<section class="sheet" id="filters" role="dialog" aria-modal="true" aria-labelledby="fh" hidden>
+  <div class="grab"></div>
+  <h2 id="fh">Filters</h2>
+  <div class="sec">
+    <div class="sec-h"><span>How Christmassy</span><b id="hsV"></b></div>
+    <div class="dual"><label for="hsMin">From</label><input id="hsMin" type="range" min="1" max="10" value="1">
+      <label for="hsMax">To</label><input id="hsMax" type="range" min="1" max="10" value="10"></div>
+    <p class="hint">1–3 it happens to be the holidays · 4–6 the holiday matters · 7–10 the holiday is the movie</p>
+  </div>
+  <div class="sec">
+    <div class="sec-h"><span>Cozy, at least</span><b id="czV"></b></div>
+    <input id="cz" type="range" min="1" max="5" value="1">
+    <p class="hint" id="czH"></p>
+  </div>
+  <div class="sec">
+    <div class="sec-h"><span>Rated, up to</span><b id="mrV"></b></div>
+    <input id="mr" type="range" min="0" max="3" value="3">
+    <p class="hint">Old unrated classics count as PG.</p>
+  </div>
+  <div class="sec">
+    <div class="sec-h"><span>Language, up to</span><b id="lV"></b></div>
+    <input id="l" type="range" min="0" max="5" value="5">
+    <p class="hint" id="lH"></p>
+  </div>
+  <div class="sec">
+    <div class="sec-h"><span>Sex &amp; nudity, up to</span><b id="sxV"></b></div>
+    <input id="sx" type="range" min="0" max="5" value="5">
+    <p class="hint" id="sxH"></p>
+  </div>
+  <div class="sec">
+    <div class="sec-h"><span>"Is it a Christmas movie?"</span></div>
+    <div class="seg" id="deb"><button type="button" data-d="any">All</button><button type="button" data-d="hide">Real ones only</button><button type="button" data-d="only">Only the debates</button></div>
+  </div>
+  <div class="sec">
+    <div class="sec-h"><span>Holiday</span></div>
+    <div class="chips" id="hols"></div>
+  </div>
+  <div class="sec">
+    <div class="sec-h"><span>Kind of movie</span></div>
+    <div class="chips" id="cats"></div>
+  </div>
+  <div class="sec">
+    <div class="sec-h"><span>Sort</span></div>
+    <select id="sort" aria-label="Sort">
+      <option value="hs">Most Christmassy first</option>
+      <option value="hs-asc">Least Christmassy first</option>
+      <option value="cz">Coziest first</option>
+      <option value="title">Title A–Z</option>
+      <option value="year">Newest first</option>
+      <option value="old">Oldest first</option>
+    </select>
+  </div>
+  <div class="sheet-actions">
+    <button class="btn ghost" id="fReset" type="button">Reset</button>
+    <button class="btn primary" id="fDone" type="button">Show movies</button>
+  </div>
+</section>
+
+<section class="sheet" id="detail" role="dialog" aria-modal="true" aria-labelledby="dTitle" hidden>
+  <div class="grab"></div>
+  <div id="dBody"></div>
+</section>
+
+<script>
+const MOVIES = [{"t":"8-Bit Christmas","n":"8-Bit Christmas","y":2021,"rated":"PG","r":1,"hs":7,"cz":4,"x":0,"l":1,"cat":"Family comedy","hol":"Christmas","d":0,"why":"A few mild swears and schoolyard insults; a kid gets hurt sledding.","syn":"In suburban Chicago during the late 1980s, ten-year-old Jake Doyle embarks on a herculean quest to get the latest and greatest video game system for Christmas.","genres":["Family","Comedy"],"id":802217,"p":"/5YwaISdOwp8Zu6O7kwBeUn8a7Pu.jpg","rt":98},{"t":"A Christmas Carol","n":"A Christmas Carol","y":1938,"rated":"NR","r":1,"hs":10,"cz":4,"x":0,"l":0,"cat":"Classic","hol":"Christmas","d":0,"why":"The ghosts, especially the silent Christmas Yet to Come, can unsettle little ones.","syn":"Miser Ebenezer Scrooge is awakened on Christmas Eve by spirits who reveal to him his own miserable existence, what opportunities he wasted in his youth, his current cruelties, and the dire fate that awaits him if he does not change his ways. Scrooge is faced with his own story of growing bitterness and meanness, and must decide what his own future will hold: death or redemption.","genres":["Drama","Fantasy","Family"],"id":25842,"p":"/cvr7x3CjBMsHv2GptR0tcFddMSa.jpg","rt":69},{"t":"A Christmas Story","n":"A Christmas Story","y":1983,"rated":"PG","r":1,"hs":10,"cz":4,"x":1,"l":3,"cat":"Family comedy","hol":"Christmas","d":0,"why":"The famous 'fudge' moment, a leg lamp, bullies, and a lot of dad-cursing gibberish.","syn":"The comic mishaps and adventures of a young boy named Ralph, trying to convince his parents, teachers, and Santa that a Red Ryder B.B. gun really is the perfect Christmas gift for the 1940s.","genres":["Comedy","Family"],"id":850,"p":"/34nSHYqmb7222tiqiuKqKJmZiQa.jpg","rt":93},{"t":"Christmas In Connecticut (1945)","n":"Christmas In Connecticut","y":1945,"rated":"NR","r":1,"hs":9,"cz":4,"x":0,"l":0,"cat":"Rom-com","hol":"Christmas","d":0,"why":"Clean screwball fun; a married-woman masquerade is the only grown-up wrinkle.","syn":"While recovering in a hospital, war hero Jefferson Jones grows familiar with the \"Diary of a Housewife\" column written by Elizabeth Lane. Jeff's nurse arranges with Elizabeth's publisher, Alexander Yardley, for Jeff to spend the holiday at Elizabeth's bucolic Connecticut farm with her husband and child. But the column is a sham, so Elizabeth and her editor, Dudley Beecham, in fear of losing their jobs, hasten to set up the single, childless and entirely  nondomestic Elizabeth on a country farm.","genres":["Comedy","Romance"],"id":13669,"p":"/oH1hM9wOZZflPZ5smKqWXvLXcyX.jpg","rt":102},{"t":"Christmas With the Kranks","n":"Christmas With the Kranks","y":2004,"rated":"PG","r":1,"hs":10,"cz":3,"x":1,"l":1,"cat":"Family comedy","hol":"Christmas","d":0,"why":"Mild innuendo about tanning and Botox; neighbors behave badly.","syn":"When their only daughter Blair leaves the family nest, Luther and Nora Krank decide to book an island cruise to beat the yuletide blues and just skip the holidays. But their decision to boycott tradition has the whole neighborhood in an uproar, and when Blair calls on Christmas Eve to announce a surprise visit with her new fiancée, the Kranks have just twelve hours to perform a miracle and pull themselves and their neighbors together to throw the best celebration ever!","genres":["Comedy","Family"],"id":13673,"p":"/q866vL3KhAjbkZH1enT7AoxmRHx.jpg","rt":99},{"t":"Dr. Seuss' How the Grinch Stole Christmas","n":"Dr. Seuss' How the Grinch Stole Christmas","y":2000,"rated":"PG","r":1,"hs":10,"cz":3,"x":2,"l":1,"cat":"Family comedy","hol":"Christmas","d":0,"why":"Crude gags and innuendo for a PG (the office party, the mistletoe moment).","syn":"The Grinch decides to rob Whoville of Christmas - but a dash of kindness from little Cindy Lou Who and her family may be enough to melt his heart...","genres":["Family","Comedy","Fantasy"],"id":8871,"p":"/1WZbbPApEivA421gCOluuzMMKCk.jpg","rt":105},{"t":"How the Grinch Stole Christmas: The Ultimate Edition","n":"How the Grinch Stole Christmas","y":1966,"rated":"G","r":0,"hs":10,"cz":4,"x":0,"l":0,"cat":"TV special","hol":"Christmas","d":0,"why":"The 1966 Chuck Jones special. Nothing to worry about.","syn":"Bitter and hateful, the Grinch is irritated at the thought of a nearby village having a happy time celebrating Christmas. Disguised as Santa Claus, with his dog made to look like a reindeer, he decides to raid the village to steal all the Christmas things.","genres":["Animation","Family","Comedy"],"id":13377,"p":"/7ir0iRuPK9OEuH569cp0nF5CJce.jpg","rt":25},{"t":"Illumination Presents: Dr. Seuss' The Grinch","n":"Dr. Seuss' The Grinch","y":2018,"rated":"PG","r":1,"hs":10,"cz":4,"x":0,"l":0,"cat":"Animated","hol":"Christmas","d":0,"why":"Gentle and silly; safest Grinch for the littlest.","syn":"The Grinch hatches a scheme to ruin Christmas when the residents of Whoville plan their annual holiday celebration. But a certain little who might change things.","genres":["Animation","Comedy","Family","Fantasy"],"id":360920,"p":"/Al7DMUp8bqUN4JwXVNxfJYyv5cH.jpg","rt":85},{"t":"Elf (2003)","n":"Elf","y":2003,"rated":"PG","r":1,"hs":10,"cz":5,"x":1,"l":1,"cat":"Family comedy","hol":"Christmas","d":0,"why":"A couple of mild words and a joke about a shower scene; otherwise pure sugar.","syn":"When young Buddy falls into Santa's gift sack on Christmas Eve, he's transported back to the North Pole and raised as a toy-making elf by Santa's helpers. But as he grows into adulthood, he can't shake the nagging feeling that he doesn't belong. Buddy vows to visit Manhattan and find his real dad, a workaholic.","genres":["Comedy","Family","Fantasy"],"id":10719,"p":"/oOleziEempUPu96jkGs0Pj6tKxj.jpg","rt":97},{"t":"Ernest Saves Christmas","n":"Ernest Saves Christmas","y":1988,"rated":"PG","r":1,"hs":10,"cz":4,"x":0,"l":0,"cat":"Family comedy","hol":"Christmas","d":0,"why":"Slapstick and silly disguises; very kid-safe.","syn":"When Santa Claus decides to retire and pass on his magic bag of Christmas surprises to a new Saint Nick, he enlists the aid of a hilarious assortment of characters. A perky teen runaway and hapless taxi driver Ernest P. Worrell must convince a skeptical kiddie-show host to take over the post of Father Christmas.","genres":["Comedy","Family"],"id":26386,"p":"/r8UqwSaJoFWKfcglcWAGXK3zwf2.jpg","rt":91},{"t":"Holiday Inn","n":"Holiday Inn","y":1942,"rated":"NR","r":1,"hs":8,"cz":4,"x":0,"l":0,"cat":"Musical","hol":"Christmas","d":0,"why":"Warning: the Lincoln's Birthday number is performed in blackface. Many families skip that scene.","syn":"Lovely Linda Mason has crooner Jim Hardy head over heels, but suave stepper Ted Hanover wants her for his new dance partner after fickle Lila Dixon gives him the brush. Jim's supper club, Holiday Inn, is the setting for the chase by Hanover and his manager.","genres":["Comedy","Drama","Romance"],"id":13485,"p":"/7eZzwqLM1w1Mljg60rzB1zr27lu.jpg","rt":101},{"t":"Home Alone","n":"Home Alone","y":1990,"rated":"PG","r":1,"hs":9,"cz":4,"x":0,"l":2,"cat":"Family comedy","hol":"Christmas","d":0,"why":"Cartoon violence (paint cans, a blowtorch), a 'gangster film' with a shooting, a few mild swears.","syn":"Eight-year-old Kevin McCallister makes the most of the situation after his family unwittingly leaves him behind when they go on Christmas vacation. When thieves try to break into his home, he puts up a fight like no other.","genres":["Comedy","Family"],"id":771,"p":"/onTSipZ8R3bliBdKfPtsDuHTdlL.jpg","rt":103},{"t":"Home Alone 2: Lost In New York","n":"Home Alone 2: Lost In New York","y":1992,"rated":"PG","r":1,"hs":9,"cz":4,"x":0,"l":2,"cat":"Family comedy","hol":"Christmas","d":0,"why":"Same slapstick, a bit harder (bricks, electrocution); mild language.","syn":"Instead of flying to Florida with his folks, Kevin ends up alone in New York, where he gets a hotel room with his dad's credit card—despite problems from a clerk and meddling bellboy. But when Kevin runs into his old nemeses, the Wet Bandits, he's determined to foil their plans to rob a toy store on Christmas Eve.","genres":["Comedy","Family","Adventure"],"id":772,"p":"/uuitWHpJwxD1wruFl2nZHIb4UGN.jpg","rt":120},{"t":"It's a Wonderful Life","n":"It's a Wonderful Life","y":1946,"rated":"PG","r":1,"hs":10,"cz":5,"x":0,"l":0,"cat":"Classic","hol":"Christmas","d":0,"why":"Clean, but heavy: grief, money ruin and a man on a bridge thinking about suicide.","syn":"George Bailey has spent his entire life giving to the people of Bedford Falls.  All that prevents rich skinflint Mr. Potter from taking over the entire town is George's modest building and loan company.  But on Christmas Eve the business's $8,000 is lost and George's troubles begin.","genres":["Drama","Family","Fantasy"],"id":1585,"p":"/bSqt9rhDZx1Q7UZ86dBPKdNomp2.jpg","rt":131},{"t":"Jingle All the Way","n":"Jingle All the Way","y":1996,"rated":"PG","r":1,"hs":10,"cz":3,"x":0,"l":1,"cat":"Family comedy","hol":"Christmas","d":0,"why":"Mild comic violence and a creepy mall-Santa ring of crooks.","syn":"Howard Langston, a salesman for a mattress company, is constantly kept busy at his job, disappointing his son. After he misses his son's karate exposition, Howard vows to make it up to him by buying an action figure of his son's favorite television hero for Christmas. Unfortunately for Howard, it is Christmas Eve, and every store is sold out of Turbo Man. Now, Howard must travel all over town and compete with everybody else to find a Turbo Man action figure.","genres":["Family","Adventure","Comedy"],"id":9279,"p":"/vhdLrQ3P2JxlxsTREUsr2nbtnjS.jpg","rt":89},{"t":"Krampus","n":"Krampus","y":2015,"rated":"PG-13","r":2,"hs":9,"cz":2,"x":0,"l":4,"cat":"Holiday horror","hol":"Christmas","d":0,"why":"PG-13 horror: monster toys, kids taken, frequent swearing. Not for little ones.","syn":"When his dysfunctional family clashes over the holidays, young Max is disillusioned and turns his back on Christmas.  Little does he know, this lack of festive spirit has unleashed the wrath of Krampus: a demonic force of ancient evil intent on punishing non-believers.","genres":["Horror","Comedy","Fantasy"],"id":287903,"p":"/sAolMRD9rFSTU7tssfFuLEJJa7w.jpg","rt":98},{"t":"Miracle On 34th Street (1947)","n":"Miracle On 34th Street","y":1947,"rated":"NR","r":1,"hs":10,"cz":5,"x":0,"l":0,"cat":"Classic","hol":"Christmas","d":0,"why":"Clean as snow. Starts at the Thanksgiving parade.","syn":"Kris Kringle, seemingly the embodiment of Santa Claus, is asked to portray the jolly old fellow at Macy's following his performance in the Thanksgiving Day parade. His portrayal is so complete that many begin to question if he truly is Santa Claus, while others question his sanity.","genres":["Comedy","Drama","Family"],"id":11881,"p":"/vehuIm3y6BeMI7mYjxzaA1H8M0k.jpg","rt":96},{"t":"Miracle On 34th Street (1994)","n":"Miracle On 34th Street","y":1994,"rated":"PG","r":1,"hs":10,"cz":5,"x":0,"l":1,"cat":"Family comedy","hol":"Christmas","d":0,"why":"Gentle; a couple of mild words.","syn":"Six-year-old Susan Walker has doubts about childhood's most enduring miracle—Santa Claus. Her mother told her the secret about Santa a long time ago, but, after meeting a special department store Santa who's convinced he's the real thing, Susan is given the most precious gift of all—something to believe in.","genres":["Fantasy","Drama","Family"],"id":10510,"p":"/iUTPKkljdEjPlcPPYgbUz7APnHu.jpg","rt":114},{"t":"National Lampoon's Christmas Vacation","n":"National Lampoon's Christmas Vacation","y":1989,"rated":"PG-13","r":2,"hs":10,"cz":3,"x":2,"l":4,"cat":"Family comedy","hol":"Christmas","d":0,"why":"Swearing, a pool-fantasy scene with brief nudity, and a lot of innuendo. Older kids up.","syn":"It's Christmastime, and the Griswolds are preparing for a family seasonal celebration. But things never run smoothly for Clark, his wife Ellen, and their two kids. Clark's continual bad luck is worsened by his obnoxious family guests, but he manages to keep going, knowing that his Christmas bonus is due soon.","genres":["Comedy"],"id":5825,"p":"/oat42hUw8XzKYUmfy0YLAxYd484.jpg","rt":97},{"t":"Rudolph the Red-Nosed Reindeer","n":"Rudolph the Red-Nosed Reindeer","y":1964,"rated":"G","r":0,"hs":10,"cz":4,"x":0,"l":0,"cat":"TV special","hol":"Christmas","d":0,"why":"The 1964 Rankin/Bass special. The Abominable snow monster may spook toddlers.","syn":"Sam the snowman tells us the story of a young red-nosed reindeer who, after being ousted from the reindeer games because of his glowing nose, teams up with Hermey, an elf who wants to be a dentist, and Yukon Cornelius, the prospector. They run into the Abominable Snowman and find a whole island of misfit toys. Rudolph vows to see if he can get Santa to help the toys, and he goes back to the North Pole on Christmas Eve. But Santa's sleigh is fogged in. But when Santa looks over Rudolph, he gets a very bright idea...","genres":["Animation","Family","Adventure","Fantasy"],"id":13382,"p":"/xjAElUhXuc7zFJPj3qUHjcySNsE.jpg","rt":52},{"t":"Santa Claus: The Movie","n":"Santa Claus: The Movie","y":1985,"rated":"PG","r":1,"hs":10,"cz":4,"x":0,"l":0,"cat":"Family comedy","hol":"Christmas","d":0,"why":"An orphan in peril on a ledge; otherwise gentle.","syn":"In ancient times, a man named Claus, who delivers toys in his small village, fulfils his destiny to become Santa Claus after meeting an expert toy-making elf, Patch, in the North Pole. In the present day, Santa Claus has become overwhelmed by his workload, and the disgruntled Patch flees the workshop to New York City. There, Patch unknowingly threatens the fate of Christmas by taking a job at a failing toy company run by a scheming businessman.","genres":["Family","Fantasy","Adventure"],"id":13764,"p":"/tZvGQF2623FD0MZgvOy18J5d7x5.jpg","rt":108},{"t":"Scrooged","n":"Scrooged","y":1988,"rated":"PG-13","r":2,"hs":9,"cz":3,"x":1,"l":4,"cat":"Family comedy","hol":"Christmas","d":0,"why":"Swearing, a grisly Ghost of Christmas Future, some violent slapstick (the toaster).","syn":"Frank Cross is a wildly successful television executive whose cold ambition and curmudgeonly nature has driven away the love of his life. But after firing a staff member on Christmas Eve, Frank is visited by a series of ghosts who give him a chance to re-evaluate his actions and right the wrongs of his past.","genres":["Fantasy","Comedy","Drama"],"id":9647,"p":"/uO0znfB2ZzTXA1IS7jkrjNbpkYK.jpg","rt":101},{"t":"The Best Christmas Pageant Ever","n":"The Best Christmas Pageant Ever","y":2024,"rated":"PG","r":1,"hs":10,"cz":5,"x":0,"l":0,"cat":"Family comedy","hol":"Christmas","d":0,"why":"Clean, church-centered and sweet; the Herdman kids are rowdy, not scary.","syn":"The Herdman kids are undeniably the worst kids in the history of the world. They lie, steal, cheat, bully and overall terrorize their small community. But this Christmas, they're taking over their local church Pageant – and they just might unwittingly teach a shocked little town the true meaning of Christmas.","genres":["Comedy","Drama","Family"],"id":1206617,"p":"/6XjvhydAlXbQodoWbIf77H0Dd9R.jpg","rt":99},{"t":"The Muppet Christmas Carol","n":"The Muppet Christmas Carol","y":1992,"rated":"G","r":0,"hs":10,"cz":5,"x":0,"l":0,"cat":"Musical","hol":"Christmas","d":0,"why":"The Ghost of Christmas Yet to Come is genuinely eerie for small kids.","syn":"A retelling of the classic Dickens tale of Ebenezer Scrooge, miser extraordinaire. He is held accountable for his dastardly ways during nighttime visitations by the Ghosts of Christmas Past, Present and Future.","genres":["Music","Comedy","Family","Fantasy","Drama"],"id":10437,"p":"/ssrV29QSVVJuemBHho0Qx7pFYak.jpg","rt":86},{"t":"The Preacher's Wife","n":"The Preacher's Wife","y":1996,"rated":"PG","r":1,"hs":9,"cz":4,"x":0,"l":1,"cat":"Rom-com","hol":"Christmas","d":0,"why":"Gentle angel romance; a marriage under strain.","syn":"Good-natured Reverend Henry Biggs finds that his marriage to choir mistress Julia is flagging, due to his constant absence caring for the deprived neighborhood they live in. On top of all this, his church is coming under threat from property developer Joe Hamilton. In desperation, Biggs prays to God for help – which arrives in the form of an angel named Dudley.","genres":["Family","Fantasy","Drama","Comedy","Romance"],"id":21539,"p":"/z1mU4g9poAgoDQRNLcfNdj3iiMs.jpg","rt":123},{"t":"The Year Without a Santa Claus (1974)","n":"The Year Without a Santa Claus","y":1974,"rated":"G","r":0,"hs":10,"cz":4,"x":0,"l":0,"cat":"TV special","hol":"Christmas","d":0,"why":"Rankin/Bass; Heat Miser and Snow Miser steal the show.","syn":"Feeling forgotten by the children of the world, old St. Nick decides to skip his gift-giving journey and take a vacation. Mrs. Claus and two spunky little elves, Jingle and Jangle, set out to see to where all the season's cheer has disappeared. Aided by a magical snowfall, they reawaken the spirit of Christmas in children's hearts and put Santa back in action.","genres":["Animation","Family","TV Movie","Fantasy"],"id":13397,"p":"/gc5vz1sZXk1DilIzkQLZ2ujuiWQ.jpg","rt":51},{"t":"Violent Night","n":"Violent Night","y":2022,"rated":"R","r":3,"hs":7,"cz":2,"x":1,"l":5,"cat":"Holiday horror","hol":"Christmas","d":0,"why":"R. Gory, inventive kills and nonstop swearing. Grown-ups only.","syn":"When a team of mercenaries breaks into a wealthy family compound on Christmas Eve, taking everyone inside hostage, the team isn’t prepared for a surprise combatant: Santa Claus is on the grounds, and he’s about to show why this Nick is no saint.","genres":["Action","Comedy","Fantasy"],"id":899112,"p":"/e8CpMgdyihz9Td7amQDqubPuzfN.jpg","rt":112},{"t":"White Christmas","n":"White Christmas","y":1954,"rated":"NR","r":1,"hs":10,"cz":5,"x":0,"l":0,"cat":"Musical","hol":"Christmas","d":0,"why":"Clean; a dated 'minstrel' number is staged without blackface.","syn":"Two talented song-and-dance men team up after the war to become one of the hottest acts in show business. In time they befriend and become romantically involved with the beautiful Haynes sisters who comprise a sister act.","genres":["Comedy","Music","Romance"],"id":13368,"p":"/A5kBQsHKbIptxJyELEpHQJROCRj.jpg","rt":120},{"t":"The Shop Around the Corner","n":"The Shop Around the Corner","y":1940,"rated":"NR","r":1,"hs":7,"cz":5,"x":0,"l":0,"cat":"Rom-com","hol":"Christmas","d":0,"why":"Clean; a suicide attempt is mentioned offscreen.","syn":"Two employees at a gift shop can barely stand one another, without realising that they are falling in love through the post as each other's anonymous pen pal.","genres":["Comedy","Drama","Romance"],"id":20334,"p":"/dZ1aEzGYRiqJwPfjS6VL7wUkHmF.jpg","rt":99},{"t":"Meet Me In St. Louis","n":"Meet Me In St. Louis","y":1944,"rated":"G","r":0,"hs":5,"cz":5,"x":0,"l":0,"cat":"Musical","hol":"Christmas","d":0,"why":"Clean. Covers a whole year, but its Christmas Eve 'Merry Little Christmas' is the heart of it.","syn":"A year in the life of a turn-of-the-century middle class family, leading up to the opening of the 1904 St. Louis World's Fair.","genres":["Comedy","Drama","Romance","Family"],"id":909,"p":"/ekVeUvG81pidsv2LMtWf5yYcNbq.jpg","rt":114},{"t":"The Family Man","n":"The Family Man","y":2000,"rated":"PG-13","r":2,"hs":8,"cz":4,"x":2,"l":3,"cat":"Rom-com","hol":"Christmas","d":0,"why":"PG-13: some swearing and a mild sex scene played for laughs.","syn":"Jack's lavish, fast-paced lifestyle changes one Christmas night when he stumbles into a grocery store holdup and disarms the gunman. The next morning he wakes up in bed lying next to Kate, his college sweetheart he left in order to pursue his career, and to the horrifying discovery that his former life no longer exists. As he stumbles through this alternate suburban universe, Jack finds himself at a crossroad where he must choose between his high-power career and the woman he loves.","genres":["Comedy","Drama","Romance","Fantasy"],"id":5994,"p":"/9wToOVsKuf0XeKhlauzCa3D8Gui.jpg","rt":125},{"t":"While You Were Sleeping","n":"While You Were Sleeping","y":1995,"rated":"PG","r":1,"hs":7,"cz":5,"x":0,"l":1,"cat":"Rom-com","hol":"Christmas","d":0,"why":"Clean; one mild word. Christmas to New Year's in Chicago.","syn":"A transit worker pulls commuter Peter off railway tracks after he's mugged, but—while he's in a coma—his family mistakenly thinks she's Peter's fiancée, and she doesn't correct them. Things get more complicated when she falls for his brother, who's not quite sure that she's who she claims to be.","genres":["Romance","Comedy"],"id":2064,"p":"/qNGO3ETcNwlWqK2kNRpbJSJRlos.jpg","rt":103},{"t":"You've Got Mail","n":"You've Got Mail","y":1998,"rated":"PG","r":1,"hs":4,"cz":4,"x":1,"l":1,"cat":"Rom-com","hol":"Christmas","d":1,"why":"Mild language and innuendo. Christmas shopping season in New York.","syn":"Book superstore magnate Joe Fox and independent book shop owner Kathleen Kelly fall in love in the anonymity of the Internet—both blissfully unaware that he's trying to put her out of business.","genres":["Comedy","Romance"],"id":9489,"p":"/rJLUSpmdxSMqqEsyzeCni3vy1ca.jpg","rt":119},{"t":"Little Women (1994)","n":"Little Women","y":1994,"rated":"PG","r":1,"hs":5,"cz":5,"x":0,"l":0,"cat":"Classic","hol":"Christmas","d":0,"why":"A sister's death will make the kids cry.","syn":"Four sisters come of age in America in the aftermath of the Civil War.","genres":["Drama","Romance"],"id":9587,"p":"/1ZzH1XMcKAe5NdrKL5MfcqZHHsZ.jpg","rt":115},{"t":"Daddy's Home 2","n":"Daddy's Home 2","y":2017,"rated":"PG-13","r":2,"hs":9,"cz":2,"x":2,"l":3,"cat":"Family comedy","hol":"Christmas","d":0,"why":"PG-13: crude jokes, a kid kissing scene, a gun-in-the-hunting-cabin bit.","syn":"Father and stepfather Dusty and Brad join forces to make Christmastime perfect for the children. Their newfound partnership soon gets put to the test when Dusty's old-school, macho dad and Brad's gentle father arrive to turn the holiday upside down. After a sudden change in plans, the four men decide to take the kids to a luxury resort for a fun-filled getaway that turns into a hilarious and chaotic adventure.","genres":["Comedy"],"id":419680,"p":"/rF2IoKL0IFmumEXQFUuB8LajTYP.jpg","rt":100},{"t":"The Apartment","n":"The Apartment","y":1960,"rated":"NR","r":2,"hs":5,"cz":3,"x":2,"l":1,"cat":"Classic","hol":"Christmas","d":0,"why":"An affair and a Christmas Eve suicide attempt. Grown-ups.","syn":"Bud Baxter is a minor clerk in a huge New York insurance company, until he discovers a quick way to climb the corporate ladder. He lends out his apartment to the executives as a place to take their mistresses. Although he often has to deal with the aftermath of their visits, one night he's left with a major problem to solve.","genres":["Comedy","Drama","Romance"],"id":284,"p":"/hhSRt1KKfRT0yEhEtRW3qp31JFU.jpg","rt":126},{"t":"Die Hard","n":"Die Hard","y":1988,"rated":"R","r":3,"hs":3,"cz":2,"x":3,"l":5,"cat":"Action","hol":"Christmas","d":1,"why":"R. Constant swearing, brutal gunfights, brief nudity on a poster/office scene.","syn":"High above the city of L.A. a team of terrorists has seized a building, taken hostages, and declared war. One man has manages to escape... An off-duty cop hiding somewhere inside. He's alone, tired... and the only chance anyone has got.","genres":["Action","Thriller"],"id":562,"p":"/7Bjd8kfmDSOzpmhySpEhkUyK2oH.jpg","rt":132},{"t":"Die Hard 2: Die Harder","n":"Die Hard 2: Die Harder","y":1990,"rated":"R","r":3,"hs":3,"cz":1,"x":2,"l":5,"cat":"Action","hol":"Christmas","d":1,"why":"R. Swearing, a plane crash and a lot of bloody action.","syn":"One year after his heroics in Los Angeles, John McClane is an off-duty cop who is the wrong guy in the wrong place at the wrong time. On a snowy Christmas Eve, as he waits for his wife's plane to land at Washington Dulles International Airport, terrorists take over the air traffic control system in a plot to free a South American army general and drug smuggler being flown into the US to face drug charges. It's now up to McClane to take on the terrorists, while coping with an inept airport police chief, an uncooperative anti-terrorist squad, and the life of his wife and everyone else trapped in planes circling overhead.","genres":["Action","Thriller"],"id":1573,"p":"/ybki0UWO3OPhaM6MSniuKC7sy1R.jpg","rt":124},{"t":"Gremlins","n":"Gremlins","y":1984,"rated":"PG","r":1,"hs":6,"cz":3,"x":0,"l":2,"cat":"Holiday horror","hol":"Christmas","d":1,"why":"PG-13 before it existed: gremlin deaths in a blender and a microwave; the dad-in-the-chimney story.","syn":"After receiving an exotic small animal as a Christmas gift, a young man inadvertently breaks three important rules concerning his new pet, which unleashes a horde of malevolently mischievous creatures on a small town.","genres":["Fantasy","Horror","Comedy"],"id":927,"p":"/6m0F7fsXjQvUbCZrPWcJNrjvIui.jpg","rt":106},{"t":"Batman Returns","n":"Batman Returns","y":1992,"rated":"PG-13","r":2,"hs":5,"cz":1,"x":2,"l":2,"cat":"Action","hol":"Christmas","d":1,"why":"Dark: Penguin's babies-in-the-sewer plot, innuendo, Catwoman's fall. Not a kids' Batman.","syn":"The monstrous Penguin, who dwells in the sewers beneath Gotham, joins up with corrupt mayoral candidate Max Shreck to topple the Batman once and for all. But when Shreck's timid assistant Selina Kyle finds out, and Shreck tries to kill her, she's transformed into the sexy Catwoman. She teams up with the Penguin and Shreck to destroy Batman, but sparks fly unexpectedly when she confronts the caped crusader.","genres":["Action","Fantasy"],"id":364,"p":"/jKBjeXM7iBBV9UkUcOXx3m7FSHY.jpg","rt":126},{"t":"Edward Scissorhands","n":"Edward Scissorhands","y":1990,"rated":"PG-13","r":2,"hs":6,"cz":4,"x":2,"l":2,"cat":"Classic","hol":"Christmas","d":1,"why":"A seduction scene with a neighbor; a violent ending.","syn":"A small suburban town receives a visit from a castaway unfinished science experiment named Edward.","genres":["Fantasy","Drama","Romance"],"id":162,"p":"/e0FqKFvGPdQNWG8tF9cZBtev9Em.jpg","rt":105},{"t":"Iron Man 3","n":"Iron Man 3","y":2013,"rated":"PG-13","r":2,"hs":4,"cz":2,"x":1,"l":3,"cat":"Action","hol":"Christmas","d":1,"why":"PG-13 superhero action; Tony's anxiety attacks; some swearing.","syn":"Plagued with worry and insomnia since saving New York from destruction, Tony Stark, now, is more dependent on the suits that give him his Iron Man persona—so much so that every aspect of his life is affected, including his relationship with Pepper. After a malevolent enemy known as the Mandarin reduces his personal world to rubble, Tony must rely solely on instinct and ingenuity to avenge his losses and protect the people he loves, as he begins an odyssey of rebuilding and retribution.","genres":["Action","Adventure","Science Fiction"],"id":68721,"p":"/qhPtAc1TKbMPqNvcdXSOn9Bn7hZ.jpg","rt":130},{"t":"Catch Me If You Can","n":"Catch Me If You Can","y":2002,"rated":"PG-13","r":2,"hs":3,"cz":3,"x":2,"l":2,"cat":"Classic","hol":"Christmas","d":1,"why":"Some sexual content (a call girl scene) and mild language. Christmas Eve phone calls tie it together.","syn":"A true story about Frank Abagnale Jr. who, before his 19th birthday, successfully conned millions of dollars worth of checks as a Pan Am pilot, doctor, and legal prosecutor. An FBI agent makes it his mission to put him behind bars. But Frank not only eludes capture, he revels in the pursuit.","genres":["Drama","Crime"],"id":640,"p":"/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg","rt":141},{"t":"Rocky IV","n":"Rocky IV","y":1985,"rated":"PG-13","r":2,"hs":2,"cz":2,"x":0,"l":1,"cat":"Action","hol":"Christmas","d":1,"why":"The big fight is in Moscow on Christmas Day. A boxer dies in the ring.","syn":"Rocky Balboa holds the world heavyweight championship, but a new challenger has stepped forward: Drago, a six-foot-four, 261-pound fighter who has the backing of the Soviet Union. This time, Rocky's training regimen takes him to Siberia, where he prepares for a globally televised match in the heart of Moscow. But nothing can truly prepare him for what he's about to face – a fight to the finish, in which he must defend not only himself, but also the honor of his country!","genres":["Drama"],"id":1374,"p":"/2MHUit4H6OK5adcOjnCN6suCKOl.jpg","rt":91},{"t":"Shazam!","n":"Shazam!","y":2019,"rated":"PG-13","r":2,"hs":6,"cz":4,"x":1,"l":3,"cat":"Action","hol":"Christmas","d":1,"why":"PG-13: scary sin-demons, a strip-club gag, some swearing. Set at Christmas with a foster family.","syn":"A boy is given the ability to become an adult superhero in times of need with a single magic word.","genres":["Action","Comedy","Fantasy"],"id":287947,"p":"/xnopI5Xtky18MPhK40cZAGAOVeV.jpg","rt":132},{"t":"Enemy of the State","n":"Enemy of the State","y":1998,"rated":"R","r":3,"hs":2,"cz":1,"x":2,"l":4,"cat":"Action","hol":"Christmas","d":1,"why":"R. Swearing, killings, and a lingerie-shopping Christmas gift scene.","syn":"When the videotape of the murder of a congressman unknowingly ends up in the hands of labor lawyer and dedicated family man Robert Clayton Dean, he is framed for the murder. With the help of the mysterious Brill, Dean attempts to throw the NSA off his trail and prove his innocence.","genres":["Action","Drama","Thriller"],"id":9798,"p":"/xWGLT3AHPcqCrj1G11pwEO5nyNv.jpg","rt":132},{"t":"L.A. Confidential","n":"L.A. Confidential","y":1997,"rated":"R","r":3,"hs":2,"cz":1,"x":4,"l":5,"cat":"Action","hol":"Christmas","d":1,"why":"R. Opens on 'Bloody Christmas' 1951; violence, sex, language.","syn":"Three detectives in the corrupt and brutal L.A. police force of the 1950s use differing methods to uncover a conspiracy behind the shotgun slayings of the patrons at an all-night diner.","genres":["Crime","Mystery","Thriller"],"id":2118,"p":"/7jqrauDn3HabyvKfeKTBjzKNeom.jpg","rt":138},{"t":"The French Connection","n":"The French Connection","y":1971,"rated":"R","r":3,"hs":1,"cz":1,"x":2,"l":4,"cat":"Action","hol":"Christmas","d":1,"why":"R. Opens with Popeye Doyle in a Santa suit; violence and slurs.","syn":"Tough narcotics detective 'Popeye' Doyle is in hot pursuit of a suave French drug dealer who may be the key to a huge heroin-smuggling operation.","genres":["Action","Crime","Thriller"],"id":1051,"p":"/pH4saPwMjhnVGwmSH6RkMaHrt3s.jpg","rt":104},{"t":"Toy Story","n":"Toy Story","y":1995,"rated":"G","r":0,"hs":3,"cz":5,"x":0,"l":0,"cat":"Animated","hol":"Christmas","d":1,"why":"Sid's mutant toys may scare little ones. It ends on Christmas morning.","syn":"Led by Woody, Andy's toys live happily in his room until Andy's birthday brings Buzz Lightyear onto the scene. Afraid of losing his place in Andy's heart, Woody plots against Buzz. But when circumstances separate Buzz and Woody from their owner, the duo eventually learns to put aside their differences.","genres":["Family","Comedy","Animation","Adventure"],"id":862,"p":"/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg","rt":81},{"t":"Harry Potter and the Sorcerer's Stone","n":"Harry Potter and the Sorcerer's Stone","y":2001,"rated":"PG","r":1,"hs":4,"cz":5,"x":0,"l":0,"cat":"Family comedy","hol":"Christmas","d":1,"why":"A troll, a three-headed dog and Voldemort's face. Christmas at Hogwarts is the coziest stretch.","syn":"Harry Potter has lived under the stairs at his aunt and uncle's house his whole life. But on his 11th birthday, he learns he's a powerful wizard—with a place waiting for him at the Hogwarts School of Witchcraft and Wizardry. As he learns to harness his newfound powers with the help of the school's kindly headmaster, Harry uncovers the truth about his parents' deaths—and about the villain who's to blame.","genres":["Adventure","Fantasy"],"id":671,"p":"/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg","rt":152},{"t":"Planes, Trains and Automobiles","n":"Planes, Trains and Automobiles","y":1987,"rated":"R","r":3,"hs":9,"cz":5,"x":1,"l":5,"cat":"Family comedy","hol":"Thanksgiving","d":0,"why":"R for one legendary F-word rental-car rant; otherwise warm.","syn":"An irritable marketing executive, Neal Page, is heading home to Chicago for Thanksgiving when a number of delays force him to travel with a well meaning but overbearing shower curtain ring salesman, Del Griffith.","genres":["Comedy"],"id":2609,"p":"/fwi2cET87xArJCb8MdbWq2BZO3n.jpg","rt":92},{"t":"Scent of a Woman","n":"Scent of a Woman","y":1992,"rated":"R","r":3,"hs":6,"cz":3,"x":2,"l":5,"cat":"Classic","hol":"Thanksgiving","d":0,"why":"R. Heavy swearing and a suicide threat. Thanksgiving weekend in New York.","syn":"Charlie Simms is a student at a private preparatory school who comes from a poor family. To earn the money for his flight home to Gresham, Oregon for Christmas, Charlie takes a job over Thanksgiving looking after retired U.S. Army officer Lieutenant Colonel Frank Slade, a cantankerous middle-aged man who lives with his niece and her family.","genres":["Drama"],"id":9475,"p":"/4adI7IaveWb7EidYXfLb3MK3CgO.jpg","rt":156},{"t":"Prisoners (2013)","n":"Prisoners","y":2013,"rated":"R","r":3,"hs":3,"cz":1,"x":0,"l":5,"cat":"Holiday horror","hol":"Thanksgiving","d":1,"why":"R. Two girls vanish on Thanksgiving; torture and child-abduction themes. Grown-ups only.","syn":"After his six-year-old daughter is abducted, a desperate father takes justice into his own hands when he loses faith in the detective leading the investigation, setting both men on a collision course as the search descends into obsession and moral compromise.","genres":["Drama","Thriller","Crime"],"id":146233,"p":"/uhviyknTT5cEQXbn6vWIqfM4vGm.jpg","rt":153},{"t":"Ghostbusters II","n":"Ghostbusters II","y":1989,"rated":"PG","r":1,"hs":5,"cz":4,"x":1,"l":2,"cat":"Family comedy","hol":"New Year","d":0,"why":"Mild language; a baby in peril and a slime-filled New Year's Eve.","syn":"The discovery of a massive river of ectoplasm and a resurgence of spectral activity allows the staff of Ghostbusters to revive the business.","genres":["Comedy","Fantasy"],"id":2978,"p":"/iUZPi31KDP0n5ycpycEsvl51BdV.jpg","rt":108},{"t":"The Poseidon Adventure (1972)","n":"The Poseidon Adventure","y":1972,"rated":"PG","r":1,"hs":5,"cz":2,"x":0,"l":2,"cat":"Action","hol":"New Year","d":1,"why":"A capsized liner on New Year's Eve; drownings and death.","syn":"When their ocean liner capsizes, a group of passengers struggle to survive and escape.","genres":["Adventure","Drama","Thriller"],"id":551,"p":"/rKLuf43xJyLZ0eg57yKKXomMEr1.jpg","rt":117},{"t":"Groundhog Day","n":"Groundhog Day","y":1993,"rated":"PG","r":1,"hs":9,"cz":4,"x":2,"l":2,"cat":"Rom-com","hol":"Winter","d":0,"why":"Phil's suicide attempts are played for dark comedy; some innuendo.","syn":"A cynical TV weatherman, along with his idealistic producer and his sardonic cameraman, is sent to report on Groundhog Day in the small town of Punxsutawney, where he finds himself repeating the same day over and over.","genres":["Romance","Fantasy","Comedy"],"id":137,"p":"/gCgt1WARPZaXnq523ySQEUKinCs.jpg","rt":101}];
+const IMG = "https://image.tmdb.org/t/p/";
+const RATE = ["G", "PG", "PG-13", "R"];
+const COZY = ["", "Not cozy at all", "A little warmth", "Some real heart", "Warm and cozy", "A fireplace in movie form"];
+const LANG = ["None", "A 'darn' or two", "Mild swearing", "Some swearing", "Frequent swearing", "Constant, strong language"];
+const SEX = ["None", "Innuendo, nothing shown", "Suggestive scenes", "A sex scene or brief nudity", "Strong sexual content", "Explicit"];
+const PRESETS = [
+  { id: "little", name: "Little kids", sub: "G–PG, squeaky clean", s: { hmin: 6, hmax: 10, cz: 3, mr: 1, l: 1, sx: 0, deb: "hide", cats: [] } },
+  { id: "family", name: "Family night", sub: "Up to PG", s: { hmin: 5, hmax: 10, cz: 3, mr: 1, l: 3, sx: 2, deb: "hide", cats: [] } },
+  { id: "date", name: "Date night", sub: "Rom-coms & classics", s: { hmin: 4, hmax: 10, cz: 3, mr: 3, l: 5, sx: 5, deb: "any", cats: ["Rom-com", "Classic", "Musical"] } },
+  { id: "adults", name: "Grown-ups", sub: "Everything", s: { hmin: 1, hmax: 10, cz: 1, mr: 3, l: 5, sx: 5, deb: "any", cats: [] } },
+  { id: "debate", name: "Is it even a Christmas movie?", sub: "Die Hard & co.", s: { hmin: 1, hmax: 10, cz: 1, mr: 3, l: 5, sx: 5, deb: "only", cats: [] } },
+];
+const DEFAULT = { hmin: 1, hmax: 10, cz: 1, mr: 3, l: 5, sx: 5, deb: "any", cats: [], hols: [], sort: "hs", q: "" };
+let S = { ...DEFAULT };
+try { const saved = JSON.parse(localStorage.getItem("holiday-night") || "null"); if (saved) S = { ...DEFAULT, ...saved, q: "" }; } catch {}
+const save = () => { try { localStorage.setItem("holiday-night", JSON.stringify({ ...S, q: "" })); } catch {} };
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const lv = (h) => (h <= 3 ? "low" : h <= 6 ? "mid" : "high");
+const same = (a, b) => Array.isArray(a) ? a.length === b.length && a.every((x) => b.includes(x)) : a === b;
+
+$("#presets").innerHTML = PRESETS.map((p) => `<button class="pill" type="button" data-p="${p.id}">${p.name}<small>${p.sub}</small></button>`).join("");
+$("#presets").addEventListener("click", (e) => {
+  const b = e.target.closest(".pill"); if (!b) return;
+  const p = PRESETS.find((x) => x.id === b.dataset.p);
+  S = { ...S, ...p.s, hols: [], sort: p.id === "debate" ? "hs-asc" : "hs" }; sync(); render();
+});
+const chipList = (el, key, vals) => {
+  $(el).innerHTML = vals.map((c) => `<button class="chip" type="button" data-c="${esc(c)}">${esc(c)}</button>`).join("");
+  $(el).addEventListener("click", (e) => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    const c = b.dataset.c; S[key] = S[key].includes(c) ? S[key].filter((x) => x !== c) : [...S[key], c]; sync(); render();
+  });
+};
+chipList("#cats", "cats", [...new Set(MOVIES.map((m) => m.cat))].sort());
+chipList("#hols", "hols", ["Christmas", "Thanksgiving", "New Year", "Winter"].filter((h) => MOVIES.some((m) => m.hol === h)));
+$("#deb").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; S.deb = b.dataset.d; sync(); render(); });
+
+function sync() {
+  $("#hsMin").value = S.hmin; $("#hsMax").value = S.hmax; $("#cz").value = S.cz; $("#mr").value = S.mr; $("#l").value = S.l; $("#sx").value = S.sx; $("#sort").value = S.sort;
+  $("#hsV").textContent = S.hmin === S.hmax ? S.hmin : `${S.hmin}–${S.hmax}`;
+  $("#czV").textContent = S.cz; $("#czH").textContent = COZY[S.cz];
+  $("#mrV").textContent = RATE[S.mr];
+  $("#lV").textContent = S.l; $("#lH").textContent = LANG[S.l];
+  $("#sxV").textContent = S.sx; $("#sxH").textContent = SEX[S.sx];
+  document.querySelectorAll("#deb button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.d === S.deb));
+  document.querySelectorAll("#cats .chip").forEach((b) => b.setAttribute("aria-pressed", S.cats.includes(b.dataset.c)));
+  document.querySelectorAll("#hols .chip").forEach((b) => b.setAttribute("aria-pressed", S.hols.includes(b.dataset.c)));
+  document.querySelectorAll(".pill").forEach((b) => {
+    const p = PRESETS.find((x) => x.id === b.dataset.p).s;
+    b.setAttribute("aria-pressed", Object.keys(p).every((k) => same(S[k], p[k])) && !S.hols.length);
+  });
+  const n = (S.hmin > 1 || S.hmax < 10) + (S.cz > 1) + (S.mr < 3) + (S.l < 5) + (S.sx < 5) + (S.deb !== "any") + (S.cats.length > 0) + (S.hols.length > 0);
+  $("#fcount").hidden = !n; $("#fcount").textContent = n;
+}
+function filtered() {
+  const q = S.q.trim().toLowerCase();
+  const rows = MOVIES.filter((m) => m.hs >= S.hmin && m.hs <= S.hmax && m.cz >= S.cz && m.r <= S.mr && m.l <= S.l && m.x <= S.sx &&
+    (S.deb === "any" || (S.deb === "only" ? m.d : !m.d)) &&
+    (!S.cats.length || S.cats.includes(m.cat)) && (!S.hols.length || S.hols.includes(m.hol)) &&
+    (!q || `${m.n} ${m.syn} ${m.why} ${m.genres.join(" ")} ${m.hol}`.toLowerCase().includes(q)));
+  const t = (a, b) => a.n.localeCompare(b.n);
+  const by = { title: t, year: (a, b) => b.y - a.y, old: (a, b) => a.y - b.y, cz: (a, b) => b.cz - a.cz || b.hs - a.hs || t(a, b),
+    "hs-asc": (a, b) => a.hs - b.hs || t(a, b), hs: (a, b) => b.hs - a.hs || b.cz - a.cz || t(a, b) };
+  return rows.sort(by[S.sort] || by.hs);
+}
+function render() {
+  save();
+  const rows = filtered();
+  const parts = [];
+  if (S.hmin > 1 || S.hmax < 10) parts.push(`Christmassy ${S.hmin === S.hmax ? S.hmin : S.hmin + "–" + S.hmax}`);
+  if (S.cz > 1) parts.push(`cozy ${S.cz}+`);
+  if (S.mr < 3) parts.push(`up to ${RATE[S.mr]}`);
+  if (S.deb === "only") parts.push("debates only"); else if (S.deb === "hide") parts.push("no debates");
+  $("#summary").innerHTML = `<b>${rows.length}</b> movies${parts.length ? " · " + esc(parts.join(" · ")) : ""}`;
+  $("#grid").innerHTML = rows.length ? rows.map((m) => `
+    <button class="card" type="button" data-i="${MOVIES.indexOf(m)}">
+      <div class="poster">${m.p ? `<img loading="lazy" src="${IMG}w342${m.p}" alt="">` : ""}<span class="badge lv-${lv(m.hs)}" aria-label="Christmassy ${m.hs} of 10">${m.hs}</span>${m.d ? '<span class="deb">The debate</span>' : ""}</div>
+      <div class="ct">${esc(m.n)}</div>
+      <div class="cm">${m.y} · ${esc(m.rated || "NR")}${m.hol !== "Christmas" ? " · " + esc(m.hol) : ""}</div>
+    </button>`).join("")
+    : `<div class="empty"><b>Nothing fits those filters</b>Try loosening a slider or tap Reset.</div>`;
+}
+$("#grid").addEventListener("click", (e) => { const c = e.target.closest(".card"); if (c) openDetail(MOVIES[+c.dataset.i]); });
+
+const meter = (label, v, max, color, note) => `
+  <div class="meter-row"><span class="lbl">${label}</span>
+    <span class="track" style="--c:${color}">${Array.from({ length: max }, (_, i) => `<i class="${i < v ? "on" : ""}"></i>`).join("")}</span>
+    <span class="val">${v}/${max}</span>${note ? `<span class="meter-note">${esc(note)}</span>` : ""}</div>`;
+function openDetail(m) {
+  const mn = `/movies.html?movie=${encodeURIComponent(m.t)}`;
+  const tm = `https://www.themoviedb.org/movie/${m.id}`;
+  $("#dBody").innerHTML = `
+    <div class="d-top">${m.p ? `<img src="${IMG}w342${m.p}" alt="">` : "<span></span>"}
+      <div><div class="d-title" id="dTitle">${esc(m.n)}</div>
+        <div class="d-meta"><span>${m.y}</span><span class="r">${esc(m.rated || "NR")}</span>${m.rt ? `<span>${Math.floor(m.rt / 60)}h ${m.rt % 60}m</span>` : ""}</div>
+        <div class="tags"><span class="tag">${esc(m.hol)}</span><span class="tag">${esc(m.cat)}</span>${m.d ? '<span class="tag warn">Is it a Christmas movie?</span>' : ""}</div>
+      </div></div>
+    <div class="meters">
+      ${meter(m.hol === "Christmas" ? "Christmassy" : "Holiday", m.hs, 10, `var(--s-${lv(m.hs)})`)}
+      ${meter("Cozy", m.cz, 5, "var(--gold)", COZY[m.cz])}
+      ${meter("Language", m.l, 5, "var(--s-low)", m.l ? LANG[m.l] : "")}
+      ${meter("Sex & nudity", m.x, 5, "var(--s-low)", m.x ? SEX[m.x] : "")}
+    </div>
+    <p class="d-why"><b>Parents, heads up:</b> ${esc(m.why)}</p>
+    <p class="d-syn">${esc(m.syn)}</p>
+    <div class="sheet-actions">
+      <a class="btn primary" href="${mn}">Open in Movie Night</a>
+      <a class="btn ghost" href="${tm}" target="_blank" rel="noopener">TMDB</a>
+    </div>`;
+  openSheet($("#detail"));
+}
+
+let openEl = null, lastFocus = null;
+function openSheet(el) {
+  if (openEl) closeSheet(true);
+  lastFocus = document.activeElement; openEl = el; el.hidden = false; el.scrollTop = 0;
+  requestAnimationFrame(() => { el.classList.add("open"); $("#scrim").classList.add("open"); });
+  document.body.style.overflow = "hidden";
+  setTimeout(() => el.querySelector("button, a")?.focus({ preventScroll: true }), 50);
+}
+function closeSheet(instant) {
+  if (!openEl) return; const el = openEl; openEl = null;
+  el.classList.remove("open"); $("#scrim").classList.remove("open"); document.body.style.overflow = "";
+  setTimeout(() => { if (!el.classList.contains("open")) el.hidden = true; }, instant ? 0 : 300);
+  lastFocus?.focus?.({ preventScroll: true });
+}
+$("#scrim").onclick = () => closeSheet();
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSheet(); });
+document.querySelectorAll(".sheet").forEach((el) => {
+  let y0 = null;
+  el.addEventListener("touchstart", (e) => { y0 = el.scrollTop <= 0 ? e.touches[0].clientY : null; }, { passive: true });
+  el.addEventListener("touchmove", (e) => { if (y0 == null) return; const dy = e.touches[0].clientY - y0; if (dy > 0) el.style.transform = `translateY(${dy}px)`; }, { passive: true });
+  el.addEventListener("touchend", (e) => { if (y0 == null) return; const dy = e.changedTouches[0].clientY - y0; el.style.transform = ""; y0 = null; if (dy > 90) closeSheet(); });
+});
+
+const openFilters = () => openSheet($("#filters"));
+$("#openFilters").onclick = openFilters; $("#openFilters2").onclick = openFilters;
+$("#fDone").onclick = () => { closeSheet(); window.scrollTo({ top: 0, behavior: "smooth" }); };
+const reset = () => { S = { ...DEFAULT, q: S.q }; sync(); render(); };
+$("#fReset").onclick = reset; $("#reset").onclick = reset;
+$("#tabBrowse").onclick = () => { closeSheet(); window.scrollTo({ top: 0, behavior: "smooth" }); };
+$("#surprise").onclick = () => { const r = filtered(); if (r.length) openDetail(r[Math.floor(Math.random() * r.length)]); };
+$("#q").addEventListener("input", (e) => { S.q = e.target.value; render(); });
+$("#hsMin").addEventListener("input", (e) => { S.hmin = +e.target.value; if (S.hmin > S.hmax) S.hmax = S.hmin; sync(); render(); });
+$("#hsMax").addEventListener("input", (e) => { S.hmax = +e.target.value; if (S.hmax < S.hmin) S.hmin = S.hmax; sync(); render(); });
+for (const k of ["cz", "mr", "l", "sx"]) $("#" + k).addEventListener("input", (e) => { S[k] = +e.target.value; sync(); render(); });
+$("#sort").addEventListener("change", (e) => { S.sort = e.target.value; sync(); render(); });
+sync(); render();
+</script>
+</body>
+</html>
