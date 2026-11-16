@@ -39,12 +39,12 @@ const LATEST: {
     img: "/portfolio/latest-words-video.jpg",
   },
   {
-    href: "#play",
-    external: false,
-    label: "New film",
-    date: "Nov 2",
-    title: "NEON RONIN: Part One",
-    img: "/portfolio/stills/ai-neon-ronin.jpg",
+    href: "https://www.youtube.com/watch?v=3GjAoZdF874",
+    external: true,
+    label: "Halloween short",
+    date: "Oct 31",
+    title: "What Are You Supposed To Be?",
+    img: "/portfolio/stills/ai-what-are-you-supposed-to-be.jpg",
   },
 ];
 
