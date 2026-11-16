@@ -14,6 +14,14 @@ const LATEST: {
   soon?: boolean;
 }[] = [
   {
+    href: "https://www.youtube.com/watch?v=CjX3PlZ2o8E",
+    external: true,
+    label: "New video",
+    date: "Nov 16",
+    title: "I Turned a Stage Play Into a Boat Ride With AI",
+    img: "/portfolio/latest-arsenic-video.jpg",
+  },
+  {
     href: "https://www.youtube.com/watch?v=8IpdKyaKC1Y",
     external: true,
     label: "New video",
@@ -29,14 +37,6 @@ const LATEST: {
     date: "Nov 11",
     title: "I Made an AI Film With Just Words. 7 Things I Learned.",
     img: "/portfolio/latest-words-video.jpg",
-  },
-  {
-    href: "https://www.youtube.com/watch?v=3GjAoZdF874",
-    external: true,
-    label: "Halloween short",
-    date: "Oct 31",
-    title: "What Are You Supposed To Be?",
-    img: "/portfolio/stills/ai-what-are-you-supposed-to-be.jpg",
   },
   {
     href: "#play",
