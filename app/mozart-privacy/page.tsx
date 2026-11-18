@@ -22,11 +22,12 @@ export default function MozartPrivacy() {
       </p>
 
       <h2>What it can access</h2>
-      <p>When Andrew connects his channel he grants exactly three permissions, and nothing else (no Gmail, no Drive, no contacts):</p>
+      <p>When Andrew connects his channel he grants exactly four permissions, and nothing else (no Gmail, no Drive, no contacts):</p>
       <ul>
         <li><strong>youtube.upload</strong>: upload the videos he approves and set their thumbnails.</li>
         <li><strong>youtube.readonly</strong>: read his channel&apos;s name, his list of videos, and their public statistics (views, likes, comments).</li>
-        <li><strong>youtube.force-ssl</strong>: change the title, description, tags and privacy of his videos, add them to his playlists, and remove an old upload when he asks.</li>
+        <li><strong>youtube.force-ssl</strong>: change the title, description, tags and privacy of his videos, add them to his playlists, post a question as the first comment on his own videos once they are public, and remove an old upload when he asks.</li>
+        <li><strong>yt-analytics.readonly</strong>: read his channel&apos;s analytics (views, watch time, how long viewers keep watching each video, where viewers come from) so the assistant can tell him what is working. Read only.</li>
       </ul>
 
       <h2>Why</h2>
@@ -60,7 +61,7 @@ export default function MozartPrivacy() {
 
       <h2>Who else sees it</h2>
       <p>
-        Nobody buys or receives this data. Mozart Studio does not sell, rent or share it, shows no ads and uses no analytics or tracking.
+        Nobody buys or receives this data. Mozart Studio does not sell, rent or share it, shows no ads and uses no analytics or tracking of its own.
         Two services are involved only in carrying the assistant&apos;s conversation with Andrew:
       </p>
       <ul>
