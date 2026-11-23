@@ -104,8 +104,9 @@ export default function CardVaultPage() {
             />
           </div>
           <p className="mt-3 text-sm text-ink-muted">
-            <a href={`https://www.youtube.com/watch?v=${VIDEO_ID}`} className="underline decoration-ink/30 underline-offset-2 hover:text-accent">
-              Watch on YouTube
+            More builds like this on{" "}
+            <a href="https://www.youtube.com/@JeremiahDaws?sub_confirmation=1" className="underline decoration-ink/30 underline-offset-2 hover:text-accent">
+              my YouTube channel
             </a>
           </p>
         </section>
@@ -114,8 +115,9 @@ export default function CardVaultPage() {
           <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
             <h2 className="font-serif text-3xl leading-tight md:text-4xl">How it got made</h2>
             <p className="mt-4 max-w-3xl font-serif text-xl leading-snug text-ink md:text-2xl">
-              One agent built it. Four more tore it apart: a UI expert, a
-              Pokémon expert, a casual fan, and a deliberately harsh critic.
+              One agent built it, one studied other card trackers, and four
+              more tore it apart: a UI expert, a Pokémon expert, a casual fan,
+              and a deliberately harsh critic.
             </p>
             <div className="mt-10 grid gap-10 md:grid-cols-[1.5fr_1fr]">
               <ol className="space-y-5">
@@ -133,10 +135,10 @@ export default function CardVaultPage() {
                     <dd className="mt-0.5 font-medium">{v}</dd>
                   </div>
                 ))}
-                <p className="col-span-2 text-xs text-ink-muted">
+                <div className="col-span-2 text-xs text-ink-muted">
                   There&rsquo;s no real collection behind it. The cards in the
                   screenshots are sample data.
-                </p>
+                </div>
               </dl>
             </div>
           </div>
