@@ -4,7 +4,7 @@ import { TopNav } from "@/components/TopNav";
 import { SiteFooter } from "@/components/SiteFooter";
 
 const DESCRIPTION =
-  "Card Vault: a Pokémon card tracker with live prices, a pack you can tear open, graded slabs, a photo scanner and a price-guessing game. Coded by Jeremiah Daws with Claude Code in about 30 minutes of his time, as an exercise.";
+  "How I built Card Vault without writing code, with a video of the whole process. Card Vault: a Pokémon card tracker with live prices, a pack you can tear open, graded slabs, a photo scanner and a price-guessing game. Coded by Jeremiah Daws with Claude Code in about 30 minutes of his time, as an exercise.";
 
 export const metadata: Metadata = {
   title: "Card Vault",
@@ -28,6 +28,8 @@ export const metadata: Metadata = {
 };
 
 const IMG = "/portfolio/card-vault";
+const VIDEO_ID = "3xgv6rJBzA4";
+const VIDEO_TITLE = "I Built a Pokémon Card App Without Writing Code | Claude Code for Beginners";
 
 const FEATURES = [
   {
@@ -87,6 +89,16 @@ export default function CardVaultPage() {
                 just as an exercise: how far does one sitting of plain-English
                 prompting get you?
               </p>
+              <p className="mt-4 text-base text-ink/80 md:text-lg">
+                The app is the byproduct. The point is how it got made, and
+                the video below shows the whole process.
+              </p>
+              <a
+                href="#how"
+                className="mt-5 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-ink"
+              >
+                Watch how it got made
+              </a>
               <p className="mt-4 text-sm text-ink-muted">
                 There&rsquo;s no real collection behind it. The cards in these
                 screenshots are sample data.
@@ -114,6 +126,45 @@ export default function CardVaultPage() {
                 <dd className="mt-0.5 font-medium">React, Vite, TCGdex card data, Tesseract.js for the scanner</dd>
               </div>
             </dl>
+          </div>
+        </section>
+
+        <section id="how" className="border-y border-ink/10 bg-blue-wash/60">
+          <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.35fr_1fr] lg:items-start">
+            <div>
+              <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-ink/10 bg-ink shadow-lg">
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?rel=0`}
+                  title={VIDEO_TITLE}
+                  loading="lazy"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  className="absolute inset-0 h-full w-full"
+                />
+              </div>
+              <p className="mt-3 text-sm text-ink-muted">
+                <a href={`https://www.youtube.com/watch?v=${VIDEO_ID}`} className="underline decoration-ink/30 underline-offset-2 hover:text-accent">
+                  {VIDEO_TITLE}
+                </a>{" "}
+                on YouTube
+              </p>
+            </div>
+            <div>
+              <h2 className="font-serif text-3xl leading-tight md:text-4xl">How it got made</h2>
+              <p className="mt-3 text-ink/75">
+                No code typed by me. The video walks through the whole build;
+                here&rsquo;s the short version.
+              </p>
+              <ol className="mt-6 space-y-5">
+                {PROCESS.map((p, i) => (
+                  <li key={i} className="flex gap-4">
+                    <span className="font-serif text-2xl leading-none text-accent">{i + 1}</span>
+                    <p className="text-ink/80">{p}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
         </section>
 
@@ -228,18 +279,9 @@ export default function CardVaultPage() {
           </ul>
         </section>
 
-        <section className="border-t border-ink/10 bg-blue-wash/60">
-          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-            <h2 className="font-serif text-3xl leading-tight md:text-4xl">How it got made</h2>
-            <ol className="mt-8 max-w-prose space-y-5">
-              {PROCESS.map((p, i) => (
-                <li key={i} className="flex gap-4">
-                  <span className="font-serif text-2xl leading-none text-accent">{i + 1}</span>
-                  <p className="text-ink/80">{p}</p>
-                </li>
-              ))}
-            </ol>
-            <p className="mt-10 max-w-prose text-sm text-ink-muted">
+        <section className="border-t border-ink/10">
+          <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+            <p className="max-w-prose text-sm text-ink-muted">
               Card Vault runs on my own computer and isn&rsquo;t a public app.
               It&rsquo;s a fan project, not affiliated with or endorsed by The
               Pokémon Company, Nintendo, Creatures or GAME FREAK. Pokémon names
@@ -247,7 +289,7 @@ export default function CardVaultPage() {
             </p>
             <a
               href="/apps"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accent"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accent"
             >
               See more AI builds
             </a>
