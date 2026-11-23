@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { TopNav } from "@/components/TopNav";
 import { SiteFooter } from "@/components/SiteFooter";
+import { PageCta } from "@/components/PageCta";
 
 const DESCRIPTION =
-  "How I built Card Vault without writing code, with a video of the whole process. Card Vault: a Pokémon card tracker with live prices, a pack you can tear open, graded slabs, a photo scanner and a price-guessing game. Coded by Jeremiah Daws with Claude Code in about 30 minutes of his time, as an exercise.";
+  "How I built a Pokémon card tracker with Claude Code without writing code: the full build on video.";
 
 export const metadata: Metadata = {
   title: "Card Vault",
@@ -16,14 +17,14 @@ export const metadata: Metadata = {
     title: "Card Vault — Jeremiah Daws",
     description: DESCRIPTION,
     url: "/apps/card-vault",
-    images: ["/portfolio/apps-cardvault.jpg"],
+    images: [{ url: "/portfolio/apps-cardvault-og.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     creator: "@JeremiahDaws",
     title: "Card Vault — Jeremiah Daws",
     description: DESCRIPTION,
-    images: ["/portfolio/apps-cardvault.jpg"],
+    images: ["/portfolio/apps-cardvault-og.jpg"],
   },
 };
 
@@ -61,8 +62,15 @@ const FEATURES = [
 const PROCESS = [
   "I described what I wanted in plain English: a premium-feeling tracker, live prices, card art, slabs, and the tactile feel of opening a pack.",
   "Claude Code wrote the app and ran it on localhost so I could watch it come together.",
-  "I had one agent research other card trackers for ideas worth borrowing, then four reviewer agents tear it apart: a UI expert, a Pokémon expert, a casual fan, and a deliberately harsh critic. Their notes went back to the lead agent, which made the fixes.",
-  "Then I kept asking for things as I tried it: the real card back, a phone layout, a game, Japanese cards, ripping sounds, a smarter scanner.",
+  "I sent one agent to study other card trackers for ideas worth borrowing, then set four reviewer agents on the result. Their notes went back to the lead agent, which made the fixes.",
+  "Then I kept asking for things as I tried it: the real card back, a phone layout, a game, Japanese cards, ripping sounds, a better scanner.",
+];
+
+const FACTS = [
+  ["Coded by", "Jeremiah Daws"],
+  ["Built with", "Claude Code"],
+  ["My time", "About 30 minutes"],
+  ["Stack", "React, Vite, TCGdex card data, Tesseract.js"],
 ];
 
 export default function CardVaultPage() {
@@ -70,100 +78,66 @@ export default function CardVaultPage() {
     <>
       <TopNav />
       <main id="content" className="min-h-screen">
-        <section className="mx-auto max-w-6xl px-4 pb-12 pt-24 sm:px-6">
+        <section className="mx-auto max-w-4xl px-4 pb-14 pt-24 sm:px-6">
           <p className="text-xs uppercase tracking-[0.22em] text-blue">
             <a href="/apps" className="hover:text-accent">AI builds</a> / Side project
           </p>
           <h1
             className="mt-3 font-serif leading-[1.02] tracking-[-0.025em]"
-            style={{ fontSize: "clamp(2.75rem, 8vw, 4.5rem)" }}
+            style={{ fontSize: "clamp(2.5rem, 7vw, 4.25rem)" }}
           >
             Card Vault
           </h1>
-          <div className="mt-6 grid gap-8 md:grid-cols-[1.4fr_1fr]">
-            <div>
-              <p className="text-base text-ink/80 md:text-lg">
-                A Pokémon card tracker with live prices, a pack you can tear
-                open, graded slabs, a photo scanner and a price-guessing game. I
-                vibe coded it with Claude Code in about 30 minutes of my time,
-                just as an exercise: how far does one sitting of plain-English
-                prompting get you?
-              </p>
-              <p className="mt-4 text-base text-ink/80 md:text-lg">
-                The app is the byproduct. The point is how it got made, and
-                the video below shows the whole process.
-              </p>
-              <a
-                href="#how"
-                className="mt-5 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-ink"
-              >
-                Watch how it got made
-              </a>
-              <p className="mt-4 text-sm text-ink-muted">
-                There&rsquo;s no real collection behind it. The cards in these
-                screenshots are sample data.
-              </p>
-            </div>
-            <dl className="grid grid-cols-2 gap-x-6 gap-y-4 self-start rounded-2xl border border-ink/10 bg-paper-muted/40 p-5 text-sm">
-              <div>
-                <dt className="text-xs text-ink-muted">Coded by</dt>
-                <dd className="mt-0.5 font-medium">Jeremiah Daws</dd>
-              </div>
-              <div>
-                <dt className="text-xs text-ink-muted">Built with</dt>
-                <dd className="mt-0.5 font-medium">Claude Code</dd>
-              </div>
-              <div>
-                <dt className="text-xs text-ink-muted">My time</dt>
-                <dd className="mt-0.5 font-medium">About 30 minutes</dd>
-              </div>
-              <div>
-                <dt className="text-xs text-ink-muted">Year</dt>
-                <dd className="mt-0.5 font-medium">2026</dd>
-              </div>
-              <div className="col-span-2">
-                <dt className="text-xs text-ink-muted">Stack</dt>
-                <dd className="mt-0.5 font-medium">React, Vite, TCGdex card data, Tesseract.js for the scanner</dd>
-              </div>
-            </dl>
+          <p className="mt-4 max-w-2xl text-base text-ink/80 md:text-lg">
+            I vibe coded this Pokémon card tracker in about 30 minutes of my
+            time, without typing code, as an exercise. The video shows the
+            whole build.
+          </p>
+          <div className="relative mt-8 aspect-video w-full overflow-hidden rounded-xl border border-ink/10 bg-ink shadow-xl">
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?rel=0`}
+              title={VIDEO_TITLE}
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full"
+            />
           </div>
+          <p className="mt-3 text-sm text-ink-muted">
+            <a href={`https://www.youtube.com/watch?v=${VIDEO_ID}`} className="underline decoration-ink/30 underline-offset-2 hover:text-accent">
+              Watch on YouTube
+            </a>
+          </p>
         </section>
 
-        <section id="how" className="border-y border-ink/10 bg-blue-wash/60">
-          <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.35fr_1fr] lg:items-start">
-            <div>
-              <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-ink/10 bg-ink shadow-lg">
-                <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?rel=0`}
-                  title={VIDEO_TITLE}
-                  loading="lazy"
-                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                  className="absolute inset-0 h-full w-full"
-                />
-              </div>
-              <p className="mt-3 text-sm text-ink-muted">
-                <a href={`https://www.youtube.com/watch?v=${VIDEO_ID}`} className="underline decoration-ink/30 underline-offset-2 hover:text-accent">
-                  {VIDEO_TITLE}
-                </a>{" "}
-                on YouTube
-              </p>
-            </div>
-            <div>
-              <h2 className="font-serif text-3xl leading-tight md:text-4xl">How it got made</h2>
-              <p className="mt-3 text-ink/75">
-                No code typed by me. The video walks through the whole build;
-                here&rsquo;s the short version.
-              </p>
-              <ol className="mt-6 space-y-5">
+        <section id="how" className="scroll-mt-14 border-y border-ink/10 bg-blue-wash/60">
+          <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+            <h2 className="font-serif text-3xl leading-tight md:text-4xl">How it got made</h2>
+            <p className="mt-4 max-w-3xl font-serif text-xl leading-snug text-ink md:text-2xl">
+              One agent built it. Four more tore it apart: a UI expert, a
+              Pokémon expert, a casual fan, and a deliberately harsh critic.
+            </p>
+            <div className="mt-10 grid gap-10 md:grid-cols-[1.5fr_1fr]">
+              <ol className="space-y-5">
                 {PROCESS.map((p, i) => (
                   <li key={i} className="flex gap-4">
-                    <span className="font-serif text-2xl leading-none text-accent">{i + 1}</span>
+                    <span className="w-6 shrink-0 font-serif text-2xl leading-none text-accent">{i + 1}</span>
                     <p className="text-ink/80">{p}</p>
                   </li>
                 ))}
               </ol>
+              <dl className="grid grid-cols-2 gap-x-6 gap-y-4 self-start rounded-2xl border border-ink/10 bg-paper p-5 text-sm">
+                {FACTS.map(([k, v]) => (
+                  <div key={k} className={k === "Stack" ? "col-span-2" : undefined}>
+                    <dt className="text-xs text-ink-muted">{k}</dt>
+                    <dd className="mt-0.5 font-medium">{v}</dd>
+                  </div>
+                ))}
+                <p className="col-span-2 text-xs text-ink-muted">
+                  There&rsquo;s no real collection behind it. The cards in the
+                  screenshots are sample data.
+                </p>
+              </dl>
             </div>
           </div>
         </section>
@@ -173,7 +147,7 @@ export default function CardVaultPage() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <figure>
               <Image
-                src={`${IMG}/vault.jpg`}
+                src={`${IMG}/vault-2.jpg`}
                 alt="Card Vault's Vault screen: the total value, a price chart, and a fan of the most valuable cards"
                 width={1600}
                 height={1000}
@@ -245,7 +219,7 @@ export default function CardVaultPage() {
               <h2 className="font-serif text-3xl leading-tight md:text-4xl">On the phone.</h2>
               <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {[
-                  ["phone-vault", "Vault"],
+                  ["phone-vault-2", "Vault"],
                   ["phone-scan", "Scan a card"],
                   ["phone-slabs", "Slabs"],
                   ["phone-play", "Worth more?"],
@@ -279,6 +253,13 @@ export default function CardVaultPage() {
           </ul>
         </section>
 
+        <PageCta
+          eyebrow="Want something like this built?"
+          title="Tell me what you want built."
+          body="A website, an internal tool, or an assistant for your staff, built the same way: plain-English direction, AI doing the typing, and reviewers checking the work. You work with me directly, and I reply with a plan and a fixed quote."
+          topic="AI build inquiry (from Card Vault)"
+          placeholder="What would you like built?"
+        />
         <section className="border-t border-ink/10">
           <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
             <p className="max-w-prose text-sm text-ink-muted">

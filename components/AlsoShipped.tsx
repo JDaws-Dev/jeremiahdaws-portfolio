@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { PortfolioEntry } from "@/lib/portfolio";
-import { IconArrowUpRight } from "./icons";
+import { IconArrowRight, IconArrowUpRight } from "./icons";
 
 const SLUGS = [
   "apps-cardvault",
@@ -30,7 +30,7 @@ export function AlsoShipped({ entries }: { entries: PortfolioEntry[] }) {
           </h2>
           <p className="mt-2 max-w-2xl text-sm text-ink-muted">
             Small apps I built for fun or for friends. Most started as a
-            weekend question and shipped.
+            weekend question.
           </p>
         </div>
       </div>
@@ -55,7 +55,7 @@ export function AlsoShipped({ entries }: { entries: PortfolioEntry[] }) {
                 <div className="flex items-start justify-between gap-2">
                   <h3 className="font-serif text-lg leading-tight">{e.title}</h3>
                   {href ? (
-                    <IconArrowUpRight className="h-3.5 w-3.5 shrink-0 text-accent" />
+                    href.startsWith("/") ? <IconArrowRight className="h-3.5 w-3.5 shrink-0 text-accent" /> : <IconArrowUpRight className="h-3.5 w-3.5 shrink-0 text-accent" />
                   ) : null}
                 </div>
                 <p className="line-clamp-3 text-[13px] leading-snug text-ink/70">
