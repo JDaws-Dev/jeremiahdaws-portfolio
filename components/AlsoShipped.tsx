@@ -4,6 +4,7 @@ import type { PortfolioEntry } from "@/lib/portfolio";
 import { IconArrowUpRight } from "./icons";
 
 const SLUGS = [
+  "apps-cardvault",
   "apps-ourtapes",
   "apps-beaversbathroomblitz",
   "apps-fridaynightvideo",
@@ -71,8 +72,7 @@ export function AlsoShipped({ entries }: { entries: PortfolioEntry[] }) {
               {href ? (
                 <Link
                   href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...(href.startsWith("/") ? {} : { target: "_blank", rel: "noopener noreferrer" })}
                   className="block h-full"
                 >
                   {card}
