@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     title: "Card Vault — Jeremiah Daws",
     description: DESCRIPTION,
     url: "/apps/card-vault",
-    images: [{ url: "/portfolio/apps-cardvault-og.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/portfolio/apps-cardvault-og-2.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     creator: "@JeremiahDaws",
     title: "Card Vault — Jeremiah Daws",
     description: DESCRIPTION,
-    images: ["/portfolio/apps-cardvault-og.jpg"],
+    images: ["/portfolio/apps-cardvault-og-2.jpg"],
   },
 };
 
@@ -149,7 +149,7 @@ export default function CardVaultPage() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <figure>
               <Image
-                src={`${IMG}/vault-2.jpg`}
+                src={`${IMG}/vault-3.jpg`}
                 alt="Card Vault's Vault screen: the total value, a price chart, and a fan of the most valuable cards"
                 width={1600}
                 height={1000}
@@ -182,7 +182,7 @@ export default function CardVaultPage() {
                   the pack was worth and which card was the best pull.
                 </p>
                 <Image
-                  src={`${IMG}/pack-pulls.jpg`}
+                  src={`${IMG}/pack-pulls-2.jpg`}
                   alt="Pack summary: every card pulled with its price and the best pull highlighted"
                   width={1600}
                   height={1000}
@@ -195,7 +195,7 @@ export default function CardVaultPage() {
             <div className="mt-12 grid gap-6 md:grid-cols-2">
               <figure>
                 <Image
-                  src={`${IMG}/slabs.jpg`}
+                  src={`${IMG}/slabs-2.jpg`}
                   alt="Slabs screen: graded cards in PSA and CGC cases with estimated values"
                   width={1600}
                   height={1000}
@@ -206,7 +206,7 @@ export default function CardVaultPage() {
               </figure>
               <figure>
                 <Image
-                  src={`${IMG}/play.jpg`}
+                  src={`${IMG}/play-2.jpg`}
                   alt="Worth more? game: two cards side by side, guess which sells for more"
                   width={1600}
                   height={1000}
@@ -221,10 +221,10 @@ export default function CardVaultPage() {
               <h2 className="font-serif text-3xl leading-tight md:text-4xl">On the phone.</h2>
               <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {[
-                  ["phone-vault-2", "Vault"],
-                  ["phone-scan", "Scan a card"],
-                  ["phone-slabs", "Slabs"],
-                  ["phone-play", "Worth more?"],
+                  ["phone-vault-3", "Vault"],
+                  ["phone-scan-2", "Scan a card"],
+                  ["phone-slabs-2", "Slabs"],
+                  ["phone-play-2", "Worth more?"],
                 ].map(([f, label]) => (
                   <li key={f}>
                     <Image
